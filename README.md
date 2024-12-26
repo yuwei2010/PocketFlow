@@ -2,7 +2,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-Minimalist LLM framework in [100 lines](minillmflow/__init__.py). Express popular LLM paradigms like agents, task decomposition, chain of thought, RAG, and more.
+Minimalist LLM framework in [100 lines](minillmflow/__init__.py). Express popular paradigms like agents, task decomposition, RAG, and more.
 
 - Install via  ```pip install minillmflow```. Or just copy the [source codes](minillmflow/__init__.py) (it's only 100 lines)
 - We  **strongly recommened** using LLMs (e.g., Claude, ChatGPT, Cursor) to build LLM applications with [this prompt](minillmflow/docs/prompt)
@@ -22,7 +22,6 @@ However, designing elegant paradigms is challenging, and LLMs tend to write redu
 Can we build a framework that: 
 (1) removes redunant feature implementations, 
 (2) but keep core paradigms for LLMs to program against?
-
 Turns out that we just need 100 lines of codes.
 
 <div align="center">
