@@ -97,7 +97,7 @@ class TestAsyncFlow(unittest.TestCase):
 
         # We'll run the flow synchronously (which under the hood is asyncio.run())
         shared_storage = {}
-        flow.run(shared_storage)
+        asyncio.run(flow.run_async(shared_storage))
 
         self.assertEqual(shared_storage['current'], 6)
 
@@ -144,7 +144,7 @@ class TestAsyncFlow(unittest.TestCase):
         start_node - "negative_branch" >> negative_node
 
         flow = AsyncFlow(start_node)
-        flow.run(shared_storage)
+        asyncio.run(flow.run_async(shared_storage))
 
         self.assertEqual(shared_storage["path"], "positive", 
                          "Should have taken the positive branch")
