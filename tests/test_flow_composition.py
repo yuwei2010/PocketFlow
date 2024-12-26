@@ -12,7 +12,7 @@ class NumberNode(Node):
         super().__init__()
         self.number = number
 
-    def process(self, shared_storage, prep_result):
+    def exec(self, shared_storage, prep_result):
         shared_storage['current'] = self.number
 
 class AddNode(Node):
@@ -20,7 +20,7 @@ class AddNode(Node):
         super().__init__()
         self.number = number
 
-    def process(self, shared_storage, prep_result):
+    def exec(self, shared_storage, prep_result):
         shared_storage['current'] += self.number
 
 class MultiplyNode(Node):
@@ -28,7 +28,7 @@ class MultiplyNode(Node):
         super().__init__()
         self.number = number
 
-    def process(self, shared_storage, prep_result):
+    def exec(self, shared_storage, prep_result):
         shared_storage['current'] *= self.number
 
 class TestFlowComposition(unittest.TestCase):

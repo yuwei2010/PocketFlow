@@ -10,7 +10,7 @@ class NumberNode(Node):
         super().__init__()
         self.number = number
 
-    def process(self, shared_storage, data):
+    def exec(self, shared_storage, data):
         shared_storage['current'] = self.number
 
 class AddNode(Node):
@@ -18,7 +18,7 @@ class AddNode(Node):
         super().__init__()
         self.number = number
 
-    def process(self, shared_storage, data):
+    def exec(self, shared_storage, data):
         shared_storage['current'] += self.number
 
 class MultiplyNode(Node):
@@ -26,18 +26,18 @@ class MultiplyNode(Node):
         super().__init__()
         self.number = number
 
-    def process(self, shared_storage, data):
+    def exec(self, shared_storage, data):
         shared_storage['current'] *= self.number
 
 class CheckPositiveNode(Node):
-   def postprocess(self, shared_storage, prep_result, proc_result):
+   def post(self, shared_storage, prep_result, proc_result):
         if shared_storage['current'] >= 0:
             return 'positive'
         else:
             return 'negative'
 
 class NoOpNode(Node):
-    def process(self, shared_storage, data):
+    def exec(self, shared_storage, data):
         # Do nothing, just pass
         pass
     

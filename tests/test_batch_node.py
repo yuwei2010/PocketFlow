@@ -10,7 +10,7 @@ class ArrayChunkNode(BatchNode):
         super().__init__()
         self.chunk_size = chunk_size
     
-    def preprocess(self, shared_storage):
+    def prep(self, shared_storage):
         # Get array from shared storage and split into chunks
         array = shared_storage.get('input_array', [])
         chunks = []
@@ -19,20 +19,20 @@ class ArrayChunkNode(BatchNode):
             chunks.append((i, end))
         return chunks
     
-    def process(self, shared_storage, chunk_indices):
+    def exec(self, shared_storage, chunk_indices):
         start, end = chunk_indices
         array = shared_storage['input_array']
         # Process the chunk and return its sum
         chunk_sum = sum(array[start:end])
         return chunk_sum
         
-    def postprocess(self, shared_storage, prep_result, proc_result):
+    def post(self, shared_storage, prep_result, proc_result):
         # Store chunk results in shared storage
         shared_storage['chunk_results'] = proc_result
         return "default"
 
 class SumReduceNode(Node):
-    def process(self, shared_storage, data):
+    def exec(self, shared_storage, data):
         # Get chunk results from shared storage and sum them
         chunk_results = shared_storage.get('chunk_results', [])
         total = sum(chunk_results)
@@ -48,7 +48,7 @@ class TestBatchNode(unittest.TestCase):
         }
         
         chunk_node = ArrayChunkNode(chunk_size=10)
-        chunks = chunk_node.preprocess(shared_storage)
+        chunks = chunk_node.prep(shared_storage)
         
         self.assertEqual(chunks, [(0, 10), (10, 20), (20, 25)])
         

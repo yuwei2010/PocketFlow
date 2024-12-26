@@ -11,19 +11,19 @@ class AsyncNumberNode(AsyncNode):
     """
     Simple async node that sets 'current' to a given number.
     Demonstrates overriding .process() (sync) and using
-    postprocess_async() for the async portion.
+    post_async() for the async portion.
     """
     def __init__(self, number):
         super().__init__()
         self.number = number
 
-    def process(self, shared_storage, data):
+    def exec(self, shared_storage, data):
         # Synchronous work is allowed inside an AsyncNode,
-        # but final 'condition' is determined by postprocess_async().
+        # but final 'condition' is determined by post_async().
         shared_storage['current'] = self.number
         return "set_number"
 
-    async def postprocess_async(self, shared_storage, prep_result, proc_result):
+    async def post_async(self, shared_storage, prep_result, proc_result):
         # Possibly do asynchronous tasks here
         await asyncio.sleep(0.01)
         # Return a condition for the flow
@@ -34,11 +34,11 @@ class AsyncIncrementNode(AsyncNode):
     """
     Demonstrates incrementing the 'current' value asynchronously.
     """
-    def process(self, shared_storage, data):
+    def exec(self, shared_storage, data):
         shared_storage['current'] = shared_storage.get('current', 0) + 1
         return "incremented"
 
-    async def postprocess_async(self, shared_storage, prep_result, proc_result):
+    async def post_async(self, shared_storage, prep_result, proc_result):
         await asyncio.sleep(0.01)  # simulate async I/O
         return "done"
 
@@ -105,18 +105,18 @@ class TestAsyncFlow(unittest.TestCase):
         """
         Demonstrate a branching scenario where we return different
         conditions. For example, you could have an async node that
-        returns "go_left" or "go_right" in postprocess_async, but here
+        returns "go_left" or "go_right" in post_async, but here
         we'll keep it simpler for demonstration.
         """
 
         class BranchingAsyncNode(AsyncNode):
-            def process(self, shared_storage, data):
+            def exec(self, shared_storage, data):
                 value = shared_storage.get("value", 0)
                 shared_storage["value"] = value
                 # We'll decide branch based on whether 'value' is positive
                 return None
 
-            async def postprocess_async(self, shared_storage, prep_result, proc_result):
+            async def post_async(self, shared_storage, prep_result, proc_result):
                 await asyncio.sleep(0.01)
                 if shared_storage["value"] >= 0:
                     return "positive_branch"
@@ -124,12 +124,12 @@ class TestAsyncFlow(unittest.TestCase):
                     return "negative_branch"
 
         class PositiveNode(Node):
-            def process(self, shared_storage, data):
+            def exec(self, shared_storage, data):
                 shared_storage["path"] = "positive"
                 return None
 
         class NegativeNode(Node):
-            def process(self, shared_storage, data):
+            def exec(self, shared_storage, data):
                 shared_storage["path"] = "negative"
                 return None
 

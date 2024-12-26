@@ -7,7 +7,7 @@ sys.path.append(str(Path(__file__).parent.parent))
 from minillmflow import AsyncNode, BatchAsyncFlow
 
 class AsyncDataProcessNode(AsyncNode):
-    def process(self, shared_storage, prep_result):
+    def exec(self, shared_storage, prep_result):
         key = self.params.get('key')
         data = shared_storage['input_data'][key]
         if 'results' not in shared_storage:
@@ -15,14 +15,14 @@ class AsyncDataProcessNode(AsyncNode):
         shared_storage['results'][key] = data
         return data
 
-    async def postprocess_async(self, shared_storage, prep_result, proc_result):
+    async def post_async(self, shared_storage, prep_result, proc_result):
         await asyncio.sleep(0.01)  # Simulate async work
         key = self.params.get('key')
         shared_storage['results'][key] = proc_result * 2  # Double the value
         return "processed"
 
 class AsyncErrorNode(AsyncNode):
-    async def postprocess_async(self, shared_storage, prep_result, proc_result):
+    async def post_async(self, shared_storage, prep_result, proc_result):
         key = self.params.get('key')
         if key == 'error_key':
             raise ValueError(f"Async error processing key: {key}")
@@ -35,7 +35,7 @@ class TestAsyncBatchFlow(unittest.TestCase):
     def test_basic_async_batch_processing(self):
         """Test basic async batch processing with multiple keys"""
         class SimpleTestAsyncBatchFlow(BatchAsyncFlow):
-            def preprocess(self, shared_storage):
+            def prep(self, shared_storage):
                 return [{'key': k} for k in shared_storage['input_data'].keys()]
 
         shared_storage = {
@@ -59,7 +59,7 @@ class TestAsyncBatchFlow(unittest.TestCase):
     def test_empty_async_batch(self):
         """Test async batch processing with empty input"""
         class EmptyTestAsyncBatchFlow(BatchAsyncFlow):
-            def preprocess(self, shared_storage):
+            def prep(self, shared_storage):
                 return [{'key': k} for k in shared_storage['input_data'].keys()]
 
         shared_storage = {
@@ -74,7 +74,7 @@ class TestAsyncBatchFlow(unittest.TestCase):
     def test_async_error_handling(self):
         """Test error handling during async batch processing"""
         class ErrorTestAsyncBatchFlow(BatchAsyncFlow):
-            def preprocess(self, shared_storage):
+            def prep(self, shared_storage):
                 return [{'key': k} for k in shared_storage['input_data'].keys()]
 
         shared_storage = {
@@ -93,7 +93,7 @@ class TestAsyncBatchFlow(unittest.TestCase):
     def test_nested_async_flow(self):
         """Test async batch processing with nested flows"""
         class AsyncInnerNode(AsyncNode):
-            async def postprocess_async(self, shared_storage, prep_result, proc_result):
+            async def post_async(self, shared_storage, prep_result, proc_result):
                 key = self.params.get('key')
                 if 'intermediate_results' not in shared_storage:
                     shared_storage['intermediate_results'] = {}
@@ -102,7 +102,7 @@ class TestAsyncBatchFlow(unittest.TestCase):
                 return "next"
 
         class AsyncOuterNode(AsyncNode):
-            async def postprocess_async(self, shared_storage, prep_result, proc_result):
+            async def post_async(self, shared_storage, prep_result, proc_result):
                 key = self.params.get('key')
                 if 'results' not in shared_storage:
                     shared_storage['results'] = {}
@@ -111,7 +111,7 @@ class TestAsyncBatchFlow(unittest.TestCase):
                 return "done"
 
         class NestedAsyncBatchFlow(BatchAsyncFlow):
-            def preprocess(self, shared_storage):
+            def prep(self, shared_storage):
                 return [{'key': k} for k in shared_storage['input_data'].keys()]
 
         # Create inner flow
@@ -138,7 +138,7 @@ class TestAsyncBatchFlow(unittest.TestCase):
     def test_custom_async_parameters(self):
         """Test async batch processing with additional custom parameters"""
         class CustomParamAsyncNode(AsyncNode):
-            async def postprocess_async(self, shared_storage, prep_result, proc_result):
+            async def post_async(self, shared_storage, prep_result, proc_result):
                 key = self.params.get('key')
                 multiplier = self.params.get('multiplier', 1)
                 await asyncio.sleep(0.01)
@@ -148,7 +148,7 @@ class TestAsyncBatchFlow(unittest.TestCase):
                 return "done"
 
         class CustomParamAsyncBatchFlow(BatchAsyncFlow):
-            def preprocess(self, shared_storage):
+            def prep(self, shared_storage):
                 return [{
                     'key': k,
                     'multiplier': i + 1
