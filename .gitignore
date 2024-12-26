@@ -69,3 +69,6 @@ htmlcov/
 *.bak
 *.tmp
 *.temp
+
+
+test.ipynb
