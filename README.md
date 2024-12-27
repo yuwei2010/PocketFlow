@@ -6,7 +6,7 @@ A 100-line minimalist LLM framework for agents, task decomposition, RAG, etc.
 
 - Install via  ```pip install minillmflow```, or just copy the [source](minillmflow/__init__.py) (only 100 lines)
 
-- **Pro tip:** Build LLM apps with LLMs assistants (ChatGPT, Claude, etc.) via [this prompt](docs/prompt)
+- **Pro tip:** Build LLM apps with LLMs assistants (ChatGPT, Claude, etc.) via [this prompt](assets/prompt)
 
 ## Why Mini LLM Flow?
 
@@ -27,7 +27,7 @@ Hence, I built this framework that lets LLMs focus on what matters. It turns out
 
 
 <div align="center">
-  <img src="./docs/minillmflow.jpg" width="400"/>
+  <img src="./assets/minillmflow.jpg" width="400"/>
 </div>
 
 ## Example
