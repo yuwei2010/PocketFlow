@@ -2,7 +2,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-A 100-line minimalist LLM framework for agents, task decomposition, RAG, etc.
+A [100-line](minillmflow/__init__.py) minimalist LLM framework for agents, task decomposition, RAG, etc.
 
 - Install via  ```pip install minillmflow```, or just copy the [source](minillmflow/__init__.py) (only 100 lines)
 
@@ -27,7 +27,7 @@ Hence, I built this framework that lets LLMs focus on what matters. It turns out
 
 
 <div align="center">
-  <img src="./assets/minillmflow.jpg" width="400"/>
+  <img src="/assets/minillmflow.jpg" width="400"/>
 </div>
 
 ## Example

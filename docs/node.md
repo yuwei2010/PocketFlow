@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Node"
+nav_order: 2
 ---
 
 # Node
@@ -38,16 +39,16 @@ When an exception occurs in `exec()`, the Node automatically retries until:
 
 If you want to **gracefully handle** the error rather than raising it, you can override:
 
-``  
+```
 def process_after_fail(self, shared, prep_res, exc):
     raise exc
-``  
+```
 
 By **default**, it just re-raises `exc`. But you can return a fallback result instead. That fallback result becomes the `exec_res` passed to `post()`.
 
 ## Minimal Example
 
-``  
+```
 class SummarizeFile(Node):
     def prep(self, shared):
         filename = self.params["filename"]
@@ -68,5 +69,5 @@ class SummarizeFile(Node):
         filename = self.params["filename"]
         shared["summary"][filename] = exec_res
         # Return "default" by not returning anything
-``  
+```  
 
