@@ -27,8 +27,7 @@ A **Node** is the smallest building block of Mini LLM Flow. Each Node has three 
 
 Nodes in Mini LLM Flow can **retry** execution if `exec()` raises an exception. You control this via a `max_retries` parameter when you create the Node. By default, `max_retries = 1` (meaning no retry).
 
-```
-# Example usage:
+```python 
 my_node = SummarizeFile(max_retries=3)
 ```
 
@@ -39,7 +38,7 @@ When an exception occurs in `exec()`, the Node automatically retries until:
 
 If you want to **gracefully handle** the error rather than raising it, you can override:
 
-```
+```python 
 def process_after_fail(self, shared, prep_res, exc):
     raise exc
 ```
@@ -48,7 +47,7 @@ By **default**, it just re-raises `exc`. But you can return a fallback result in
 
 ## Minimal Example
 
-```
+```python 
 class SummarizeFile(Node):
     def prep(self, shared):
         filename = self.params["filename"]
