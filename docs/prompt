@@ -3,7 +3,7 @@ from minillmflow import Node, BatchNode, Flow, BatchFlow, AsyncNode, AsyncFlow, 
 import os
 
 # 1) Implement a simple LLM helper (OpenAI in this example).
-def call_LLM(prompt):
+def call_llm(prompt):
     # Users must set an OpenAI API key; can also load from env var, etc.
     openai.api_key = "YOUR_API_KEY_HERE"
     r = openai.ChatCompletion.create(
