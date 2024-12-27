@@ -30,3 +30,6 @@ Hence, I built this framework that lets LLMs focus on what matters. It turns out
   <img src="./docs/minillmflow.jpg" width="400"/>
 </div>
 
+## Example
+
+Beginner Tutorial on [Text summarization + QA agent](https://colab.research.google.com/github/zachary62/miniLLMFlow/blob/main/cookbook/demo.ipynb)
