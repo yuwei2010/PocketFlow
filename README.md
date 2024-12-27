@@ -12,11 +12,11 @@ A 100-line minimalist LLM framework for agents, task decomposition, RAG, etc.
 
 In the future, **LLM apps will be developed by LLMs**: users specify requirements, and LLMs design, build, and maintain on their own. Current LLMs:
 
-1. **😀 Shine at Low-level Implementation**: 
+1. **👍 Shine at Low-level Implementation**: 
 With proper docs, LLMs can handle APIs, tools, chunking, prompt wrapping, etc. 
 These are hard to maintain and optimize for a general-purpose framework.
 
-2. **☹️ Struggle with High-level Paradigms**:
+2. **👎 Struggle with High-level Paradigms**:
 Paradigms like MapReduce, task decomposition, and agents are powerful for development.
 However, designing these elegantly remains challenging for LLMs.
 
