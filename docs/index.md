@@ -8,12 +8,6 @@ nav_order: 1
 
 A 100-line minimalist LLM framework for agents, task decomposition, RAG, etc.
 
-<div align="center">
-  <img src="/assets/minillmflow.jpg" width="400"/>
-</div>
-
-## Core Abstraction
-
 We model the LLM workflow as a **Nested Flow**:
 - Each **Node** handles a simple LLM task.
 - Nodes are chained together to form a **Flow** for more complex tasks.
@@ -21,6 +15,12 @@ We model the LLM workflow as a **Nested Flow**:
 - A Flow can be treated as a Node for **Nested Flows**.
 - Both Nodes and Flows can be **Batched** for data-intensive tasks.
 - Nodes and Flows can be **Async**.
+
+<div align="center">
+  <img src="https://github.com/zachary62/miniLLMFlow/blob/main/assets/minillmflow.jpg?raw=true" width="400"/>
+</div>
+
+## Core Abstraction
 
 - [Node](./node.md)
 - [Flow](./flow.md)
