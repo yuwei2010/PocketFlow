@@ -86,14 +86,14 @@ class TestAsyncFlow(unittest.TestCase):
         """
 
         # Create our nodes
-        start_node = AsyncNumberNode(5)
+        start = AsyncNumberNode(5)
         inc_node = AsyncIncrementNode()
 
-        # Chain them: start_node >> inc_node
-        start_node - "number_set" >> inc_node
+        # Chain them: start >> inc_node
+        start - "number_set" >> inc_node
 
-        # Create an AsyncFlow with start_node
-        flow = AsyncFlow(start_node)
+        # Create an AsyncFlow with start
+        flow = AsyncFlow(start)
 
         # We'll run the flow synchronously (which under the hood is asyncio.run())
         shared_storage = {}
@@ -135,15 +135,15 @@ class TestAsyncFlow(unittest.TestCase):
 
         shared_storage = {"value": 10}
 
-        start_node = BranchingAsyncNode()
+        start = BranchingAsyncNode()
         positive_node = PositiveNode()
         negative_node = NegativeNode()
 
         # Condition-based chaining
-        start_node - "positive_branch" >> positive_node
-        start_node - "negative_branch" >> negative_node
+        start - "positive_branch" >> positive_node
+        start - "negative_branch" >> negative_node
 
-        flow = AsyncFlow(start_node)
+        flow = AsyncFlow(start)
         asyncio.run(flow.run_async(shared_storage))
 
         self.assertEqual(shared_storage["path"], "positive", 

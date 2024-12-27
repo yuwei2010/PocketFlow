@@ -46,7 +46,7 @@ class TestAsyncBatchFlow(unittest.TestCase):
             }
         }
 
-        flow = SimpleTestAsyncBatchFlow(start_node=self.process_node)
+        flow = SimpleTestAsyncBatchFlow(start=self.process_node)
         asyncio.run(flow.run_async(shared_storage))
 
         expected_results = {
@@ -66,7 +66,7 @@ class TestAsyncBatchFlow(unittest.TestCase):
             'input_data': {}
         }
 
-        flow = EmptyTestAsyncBatchFlow(start_node=self.process_node)
+        flow = EmptyTestAsyncBatchFlow(start=self.process_node)
         asyncio.run(flow.run_async(shared_storage))
 
         self.assertEqual(shared_storage.get('results', {}), {})
@@ -85,7 +85,7 @@ class TestAsyncBatchFlow(unittest.TestCase):
             }
         }
 
-        flow = ErrorTestAsyncBatchFlow(start_node=AsyncErrorNode())
+        flow = ErrorTestAsyncBatchFlow(start=AsyncErrorNode())
         
         with self.assertRaises(ValueError):
             asyncio.run(flow.run_async(shared_storage))
@@ -126,7 +126,7 @@ class TestAsyncBatchFlow(unittest.TestCase):
             }
         }
 
-        flow = NestedAsyncBatchFlow(start_node=inner_node)
+        flow = NestedAsyncBatchFlow(start=inner_node)
         asyncio.run(flow.run_async(shared_storage))
 
         expected_results = {
@@ -162,7 +162,7 @@ class TestAsyncBatchFlow(unittest.TestCase):
             }
         }
 
-        flow = CustomParamAsyncBatchFlow(start_node=CustomParamAsyncNode())
+        flow = CustomParamAsyncBatchFlow(start=CustomParamAsyncNode())
         asyncio.run(flow.run_async(shared_storage))
 
         expected_results = {

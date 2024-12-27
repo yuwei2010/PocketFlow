@@ -40,7 +40,7 @@ class TestBatchFlow(unittest.TestCase):
             }
         }
 
-        flow = SimpleTestBatchFlow(start_node=self.process_node)
+        flow = SimpleTestBatchFlow(start=self.process_node)
         flow.run(shared_storage)
 
         expected_results = {
@@ -60,7 +60,7 @@ class TestBatchFlow(unittest.TestCase):
             'input_data': {}
         }
 
-        flow = EmptyTestBatchFlow(start_node=self.process_node)
+        flow = EmptyTestBatchFlow(start=self.process_node)
         flow.run(shared_storage)
 
         self.assertEqual(shared_storage.get('results', {}), {})
@@ -77,7 +77,7 @@ class TestBatchFlow(unittest.TestCase):
             }
         }
 
-        flow = SingleItemBatchFlow(start_node=self.process_node)
+        flow = SingleItemBatchFlow(start=self.process_node)
         flow.run(shared_storage)
 
         expected_results = {
@@ -99,7 +99,7 @@ class TestBatchFlow(unittest.TestCase):
             }
         }
 
-        flow = ErrorTestBatchFlow(start_node=ErrorProcessNode())
+        flow = ErrorTestBatchFlow(start=ErrorProcessNode())
         
         with self.assertRaises(ValueError):
             flow.run(shared_storage)
@@ -136,7 +136,7 @@ class TestBatchFlow(unittest.TestCase):
             }
         }
 
-        flow = NestedBatchFlow(start_node=inner_node)
+        flow = NestedBatchFlow(start=inner_node)
         flow.run(shared_storage)
 
         expected_results = {
@@ -170,7 +170,7 @@ class TestBatchFlow(unittest.TestCase):
             }
         }
 
-        flow = CustomParamBatchFlow(start_node=CustomParamNode())
+        flow = CustomParamBatchFlow(start=CustomParamNode())
         flow.run(shared_storage)
 
         expected_results = {

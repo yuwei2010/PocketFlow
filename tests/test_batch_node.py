@@ -74,7 +74,7 @@ class TestBatchNode(unittest.TestCase):
         chunk_node >> reduce_node
         
         # Create and run pipeline
-        pipeline = Flow(start_node=chunk_node)
+        pipeline = Flow(start=chunk_node)
         pipeline.run(shared_storage)
         
         self.assertEqual(shared_storage['total'], expected_sum)
@@ -95,7 +95,7 @@ class TestBatchNode(unittest.TestCase):
         reduce_node = SumReduceNode()
         
         chunk_node >> reduce_node
-        pipeline = Flow(start_node=chunk_node)
+        pipeline = Flow(start=chunk_node)
         pipeline.run(shared_storage)
         
         self.assertEqual(shared_storage['total'], expected_sum)
@@ -116,7 +116,7 @@ class TestBatchNode(unittest.TestCase):
         reduce_node = SumReduceNode()
         
         chunk_node >> reduce_node
-        pipeline = Flow(start_node=chunk_node)
+        pipeline = Flow(start=chunk_node)
         pipeline.run(shared_storage)
         
         self.assertEqual(shared_storage['total'], expected_sum)
@@ -136,7 +136,7 @@ class TestBatchNode(unittest.TestCase):
         reduce_node = SumReduceNode()
         
         chunk_node >> reduce_node
-        pipeline = Flow(start_node=chunk_node)
+        pipeline = Flow(start=chunk_node)
         pipeline.run(shared_storage)
         
         self.assertEqual(shared_storage['total'], expected_sum)
@@ -153,7 +153,7 @@ class TestBatchNode(unittest.TestCase):
         reduce_node = SumReduceNode()
         
         chunk_node >> reduce_node
-        pipeline = Flow(start_node=chunk_node)
+        pipeline = Flow(start=chunk_node)
         pipeline.run(shared_storage)
         
         self.assertEqual(shared_storage['total'], 0)

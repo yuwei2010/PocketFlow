@@ -45,7 +45,7 @@ class TestNode(unittest.TestCase):
     def test_single_number(self):
         shared_storage = {}
         start = NumberNode(5)
-        pipeline = Flow(start_node=start)
+        pipeline = Flow(start=start)
         pipeline.run(shared_storage)
         self.assertEqual(shared_storage['current'], 5)
 
@@ -65,7 +65,7 @@ class TestNode(unittest.TestCase):
         # Chain them in sequence using the >> operator
         n1 >> n2 >> n3
 
-        pipeline = Flow(start_node=n1)
+        pipeline = Flow(start=n1)
         pipeline.run(shared_storage)
 
         self.assertEqual(shared_storage['current'], 16)
@@ -94,7 +94,7 @@ class TestNode(unittest.TestCase):
         check - "positive" >> add_if_positive
         check - "negative" >> add_if_negative
 
-        pipeline = Flow(start_node=start)
+        pipeline = Flow(start=start)
         pipeline.run(shared_storage)
 
         self.assertEqual(shared_storage['current'], 15)
@@ -118,7 +118,7 @@ class TestNode(unittest.TestCase):
         check - "positive" >> add_if_positive
         check - "negative" >> add_if_negative
 
-        pipeline = Flow(start_node=start)
+        pipeline = Flow(start=start)
         pipeline.run(shared_storage)
 
         # Should have gone down the 'negative' branch
@@ -145,7 +145,7 @@ class TestNode(unittest.TestCase):
         # Attach a no-op node on the negative branch to avoid warning
         check - 'negative' >> no_op
 
-        pipeline = Flow(start_node=n1)
+        pipeline = Flow(start=n1)
         pipeline.run(shared_storage)
 
         # final result should be -2: (10 -> 7 -> 4 -> 1 -> -2)
