@@ -1,12 +1,26 @@
 ---
 layout: default
-title: Home
-nav_order: 1
+title: "Home"
 ---
 
 # Mini LLM Flow
 
-Minimalist LLM Framework in 100 Lines, Enabling LLMs to Program
+A **100-line minimalist LLM framework** for agents, task decomposition, retrieval-augmented generation, and more.  
 
-Get Started{: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-View on GitHub{: .btn .fs-5 .mb-4 .mb-md-0 }
+## Core Abstraction
+
+- [Node & Flow](./node_and_flow.md)
+- [Communication](./communication.md)
+- [Batch](./batch.md)
+- [Async](./async.md)
+
+## Paradigm Implementation
+
+- Task Decomposition
+- Agent
+- Map Reduce
+- RAG
+
+## Example Use Cases
+
+TODO
