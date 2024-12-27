@@ -32,4 +32,5 @@ Hence, I built this framework that lets LLMs focus on what matters. It turns out
 
 ## Example
 
-Beginner Tutorial on [Text summarization + QA agent](https://colab.research.google.com/github/zachary62/miniLLMFlow/blob/main/cookbook/demo.ipynb)
+- Beginner Tutorial on [Text summarization + QA agent](https://colab.research.google.com/github/zachary62/miniLLMFlow/blob/main/cookbook/demo.ipynb)
+- Have questions for this tutorial? Try [this prompt](https://chatgpt.com/share/676f16d2-7064-8000-b9d7-f6874346a6b5)
