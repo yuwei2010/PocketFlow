@@ -10,7 +10,7 @@ A 100-line minimalist LLM framework for agents, task decomposition, RAG, etc.
 
 ## Why Mini LLM Flow?
 
-The future of LLM app development will be **heavily LLM-assisted**: users specify requirements, and LLMs build, test, and maintain on their own. Current LLM assistants:
+In the future, **LLM apps will be developed by LLMs**: users specify requirements, and LLMs build, test, and maintain on their own. Current LLM assistants:
 
 1. **😀 Shine at Low-level Implementation**: 
 With proper docs, LLMs can handle APIs, tools, chunking, prompt wrapping, etc. 
