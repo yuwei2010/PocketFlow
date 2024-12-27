@@ -6,7 +6,7 @@ A 100-line minimalist LLM framework for agents, task decomposition, RAG, etc.
 
 - Install via  ```pip install minillmflow```, or just copy the [source](minillmflow/__init__.py) (only 100 lines)
 
-- **Pro tip:** Build LLM apps with LLMs assistants (ChatGPT, Claude, etc.) via [this prompt](minillmflow/docs/prompt)
+- **Pro tip:** Build LLM apps with LLMs assistants (ChatGPT, Claude, etc.) via [this prompt](docs/prompt)
 
 ## Why Mini LLM Flow?
 
