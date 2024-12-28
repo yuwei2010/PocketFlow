@@ -20,7 +20,7 @@ A **Node** is the smallest building block of Mini LLM Flow. Each Node has three 
    - Returns `exec_res`, which is passed to `post()`.
 
 3. **`post(shared, prep_res, exec_res)`**  
-   - Optionally perform post-processing, such as writing results back to the `shared` store or deciding the next action.  
+   - Optionally writes results back to the `shared` store or decides the next action.  
    - Often used to finalize outputs, trigger next steps, or log results.  
    - Returns a **string** to specify the next action (`"default"` if nothing or `None` is returned).
 

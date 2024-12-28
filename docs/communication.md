@@ -15,9 +15,9 @@ Nodes and Flows **communicate** in two ways:
 If you know memory management, **Shared Store** is like a **heap** shared across function calls, while **Params** is like a **stack** assigned by parent function calls.
 
 
-### Why Not Message Passing?
+### Why Not Use Other Communication Models like Message Passing?
 
-**Message passing** can work for simple DAGs (e.g., for data pipelines), but with **nested graphs** (Flows containing Flows, repeated or cyclic calls), routing messages becomes hard to maintain. A shared store keeps the design simpler and easier.
+**Message passing** works well for simple DAGs (e.g., for data pipelines), but with **nested graphs** (Flows containing Flows, repeated or cyclic calls), routing messages becomes hard to maintain. A shared store keeps the design simple and easy.
 
 ---
 
@@ -30,8 +30,7 @@ A shared store is typically an in-mem dictionary, like:
 shared = {"data": {}, "summary": {}, "config": {...}, ...}
 ```
 
-It can also contain local file handlers, DB connections, or a combination for persistence.  
-We recommend deciding the data structure or DB schema in advance based on your app requirements.
+It can also contain local file handlers, DB connections, or a combination for persistence. We recommend deciding the data structure or DB schema first based on your app requirements.
 
 ### Example
 
@@ -77,8 +76,7 @@ No special data-passing—just the same `shared` object.
 
 **Params** let you store **per-Node** or **per-Flow** config that doesn’t need to live in the global store. They are:
 - **Immutable** during a Node’s run cycle (i.e., they don’t change mid-`prep`, `exec`, `post`).
-- **Set** via `set_params()`.  
-  ⚠️ Only set the uppermost Flow params because others will be overwritten by the parent Flow. If you need to set child node params, see [Batch](./batch.md).
+- **Set** via `set_params()`. **⚠️ Warning** Only set the uppermost Flow params because others will be overwritten by the parent Flow. If you need to set child node params, see [Batch](./batch.md).
 - **Cleared** and updated each time a parent Flow calls it.
 
 Typically, **Params** are identifiers (e.g., file name, page number). Use them to fetch the task you assigned or write to a specific part of the shared store.
