@@ -39,6 +39,7 @@ We model the LLM workflow as a **Nested Flow**:
 - Map Reduce
 - RAG
 - Structured Output
+- Evaluation
 
 ## Example Use Cases
 

@@ -4,10 +4,10 @@ title: "LLM Integration"
 nav_order: 3
 ---
 
-# Call LLM 
+# LLM Wrappers  
 
-For your LLM application, implement a function to call LLMs yourself. 
-You can ask an assistant like ChatGPT or Claude to generate an example. 
+For your LLM app, implement a wrapper function to call LLMs yourself. 
+You can ask an assistant like ChatGPT or Claude to implement it. 
 For instance, asking ChatGPT to "implement a `call_llm` function that takes a prompt and returns the LLM response" gives:
 
 ```python
@@ -64,9 +64,9 @@ def call_llm(prompt):
 ```
 
 
-## Why not provide an LLM call function?
+## Why not provide LLM Wrappers?
 I believe it is a bad practice to provide LLM-specific implementations in a general framework:
-- LLM APIs change frequently. Hardcoding them makes maintenance difficult.
+- LLMs change frequently. Hardcoding them makes maintenance difficult.
 - You may need flexibility to switch vendors, use fine-tuned models, or deploy local LLMs.
 - You may need optimizations like prompt caching, request batching, or response streaming.
 
