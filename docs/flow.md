@@ -48,7 +48,7 @@ Here's a simple expense approval flow that demonstrates branching and looping. T
 
 - `"approved"`: expense is approved, move to payment processing
 - `"needs_revision"`: expense needs changes, send back for revision 
-- `"rejected"`: expense is denied, end the process
+- `"rejected"`: expense is denied, finish the process
 
 We can wire them like this:
 
@@ -56,10 +56,10 @@ We can wire them like this:
 # Define the flow connections
 review - "approved" >> payment        # If approved, process payment
 review - "needs_revision" >> revise   # If needs changes, go to revision
-review - "rejected" >> end           # If rejected, end the process
+review - "rejected" >> finish           # If rejected, finish the process
 
 revise >> review   # After revision, go back for another review
-payment >> end     # After payment, end the process
+payment >> finish     # After payment, finish the process
 
 flow = Flow(start=review)
 ```
@@ -68,16 +68,16 @@ Let's see how it flows:
 
 1. If `review.post()` returns `"approved"`, the expense moves to `payment` node
 2. If `review.post()` returns `"needs_revision"`, it goes to `revise` node, which then loops back to `review`
-3. If `review.post()` returns `"rejected"`, it moves to `end` node and stops
+3. If `review.post()` returns `"rejected"`, it moves to `finish` node and stops
 
 ```mermaid
 flowchart TD
     review[Review Expense] -->|approved| payment[Process Payment]
     review -->|needs_revision| revise[Revise Report]
-    review -->|rejected| end[End Process]
-    
+    review -->|rejected| finish[End Process]
+
     revise --> review
-    payment --> end
+    payment --> finish
 ```
 
 ## Running Individual Nodes vs. Running a Flow
@@ -147,18 +147,19 @@ This creates a clean separation of concerns while maintaining a clear execution 
 
 ```mermaid
 flowchart TD
-   subgraph "Payment Flow"
-   A[Validate Payment] --> B[Process Payment] --> C[Payment Confirmation]
+
+   subgraph paymentFlow["Payment Flow"]
+      A[Validate Payment] --> B[Process Payment] --> C[Payment Confirmation]
    end
-   
-   subgraph "Inventory Flow"
-   D[Check Stock] --> E[Reserve Items] --> F[Update Inventory]
+
+   subgraph inventoryFlow["Inventory Flow"]
+      D[Check Stock] --> E[Reserve Items] --> F[Update Inventory]
    end
-   
-   subgraph "Shipping Flow"
-   G[Create Label] --> H[Assign Carrier] --> I[Schedule Pickup]
+
+   subgraph shippingFlow["Shipping Flow"]
+      G[Create Label] --> H[Assign Carrier] --> I[Schedule Pickup]
    end
-   
-   Payment Flow --> Inventory Flow
-   Inventory Flow --> Shipping Flow
+
+   paymentFlow --> inventoryFlow
+   inventoryFlow --> shippingFlow
 ```

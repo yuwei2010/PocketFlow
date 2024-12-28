@@ -28,7 +28,7 @@ call_llm("How are you?")
 ## Improvements
 You can enhance the function as needed. Examples:
 
-1. Handle chat history:
+- Handle chat history:
 
 ```python
 def call_llm(messages):
@@ -41,7 +41,7 @@ def call_llm(messages):
     return r.choices[0].message.content
 ```
 
-2. Add in-memory caching:
+- Add in-memory caching:
 
 ```python
 from functools import lru_cache
@@ -52,7 +52,7 @@ def call_llm(prompt):
     pass
 ```
 
-3. Enable logging:
+- Enable logging:
 
 ```python
 def call_llm(prompt):
@@ -63,12 +63,10 @@ def call_llm(prompt):
     return response
 ```
 
-You can also try libraries like `litellm`
 
 ## Why not provide an LLM call function?
 I believe it is a bad practice to provide LLM-specific implementations in a general framework:
 - LLM APIs change frequently. Hardcoding them makes maintenance difficult.
 - You may need flexibility to switch vendors, use fine-tuned models, or deploy local LLMs.
-- Custom optimizations like prompt caching, request batching, or response streaming may be required.
-
+- You may need optimizations like prompt caching, request batching, or response streaming.
 
