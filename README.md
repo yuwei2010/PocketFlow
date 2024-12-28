@@ -1,12 +1,15 @@
 <h1 align="center">Mini LLM Flow</h1>
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+[![Docs](https://img.shields.io/badge/docs-latest-blue)](https://zachary62.github.io/miniLLMFlow/)
 
 A [100-line](minillmflow/__init__.py) minimalist LLM framework for agents, task decomposition, RAG, etc.
 
 - Install via  ```pip install minillmflow```, or just copy the [source](minillmflow/__init__.py) (only 100 lines)
 
 - **Pro tip:** Build LLM apps with LLMs assistants (ChatGPT, Claude, etc.) via [this prompt](assets/prompt)
+
+Documentation: https://zachary62.github.io/miniLLMFlow/
 
 ## Why Mini LLM Flow?
 
