@@ -42,6 +42,6 @@ We model the LLM workflow as a **Nested Flow**:
 - Structured Output
 - Evaluation
 
-## Example Use Cases
+## Example Projects
 
-TODO
+- TODO

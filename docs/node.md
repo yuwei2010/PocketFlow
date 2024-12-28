@@ -46,7 +46,7 @@ def process_after_fail(self, shared, prep_res, exc):
 
 By **default**, it just re-raises `exc`. But you can return a fallback result instead. That fallback result becomes the `exec_res` passed to `post()`.
 
-## Minimal Example
+## Example
 
 ```python 
 class SummarizeFile(Node):
