@@ -27,7 +27,9 @@ Mini LLM Flow is also a great learning resource, as current frameworks abstract 
   <img src="/assets/minillmflow.jpg" width="400"/>
 </div>
 
-## Example LLM apps
+## Tutorial
+
+- Documentation: https://zachary62.github.io/miniLLMFlow/
 
 - Beginner Tutorial: [Text summarization for Paul Graham Essay + QA agent](https://colab.research.google.com/github/zachary62/miniLLMFlow/blob/main/cookbook/demo.ipynb)
 
