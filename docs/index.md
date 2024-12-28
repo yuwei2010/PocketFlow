@@ -10,15 +10,19 @@ A [100-line](https://github.com/zachary62/miniLLMFlow/blob/main/minillmflow/__in
 
 We model the LLM workflow as a **Nested Flow**:
 - Each **Node** handles a simple LLM task.
-- Nodes are chained together to form a **Flow** for more complex tasks.
-- One Node can be chained to multiple Nodes based on **Actions**.
+- Nodes are chained together to form a **Flow** for compute-intensive tasks.
+- One Node can be chained to multiple Nodes through **Actions** as an agent.
 - A Flow can be treated as a Node for **Nested Flows**.
 - Both Nodes and Flows can be **Batched** for data-intensive tasks.
-- Nodes and Flows can be **Async**.
+- Nodes and Flows can be **Async** for user inputs.
 
 <div align="center">
   <img src="https://github.com/zachary62/miniLLMFlow/blob/main/assets/minillmflow.jpg?raw=true" width="400"/>
 </div>
+
+## Preparation
+
+- [LLM Integration](./llm.md)
 
 ## Core Abstraction
 

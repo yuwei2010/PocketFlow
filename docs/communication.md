@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Communication"
-nav_order: 4
+nav_order: 5
 ---
 
 # Communication
@@ -20,9 +20,9 @@ This design avoids complex message-passing or data routing. It also lets you **n
 ### Overview
 
 A shared store is typically a Python dictionary, like:
-`` 
+```python
 shared = {"data": {}, "summary": {}, "config": { ... }, ...}
-``
+```
 
 Every Node’s `prep()`, `exec()`, and `post()` methods receive the **same** `shared` object. This makes it easy to:
 - Read data that another Node loaded, such as a text file or database record.
@@ -31,7 +31,7 @@ Every Node’s `prep()`, `exec()`, and `post()` methods receive the **same** `sh
 
 ### Example
 
-`` 
+```python
 class LoadData(Node):
     def prep(self, shared):
         # Suppose we read from disk or an API
@@ -59,7 +59,7 @@ class Summarize(Node):
     def post(self, shared, prep_res, exec_res):
         shared["summary"]["my_file.txt"] = exec_res
         return "default"
-``
+```
 
 Here,
 - `LoadData` writes to `shared["data"]`.
@@ -86,7 +86,7 @@ Common examples:
 
 ### Example
 
-`` 
+```python
 # 1) Create a Node that uses params
 class SummarizeFile(Node):
     def prep(self, shared):
@@ -109,7 +109,7 @@ node.set_params({"filename": "doc1.txt"})
 
 # 3) Run
 node.run(shared)
-``
+```
 
 Because **params** are only for that Node, you don’t pollute the global `shared` with fields that might only matter to one operation.
 
@@ -147,7 +147,7 @@ Because **params** are only for that Node, you don’t pollute the global `share
 
 ## Putting It All Together
 
-`` 
+```python
 # Suppose you have a flow:
 load_data >> summarize_file
 my_flow = Flow(start=load_data)
@@ -164,7 +164,7 @@ shared = {
 
 my_flow.run(shared)
 # After run, shared["summary"]["my_text.txt"] might have the LLM summary
-``
+```
 
 - `load_data` uses its param (`"path"`) to load some data into `shared["data"]`.
 - `summarize_file` uses its param (`"filename"`) to pick which file from `shared["data"]` to summarize.

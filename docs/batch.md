@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Batch"
-nav_order: 5
+nav_order: 6
 ---
 
 # Batch
@@ -22,7 +22,7 @@ A **BatchNode** extends `Node` but changes how `prep()` and `exec()` behave:
 
 ### Example: Map Summaries
 
-`` 
+```python
 class MapSummaries(BatchNode):
     def prep(self, shared):
         # Suppose we have a big file; we want to chunk it
@@ -43,14 +43,14 @@ class MapSummaries(BatchNode):
         combined = "\n".join(exec_res_list)
         shared["summary"]["large_text.txt"] = combined
         return "default"
-``
+```
 
 **Flow** usage:
-`` 
+```python
 map_summaries = MapSummaries()
 flow = Flow(start=map_summaries)
 flow.run(shared)
-``
+```
 
 - After `prep()` returns multiple chunks, `exec()` is called for each chunk. 
 - The aggregated `exec_res_list` is passed to `post()`, where you can do final processing.
@@ -69,7 +69,7 @@ A **BatchFlow** runs a **Flow** multiple times, each time with a different set o
 
 ### Example: Summarize Many Files
 
-`` 
+```python
 class SummarizeAllFiles(BatchFlow):
     def prep(self, shared):
         # Return a list of parameter dicts (one per file)
@@ -78,11 +78,11 @@ class SummarizeAllFiles(BatchFlow):
         return params_list
 
     # No custom exec() or post(), so we rely on BatchFlow’s default
-``
+```
 
 Then define a **Flow** that handles **one** file. Suppose we have `Flow(start=summarize_file)`.  
 
-`` 
+```python
 # Example "per-file" flow (just one node):
 summarize_file = SummarizeFile()
 
@@ -94,7 +94,7 @@ summarize_all_files = SummarizeAllFiles(start=summarize_file)
 
 # Running it:
 summarize_all_files.run(shared)
-``
+```
 
 **Under the hood**:
 1. `prep(shared)` in `SummarizeAllFiles` returns a list of param dicts, e.g., `[{filename: "file1.txt"}, {filename: "file2.txt"}, ...]`.
@@ -125,7 +125,7 @@ This can be done by making the **outer** BatchFlow’s `exec()` return a list of
 
 ## 4. Putting It All Together
 
-`` 
+```python
 # We'll combine the ideas:
 class MapSummaries(BatchNode):
     def prep(self, shared):
@@ -157,7 +157,7 @@ class SummarizeAllFiles(BatchFlow):
 # For now, let's just show usage:
 summarize_all = SummarizeAllFiles(start=map_flow)
 summarize_all.run(shared)
-``
+```
 
 In this snippet:
 

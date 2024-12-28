@@ -1,74 +1,33 @@
 ---
 layout: default
 title: "Flow"
-nav_order: 2
+nav_order: 4
 ---
 
 # Flow
 
-In **Mini LLM Flow**, a **Flow** orchestrates how Nodes connect and run, based on **Actions** returned from each Node’s `post()` method. You can chain Nodes in a sequence or create branching logic depending on the **Action** string.
+A **Flow** orchestrates how Nodes connect and run, based on **Actions** returned from each Node’s `post()` method. You can chain Nodes in a sequence or create branching logic depending on the **Action** string.
 
 ## Action-based Transitions
 
-Each Node’s `post(shared, prep_res, exec_res)` returns a string called **Action**. By default, if `post()` doesn’t explicitly return anything, we treat that as `"default"`.
+Each Node's `post(shared, prep_res, exec_res)` method returns an **Action** string. By default, if `post()` doesn't explicitly return anything, we treat that as `"default"`.
 
 You define transitions with the syntax:
 
-```python 
-node_a >> node_b
-```  
-- This means if `node_a.post()` returns `"default"` (or `None`), go to `node_b`.
+1. Basic default transition: `node_a >> node_b`
+  This means if `node_a.post()` returns `"default"` (or `None`), go to `node_b`. 
+  (Equivalent to `node_a - "default" >> node_b`)
 
-```python
-node_a - "action_name" >> node_b
-```  
-- This means if `node_a.post()` returns `"action_name"`, go to `node_b`.
+2. Named action transition: `node_a - "action_name" >> node_b`
+  This means if `node_a.post()` returns `"action_name"`, go to `node_b`.
 
-It’s possible to create loops, branching, or multi-step flows. You can also chain with multiple Actions from a single node to different successors:
-
-```python
-# Define nodes for order processing
-validate_order = ValidateOrderNode()
-check_inventory = CheckInventoryNode()
-process_payment = ProcessPaymentNode()
-send_confirmation = SendConfirmationNode()
-notify_backorder = NotifyBackorderNode()
-
-# Define the flow
-validate_order - "valid" >> check_inventory
-validate_order - "invalid" >> send_confirmation  # Send rejection confirmation
-
-check_inventory - "in_stock" >> process_payment
-check_inventory - "out_of_stock" >> notify_backorder
-
-process_payment - "success" >> send_confirmation
-process_payment - "failure" >> send_confirmation  # Send payment failure notice
-```
-
-```mermaid
-flowchart TD
-    validate[Validate Order] -->|valid| inventory[Check Inventory]
-    validate -->|invalid| confirm[Send Confirmation]
-    
-    inventory -->|in_stock| payment[Process Payment]
-    inventory -->|out_of_stock| backorder[Notify Backorder]
-    
-    payment -->|success| confirm
-    payment -->|failure| confirm
-
-    style validate fill:#d4f1f9
-    style confirm fill:#d4f1f9
-```
+It’s possible to create loops, branching, or multi-step flows. You can also chain with multiple Actions from a single node to different successors.
 
 ## Creating a Flow
 
 A **Flow** begins with a **start** node (or flow). You call `Flow(start=some_node)` to specify the entry point. When you call `flow.run(shared)`, it executes the first node, looks at its `post()` return Action, follows the corresponding transition, and continues until there’s no next node or you explicitly stop.
 
-```flow = Flow(start=node_a)```
-
-
-
-## Example: Simple Sequence
+### Example: Simple Sequence
 
 Here’s a minimal flow of two nodes in a chain:
 
@@ -83,69 +42,123 @@ flow.run(shared)
 - The flow then sees `"default"` Action is linked to `node_b` and runs `node_b`.  
 - If `node_b.post()` returns `"default"` but we didn’t define `node_b >> something_else`, the flow ends there.
 
-## Example: Branching & Looping
+### Example: Branching & Looping
 
-Suppose `FindRelevantFile` can return three possible Actions in its `post()`:
+Here's a simple expense approval flow that demonstrates branching and looping. The `ReviewExpense` node can return three possible Actions:
 
-- `"end"`: means no question, so stop.  
-- `"answer"`: means we have a relevant file, move to `AnswerQuestion`.  
-- `"retry"`: means no relevant file found, try again.
+- `"approved"`: expense is approved, move to payment processing
+- `"needs_revision"`: expense needs changes, send back for revision 
+- `"rejected"`: expense is denied, end the process
 
-We can wire them:
+We can wire them like this:
 
-``` 
-find_relevant_file - "end"    >> no_op_node
-find_relevant_file - "answer" >> answer_question
-find_relevant_file - "retry"  >> find_relevant_file
-flow = Flow(start=find_relevant_file)
+```python
+# Define the flow connections
+review - "approved" >> payment        # If approved, process payment
+review - "needs_revision" >> revise   # If needs changes, go to revision
+review - "rejected" >> end           # If rejected, end the process
+
+revise >> review   # After revision, go back for another review
+payment >> end     # After payment, end the process
+
+flow = Flow(start=review)
 ```
 
-1. If `FindRelevantFile.post()` returns `"answer"`, the flow calls `answer_question`.
-2. If `FindRelevantFile.post()` returns `"retry"`, it loops back to itself.
-3. If `"end"`, it goes to `no_op_node`. If `no_op_node` has no further transitions, the flow stops.
+Let's see how it flows:
+
+1. If `review.post()` returns `"approved"`, the expense moves to `payment` node
+2. If `review.post()` returns `"needs_revision"`, it goes to `revise` node, which then loops back to `review`
+3. If `review.post()` returns `"rejected"`, it moves to `end` node and stops
+
+```mermaid
+flowchart TD
+    review[Review Expense] -->|approved| payment[Process Payment]
+    review -->|needs_revision| revise[Revise Report]
+    review -->|rejected| end[End Process]
+    
+    revise --> review
+    payment --> end
+```
 
 ## Running Individual Nodes vs. Running a Flow
 
-- **`node.run(shared)`**: Just runs that node alone (calls `prep()`, `exec()`, `post()`), returns an Action. **Does not** proceed automatically to the successor. This is mainly for debugging or testing a single node.
+- **`node.run(shared)`**: Just runs that node alone (calls `prep()`, `exec()`, `post()`), returns an Action. ⚠️ **Does not** proceed automatically to the successor and may use incorrect parameters. This is mainly for debugging or testing a single node.
 - **`flow.run(shared)`**: Executes from the start node, follows Actions to the next node, and so on until the flow can’t continue (no next node or no next Action).
 
 Always use `flow.run(...)` in production to ensure the full pipeline runs correctly.
 
 ## Nested Flows
 
-A **Flow** can act like a Node. That means you can do:
+A **Flow** can act like a Node, which enables powerful composition patterns. This means you can:
 
-```some_flow >> another_node```  
-or treat `some_flow` as a node inside a larger flow. This helps you compose complex pipelines by nesting smaller flows.
+1. Use a flow as a node within another flow's transitions
+2. Combine multiple smaller flows into a larger pipeline
+3. Create reusable flow components
 
-## Example Code
+### Basic Flow Nesting
 
-Below is a short snippet combining these ideas:
+Here's how to connect a flow to another node:
 
-``` 
-# Define nodes
-find_file = FindRelevantFile()
-answer    = AnswerQuestion()
-no_op     = NoOp()
+```python
+# Create a sub-flow
+node_a >> node_b
+subflow = Flow(start=node_a)
 
-# Define transitions
-find_file - "answer" >> answer
-find_file - "retry"  >> find_file
-find_file - "end"    >> no_op
+# Connect it to another node
+subflow >> node_c
 
-# Build the Flow
-qa_flow = Flow(start=find_file)
-
-# Run
-qa_flow.run(shared)
+# Create the parent flow
+parent_flow = Flow(start=subflow)
 ```
 
-When `find_file`’s `post()` returns `"answer"`, we proceed to `answer`. If it returns `"retry"`, we loop back. If `"end"`, we move on to `no_op`.
+When `parent_flow.run()` executes:
+1. It starts `subflow`
+2. `subflow` runs through its nodes (`node_a` then `node_b`)
+3. After `subflow` completes, execution continues to `node_c`
 
----
+### Example: Order Processing Pipeline
 
-**That’s Flow in a nutshell:**  
-- **Actions** determine which node runs next.  
-- **Flow** runs the pipeline from the start node to completion.  
-- You can chain nodes in a linear sequence or build loops and branches.  
-- Nodes can themselves be entire flows, allowing nested graph structures.
+Here's a practical example that breaks down order processing into nested flows:
+
+```python
+# Payment processing sub-flow
+validate_payment >> process_payment >> payment_confirmation
+payment_flow = Flow(start=validate_payment)
+
+# Inventory sub-flow
+check_stock >> reserve_items >> update_inventory
+inventory_flow = Flow(start=check_stock)
+
+# Shipping sub-flow
+create_label >> assign_carrier >> schedule_pickup
+shipping_flow = Flow(start=create_label)
+
+# Connect the flows into a main order pipeline
+payment_flow >> inventory_flow >> shipping_flow
+
+# Create the master flow
+order_pipeline = Flow(start=payment_flow)
+
+# Run the entire pipeline
+order_pipeline.run(shared_data)
+```
+
+This creates a clean separation of concerns while maintaining a clear execution path:
+
+```mermaid
+flowchart TD
+   subgraph "Payment Flow"
+   A[Validate Payment] --> B[Process Payment] --> C[Payment Confirmation]
+   end
+   
+   subgraph "Inventory Flow"
+   D[Check Stock] --> E[Reserve Items] --> F[Update Inventory]
+   end
+   
+   subgraph "Shipping Flow"
+   G[Create Label] --> H[Assign Carrier] --> I[Schedule Pickup]
+   end
+   
+   Payment Flow --> Inventory Flow
+   Inventory Flow --> Shipping Flow
+```

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Async"
-nav_order: 6
+nav_order: 7
 ---
 
 # Async
@@ -15,7 +15,7 @@ nav_order: 6
 
 An **AsyncNode** is like a normal `Node`, except `exec()` (and optionally `prep()`) can be declared **async**. You can `await` inside these methods. For example:
 
-`` 
+```python
 class AsyncSummarizeFile(AsyncNode):
     async def prep(self, shared):
         # Possibly do async file reads or small concurrency tasks
@@ -37,7 +37,7 @@ class AsyncSummarizeFile(AsyncNode):
         filename = self.params["filename"]
         shared["summary"][filename] = exec_res
         return "default"
-``
+```
 
 - **`prep(shared)`** can be `async def` if you want to do asynchronous pre-processing.
 - **`exec(shared, prep_res)`** is typically the main place for async logic.
@@ -49,7 +49,7 @@ An **AsyncFlow** is a Flow where nodes can be **AsyncNode**s or normal `Node`s. 
 
 ### Minimal Example
 
-`` 
+```python
 class MyAsyncFlow(AsyncFlow):
     pass  # Usually, you just instantiate AsyncFlow with a start node
 
@@ -70,7 +70,7 @@ async def main():
     await my_flow.run(shared)
 
 asyncio.run(main())
-``
+```
 
 - If the start node or any subsequent node is an `AsyncNode`, the Flow automatically calls its `prep()`, `exec()`, `post()` as async functions.
 - You can mix normal `Node`s and `AsyncNode`s in the same flow. **AsyncFlow** will handle the difference seamlessly.
@@ -79,7 +79,7 @@ asyncio.run(main())
 
 If you want to run a batch of flows **concurrently**, you can use `BatchAsyncFlow`. Like `BatchFlow`, it generates a list of parameter sets in `prep()`, but each iteration runs the sub-flow asynchronously.
 
-`` 
+```python
 class SummarizeAllFilesAsync(BatchAsyncFlow):
     async def prep(self, shared):
         # Return a list of param dicts (like in BatchFlow),
@@ -94,7 +94,7 @@ all_files_flow = SummarizeAllFilesAsync(start=async_summarize_flow)
 
 # Then in your async context:
 await all_files_flow.run(shared)
-``
+```
 
 Under the hood:
 1. `prep()` returns a list of param sets.  
@@ -105,7 +105,7 @@ Under the hood:
 
 Just like normal Nodes, an `AsyncNode` can have `max_retries` and a `process_after_fail(...)` method:
 
-`` 
+```python
 class RetryAsyncNode(AsyncNode):
     def __init__(self, max_retries=3):
         super().__init__(max_retries=max_retries)
@@ -118,7 +118,7 @@ class RetryAsyncNode(AsyncNode):
     def process_after_fail(self, shared, prep_res, exc):
         # Provide fallback response
         return "Unable to complete async call due to error."
-``
+```
 
 ## 5. Best Practices
 
