@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Node"
-parent: Core Abstraction
+parent: "Core Abstraction"
 nav_order: 1
 ---
 
@@ -10,7 +10,7 @@ nav_order: 1
 A **Node** is the smallest building block of Mini LLM Flow. Each Node has three lifecycle methods:
 
 1. **`prep(shared)`**  
-   - Optionally preprocess data before calling your LLM or doing heavy computation.
+   - Optionally preprocess data before calling your LLM or doing heavy computation. 
    - Often used for tasks like reading files, chunking text, or validation.
    - Returns `prep_res`, which will be passed to both `exec()` and `post()`.
 

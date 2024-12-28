@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Communication"
-parent: Core Abstraction
+parent: "Core Abstraction"
 nav_order: 3
 ---
 
