@@ -28,7 +28,7 @@ If you know memory management, **Shared Store** is like a **heap** shared across
 A shared store is typically an in-mem dictionary, like:
 ```python
 shared = {"data": {}, "summary": {}, "config": {...}, ...}
-```python
+```
 
 It can also contain local file handlers, DB connections, or a combination for persistence.  
 We recommend deciding the data structure or DB schema in advance based on your app requirements.
