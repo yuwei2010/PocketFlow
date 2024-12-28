@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "Batch"
-nav_order: 6
+parent: Core Abstraction
+nav_order: 4
 ---
 
 # Batch

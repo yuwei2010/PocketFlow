@@ -1,14 +1,12 @@
 ---
 layout: default
 title: "LLM Integration"
-nav_order: 3
+nav_order: 2
 ---
 
 # LLM Wrappers  
 
-For your LLM app, implement a wrapper function to call LLMs yourself. 
-You can ask an assistant like ChatGPT or Claude to implement it. 
-For instance, asking ChatGPT to "implement a `call_llm` function that takes a prompt and returns the LLM response" gives:
+We **don't** provide built-in wrapper LLM wrappers. Instead, please implement your own, for example by asking an assistant like ChatGPT or Claude. If you ask ChatGPT to "implement a `call_llm` function that takes a prompt and returns the LLM response," you shall get something like:
 
 ```python
 def call_llm(prompt):
@@ -26,7 +24,7 @@ call_llm("How are you?")
 ```
 
 ## Improvements
-You can enhance the function as needed. Examples:
+Feel free to enhance your `call_llm` function as needed. Here are examples:
 
 - Handle chat history:
 
@@ -58,15 +56,15 @@ def call_llm(prompt):
 def call_llm(prompt):
     import logging
     logging.info(f"Prompt: {prompt}")
-    response = ...
+    response = ... # Your implementation here
     logging.info(f"Response: {response}")
     return response
 ```
 
 
-## Why not provide LLM Wrappers?
-I believe it is a bad practice to provide LLM-specific implementations in a general framework:
-- LLMs change frequently. Hardcoding them makes maintenance difficult.
-- You may need flexibility to switch vendors, use fine-tuned models, or deploy local LLMs.
-- You may need optimizations like prompt caching, request batching, or response streaming.
+## Why Not Provide a Built-in LLM Wrapper?
+I believe it is a **bad practice** to provide LLM-specific implementations in a general framework:
+- **LLM APIs change frequently**. Hardcoding them makes maintenance a nighmare.
+- You may need **flexibility** to switch vendors, use fine-tuned models, or deploy local LLMs.
+- You may need **optimizations** like prompt caching, request batching, or response streaming.
 

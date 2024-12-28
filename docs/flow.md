@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "Flow"
-nav_order: 4
+parent: Core Abstraction
+nav_order: 2
 ---
 
 # Flow

@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "Async"
-nav_order: 7
+parent: Core Abstraction
+nav_order: 5
 ---
 
 # Async

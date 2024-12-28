@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "Node"
-nav_order: 3
+parent: Core Abstraction
+nav_order: 1
 ---
 
 # Node
