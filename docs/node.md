@@ -15,7 +15,8 @@ A **Node** is the smallest building block of Mini LLM Flow. Each Node has three 
    - Returns `prep_res`, which will be passed to both `exec()` and `post()`.
 
 2. **`exec(shared, prep_res)`**  
-   - The main execution step, typically where you call your LLM or any external APIs.
+   - The main execution step where the LLM is called.
+   - Has a built-in retry feature to handle errors and ensure reliable results.
    - Returns `exec_res`, which is passed to `post()`.
 
 3. **`post(shared, prep_res, exec_res)`**  

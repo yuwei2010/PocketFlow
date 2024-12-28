@@ -13,21 +13,23 @@ Documentation: https://zachary62.github.io/miniLLMFlow/
 
 ## Why Mini LLM Flow?
 
-In the future, **LLM apps will be developed by LLMs**: users specify requirements, and LLMs design, build, and maintain on their own. Current LLMs:
+Mini LLM Flow is designed to **be the framework used by LLM assistants**. In the future, LLM app development will be heavily **LLM-assisted**: Users specify requirements, and LLM assistants design, build, and maintain themselves. Current LLM assistants:
 
-1. **👍 Shine at Low-level Implementation**: 
-With proper docs, LLMs can handle APIs, tools, chunking, prompt wrapping, etc. 
-These are hard to maintain and optimize for a general-purpose framework.
 
-2. **👎 Struggle with High-level Paradigms**:
-Paradigms like MapReduce, task decomposition, and agents are powerful for development.
-However, designing these elegantly remains challenging for LLMs.
+1. **👍 Shine at Low-level Implementation**  
+LLMs excel at APIs, tools, chunking, prompting, etc. These don't belong in a general-purpose framework; they're too specialized to maintain and optimize.
 
-To enable LLMs to develop LLM app, a framework should
-(1) remove specialized low-level implementations, and
-(2) keep high-level paradigms to program against.
-Hence, I built this framework that lets LLMs focus on what matters. It turns out 100 lines is all you need.
 
+2. **👎 Struggle with High-level Paradigms**  
+Paradigms like MapReduce, task decomposition, and agents are powerful. However, designing these elegantly remains challenging for LLMs.
+
+
+The ideal framework for LLM assistants should:  
+(1) Remove specialized low-level implementations.  
+(2) Keep high-level paradigms to program against.  
+Hence, I built this minimal (100-line) framework so LLMs can focus on what matters.  
+
+Mini LLM Flow is also a great learning resource, as many frameworks abstract too much away.
 
 <div align="center">
   <img src="/assets/minillmflow.jpg" width="400"/>
