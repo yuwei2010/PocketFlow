@@ -6,7 +6,7 @@ nav_order: 1
 
 # Mini LLM Flow
 
-A 100-line minimalist LLM framework for agents, task decomposition, RAG, etc.
+A [100-line](https://github.com/zachary62/miniLLMFlow/blob/main/minillmflow/__init__.py) minimalist LLM framework for agents, task decomposition, RAG, etc.
 
 We model the LLM workflow as a **Nested Flow**:
 - Each **Node** handles a simple LLM task.

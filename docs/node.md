@@ -68,5 +68,15 @@ class SummarizeFile(Node):
         filename = self.params["filename"]
         shared["summary"][filename] = exec_res
         # Return "default" by not returning anything
+
+summarize_node = SummarizeFile(max_retries=3)
+
+# Run the node standalone for testing (calls prep->exec->post).
+# If exec() fails, it retries up to 3 times before calling process_after_fail().
+summarize_node.set_params({"filename": "test_file.txt"})
+action_result = summarize_node.run(shared)
+
+print("Action returned:", action_result)  # Usually "default"
+print("Summary stored:", shared["summary"].get("test_file.txt"))
 ```  
 
