@@ -13,23 +13,15 @@ Documentation: https://zachary62.github.io/miniLLMFlow/
 
 ## Why Mini LLM Flow?
 
-Mini LLM Flow is designed to **be the framework used by LLM assistants**. In the future, LLM app development will be heavily **LLM-assisted**: Users specify requirements, and LLM assistants design, build, and maintain themselves. Current LLM assistants:
+Mini LLM Flow is designed to be **the framework used by LLMs**. In the future, LLM projects will self-programmed by LLMs themselves: Users specify requirements, and LLMs will design, build, and maintain. Current LLMs:
 
+1. **👍 Shine at Low-level Implementation:**  LLMs can handle APIs, tools, chunking, prompting, etc. These don't belong in a general-purpose framework; they're too specialized to maintain and optimize.
 
-1. **👍 Shine at Low-level Implementation**  
-LLMs excel at APIs, tools, chunking, prompting, etc. These don't belong in a general-purpose framework; they're too specialized to maintain and optimize.
+2. **👎 Struggle with High-level Paradigms:** Paradigms like MapReduce, task decomposition, and agents are powerful. However, designing these elegantly remains challenging for LLMs.
 
+The ideal framework for LLMs should (1) remove specialized low-level implementations, and (2) keep high-level paradigms to program against. Hence, I built this minimal (100-line) framework so LLMs can focus on what matters.  
 
-2. **👎 Struggle with High-level Paradigms**  
-Paradigms like MapReduce, task decomposition, and agents are powerful. However, designing these elegantly remains challenging for LLMs.
-
-
-The ideal framework for LLM assistants should:  
-(1) Remove specialized low-level implementations.  
-(2) Keep high-level paradigms to program against.  
-Hence, I built this minimal (100-line) framework so LLMs can focus on what matters.  
-
-Mini LLM Flow is also a great learning resource, as many frameworks abstract too much away.
+Mini LLM Flow is also a great learning resource, as current frameworks abstract too much away.
 
 <div align="center">
   <img src="/assets/minillmflow.jpg" width="400"/>
