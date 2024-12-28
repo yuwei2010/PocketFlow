@@ -20,11 +20,6 @@ We model the LLM workflow as a **Nested Flow**:
   <img src="https://github.com/zachary62/miniLLMFlow/blob/main/assets/minillmflow.jpg?raw=true" width="400"/>
 </div>
 
-## Preparation
-
-- [LLM Integration](./llm.md)
-- [Tools](./tool.md)
-
 ## Core Abstraction
 
 - [Node](./node.md)
@@ -32,6 +27,11 @@ We model the LLM workflow as a **Nested Flow**:
 - [Communication](./communication.md)
 - [Batch](./batch.md)
 - [Async](./async.md)
+
+## Preparation
+
+- [LLM Integration](./llm.md)
+- Tools
 
 ## Paradigm Implementation
 

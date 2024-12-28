@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "LLM Integration"
-nav_order: 2
+parent: "Preparation"
+nav_order: 1
 ---
 
 # LLM Wrappers  
