@@ -74,7 +74,7 @@ Let's see how it flows:
 flowchart TD
     review[Review Expense] -->|approved| payment[Process Payment]
     review -->|needs_revision| revise[Revise Report]
-    review -->|rejected| finish[End Process]
+    review -->|rejected| finish[Finish Process]
 
     revise --> review
     payment --> finish
@@ -146,20 +146,21 @@ order_pipeline.run(shared_data)
 This creates a clean separation of concerns while maintaining a clear execution path:
 
 ```mermaid
-flowchart TD
+flowchart LR
+    subgraph order_pipeline[Order Pipeline]
+        subgraph paymentFlow["Payment Flow"]
+            A[Validate Payment] --> B[Process Payment] --> C[Payment Confirmation]
+        end
 
-   subgraph paymentFlow["Payment Flow"]
-      A[Validate Payment] --> B[Process Payment] --> C[Payment Confirmation]
-   end
+        subgraph inventoryFlow["Inventory Flow"]
+            D[Check Stock] --> E[Reserve Items] --> F[Update Inventory]
+        end
 
-   subgraph inventoryFlow["Inventory Flow"]
-      D[Check Stock] --> E[Reserve Items] --> F[Update Inventory]
-   end
+        subgraph shippingFlow["Shipping Flow"]
+            G[Create Label] --> H[Assign Carrier] --> I[Schedule Pickup]
+        end
 
-   subgraph shippingFlow["Shipping Flow"]
-      G[Create Label] --> H[Assign Carrier] --> I[Schedule Pickup]
-   end
-
-   paymentFlow --> inventoryFlow
-   inventoryFlow --> shippingFlow
+        paymentFlow --> inventoryFlow
+        inventoryFlow --> shippingFlow
+    end
 ```
