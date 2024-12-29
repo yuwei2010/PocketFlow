@@ -71,7 +71,7 @@ summarize_all_files = SummarizeAllFiles(start=summarize_file)
 summarize_all_files.run(shared)
 ```
 
-**Under the Hood**:
+### Under the Hood
 1. `prep(shared)` returns a list of param dicts—e.g., `[{filename: "file1.txt"}, {filename: "file2.txt"}, ...]`.
 2. The **BatchFlow** loops through each dict. For each one:
    - It merges the dict with the BatchFlow’s own `params`.

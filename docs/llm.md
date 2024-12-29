@@ -1,13 +1,13 @@
 ---
 layout: default
-title: "LLM Integration"
+title: "LLM Wrapper"
 parent: "Preparation"
 nav_order: 1
 ---
 
 # LLM Wrappers  
 
-We **don't** provide built-in wrapper LLM wrappers. Instead, please implement your own, for example by asking an assistant like ChatGPT or Claude. If you ask ChatGPT to "implement a `call_llm` function that takes a prompt and returns the LLM response," you shall get something like:
+We **don't** provide built-in LLM wrappers. Instead, please implement your own, for example by asking an assistant like ChatGPT or Claude. If you ask ChatGPT to "implement a `call_llm` function that takes a prompt and returns the LLM response," you shall get something like:
 
 ```python
 def call_llm(prompt):
