@@ -77,6 +77,7 @@ summarize_all_files.run(shared)
    - It merges the dict with the BatchFlow’s own `params`.
    - It calls `flow.run(shared)` using the merged result.
 3. This means the sub-Flow is run **repeatedly**, once for every param dict.
+
 ---
 
 ### Nested or Multi-Level Batches
