@@ -31,7 +31,7 @@ We model the LLM workflow as a **Nested Flow**:
 ## Preparation
 
 - [LLM Wrapper](./llm.md)
-- Tools
+- [Tool](./tool.md)
 
 ## Paradigm Implementation
 
