@@ -10,8 +10,8 @@ nav_order: 1
 A **Node** is the smallest building block of Mini LLM Flow. Each Node has three lifecycle methods:
 
 1. **`prep(shared)`**  
-   - Optionally preprocess data before calling your LLM or doing heavy computation. 
-   - Often used for tasks like reading files, chunking text, or validation.
+   - Reads and preprocesses data from the `shared` store for LLMs.
+   - Examples: query DB, read files, or serialize data into a string.
    - Returns `prep_res`, which will be passed to both `exec()` and `post()`.
 
 2. **`exec(prep_res)`**  
@@ -21,8 +21,8 @@ A **Node** is the smallest building block of Mini LLM Flow. Each Node has three 
    - Returns `exec_res`, which is passed to `post()`.
 
 3. **`post(shared, prep_res, exec_res)`**  
-   - Optionally writes results back to the `shared` store or decides the next action.  
-   - Often used to finalize outputs, trigger next steps, or log results.  
+   - Writes results back to the `shared` store or decides the next action.  
+   - Examples: finalize outputs, trigger next steps, or log results.
    - Returns a **string** to specify the next action (`"default"` if nothing or `None` is returned).
 
 
