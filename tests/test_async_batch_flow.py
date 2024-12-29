@@ -3,11 +3,11 @@ import asyncio
 import sys
 from pathlib import Path
 
-sys.path.append(str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from minillmflow import AsyncNode, BatchAsyncFlow
 
 class AsyncDataProcessNode(AsyncNode):
-    def exec(self, shared_storage, prep_result):
+    def prep(self, shared_storage):
         key = self.params.get('key')
         data = shared_storage['input_data'][key]
         if 'results' not in shared_storage:
@@ -18,7 +18,7 @@ class AsyncDataProcessNode(AsyncNode):
     async def post_async(self, shared_storage, prep_result, proc_result):
         await asyncio.sleep(0.01)  # Simulate async work
         key = self.params.get('key')
-        shared_storage['results'][key] = proc_result * 2  # Double the value
+        shared_storage['results'][key] = prep_result * 2  # Double the value
         return "processed"
 
 class AsyncErrorNode(AsyncNode):

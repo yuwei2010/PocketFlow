@@ -2,8 +2,9 @@ import unittest
 import asyncio
 import sys
 from pathlib import Path
-sys.path.append(str(Path(__file__).parent.parent))
 
+
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from minillmflow import Node, Flow
 
 # Simple example Nodes
@@ -12,7 +13,7 @@ class NumberNode(Node):
         super().__init__()
         self.number = number
 
-    def exec(self, shared_storage, prep_result):
+    def prep(self, shared_storage):
         shared_storage['current'] = self.number
 
 class AddNode(Node):
@@ -20,7 +21,7 @@ class AddNode(Node):
         super().__init__()
         self.number = number
 
-    def exec(self, shared_storage, prep_result):
+    def prep(self, shared_storage):
         shared_storage['current'] += self.number
 
 class MultiplyNode(Node):
@@ -28,7 +29,7 @@ class MultiplyNode(Node):
         super().__init__()
         self.number = number
 
-    def exec(self, shared_storage, prep_result):
+    def prep(self, shared_storage):
         shared_storage['current'] *= self.number
 
 class TestFlowComposition(unittest.TestCase):

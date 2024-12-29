@@ -9,7 +9,7 @@ nav_order: 3
 
 Nodes and Flows **communicate** in two ways:
 
-1. **Shared Store** – A global data structure (often an in-mem dict) that all nodes can read from and write to. Every Node’s `prep()`, `exec()`, and `post()` methods receive the **same** `shared` store.  
+1. **Shared Store** – A global data structure (often an in-mem dict) that all nodes can read from and write to. Every Node’s `prep()` and `post()` methods receive the **same** `shared` store.  
 2. **Params** – Each node and Flow has a `params` dict assigned by the **parent Flow**. Params mostly serve as identifiers, letting each node/flow know what task it’s assigned.
 
 If you know memory management, **Shared Store** is like a **heap** shared across function calls, while **Params** is like a **stack** assigned by parent function calls.
@@ -47,7 +47,7 @@ class Summarize(Node):
         content = shared["data"].get("my_file.txt", "")
         return content
 
-    def exec(self, shared, prep_res):
+    def exec(self, prep_res):
         prompt = f"Summarize: {prep_res}"
         summary = call_llm(prompt)
         return summary
@@ -91,7 +91,7 @@ class SummarizeFile(Node):
         filename = self.params["filename"]
         return shared["data"].get(filename, "")
 
-    def exec(self, shared, prep_res):
+    def exec(self, prep_res):
         prompt = f"Summarize: {prep_res}"
         return call_llm(prompt)
 

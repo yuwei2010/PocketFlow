@@ -2,11 +2,11 @@ import unittest
 import sys
 from pathlib import Path
 
-sys.path.append(str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from minillmflow import Node, BatchFlow, Flow
 
 class DataProcessNode(Node):
-    def exec(self, shared_storage, prep_result):
+    def prep(self, shared_storage):
         key = self.params.get('key')
         data = shared_storage['input_data'][key]
         if 'results' not in shared_storage:
@@ -14,7 +14,7 @@ class DataProcessNode(Node):
         shared_storage['results'][key] = data * 2
 
 class ErrorProcessNode(Node):
-    def exec(self, shared_storage, prep_result):
+    def prep(self, shared_storage):
         key = self.params.get('key')
         if key == 'error_key':
             raise ValueError(f"Error processing key: {key}")
@@ -107,14 +107,14 @@ class TestBatchFlow(unittest.TestCase):
     def test_nested_flow(self):
         """Test batch processing with nested flows"""
         class InnerNode(Node):
-            def exec(self, shared_storage, prep_result):
+            def exec(self, prep_result):
                 key = self.params.get('key')
                 if 'intermediate_results' not in shared_storage:
                     shared_storage['intermediate_results'] = {}
                 shared_storage['intermediate_results'][key] = shared_storage['input_data'][key] + 1
 
         class OuterNode(Node):
-            def exec(self, shared_storage, prep_result):
+            def exec(self, prep_result):
                 key = self.params.get('key')
                 if 'results' not in shared_storage:
                     shared_storage['results'] = {}
@@ -148,7 +148,7 @@ class TestBatchFlow(unittest.TestCase):
     def test_custom_parameters(self):
         """Test batch processing with additional custom parameters"""
         class CustomParamNode(Node):
-            def exec(self, shared_storage, prep_result):
+            def exec(self, prep_result):
                 key = self.params.get('key')
                 multiplier = self.params.get('multiplier', 1)
                 if 'results' not in shared_storage:

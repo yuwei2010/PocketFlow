@@ -14,9 +14,10 @@ A **Node** is the smallest building block of Mini LLM Flow. Each Node has three 
    - Often used for tasks like reading files, chunking text, or validation.
    - Returns `prep_res`, which will be passed to both `exec()` and `post()`.
 
-2. **`exec(shared, prep_res)`**  
+2. **`exec(prep_res)`**  
    - The main execution step where the LLM is called.
-   - Has a built-in retry feature to handle errors and ensure reliable results.
+   - Optionally has built-in retry and error handling (below).
+   - ⚠️ If retry enabled, ensure implementation is idempotent.
    - Returns `exec_res`, which is passed to `post()`.
 
 3. **`post(shared, prep_res, exec_res)`**  
@@ -55,7 +56,7 @@ class SummarizeFile(Node):
         filename = self.params["filename"]
         return shared["data"][filename]
 
-    def exec(self, shared, prep_res):
+    def exec(self, prep_res):
         if not prep_res:
             raise ValueError("Empty file content!")
         prompt = f"Summarize this text in 10 words: {prep_res}"

@@ -2,7 +2,7 @@ import unittest
 import sys
 from pathlib import Path
 
-sys.path.append(str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from minillmflow import Node, BatchNode, Flow
 
 class ArrayChunkNode(BatchNode):
@@ -14,16 +14,14 @@ class ArrayChunkNode(BatchNode):
         # Get array from shared storage and split into chunks
         array = shared_storage.get('input_array', [])
         chunks = []
-        for i in range(0, len(array), self.chunk_size):
-            end = min(i + self.chunk_size, len(array))
-            chunks.append((i, end))
+        for start in range(0, len(array), self.chunk_size):
+            end = min(start + self.chunk_size, len(array))
+            chunks.append(array[start: end])
         return chunks
     
-    def exec(self, shared_storage, chunk_indices):
-        start, end = chunk_indices
-        array = shared_storage['input_array']
+    def exec(self, chunk):
         # Process the chunk and return its sum
-        chunk_sum = sum(array[start:end])
+        chunk_sum = sum(chunk)
         return chunk_sum
         
     def post(self, shared_storage, prep_result, proc_result):
@@ -32,7 +30,7 @@ class ArrayChunkNode(BatchNode):
         return "default"
 
 class SumReduceNode(Node):
-    def exec(self, shared_storage, data):
+    def prep(self, shared_storage):
         # Get chunk results from shared storage and sum them
         chunk_results = shared_storage.get('chunk_results', [])
         total = sum(chunk_results)
@@ -48,9 +46,9 @@ class TestBatchNode(unittest.TestCase):
         }
         
         chunk_node = ArrayChunkNode(chunk_size=10)
-        chunks = chunk_node.prep(shared_storage)
-        
-        self.assertEqual(chunks, [(0, 10), (10, 20), (20, 25)])
+        chunk_node.run(shared_storage)
+        results = shared_storage['chunk_results']
+        self.assertEqual(results, [45, 145, 110])
         
     def test_map_reduce_sum(self):
         """

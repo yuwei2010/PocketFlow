@@ -19,9 +19,11 @@ Below is a minimal **AsyncNode** that calls an LLM in `exec()` to summarize text
 
 ```python
 class SummarizeThenVerify(AsyncNode):
-    def exec(self, shared, prep_res):
-        doc = shared.get("doc", "")
-        return call_llm(f"Summarize: {doc}")
+    def prep(self, shared):
+        return shared.get("doc", "")
+
+    def exec(self, prep_res):
+        return call_llm(f"Summarize: {prep_res}")
 
     async def post_async(self, shared, prep_res, exec_res):
         user_decision = await gather_user_feedback(exec_res)

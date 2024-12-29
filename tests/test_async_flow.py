@@ -3,7 +3,7 @@ import asyncio
 import sys
 from pathlib import Path
 
-sys.path.append(str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from minillmflow import Node, AsyncNode, AsyncFlow
 
 
@@ -17,7 +17,7 @@ class AsyncNumberNode(AsyncNode):
         super().__init__()
         self.number = number
 
-    def exec(self, shared_storage, data):
+    def prep(self, shared_storage):
         # Synchronous work is allowed inside an AsyncNode,
         # but final 'condition' is determined by post_async().
         shared_storage['current'] = self.number
@@ -34,7 +34,7 @@ class AsyncIncrementNode(AsyncNode):
     """
     Demonstrates incrementing the 'current' value asynchronously.
     """
-    def exec(self, shared_storage, data):
+    def prep(self, shared_storage):
         shared_storage['current'] = shared_storage.get('current', 0) + 1
         return "incremented"
 
@@ -110,7 +110,7 @@ class TestAsyncFlow(unittest.TestCase):
         """
 
         class BranchingAsyncNode(AsyncNode):
-            def exec(self, shared_storage, data):
+            def exec(self, data):
                 value = shared_storage.get("value", 0)
                 shared_storage["value"] = value
                 # We'll decide branch based on whether 'value' is positive
@@ -124,12 +124,12 @@ class TestAsyncFlow(unittest.TestCase):
                     return "negative_branch"
 
         class PositiveNode(Node):
-            def exec(self, shared_storage, data):
+            def exec(self, data):
                 shared_storage["path"] = "positive"
                 return None
 
         class NegativeNode(Node):
-            def exec(self, shared_storage, data):
+            def exec(self, data):
                 shared_storage["path"] = "negative"
                 return None
 

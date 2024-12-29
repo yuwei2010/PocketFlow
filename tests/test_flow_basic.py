@@ -2,7 +2,7 @@ import unittest
 import sys
 from pathlib import Path
 
-sys.path.append(str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from minillmflow import Node, Flow
 
 class NumberNode(Node):
@@ -10,7 +10,7 @@ class NumberNode(Node):
         super().__init__()
         self.number = number
 
-    def exec(self, shared_storage, data):
+    def prep(self, shared_storage):
         shared_storage['current'] = self.number
 
 class AddNode(Node):
@@ -18,7 +18,7 @@ class AddNode(Node):
         super().__init__()
         self.number = number
 
-    def exec(self, shared_storage, data):
+    def prep(self, shared_storage):
         shared_storage['current'] += self.number
 
 class MultiplyNode(Node):
@@ -26,7 +26,7 @@ class MultiplyNode(Node):
         super().__init__()
         self.number = number
 
-    def exec(self, shared_storage, data):
+    def prep(self, shared_storage):
         shared_storage['current'] *= self.number
 
 class CheckPositiveNode(Node):
@@ -37,7 +37,7 @@ class CheckPositiveNode(Node):
             return 'negative'
 
 class NoOpNode(Node):
-    def exec(self, shared_storage, data):
+    def prep(self, shared_storage):
         # Do nothing, just pass
         pass
     
