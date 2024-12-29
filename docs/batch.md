@@ -45,7 +45,7 @@ class MapSummaries(BatchNode):
 map_summaries = MapSummaries()
 flow = Flow(start=map_summaries)
 flow.run(shared)
-```python
+```
 
 ---
 
@@ -69,7 +69,7 @@ summarize_file = SummarizeFile(start=load_file)
 # Wrap that flow into a BatchFlow:
 summarize_all_files = SummarizeAllFiles(start=summarize_file)
 summarize_all_files.run(shared)
-```python
+```
 
 **Under the Hood**:
 1. `prep(shared)` returns a list of param dicts—e.g., `[{filename: "file1.txt"}, {filename: "file2.txt"}, ...]`.
