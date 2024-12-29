@@ -80,7 +80,7 @@ summarize_all_files.run(shared)
 
 ---
 
-### Nested or Multi-Level Batches
+## 3. Nested or Multi-Level Batches
 
 You can nest a **BatchFlow** in another **BatchFlow**. For instance:
 - **Outer** batch: returns a list of diretory param dicts (e.g., `{"directory": "/pathA"}`, `{"directory": "/pathB"}`, ...).

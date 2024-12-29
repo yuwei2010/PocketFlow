@@ -9,7 +9,7 @@ nav_order: 2
 
 A **Flow** orchestrates how Nodes connect and run, based on **Actions** returned from each Node’s `post()` method. You can chain Nodes in a sequence or create branching logic depending on the **Action** string.
 
-## Action-based Transitions
+## 1. Action-based Transitions
 
 Each Node's `post(shared, prep_res, exec_res)` method returns an **Action** string. By default, if `post()` doesn't explicitly return anything, we treat that as `"default"`.
 
@@ -24,7 +24,7 @@ You define transitions with the syntax:
 
 It’s possible to create loops, branching, or multi-step flows. You can also chain with multiple Actions from a single node to different successors.
 
-## Creating a Flow
+## 2. Creating a Flow
 
 A **Flow** begins with a **start** node (or flow). You call `Flow(start=some_node)` to specify the entry point. When you call `flow.run(shared)`, it executes the first node, looks at its `post()` return Action, follows the corresponding transition, and continues until there’s no next node or you explicitly stop.
 
@@ -81,14 +81,14 @@ flowchart TD
     payment --> finish
 ```
 
-## Running Individual Nodes vs. Running a Flow
+### Running Individual Nodes vs. Running a Flow
 
 - **`node.run(shared)`**: Just runs that node alone (calls `prep()`, `exec()`, `post()`), returns an Action. ⚠️ **Does not** proceed automatically to the successor and may use incorrect parameters. This is mainly for debugging or testing a single node.
 - **`flow.run(shared)`**: Executes from the start node, follows Actions to the next node, and so on until the flow can’t continue (no next node or no next Action).
 
 Always use `flow.run(...)` in production to ensure the full pipeline runs correctly.
 
-## Nested Flows
+## 3. Nested Flows
 
 A **Flow** can act like a Node, which enables powerful composition patterns. This means you can:
 
