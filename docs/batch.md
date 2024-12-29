@@ -50,7 +50,7 @@ flow.run(shared)
 ---
 
 ## 2. BatchFlow
-.
+
 A **BatchFlow** runs a **Flow** multiple times, each time with different `params`. Think of it as a loop that replays the Flow for each parameter set.
 
 
