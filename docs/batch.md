@@ -23,7 +23,7 @@ A **BatchNode** extends `Node` but changes `prep()` and `exec()`:
 
 ### Example: Summarize a Large File
 
-``python
+```python
 class MapSummaries(BatchNode):
     def prep(self, shared):
         # Suppose we have a big file; chunk it
@@ -45,7 +45,7 @@ class MapSummaries(BatchNode):
 map_summaries = MapSummaries()
 flow = Flow(start=map_summaries)
 flow.run(shared)
-``python
+```python
 
 ---
 
@@ -56,7 +56,7 @@ A **BatchFlow** runs a **Flow** multiple times, each time with different `params
 
 ### Example: Summarize Many Files
 
-``python
+```python
 class SummarizeAllFiles(BatchFlow):
     def prep(self, shared):
         # Return a list of param dicts (one per file)
@@ -69,7 +69,7 @@ summarize_file = SummarizeFile(start=load_file)
 # Wrap that flow into a BatchFlow:
 summarize_all_files = SummarizeAllFiles(start=summarize_file)
 summarize_all_files.run(shared)
-``python
+```python
 
 **Under the Hood**:
 1. `prep(shared)` returns a list of param dicts—e.g., `[{filename: "file1.txt"}, {filename: "file2.txt"}, ...]`.
