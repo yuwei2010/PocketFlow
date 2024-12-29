@@ -7,23 +7,23 @@ nav_order: 4
 
 # Batch
 
-**Batch** makes it easier to handle large inputs in one Node or **rerun** a Flow multiple times. Useful for:
-- **Chunk-based** processing (e.g., large texts in parts).  
-- **Multi-file** processing.  
+**Batch** makes it easier to handle large inputs in one Node or **rerun** a Flow multiple times. Handy for:
+- **Chunk-based** processing (e.g., splitting large texts).
+- **Multi-file** processing.
 - **Iterating** over lists of params (e.g., user queries, documents, URLs).
 
 ## 1. BatchNode
 
 A **BatchNode** extends `Node` but changes `prep()` and `exec()`:
 
-- **`prep(shared)`**: returns an **iterable** (list, generator, etc.).
-- **`exec(shared, item)`**: called **once** per item in that iterable.
-- **`post(shared, prep_res, exec_res_list)`**: receives a **list** of all `exec()` results, can combine or store them, and returns an **Action**.
+- **`prep(shared)`**: returns an **iterable** (e.g., list, generator).
+- **`exec(item)`**: called **once** per item in that iterable.
+- **`post(shared, prep_res, exec_res_list)`**: after all items are processed, receives a **list** of results (`exec_res_list`) and returns an **Action**.
 
 
 ### Example: Summarize a Large File
 
-```python
+``python
 class MapSummaries(BatchNode):
     def prep(self, shared):
         # Suppose we have a big file; chunk it
@@ -32,7 +32,7 @@ class MapSummaries(BatchNode):
         chunks = [content[i:i+chunk_size] for i in range(0, len(content), chunk_size)]
         return chunks
 
-    def exec(self, shared, chunk):
+    def exec(self, chunk):
         prompt = f"Summarize this chunk in 10 words: {chunk}"
         summary = call_llm(prompt)
         return summary
@@ -45,40 +45,44 @@ class MapSummaries(BatchNode):
 map_summaries = MapSummaries()
 flow = Flow(start=map_summaries)
 flow.run(shared)
-```
+``python
 
 ---
 
 ## 2. BatchFlow
-
-A **BatchFlow** runs a **Flow** multiple times, each with different `params`. Think of it as a loop that replays the Flow for each param set.
+.
+A **BatchFlow** runs a **Flow** multiple times, each time with different `params`. Think of it as a loop that replays the Flow for each parameter set.
 
 
 ### Example: Summarize Many Files
 
-```python
+``python
 class SummarizeAllFiles(BatchFlow):
     def prep(self, shared):
+        # Return a list of param dicts (one per file)
         filenames = list(shared["data"].keys())  # e.g., ["file1.txt", "file2.txt", ...]
         return [{"filename": fn} for fn in filenames]
 
-# Suppose we have a per-file flow:
-# load_file >> summarize >> reduce etc.
+# Suppose we have a per-file Flow (e.g., load_file >> summarize >> reduce):
 summarize_file = SummarizeFile(start=load_file)
 
+# Wrap that flow into a BatchFlow:
 summarize_all_files = SummarizeAllFiles(start=summarize_file)
 summarize_all_files.run(shared)
-```
+``python
 
-**Under the hood**:
-1. `prep(shared)` returns a list of param dicts (e.g., `[{filename: "file1.txt"}, {filename: "file2.txt"}, ...]`).
-2. The BatchFlow **iterates** over them, sets params on the sub-Flow, and calls `flow.run(shared)` each time.
-3. The Flow is run repeatedly, once per item.
+**Under the Hood**:
+1. `prep(shared)` returns a list of param dicts—e.g., `[{filename: "file1.txt"}, {filename: "file2.txt"}, ...]`.
+2. The **BatchFlow** loops through each dict. For each one:
+   - It merges the dict with the BatchFlow’s own `params`.
+   - It calls `flow.run(shared)` using the merged result.
+3. This means the sub-Flow is run **repeatedly**, once for every param dict.
+---
 
-### Nested or Multi-level Batches
+### Nested or Multi-Level Batches
 
-You can nest a BatchFlow in another BatchFlow. For example:
-- Outer batch: iterate over directories.
-- Inner batch: summarize each file in a directory.
+You can nest a **BatchFlow** in another **BatchFlow**. For instance:
+- **Outer** batch: returns a list of diretory param dicts (e.g., `{"directory": "/pathA"}`, `{"directory": "/pathB"}`, ...).
+- **Inner** batch: returning a list of per-file param dicts.
 
-The **outer** BatchFlow’s `exec()` can return a list of directories; the **inner** BatchFlow then processes each file in those dirs.
+At each level, **BatchFlow** merges its own param dict with the parent’s. By the time you reach the **innermost** node, the final `params` is the merged result of **all** parents in the chain. This way, a nested structure can keep track of the entire context (e.g., directory + file name) at once.

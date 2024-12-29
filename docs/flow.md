@@ -92,9 +92,9 @@ Always use `flow.run(...)` in production to ensure the full pipeline runs correc
 
 A **Flow** can act like a Node, which enables powerful composition patterns. This means you can:
 
-1. Use a flow as a node within another flow's transitions
-2. Combine multiple smaller flows into a larger pipeline
-3. Create reusable flow components
+1. Use a Flow as a Node within another Flow's transitions.  
+2. Combine multiple smaller Flows into a larger Flow for reuse.  
+3. Node `params` will be a merging of **all** parents' `params`.
 
 ### Basic Flow Nesting
 

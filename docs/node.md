@@ -36,7 +36,7 @@ my_node = SummarizeFile(max_retries=3)
 
 When an exception occurs in `exec()`, the Node automatically retries until:
 
-- It either succeeds, **or**
+- It either succeeds, or
 - The Node has retried `max_retries - 1` times already and fails on the last attempt.
 
 If you want to **gracefully handle** the error rather than raising it, you can override:
@@ -46,7 +46,8 @@ def process_after_fail(self, shared, prep_res, exc):
     raise exc
 ```
 
-By **default**, it just re-raises `exc`. But you can return a fallback result instead. That fallback result becomes the `exec_res` passed to `post()`.
+By default, it just re-raises `exc`. But you can return a fallback result instead. 
+That fallback result becomes the `exec_res` passed to `post()`.
 
 ## Example
 
