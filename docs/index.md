@@ -15,6 +15,7 @@ We model the LLM workflow as a **Nested Flow**:
 - A Flow can be treated as a Node for **Nested Flows**.
 - Both Nodes and Flows can be **Batched** for data-intensive tasks.
 - Nodes and Flows can be **Async** for user inputs.
+- **Async** Nodes and Flows can be executed in **Parallel**.
 
 <div align="center">
   <img src="https://github.com/zachary62/miniLLMFlow/blob/main/assets/minillmflow.jpg?raw=true" width="400"/>
@@ -27,6 +28,7 @@ We model the LLM workflow as a **Nested Flow**:
 - [Communication](./communication.md)
 - [Batch](./batch.md)
 - [Async](./async.md)
+- [Parallel](./parallel.md)
 
 ## Preparation
 
