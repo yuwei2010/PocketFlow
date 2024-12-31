@@ -9,7 +9,7 @@ A [100-line](minillmflow/__init__.py) minimalist LLM framework for agents, task 
 
 - **Pro tip:** Build LLM apps with LLMs assistants (ChatGPT, Claude, etc.) via [this prompt](assets/prompt)
 
-Documentation: https://zachary62.github.io/miniLLMFlow/
+Documentation: https://minillmflow.github.io/miniLLMFlow/
 
 ## Why Mini LLM Flow?
 
@@ -29,7 +29,7 @@ Mini LLM Flow is also a great learning resource, as current frameworks abstract 
 
 ## Tutorial
 
-- Documentation: https://zachary62.github.io/miniLLMFlow/
+- Documentation: https://minillmflow.github.io/miniLLMFlow/
 
 - Beginner Tutorial: [Text summarization for Paul Graham Essay + QA agent](https://colab.research.google.com/github/zachary62/miniLLMFlow/blob/main/cookbook/demo.ipynb)
 
