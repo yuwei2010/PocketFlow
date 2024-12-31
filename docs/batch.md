@@ -87,3 +87,21 @@ You can nest a **BatchFlow** in another **BatchFlow**. For instance:
 - **Inner** batch: returning a list of per-file param dicts.
 
 At each level, **BatchFlow** merges its own param dict with the parent’s. By the time you reach the **innermost** node, the final `params` is the merged result of **all** parents in the chain. This way, a nested structure can keep track of the entire context (e.g., directory + file name) at once.
+
+```python
+
+class FileBatchFlow(BatchFlow):
+    def prep(self, shared):
+        directory = self.params["directory"]
+        files = [f for f in os.listdir(directory) if f.endswith(".txt")]
+        return [{"filename": f} for f in files]
+
+class DirectoryBatchFlow(BatchFlow):
+    def prep(self, shared):
+        directories = [ "/path/to/dirA", "/path/to/dirB"]
+        return [{"directory": d} for d in directories]
+
+
+inner_flow = FileBatchFlow(start=MapSummaries())
+outer_flow = DirectoryBatchFlow(start=inner_flow)
+```
