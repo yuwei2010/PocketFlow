@@ -162,7 +162,7 @@ most_relevant: filename"""
         assert "most_relevant" in result if result["has_relevant"] else True
         return result
     # handle errors by returning a default response in case of exception after retries
-    def process_after_fail(self,shared,prep_res,exc):
+    def exec_fallback(self,shared,prep_res,exc):
         # if not overridden, the default is to throw the exception
         return {"think":"error finding the file", "has_relevant":False}
     def post(self, shared, prep_res, exec_res):

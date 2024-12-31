@@ -7,7 +7,7 @@ nav_order: 5
 
 # Async
 
-**Mini LLM Flow** allows fully asynchronous nodes by implementing `prep_async()`, `exec_async()`, and/or `post_async()`. This is useful for:
+**Mini LLM Flow** allows fully asynchronous nodes by implementing `prep_async()`, `exec_async()`, `exec_fallback_async()`, and/or `post_async()`. This is useful for:
 
 ## Implementation
 

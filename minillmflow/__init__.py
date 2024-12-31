@@ -1,4 +1,4 @@
-import asyncio, warnings
+import asyncio, warnings, copy
 
 class BaseNode:
     def __init__(self): self.params,self.successors={},{}
@@ -25,15 +25,15 @@ class _ConditionalTransition:
 
 class Node(BaseNode):
     def __init__(self,max_retries=1): super().__init__();self.max_retries=max_retries
-    def process_after_fail(self,prep_res,exc): raise exc
+    def exec_fallback(self,prep_res,exc): raise exc
     def _exec(self,prep_res):
         for i in range(self.max_retries):
-            try: return super()._exec(prep_res)
+            try: return self.exec(prep_res)
             except Exception as e:
-                if i==self.max_retries-1: return self.process_after_fail(prep_res,e)
+                if i==self.max_retries-1: return self.exec_fallback(prep_res,e)
 
 class BatchNode(Node):
-    def _exec(self,items): return [super(Node,self)._exec(i) for i in items]
+    def _exec(self,items): return [super(BatchNode,self)._exec(i) for i in items]
 
 class Flow(BaseNode):
     def __init__(self,start): super().__init__();self.start=start
@@ -43,8 +43,8 @@ class Flow(BaseNode):
             warnings.warn(f"Flow ends: '{action}' not found in {list(curr.successors)}")
         return nxt
     def _orch(self,shared,params=None):
-        curr,p=self.start,(params or {**self.params})
-        while curr: curr.set_params(p);c=curr._run(shared);curr=self.get_next_node(curr,c)
+        curr,p=copy.copy(self.start),(params or {**self.params})
+        while curr: curr.set_params(p);c=curr._run(shared);curr=copy.copy(self.get_next_node(curr,c))
     def _run(self,shared): pr=self.prep(shared);self._orch(shared);return self.post(shared,pr,None)
     def exec(self,prep_res): raise RuntimeError("Flow can't exec.")
 
@@ -58,11 +58,17 @@ class AsyncNode(Node):
     def prep(self,shared): raise RuntimeError("Use prep_async.")
     def exec(self,prep_res): raise RuntimeError("Use exec_async.")
     def post(self,shared,prep_res,exec_res): raise RuntimeError("Use post_async.")
+    def exec_fallback(self,prep_res,exc): raise RuntimeError("Use exec_fallback_async.")
     def _run(self,shared): raise RuntimeError("Use run_async.")
     async def prep_async(self,shared): pass
     async def exec_async(self,prep_res): pass
+    async def exec_fallback_async(self,prep_res,exc): raise exc
     async def post_async(self,shared,prep_res,exec_res): pass
-    async def _exec(self,prep_res): return await self.exec_async(prep_res)
+    async def _exec(self,prep_res): 
+        for i in range(self.max_retries):
+            try: return await self.exec_async(prep_res)
+            except Exception as e:
+                if i==self.max_retries-1: return await self.exec_fallback_async(prep_res,e)
     async def run_async(self,shared): 
         if self.successors: warnings.warn("Node won't run successors. Use AsyncFlow.")  
         return await self._run_async(shared)
@@ -71,18 +77,18 @@ class AsyncNode(Node):
         return await self.post_async(shared,p,e)
 
 class AsyncBatchNode(AsyncNode):
-    async def _exec(self,items): return [await super()._exec(i) for i in items]
+    async def _exec(self,items): return [await super(AsyncBatchNode,self)._exec(i) for i in items]
 
 class AsyncParallelBatchNode(AsyncNode):
-    async def _exec(self,items): return await asyncio.gather(*(super()._exec(i) for i in items))
+    async def _exec(self,items): return await asyncio.gather(*(super(AsyncParallelBatchNode,self)._exec(i) for i in items))
 
 class AsyncFlow(Flow,AsyncNode):
     async def _orch_async(self,shared,params=None):
-        curr,p=self.start,(params or {**self.params})
+        curr,p=copy.copy(self.start),(params or {**self.params})
         while curr:
             curr.set_params(p)
             c=await curr._run_async(shared) if isinstance(curr,AsyncNode) else curr._run(shared)
-            curr=self.get_next_node(curr,c)
+            curr=copy.copy(self.get_next_node(curr,c))
     async def _run_async(self,shared):
         pr=await self.prep_async(shared);await self._orch_async(shared)
         return await self.post_async(shared,pr,None)

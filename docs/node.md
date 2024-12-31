@@ -42,7 +42,7 @@ When an exception occurs in `exec()`, the Node automatically retries until:
 If you want to **gracefully handle** the error rather than raising it, you can override:
 
 ```python 
-def process_after_fail(self, shared, prep_res, exc):
+def exec_fallback(self, shared, prep_res, exc):
     raise exc
 ```
 
@@ -64,7 +64,7 @@ class SummarizeFile(Node):
         summary = call_llm(prompt)  # might fail
         return summary
 
-    def process_after_fail(self, shared, prep_res, exc):
+    def exec_fallback(self, shared, prep_res, exc):
         # Provide a simple fallback instead of crashing
         return "There was an error processing your request."
 
@@ -76,7 +76,7 @@ class SummarizeFile(Node):
 summarize_node = SummarizeFile(max_retries=3)
 
 # Run the node standalone for testing (calls prep->exec->post).
-# If exec() fails, it retries up to 3 times before calling process_after_fail().
+# If exec() fails, it retries up to 3 times before calling exec_fallback().
 summarize_node.set_params({"filename": "test_file.txt"})
 action_result = summarize_node.run(shared)
 
