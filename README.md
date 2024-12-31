@@ -7,7 +7,11 @@ A [100-line](minillmflow/__init__.py) minimalist LLM framework for agents, task 
 
 - Install via  ```pip install minillmflow```, or just copy the [source](minillmflow/__init__.py) (only 100 lines)
 
-- **Pro tip:** Build LLM apps with LLMs assistants (ChatGPT, Claude, etc.) via [this prompt](assets/prompt)
+- **Pro tip:** Build LLM apps with LLMs assistants (ChatGPT, Claude, etc.)
+
+  - Chat with [Mini LLM Flow Assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-mini-llm-flow-assistant)
+ 
+  - Use your own LLMs and provide contexts via [this prompt](assets/prompt)
 
 Documentation: https://minillmflow.github.io/miniLLMFlow/
 
