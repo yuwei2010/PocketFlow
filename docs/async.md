@@ -7,57 +7,60 @@ nav_order: 5
 
 # Async
 
-**Async** pattern allows the `post()` step to be asynchronous: `post_async()`. This is especially helpful if you need to `await` something—for example, user feedback or external async requests.
+**Mini LLM Flow** allows fully asynchronous nodes by implementing `prep_async()`, `exec_async()`, and/or `post_async()`. This is useful for:
 
-**⚠️ Warning**: Only `post_async()` is async. `prep()` and `exec()` must be sync.
+## Implementation
 
----
+1. **prep_async()**  
+   - For *fetching/reading data (files, APIs, DB)* in an I/O-friendly way.
 
-## 1. AsyncNode
+2. **exec_async()**  
+   - Typically used for async LLM calls.
 
-Below is a minimal **AsyncNode** that calls an LLM in `exec()` to summarize texts, and then awaits user feedback in `post_async()`:
+3. **post_async()**  
+   - For *awaiting user feedback*, *coordinating across multi-agents* or any additional async steps after `exec_async()`.
+
+Each step can be either sync or async; the framework automatically detects which to call.
+
+**Note**: `AsyncNode` must be wrapped in `AsyncFlow`. `AsyncFlow` can also include regular (sync) nodes.
+
+### Example
 
 ```python
 class SummarizeThenVerify(AsyncNode):
-    def prep(self, shared):
-        return shared.get("doc", "")
+    async def prep_async(self, shared):
+        # Example: read a file asynchronously
+        doc_text = await read_file_async(shared["doc_path"])
+        return doc_text
 
-    def exec(self, prep_res):
-        return call_llm(f"Summarize: {prep_res}")
+    async def exec_async(self, prep_res):
+        # Example: async LLM call
+        summary = await call_llm_async(f"Summarize: {prep_res}")
+        return summary
 
     async def post_async(self, shared, prep_res, exec_res):
-        user_decision = await gather_user_feedback(exec_res)
-        if user_decision == "approve":
+        # Example: wait for user feedback
+        decision = await gather_user_feedback(exec_res)
+        if decision == "approve":
             shared["summary"] = exec_res
             return "approve"
-        else:
-            return "deny"
-```
+        return "deny"
 
-- `exec()`: Summarizes text (sync LLM call).
-- `post_async()`: Waits for user approval (async).
-
----
-
-## 2. AsyncFlow
-
-We can build an **AsyncFlow** around this node. If the user denies, we loop back for another attempt; if approved, we pass to a final node:
-
-```python
 summarize_node = SummarizeThenVerify()
 final_node = Finalize()
 
-# Chain conditions
+# Define transitions
 summarize_node - "approve" >> final_node
-summarize_node - "deny" >> summarize_node  # retry loop
+summarize_node - "deny"    >> summarize_node  # retry
 
 flow = AsyncFlow(start=summarize_node)
 
 async def main():
-    shared = {"doc": "Mini LLM Flow is a lightweight LLM framework."}
+    shared = {"doc_path": "document.txt"}
     await flow.run_async(shared)
-    print("Final stored summary:", shared.get("final_summary"))
+    print("Final Summary:", shared.get("summary"))
 
 asyncio.run(main())
 ```
 
+Keep it simple: go async only when needed, handle errors gracefully, and leverage Python’s `asyncio`.

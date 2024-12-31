@@ -17,7 +17,7 @@ class AsyncNumberNode(AsyncNode):
         super().__init__()
         self.number = number
 
-    def prep(self, shared_storage):
+    async def prep_async(self, shared_storage):
         # Synchronous work is allowed inside an AsyncNode,
         # but final 'condition' is determined by post_async().
         shared_storage['current'] = self.number
@@ -34,7 +34,7 @@ class AsyncIncrementNode(AsyncNode):
     """
     Demonstrates incrementing the 'current' value asynchronously.
     """
-    def prep(self, shared_storage):
+    async def prep_async(self, shared_storage):
         shared_storage['current'] = shared_storage.get('current', 0) + 1
         return "incremented"
 
