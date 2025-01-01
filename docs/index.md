@@ -6,16 +6,15 @@ nav_order: 1
 
 # Mini LLM Flow
 
-A [100-line](https://github.com/zachary62/miniLLMFlow/blob/main/minillmflow/__init__.py) minimalist LLM framework for agents, task decomposition, RAG, etc.
+A [100-line](https://github.com/zachary62/miniLLMFlow/blob/main/minillmflow/__init__.py) minimalist LLM framework for *Agents, Task Decomposition, RAG, etc*.
 
-We model the LLM workflow as a **Nested Flow**:
-- Each **Node** handles a simple LLM task.
-- Nodes are chained together to form a **Flow** for compute-intensive tasks.
-- One Node can be chained to multiple Nodes through **Actions** as an agent.
-- A Flow can be treated as a Node for **Nested Flows**.
-- Both Nodes and Flows can be **Batched** for data-intensive tasks.
-- Nodes and Flows can be **Async** for user inputs.
-- **Async** Nodes and Flows can be executed in **Parallel**.
+We model the LLM workflow as a **Nested Directed Graph**:
+- **Nodes** handle simple (LLM) tasks.
+- Nodes connect through **Actions** (labeled edges) for *Agents*.  
+- **Flows** orchestrate a directed graph of Nodes for *Task Decomposition*.
+- A Flow can be used as a Node (for **Nesting**).
+- **Batch** Nodes/Flows for data-intensive tasks.
+- **Async** Nodes/Flows allow waits or **Parallel** execution
 
 <div align="center">
   <img src="https://github.com/zachary62/miniLLMFlow/blob/main/assets/minillmflow.jpg?raw=true" width="400"/>
@@ -27,8 +26,8 @@ We model the LLM workflow as a **Nested Flow**:
 - [Flow](./flow.md)
 - [Communication](./communication.md)
 - [Batch](./batch.md)
-- [Async](./async.md)
-- [Parallel](./parallel.md)
+- [(Advanced) Async](./async.md)
+- [(Advanced) Parallel](./parallel.md)
 
 ## Preparation
 

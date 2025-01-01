@@ -7,7 +7,7 @@ nav_order: 1
 
 # Node
 
-A **Node** is the smallest building block of Mini LLM Flow. Each Node has three lifecycle methods:
+A **Node** is the smallest building block of Mini LLM Flow. Each Node has 3 steps:
 
 1. **`prep(shared)`**  
    - Reads and preprocesses data from the `shared` store for LLMs.
@@ -25,6 +25,7 @@ A **Node** is the smallest building block of Mini LLM Flow. Each Node has three 
    - Examples: finalize outputs, trigger next steps, or log results.
    - Returns a **string** to specify the next action (`"default"` if nothing or `None` is returned).
 
+All 3 steps are optional. For example, you might only need to run the Prep without calling the LLM.
 
 ## Fault Tolerance & Retries
 

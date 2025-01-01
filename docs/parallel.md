@@ -1,11 +1,11 @@
 ---
 layout: default
-title: "Parallel"
+title: "(Advanced) Parallel"
 parent: "Core Abstraction"
 nav_order: 6
 ---
 
-# Parallel
+# (Advanced) Parallel
 
 **Parallel** Nodes and Flows let you run multiple tasks **concurrently**—for example, summarizing multiple texts at once. Unlike a regular **BatchNode**, which processes items sequentially, **AsyncParallelBatchNode** and **AsyncParallelBatchFlow** can fire off tasks in parallel. This can improve performance by overlapping I/O and compute. 
 

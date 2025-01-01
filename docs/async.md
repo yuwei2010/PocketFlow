@@ -1,11 +1,11 @@
 ---
 layout: default
-title: "Async"
+title: "(Advanced) Async"
 parent: "Core Abstraction"
 nav_order: 5
 ---
 
-# Async
+# (Advanced) Async
 
 **Mini LLM Flow** allows fully asynchronous nodes by implementing `prep_async()`, `exec_async()`, `exec_fallback_async()`, and/or `post_async()`. This is useful for:
 
