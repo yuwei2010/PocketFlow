@@ -1,4 +1,4 @@
-import asyncio, warnings, copy
+import asyncio, warnings, copy, time
 
 class BaseNode:
     def __init__(self): self.params,self.successors={},{}
@@ -24,13 +24,14 @@ class _ConditionalTransition:
     def __rshift__(self,tgt): return self.src.add_successor(tgt,self.action)
 
 class Node(BaseNode):
-    def __init__(self,max_retries=1): super().__init__();self.max_retries=max_retries
+    def __init__(self,max_retries=1,wait=0): super().__init__();self.max_retries,self.wait =max_retries,wait
     def exec_fallback(self,prep_res,exc): raise exc
     def _exec(self,prep_res):
         for i in range(self.max_retries):
             try: return self.exec(prep_res)
             except Exception as e:
                 if i==self.max_retries-1: return self.exec_fallback(prep_res,e)
+                if self.wait>0: time.sleep(self.wait)
 
 class BatchNode(Node):
     def _exec(self,items): return [super(BatchNode,self)._exec(i) for i in items]
@@ -68,6 +69,7 @@ class AsyncNode(Node):
             try: return await self.exec_async(prep_res)
             except Exception as e:
                 if i==self.max_retries-1: return await self.exec_fallback_async(prep_res,e)
+                if self.wait>0: await asyncio.sleep(self.wait)
     async def run_async(self,shared): 
         if self.successors: warnings.warn("Node won't run successors. Use AsyncFlow.")  
         return await self._run_async(shared)
@@ -82,9 +84,7 @@ class AsyncParallelBatchNode(AsyncNode):
 class AsyncFlow(Flow,AsyncNode):
     async def _orch_async(self,shared,params=None):
         curr,p=copy.copy(self.start),(params or {**self.params})
-        while curr:
-            curr.set_params(p);c=await curr._run_async(shared) if isinstance(curr,AsyncNode) else curr._run(shared)
-            curr=copy.copy(self.get_next_node(curr,c))
+        while curr:curr.set_params(p);c=await curr._run_async(shared) if isinstance(curr,AsyncNode) else curr._run(shared);curr=copy.copy(self.get_next_node(curr,c))
     async def _run_async(self,shared): p=await self.prep_async(shared);await self._orch_async(shared);return await self.post_async(shared,p,None)
 
 class AsyncBatchFlow(AsyncFlow):

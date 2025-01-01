@@ -11,7 +11,7 @@ A **Node** is the smallest building block of Mini LLM Flow. Each Node has 3 step
 
 1. **`prep(shared)`**  
    - Reads and preprocesses data from the `shared` store for LLMs.
-   - Examples: query DB, read files, or serialize data into a string.
+   - Examples: *query DB, read files, or serialize data into a string*.
    - Returns `prep_res`, which will be passed to both `exec()` and `post()`.
 
 2. **`exec(prep_res)`**  
@@ -22,23 +22,28 @@ A **Node** is the smallest building block of Mini LLM Flow. Each Node has 3 step
 
 3. **`post(shared, prep_res, exec_res)`**  
    - Writes results back to the `shared` store or decides the next action.  
-   - Examples: finalize outputs, trigger next steps, or log results.
+   - Examples: *finalize outputs, trigger next steps, or log results*.
    - Returns a **string** to specify the next action (`"default"` if nothing or `None` is returned).
 
 All 3 steps are optional. For example, you might only need to run the Prep without calling the LLM.
 
 ## Fault Tolerance & Retries
 
-Nodes in Mini LLM Flow can **retry** execution if `exec()` raises an exception. You control this via a `max_retries` parameter when you create the Node. By default, `max_retries = 1` (meaning no retry).
+Nodes in Mini LLM Flow can **retry** execution if `exec()` raises an exception. You control this via two parameters when you create the Node:
+
+- `max_retries` (int): How many times to try running `exec()`. The default is `1`, which means **no** retry.
+- `wait` (int): The time to wait (in **seconds**) before each retry attempt. By default, `wait=0` (i.e., no waiting). Increasing this is helpful when you encounter rate-limits or quota errors from your LLM provider and need to back off.
 
 ```python 
-my_node = SummarizeFile(max_retries=3)
+my_node = SummarizeFile(max_retries=3, wait=10)
 ```
 
 When an exception occurs in `exec()`, the Node automatically retries until:
 
 - It either succeeds, or
 - The Node has retried `max_retries - 1` times already and fails on the last attempt.
+
+### Graceful Fallback
 
 If you want to **gracefully handle** the error rather than raising it, you can override:
 
