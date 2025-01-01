@@ -62,9 +62,3 @@ def call_llm(prompt):
     return response
 ```
 
-## Why Not Provide a Built-in LLM Wrapper?
-I believe it is a **bad practice** to provide LLM-specific implementations in a general framework:
-- **LLM APIs change frequently**. Hardcoding them makes maintenance a nighmare.
-- You may need **flexibility** to switch vendors, use fine-tuned models, or deploy local LLMs.
-- You may need **optimizations** like prompt caching, request batching, or response streaming.
-
