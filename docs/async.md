@@ -7,7 +7,7 @@ nav_order: 5
 
 # (Advanced) Async
 
-**Mini LLM Flow** allows fully asynchronous nodes by implementing `prep_async()`, `exec_async()`, `exec_fallback_async()`, and/or `post_async()`. This is useful for:
+**Async Nodes** implement `prep_async()`, `exec_async()`, `exec_fallback_async()`, and/or `post_async()`. This is useful for:
 
 1. **prep_async()**  
    - For *fetching/reading data (files, APIs, DB)* in an I/O-friendly way.
@@ -18,7 +18,6 @@ nav_order: 5
 3. **post_async()**  
    - For *awaiting user feedback*, *coordinating across multi-agents* or any additional async steps after `exec_async()`.
 
-Each step can be either sync or async; the framework automatically detects which to call.
 
 **Note**: `AsyncNode` must be wrapped in `AsyncFlow`. `AsyncFlow` can also include regular (sync) nodes.
 
@@ -60,5 +59,3 @@ async def main():
 
 asyncio.run(main())
 ```
-
-Keep it simple: go async only when needed, handle errors gracefully, and leverage Python’s `asyncio`.
