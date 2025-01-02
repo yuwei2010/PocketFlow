@@ -40,8 +40,8 @@ We model the LLM workflow as a **Nested Directed Graph**:
 - [LLM Wrapper](./llm.md)
 - [Tool](./tool.md)
 
-> We do not provide implementation for low-level details
-{: .note }
+> We do not provide built-in implementation for low-level details. Example implementations are provided as reference.
+{: .warning }
 
 ## High-Level Paradigm
 
