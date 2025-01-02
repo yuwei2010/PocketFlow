@@ -25,8 +25,10 @@ A **Node** is the smallest building block of Mini LLM Flow. Each Node has 3 step
    - Examples: *finalize outputs, trigger next steps, or log results*.
    - Returns a **string** to specify the next action (`"default"` if nothing or `None` is returned).
 
+
+> All 3 steps are optional. For example, you might only need to run the Prep without calling the LLM.
 {: .note }
-All 3 steps are optional. For example, you might only need to run the Prep without calling the LLM.
+
 
 ## Fault Tolerance & Retries
 

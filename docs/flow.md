@@ -86,10 +86,11 @@ flowchart TD
 - `node.run(shared)`: Just runs that node alone (calls `prep()`, `exec()`, `post()`), returns an Action. 
 - `flow.run(shared)`: Executes from the start node, follows Actions to the next node, and so on until the flow can’t continue (no next node or no next Action).
 
-{: .warning }
+
 > node.run(shared) **does not** proceed automatically to the successor and may use incorrect parameters.
 > This is mainly for debugging or testing a single node.
 > Always use `flow.run(...)` in production to ensure the full pipeline runs correctly.
+{: .warning }
 
 ## 3. Nested Flows
 
