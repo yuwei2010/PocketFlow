@@ -16,9 +16,9 @@ There are several approaches to achieve a structured output:
 
 In practice, **Prompting** is simple and reliable for modern LLMs.
 
-## Example Use Cases
+### Example Use Cases
 
-1. **Extracting Key Information**  
+- Extracting Key Information 
 
 ```yaml
 product:
@@ -29,7 +29,7 @@ product:
     Recommended for advanced users.
 ```
 
-2. **Summarizing Documents into Bullet Points**  
+- Summarizing Documents into Bullet Points
 
 ```yaml
 summary:
@@ -38,7 +38,7 @@ summary:
   - Suitable for all skill levels.
 ```
 
-3. **Generating Configuration Files**  
+- Generating Configuration Files
 
 ```yaml
 server:
@@ -50,8 +50,8 @@ server:
 ## Prompt Engineering
 
 When prompting the LLM to produce **structured** output:
-1. **Wrap** the structure in code fences (e.g., ```yaml).
-2. **Validate** that all required fields exist (and retry if necessary).
+1. **Wrap** the structure in code fences (e.g., ` ```yaml`).
+2. **Validate** that all required fields exist (and let `Node` handles retry).
 
 ### Example Text Summarization
 
@@ -73,7 +73,7 @@ summary:
 ```"""
         response = call_llm(prompt)
         yaml_str = response.split("```yaml")[1].split("```")[0].strip()
-        
+
         import yaml
         structured_result = yaml.safe_load(yaml_str)
 
