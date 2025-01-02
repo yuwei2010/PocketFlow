@@ -22,8 +22,10 @@ We model the LLM workflow as a **Nested Directed Graph**:
   <img src="https://github.com/zachary62/miniLLMFlow/blob/main/assets/minillmflow.jpg?raw=true" width="400"/>
 </div>
 
-> Have questions? Chat with [AI Assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-mini-llm-flow-assistant)
+
 {: .note }
+> Have questions? Chat with [AI Assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-mini-llm-flow-assistant)
+
 
 
 ## Core Abstraction
@@ -40,8 +42,10 @@ We model the LLM workflow as a **Nested Directed Graph**:
 - [LLM Wrapper](./llm.md)
 - [Tool](./tool.md)
 
-> We do not provide built-in implementation for low-level details
+
 {: .warning }
+> We do not provide built-in implementation for low-level details. Example implementations are provided as reference.
+
 
 ## High-Level Paradigm
 
