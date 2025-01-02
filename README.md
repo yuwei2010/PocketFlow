@@ -21,11 +21,11 @@ Documentation: https://minillmflow.github.io/miniLLMFlow/
 
 Mini LLM Flow is designed to be **the framework used by LLMs**. In the future, LLM projects will *self-programmed* by LLMs themselves: Users specify requirements, and LLMs will design, build, and maintain. Current LLMs are:
 
-1. **👍 Good at Low-level Details:** LLMs can handle *LLM wrappers, tools, and prompts*, which don't require any framework. Current frameworks are often over-engineered, making them difficult for humans (and LLMs) to understand.
+1. **👍 Good at Low-level Details:** LLMs can handle details like *wrappers, tools, and prompts*, which don't belong in a framework. Current frameworks are over-engineered, making them hard for humans (and LLMs) to maintain.
 
 2. **👎 Bad at High-level Paradigms:** While paradigms like *MapReduce, task decomposition, and agents* are powerful, LLMs still struggle to design them elegantly. These high-level concepts should be emphasized in frameworks.
 
-The ideal framework for LLMs should (1) **strip away low-level implementation details**, and (2) **keep high-level paradigms** to program against. Hence, we provide this minimal (100-line) framework that allows LLMs to focus on what matters.  
+The ideal framework for LLMs should (1) **strip away low-level implementation details**, and (2) **keep high-level programming paradigms**. Hence, we provide this minimal (100-line) framework that allows LLMs to focus on what matters.  
 
 Mini LLM Flow is also a **great learning resource**, as current frameworks abstract too much away.
 
