@@ -10,7 +10,7 @@ nav_order: 4
 For certain LLM tasks like answering questions, providing context is essential.
 Use [vector search](./tool.md) to find relevant context for LLM responses.
 
-## Example: Question Answering
+### Example: Question Answering
 
 ```python
 class PrepareEmbeddings(Node):
