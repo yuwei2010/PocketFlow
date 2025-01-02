@@ -41,19 +41,19 @@ We model the LLM workflow as a **Nested Directed Graph**:
 
 - [LLM Wrapper](./llm.md)
 - [Tool](./tool.md)
+- Chunking
 
-
-
-> We do not provide built-in implementation for low-level details. Example implementations are provided as reference.
+> We do not provide built-in implementations. 
+> Example implementations are provided as reference.
 {: .warning }
 
 
 ## High-Level Paradigm
 
 - [Structured Output](./structure.md)
-- Task Decomposition
-- Map Reduce
-- RAG
+- [Task Decomposition](./decomp.md)
+- [Map Reduce](./mapreduce.md)
+- [RAG](./rag.md)
 - Chat Memory
 - Agent
 - Multi-Agent
@@ -62,3 +62,4 @@ We model the LLM workflow as a **Nested Directed Graph**:
 ## Example Projects
 
 - [Summarization + QA agent for Paul Graham Essay](./essay.md)
+- More coming soon...

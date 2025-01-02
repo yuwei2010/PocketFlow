@@ -53,7 +53,7 @@ def call_llm(prompt):
     pass
 ```
 
-> ⚠️ May overlap with Node retries by caching LLM responses
+> ⚠️ Caching conflicts with Node retries, as retries yield the same result.
 {: .warning }
 
 
