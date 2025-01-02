@@ -77,6 +77,10 @@ class DirectAnswer(Node):
         query, context = inputs
         return call_llm(f"Context: {context}\nAnswer: {query}")
 
+    def post(self, shared, prep_res, exec_res):
+       print(f"Answer: {exec_res}")
+       shared["answer"] = exec_res
+
 # Connect nodes
 decide = DecideAction()
 search = SearchWeb()
