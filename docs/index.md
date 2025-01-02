@@ -23,9 +23,9 @@ We model the LLM workflow as a **Nested Directed Graph**:
 </div>
 
 
-{: .note }
-> Have questions? Chat with [AI Assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-mini-llm-flow-assistant)
 
+> Have questions? Chat with [AI Assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-mini-llm-flow-assistant)
+{: .note }
 
 
 ## Core Abstraction
@@ -43,8 +43,9 @@ We model the LLM workflow as a **Nested Directed Graph**:
 - [Tool](./tool.md)
 
 
-{: .warning }
+
 > We do not provide built-in implementation for low-level details. Example implementations are provided as reference.
+{: .warning }
 
 
 ## High-Level Paradigm

@@ -16,13 +16,15 @@ Similar to LLM wrappers, we **don't** provide built-in tools. Here, we recommend
 
 ```python
 def get_embedding(text):
-    import openai
-    # Set your API key elsewhere, e.g., environment variables
-    r = openai.Embedding.create(
+    from openai import OpenAI
+    client = OpenAI(api_key="YOUR_API_KEY_HERE")
+    r = client.embeddings.create(
         model="text-embedding-ada-002",
         input=text
     )
-    return r["data"][0]["embedding"]
+    return r.data[0].embedding
+
+get_embedding("What's the meaning of life?")
 ```
 
 ---
@@ -45,6 +47,9 @@ def search_index(index, query_embedding, top_k=5):
         top_k
     )
     return I, D
+
+index = create_index(embeddings)
+search_index(index, query_embedding)
 ```
 
 ---
@@ -64,6 +69,10 @@ def execute_sql(query):
     return result
 ```
 
+
+> ⚠️ Beware of SQL injection risk
+{: .warning }
+
 ---
 
 ## 4. Python Function Execution
@@ -73,22 +82,65 @@ def run_code(code_str):
     env = {}
     exec(code_str, env)
     return env
+
+run_code("print('Hello, world!')")
 ```
+
+> ⚠️ exec() is dangerous with untrusted input
+{: .warning }
+
 
 ---
 
 ## 5. PDF Extraction
 
+If your PDFs are text-based, use PyMuPDF:
+
 ```python
-def extract_text_from_pdf(file_path):
-    import PyPDF2
-    pdfFileObj = open(file_path, "rb")
-    reader = PyPDF2.PdfReader(pdfFileObj)
+import fitz  # PyMuPDF
+
+def extract_text(pdf_path):
+    doc = fitz.open(pdf_path)
     text = ""
-    for page in reader.pages:
-        text += page.extract_text()
-    pdfFileObj.close()
+    for page in doc:
+        text += page.get_text()
+    doc.close()
     return text
+
+extract_text("document.pdf")
+```
+
+For image-based PDFs (e.g., scanned), OCR is needed. A easy and fast option is using an LLM with vision capabilities:
+
+```python
+from openai import OpenAI
+import base64
+
+def call_llm_vision(prompt, image_data):
+    client = OpenAI(api_key="YOUR_API_KEY_HERE")
+    img_base64 = base64.b64encode(image_data).decode('utf-8')
+    
+    response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[{
+            "role": "user",
+            "content": [
+                {"type": "text", "text": prompt},
+                {"type": "image_url", 
+                 "image_url": {"url": f"data:image/png;base64,{img_base64}"}}
+            ]
+        }]
+    )
+    
+    return response.choices[0].message.content
+
+pdf_document = fitz.open("document.pdf")
+page_num = 0
+page = pdf_document[page_num]
+pix = page.get_pixmap()
+img_data = pix.tobytes("png")
+
+call_llm_vision("Extract text from this image", img_data)
 ```
 
 ---

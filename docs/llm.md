@@ -12,10 +12,9 @@ We **don't** provide built-in LLM wrappers. Instead, please implement your own, 
 ```python
 def call_llm(prompt):
     from openai import OpenAI
-    # Set the OpenAI API key (use environment variables, etc.)
     client = OpenAI(api_key="YOUR_API_KEY_HERE")
     r = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-4o",
         messages=[{"role": "user", "content": prompt}]
     )
     return r.choices[0].message.content
@@ -23,6 +22,9 @@ def call_llm(prompt):
 # Example usage
 call_llm("How are you?")
 ```
+
+> Store the API key in an environment variable like OPENAI_API_KEY for security.
+{: .note }
 
 ## Improvements
 Feel free to enhance your `call_llm` function as needed. Here are examples:
@@ -34,13 +36,13 @@ def call_llm(messages):
     from openai import OpenAI
     client = OpenAI(api_key="YOUR_API_KEY_HERE")
     r = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-4o",
         messages=messages
     )
     return r.choices[0].message.content
 ```
 
-- Add in-memory caching:
+- Add in-memory caching 
 
 ```python
 from functools import lru_cache
@@ -50,6 +52,10 @@ def call_llm(prompt):
     # Your implementation here
     pass
 ```
+
+> ⚠️ May overlap with Node retries by caching LLM responses
+{: .warning }
+
 
 - Enable logging:
 
