@@ -22,3 +22,8 @@ mermaid:
   # Default configuration
   config: |
     directionLR
+
+callouts:
+  warning:
+    title: Warning
+    color: red
