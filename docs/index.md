@@ -54,8 +54,8 @@ We model the LLM workflow as a **Nested Directed Graph**:
 - [Task Decomposition](./decomp.md)
 - [Map Reduce](./mapreduce.md)
 - [RAG](./rag.md)
-- Chat Memory
-- Agent
+- [Chat Memory](./memory.md)
+- [Agent](./agent.md)
 - Multi-Agent
 - Evaluation
 
