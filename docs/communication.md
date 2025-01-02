@@ -15,8 +15,8 @@ Nodes and Flows **communicate** in two ways:
 If you know memory management, **Shared Store** is like a **heap** shared across function calls, while **Params** is like a **stack** assigned by parent function calls.
 
 
-{: .Why-Not-Use-Other-Communication-Models-like-Message-Passing }
-*Message passing* works well for simple DAGs, but with *nested graphs* (Flows containing Flows, repeated or cyclic calls), routing messages becomes hard to maintain. A shared store keeps the design simple and easy.
+{: .note }
+**Why not use other communication models like Message Passing?** *Message passing* works well for simple DAGs, but with *nested graphs* (Flows containing Flows, repeated or cyclic calls), routing messages becomes hard to maintain. A shared store keeps the design simple and easy.
 
 ---
 
