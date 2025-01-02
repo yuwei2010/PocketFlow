@@ -15,9 +15,8 @@ Nodes and Flows **communicate** in two ways:
 If you know memory management, **Shared Store** is like a **heap** shared across function calls, while **Params** is like a **stack** assigned by parent function calls.
 
 
-### Why Not Use Other Communication Models like Message Passing?
-
-**Message passing** works well for simple DAGs, but with **nested graphs** (Flows containing Flows, repeated or cyclic calls), routing messages becomes hard to maintain. A shared store keeps the design simple and easy.
+{: .Why-Not-Use-Other-Communication-Models-like-Message-Passing }
+*Message passing* works well for simple DAGs, but with *nested graphs* (Flows containing Flows, repeated or cyclic calls), routing messages becomes hard to maintain. A shared store keeps the design simple and easy.
 
 ---
 
@@ -74,10 +73,13 @@ No special data-passing—just the same `shared` object.
 
 ## 2. Params
 
-**Params** let you store **per-Node** or **per-Flow** config that doesn’t need to live in the global store. They are:
+**Params** let you store *per-Node* or *per-Flow* config that doesn't need to live in the shared store. They are:
 - **Immutable** during a Node’s run cycle (i.e., they don’t change mid-`prep`, `exec`, `post`).
-- **Set** via `set_params()`. **⚠️ Warning** Only set the uppermost Flow params because others will be overwritten by the parent Flow. If you need to set child node params, see [Batch](./batch.md).
+- **Set** via `set_params()`.
 - **Cleared** and updated each time a parent Flow calls it.
+
+{: .warning }
+Only set the uppermost Flow params because others will be overwritten by the parent Flow. If you need to set child node params, see [Batch](./batch.md).
 
 Typically, **Params** are identifiers (e.g., file name, page number). Use them to fetch the task you assigned or write to a specific part of the shared store.
 

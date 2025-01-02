@@ -22,7 +22,7 @@ You define transitions with the syntax:
 2. Named action transition: `node_a - "action_name" >> node_b`
   This means if `node_a.post()` returns `"action_name"`, go to `node_b`.
 
-It’s possible to create loops, branching, or multi-step flows. You can also chain with multiple Actions from a single node to different successors.
+It’s possible to create loops, branching, or multi-step flows.
 
 ## 2. Creating a Flow
 
@@ -83,10 +83,13 @@ flowchart TD
 
 ### Running Individual Nodes vs. Running a Flow
 
-- **`node.run(shared)`**: Just runs that node alone (calls `prep()`, `exec()`, `post()`), returns an Action. ⚠️ **Does not** proceed automatically to the successor and may use incorrect parameters. This is mainly for debugging or testing a single node.
-- **`flow.run(shared)`**: Executes from the start node, follows Actions to the next node, and so on until the flow can’t continue (no next node or no next Action).
+- `node.run(shared)`: Just runs that node alone (calls `prep()`, `exec()`, `post()`), returns an Action. 
+- `flow.run(shared)`: Executes from the start node, follows Actions to the next node, and so on until the flow can’t continue (no next node or no next Action).
 
-Always use `flow.run(...)` in production to ensure the full pipeline runs correctly.
+{: .warning }
+> node.run(shared) **does not** proceed automatically to the successor and may use incorrect parameters.
+> This is mainly for debugging or testing a single node.
+> Always use `flow.run(...)` in production to ensure the full pipeline runs correctly.
 
 ## 3. Nested Flows
 

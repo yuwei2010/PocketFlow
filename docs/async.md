@@ -7,7 +7,7 @@ nav_order: 5
 
 # (Advanced) Async
 
-**Async Nodes** implement `prep_async()`, `exec_async()`, `exec_fallback_async()`, and/or `post_async()`. This is useful for:
+**Async** Nodes implement `prep_async()`, `exec_async()`, `exec_fallback_async()`, and/or `post_async()`. This is useful for:
 
 1. **prep_async()**  
    - For *fetching/reading data (files, APIs, DB)* in an I/O-friendly way.

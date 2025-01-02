@@ -31,7 +31,9 @@ We model the LLM workflow as a **Nested Directed Graph**:
 - [(Advanced) Parallel](./parallel.md)
 
 ## Low-Level Details
-⚠️ We do not provide
+
+{: .note }
+We do not provide implementation
 
 - [LLM Wrapper](./llm.md)
 - [Tool](./tool.md)
@@ -40,9 +42,9 @@ We model the LLM workflow as a **Nested Directed Graph**:
 
 - [Structured Output](./structure.md)
 - Task Decomposition
+- Map Reduce
 - RAG
 - Chat Memory
-- Map Reduce
 - Agent
 - Multi-Agent
 - Evaluation
