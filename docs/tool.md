@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Tool"
-parent: "Preparation"
+parent: "Details"
 nav_order: 2
 ---
 

@@ -61,4 +61,4 @@ We model the LLM workflow as a **Nested Directed Graph**:
 
 ## Example Projects
 
-- Coming soon ... 
+- [Summarization + QA agent for Paul Graham Essay](./essay.md)
