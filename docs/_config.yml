@@ -3,7 +3,10 @@ title: Mini LLM Flow
 description: Minimalist LLM Framework in 100 Lines, Enabling LLMs to Program Themselves
 
 # Theme settings
-theme: just-the-docs
+remote_theme: just-the-docs/just-the-docs
+plugins:
+  - jekyll-remote-theme
+  
 markdown: kramdown
 kramdown:
   input: GFM
