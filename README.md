@@ -27,7 +27,7 @@ Mini LLM Flow is designed to be **the framework used by LLMs**. In the future, L
 
 The ideal framework for LLMs should (1) **strip away low-level implementation details**, and (2) **keep high-level programming paradigms**. Hence, we provide this minimal (100-line) framework that allows LLMs to focus on what matters.  
 
-Mini LLM Flow is also a **great learning resource**, as current frameworks abstract too much away.
+Mini LLM Flow is also a *learning resource*, as current frameworks abstract too much away.
 
 <div align="center">
   <img src="/assets/minillmflow.jpg" width="400"/>
