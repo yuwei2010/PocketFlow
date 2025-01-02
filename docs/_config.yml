@@ -5,6 +5,9 @@ description: Minimalist LLM Framework in 100 Lines, Enabling LLMs to Program The
 # Theme settings
 remote_theme: just-the-docs/just-the-docs
 
+# Navigation
+nav_sort: case_sensitive
+
 # Aux links (shown in upper right)
 aux_links:
   "View on GitHub":
@@ -18,9 +21,3 @@ mermaid:
   # Default configuration
   config: |
     directionLR
-
-
-callouts:
-  warning:
-    title: Warning
-    color: red

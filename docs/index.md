@@ -4,14 +4,60 @@ title: "Home"
 nav_order: 1
 ---
 
-> **Heads up!** This is a note callout.
+# Mini LLM Flow
+
+A [100-line](https://github.com/zachary62/miniLLMFlow/blob/main/minillmflow/__init__.py) minimalist LLM framework for *Agents, Task Decomposition, RAG, etc*.
+
+
+We model the LLM workflow as a **Nested Directed Graph**:
+- **Nodes** handle simple (LLM) tasks.
+- Nodes connect through **Actions** (labeled edges) for *Agents*.  
+- **Flows** orchestrate a directed graph of Nodes for *Task Decomposition*.
+- A Flow can be used as a Node (for **Nesting**).
+- **Batch** Nodes/Flows for data-intensive tasks.
+- **Async** Nodes/Flows allow waits or **Parallel** execution
+
+
+<div align="center">
+  <img src="https://github.com/zachary62/miniLLMFlow/blob/main/assets/minillmflow.jpg?raw=true" width="400"/>
+</div>
+
+
 {: .note }
+> Have questions? Chat with [AI Assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-mini-llm-flow-assistant)
 
-> This is a tip callout.
-{: .tip }
 
-> This is a warning callout.
+
+## Core Abstraction
+
+- [Node](./node.md)
+- [Flow](./flow.md)
+- [Communication](./communication.md)
+- [Batch](./batch.md)
+- [(Advanced) Async](./async.md)
+- [(Advanced) Parallel](./parallel.md)
+
+## Low-Level Details
+
+- [LLM Wrapper](./llm.md)
+- [Tool](./tool.md)
+
+
 {: .warning }
+> We do not provide built-in implementation for low-level details. Example implementations are provided as reference.
 
-> This is an important callout.
-{: .important }
+
+## High-Level Paradigm
+
+- [Structured Output](./structure.md)
+- Task Decomposition
+- Map Reduce
+- RAG
+- Chat Memory
+- Agent
+- Multi-Agent
+- Evaluation
+
+## Example Projects
+
+- Coming soon ... 
