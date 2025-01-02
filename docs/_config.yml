@@ -24,7 +24,6 @@ mermaid:
     directionLR
 
 callouts:
-  enabled: true
   warning:
     title: Warning
     color: red
