@@ -4,6 +4,7 @@ description: Minimalist LLM Framework in 100 Lines, Enabling LLMs to Program The
 
 # Theme settings
 remote_theme: just-the-docs/just-the-docs
+markdown: kramdown
 
 # Navigation
 nav_sort: case_sensitive
