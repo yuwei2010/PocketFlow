@@ -34,8 +34,8 @@ Have questions? Chat with [AI Assistant](https://chatgpt.com/g/g-677464af3658819
 
 ## Low-Level Details
 
+> **Note:** We do not provide implementation.
 {: .note }
-We do not provide implementation
 
 - [LLM Wrapper](./llm.md)
 - [Tool](./tool.md)
