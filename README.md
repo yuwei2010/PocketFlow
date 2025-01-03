@@ -3,7 +3,7 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 [![Docs](https://img.shields.io/badge/docs-latest-blue)](https://zachary62.github.io/miniLLMFlow/)
 
-A [100-line](minillmflow/__init__.py) minimalist LLM framework for agents, task decomposition, RAG, etc.
+A [100-line](minillmflow/__init__.py) minimalist LLM framework for [agents](https://minillmflow.github.io/miniLLMFlow/agent.html), [task decomposition](https://minillmflow.github.io/miniLLMFlow/decomp.html), [RAG](https://minillmflow.github.io/miniLLMFlow/rag.html), etc.
 
 - Install via  ```pip install minillmflow```, or just copy the [source](minillmflow/__init__.py) (only 100 lines)
 
@@ -35,8 +35,10 @@ Mini LLM Flow is also a *learning resource*, as current frameworks abstract too 
 
 ## Tutorial
 
-- Documentation: https://minillmflow.github.io/miniLLMFlow/
+- Please check out documentation: https://minillmflow.github.io/miniLLMFlow/
 
 - Beginner Tutorial: [Text summarization for Paul Graham Essay + QA agent](https://colab.research.google.com/github/zachary62/miniLLMFlow/blob/main/cookbook/demo.ipynb)
 
     - Have questions for this tutorial? Ask LLM assistants through [this prompt](https://chatgpt.com/share/676f16d2-7064-8000-b9d7-f6874346a6b5)
+ 
+- More coming soon ...
