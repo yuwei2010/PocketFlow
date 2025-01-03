@@ -7,13 +7,11 @@ A [100-line](minillmflow/__init__.py) minimalist LLM framework for [agents](http
 
 - Install via  ```pip install minillmflow```, or just copy the [source](minillmflow/__init__.py) (only 100 lines)
 
-- **Pro tip:** Build LLM apps with LLMs assistants (ChatGPT, Claude, etc.)
+- **Pro tip:** Build LLM apps with LLMs assistants (ChatGPT, Claude, Cursor.ai, etc.)
 
-  - GPT assistant: Check out [Mini LLM Flow Assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-mini-llm-flow-assistant)
+  - ChatGPT: Check out [GPT assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-mini-llm-flow-assistant)
 
-  - Claude assistant: Create a project and dump the [docs](docs)
-  
-  - Use your own LLMs and provide contexts via [this prompt](assets/prompt)
+  - Claude: Create a project, dump the [docs](docs), and ask it to write LLM workflow!
 
 Documentation: https://minillmflow.github.io/miniLLMFlow/
 
