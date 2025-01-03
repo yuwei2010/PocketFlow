@@ -31,9 +31,11 @@ Mini LLM Flow is also a *learning resource*, as current frameworks abstract too 
   <img src="/assets/minillmflow.jpg" width="400"/>
 </div>
 
-## Tutorial
+## How Does it Work?
 
-- Please check out documentation: https://minillmflow.github.io/miniLLMFlow/
+The [100 lines](minillmflow/__init__.py) capture what we see as the core abstraction of most LLM frameworks: a **nested directed graph** that breaks down tasks into multiple (LLM) steps, with branching and recursion for agent-like decision-making. From there, it’s easy to layer on more complex features.
+
+- To learn more details, please check out documentation: https://minillmflow.github.io/miniLLMFlow/
 
 - Beginner Tutorial: [Text summarization for Paul Graham Essay + QA agent](https://colab.research.google.com/github/zachary62/miniLLMFlow/blob/main/cookbook/demo.ipynb)
 
