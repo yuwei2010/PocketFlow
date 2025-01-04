@@ -9,7 +9,7 @@ An [100-line](minillmflow/__init__.py) minimalist LLM framework for [agents](htt
 
 - **💡 Pro tip!!** Build LLM apps with LLMs assistants (ChatGPT, Claude, Cursor.ai, etc.)
 
-  - **Claude (Sonnet 3.5 strongly recommended!):**
+  - **Claude Project (Sonnet 3.5 strongly recommended!):**
     
     - Create a project and dump the [docs](docs)
       
