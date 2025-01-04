@@ -11,7 +11,7 @@ A [100-line](minillmflow/__init__.py) minimalist LLM framework for [agents](http
 
   - **Claude Project (Sonnet 3.5 strongly recommended!):**
     
-    - Create a [project[(https://www.anthropic.com/news/projects) and upload the [docs](docs) to project knowledge
+    - Create a [project](https://www.anthropic.com/news/projects) and upload the [docs](docs) to project knowledge
       
     - Set project custom instructions. For example:
       ```
