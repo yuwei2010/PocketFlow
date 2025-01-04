@@ -20,7 +20,7 @@ A **Node** is the smallest building block of Mini LLM Flow. Each Node has 3 step
    - ⚠️ If retries enabled, ensure idempotent implementation.
    - Returns `exec_res`, which is passed to `post()`.
 
-3.`post(shared, prep_res, exec_res)`
+3. `post(shared, prep_res, exec_res)`
    - A reliable postprocessing step to write results back to the `shared` store and decide the next Action. 
    - Examples: *update DB, change states, log results, decide next Action*.
    - Returns a **string** specifying the next Action (`"default"` if none).
