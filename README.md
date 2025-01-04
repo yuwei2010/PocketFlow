@@ -7,11 +7,27 @@ An [100-line](minillmflow/__init__.py) minimalist LLM framework for [agents](htt
 
 - Install via  ```pip install minillmflow```, or just copy the [source codes](minillmflow/__init__.py) (only 100 lines)
 
-- **Pro tip:** Build LLM apps with LLMs assistants (ChatGPT, Claude, Cursor.ai, etc.)
+- **💡 Pro tip!!** Build LLM apps with LLMs assistants (ChatGPT, Claude, Cursor.ai, etc.)
 
-  - **Claude (preferred):** Create a project, dump the [docs](docs), and ask it to write LLM workflow!
+  - **Claude (Sonnet 3.5 strongly recommended!):**
+    
+    - Create a project and dump the [docs](docs)
+      
+    - Set project instruction. For example:
+      ```
+      1. check "tool.md" and "llm.md" for the required functions.
+      2. design the high-level (batch) flow and nodes.
+      3. design the shared memory structure: define its fields, data structures, and how they will be updated.
+      Think out aloud first for above first and ask users your design makes sense.
+      4. Finally, implement. Start with simple, minimalistic codes without, for example, typing.
+      ```
+    - Ask it to build LLM application!
    
   - **ChatGPT:** Check out [GPT assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-mini-llm-flow-assistant)
+ 
+    - GPT store seems to use older models. It's good at explaining but bad at coding.
+      
+    - Alternatively, send the [docs](docs) to newer models like O1 for coding.
 
 Documentation: https://minillmflow.github.io/miniLLMFlow/
 
