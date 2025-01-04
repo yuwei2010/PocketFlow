@@ -9,24 +9,23 @@ nav_order: 1
 
 A **Node** is the smallest building block of Mini LLM Flow. Each Node has 3 steps:
 
-1. **`prep(shared)`**  
-   - Reads and preprocesses data from the `shared` store for LLMs.
+1. `prep(shared)`
+   - A reliable step for preprocessing data from the `shared` store. 
    - Examples: *query DB, read files, or serialize data into a string*.
-   - Returns `prep_res`, which will be passed to both `exec()` and `post()`.
+   - Returns `prep_res`, which is used by `exec()` and `post()`.
 
-2. **`exec(prep_res)`**  
-   - The main execution step where the LLM is called.
-   - Optionally has built-in retry and error handling (below).
-   - ⚠️ If retry enabled, ensure implementation is idempotent.
+2. `exec(prep_res)`
+   - The **main execution** step, with optional retries and error handling (below).
+   - Examples: *primarily for LLMs, but can also for remote APIs*。 
+   - ⚠️ If retries enabled, ensure idempotent implementation.
    - Returns `exec_res`, which is passed to `post()`.
 
-3. **`post(shared, prep_res, exec_res)`**  
-   - Writes results back to the `shared` store or decides the next action.  
-   - Examples: *finalize outputs, trigger next steps, or log results*.
-   - Returns a **string** to specify the next action (`"default"` if nothing or `None` is returned).
+3.`post(shared, prep_res, exec_res)`
+   - A reliable postprocessing step to write results back to the `shared` store and decide the next Action. 
+   - Examples: *update DB, change states, log results, decide next Action*.
+   - Returns a **string** specifying the next Action (`"default"` if none).
 
-
-> All 3 steps are optional. For example, you might only need to run the Prep without calling the LLM.
+> All 3 steps are optional. You could run only `prep` if you just need to prepare data without calling the LLM.
 {: .note }
 
 
