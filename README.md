@@ -11,21 +11,21 @@ A [100-line](minillmflow/__init__.py) minimalist LLM framework for [agents](http
 
   - **Claude Project (Sonnet 3.5 strongly recommended!):**
     
-    - Create a project and dump the [docs](docs)
+    - Create a [project[(https://www.anthropic.com/news/projects) and upload the [docs](docs) to project knowledge
       
-    - Set project instruction. For example:
+    - Set project custom instructions. For example:
       ```
       1. check "tool.md" and "llm.md" for the required functions.
       2. design the high-level (batch) flow and nodes.
       3. design the shared memory structure: define its fields, data structures, and how they will be updated.
-      Think out aloud first for above first and ask users your design makes sense.
+      Think out aloud for above first and ask users if your design makes sense.
       4. Finally, implement. Start with simple, minimalistic codes without, for example, typing.
       ```
     - Ask it to build LLM application!
    
   - **ChatGPT:** Check out [GPT assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-mini-llm-flow-assistant)
  
-    - GPT store seems to use older models. It's good at explaining but bad at coding.
+    - GPT store seems to use older models. It's good at explaining but now good at coding.
       
     - Alternatively, send the [docs](docs) to newer models like O1 for coding.
 
