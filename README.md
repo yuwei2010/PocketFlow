@@ -25,7 +25,7 @@ A [100-line](minillmflow/__init__.py) minimalist LLM framework for [agents](http
    
   - **ChatGPT:** Check out [GPT assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-mini-llm-flow-assistant)
  
-    - GPT store seems to use older models. It's good at explaining but now good at coding.
+    - GPT store seems to use older models. It's good at explaining but not good at coding.
       
     - Alternatively, send the [docs](docs) to newer models like O1 for coding.
 
