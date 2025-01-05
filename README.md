@@ -3,7 +3,7 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 [![Docs](https://img.shields.io/badge/docs-latest-blue)](https://zachary62.github.io/miniLLMFlow/)
 
-A [100-line](minillmflow/__init__.py) minimalist LLM framework for [agents](https://minillmflow.github.io/miniLLMFlow/agent.html), [task decomposition](https://minillmflow.github.io/miniLLMFlow/decomp.html), [RAG](https://minillmflow.github.io/miniLLMFlow/rag.html), etc.
+A [100-line](minillmflow/__init__.py) minimalist LLM framework for ([Multi-](https://minillmflow.github.io/miniLLMFlow/multi_agent.md))[Agents](https://minillmflow.github.io/miniLLMFlow/agent.html), [task decomposition](https://minillmflow.github.io/miniLLMFlow/decomp.html), [RAG](https://minillmflow.github.io/miniLLMFlow/rag.html), etc.
 
 - Install via  ```pip install minillmflow```, or just copy the [source codes](minillmflow/__init__.py) (only 100 lines)
 
