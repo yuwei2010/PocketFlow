@@ -9,17 +9,15 @@ nav_order: 3
 
 Nodes and Flows **communicate** in two ways:
 
-1. **Shared Store** – A global data structure (often an in-mem dict) that all nodes can read from and write to. Every Node’s `prep()` and `post()` methods receive the **same** `shared` store.  
-2. **Params** – Each node and Flow has a `params` dict assigned by the **parent Flow**. Params mostly serve as identifiers, letting each node/flow know what task it’s assigned.
+1. **Shared Store** – A global data structure (often an in-mem dict) that all nodes can read and write. Every Node's `prep()` and `post()` methods receive the **same** `shared` store.  
+2. **Params** – Each node and Flow has a unique `params` dict assigned by the **parent Flow**, typically used as an identifier for tasks. It’s strongly recommended to keep parameter keys and values **immutable**.
 
-If you know memory management, **Shared Store** is like a **heap** shared across function calls, while **Params** is like a **stack** assigned by parent function calls.
+If you know memory management, think of the **Shared Store** like a **heap** (shared by all function calls), and **Params** like a **stack** (assigned by the caller).
 
 
 > **Why not use other communication models like Message Passing?** 
 >
-> *Message passing* works well for simple DAGs, but with *nested graphs* (Flows containing Flows, repeated or cyclic calls), routing messages becomes hard to maintain. A shared store keeps the design simple and easy.  
->
-> A higher-level *Message passing* abstraction among agents can be achieved using queues in shared storage ([Multi-Agents](./multi_agent.md)).
+> *Message Passing* works fine for simple DAGs, but in nested or cyclic Flows it gets unwieldy. A shared store keeps things straightforward. High-level patterns like *Message Passing* and *Event-Driven Design* can still be layered on top via *Async Queues or Pub/Sub* in a shared store (see [Multi-Agents](./multi_agent.md)).
 {: .note }
 
 ---
