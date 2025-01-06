@@ -16,7 +16,7 @@ A **Node** is the smallest building block of Mini LLM Flow. Each Node has 3 step
 
 2. `exec(prep_res)`
    - The **main execution** step, with optional retries and error handling (below).
-   - Examples: *primarily for LLMs, but can also for remote APIs*。 
+   - Examples: *primarily for LLMs, but can also for remote APIs*.
    - ⚠️ If retries enabled, ensure idempotent implementation.
    - Returns `exec_res`, which is passed to `post()`.
 

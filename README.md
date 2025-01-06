@@ -37,7 +37,7 @@ Mini LLM Flow is designed to be **the framework used by LLMs**. In the future, L
 
 1. **👍 Good at Low-level Details:** LLMs can handle details like *wrappers, tools, and prompts*, which don't belong in a framework. Current frameworks are over-engineered, making them hard for humans (and LLMs) to maintain.
 
-2. **👎 Bad at High-level Paradigms:** While paradigms like *MapReduce, task decomposition, and agents* are powerful, LLMs still struggle to design them elegantly. These high-level concepts should be emphasized in frameworks.
+2. **👎 Bad at High-level Paradigms:** While paradigms like *MapReduce, Task Decomposition, and Agents* are powerful, LLMs still struggle to design them elegantly. These high-level concepts should be emphasized in frameworks.
 
 The ideal framework for LLMs should (1) **strip away low-level implementation details**, and (2) **keep high-level programming paradigms**. Hence, we provide this minimal (100-line) framework that allows LLMs to focus on what matters.  
 
