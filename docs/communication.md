@@ -17,9 +17,9 @@ If you know memory management, think of the **Shared Store** like a **heap** (sh
 
 > **Why not use other communication models like Message Passing?** 
 >
-> At a **low-level** between nodes, *Message Passing* works fine for simple DAGs, but in nested or cyclic Flows it gets unwieldy. A shared store keeps things straightforward. 
+> At a *low-level* between nodes, *Message Passing* works fine for simple DAGs, but in nested or cyclic Flows it gets unwieldy. A shared store keeps things straightforward. 
 >
-> That said, **high-level** patterns like *Message Passing* and *Event-Driven Design* can still be layered on top via *Async Queues or Pub/Sub* in a shared store (see [Multi-Agents](./multi_agent.md)).
+> That said, *high-level* multi-agent patterns like *Message Passing* and *Event-Driven Design* can still be layered on top via *Async Queues or Pub/Sub* in a shared store (see [Multi-Agents](./multi_agent.md)).
 {: .note }
 
 ---
