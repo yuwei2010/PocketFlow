@@ -15,7 +15,11 @@ Nodes and Flows **communicate** in two ways:
 If you know memory management, **Shared Store** is like a **heap** shared across function calls, while **Params** is like a **stack** assigned by parent function calls.
 
 
-> **Why not use other communication models like Message Passing?** *Message passing* works well for simple DAGs, but with *nested graphs* (Flows containing Flows, repeated or cyclic calls), routing messages becomes hard to maintain. A shared store keeps the design simple and easy.  However, a high-level message-passing abstraction among agents can be achieved using queues in shared storage (more in [Multi-Agents]./multi_agent.md).
+> **Why not use other communication models like Message Passing?** 
+>
+> *Message passing* works well for simple DAGs, but with *nested graphs* (Flows containing Flows, repeated or cyclic calls), routing messages becomes hard to maintain. A shared store keeps the design simple and easy.  
+>
+> A higher-level *Message passing* abstraction among agents can be achieved using queues in shared storage ([Multi-Agents](./multi_agent.md)).
 {: .note }
 
 ---
