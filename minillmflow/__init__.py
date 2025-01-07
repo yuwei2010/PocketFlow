@@ -24,7 +24,7 @@ class _ConditionalTransition:
     def __rshift__(self,tgt): return self.src.add_successor(tgt,self.action)
 
 class Node(BaseNode):
-    def __init__(self,max_retries=1,wait=0): super().__init__();self.max_retries,self.wait =max_retries,wait
+    def __init__(self,max_retries=1,wait=0): super().__init__();self.max_retries,self.wait=max_retries,wait
     def exec_fallback(self,prep_res,exc): raise exc
     def _exec(self,prep_res):
         for i in range(self.max_retries):
@@ -75,10 +75,10 @@ class AsyncNode(Node):
         return await self._run_async(shared)
     async def _run_async(self,shared): p=await self.prep_async(shared);e=await self._exec(p);return await self.post_async(shared,p,e)
 
-class AsyncBatchNode(AsyncNode):
+class AsyncBatchNode(AsyncNode,BatchNode):
     async def _exec(self,items): return [await super(AsyncBatchNode,self)._exec(i) for i in items]
 
-class AsyncParallelBatchNode(AsyncNode):
+class AsyncParallelBatchNode(AsyncNode,BatchNode):
     async def _exec(self,items): return await asyncio.gather(*(super(AsyncParallelBatchNode,self)._exec(i) for i in items))
 
 class AsyncFlow(Flow,AsyncNode):
@@ -87,13 +87,13 @@ class AsyncFlow(Flow,AsyncNode):
         while curr:curr.set_params(p);c=await curr._run_async(shared) if isinstance(curr,AsyncNode) else curr._run(shared);curr=copy.copy(self.get_next_node(curr,c))
     async def _run_async(self,shared): p=await self.prep_async(shared);await self._orch_async(shared);return await self.post_async(shared,p,None)
 
-class AsyncBatchFlow(AsyncFlow):
+class AsyncBatchFlow(AsyncFlow,BatchFlow):
     async def _run_async(self,shared):
         pr=await self.prep_async(shared) or []
         for bp in pr: await self._orch_async(shared,{**self.params,**bp})
         return await self.post_async(shared,pr,None)
 
-class AsyncParallelBatchFlow(AsyncFlow):
+class AsyncParallelBatchFlow(AsyncFlow,BatchFlow):
     async def _run_async(self,shared):
         pr=await self.prep_async(shared) or []
         await asyncio.gather(*(self._orch_async(shared,{**self.params,**bp}) for bp in pr))
