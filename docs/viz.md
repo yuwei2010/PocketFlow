@@ -58,9 +58,9 @@ def build_mermaid(start):
             # Handle simple Nodes
             curr_id = get_id(node)
             if isinstance(node, BatchNode):
-                label = f"{curr_id}@{{shape: procs, label: \"{type(node).__name__}\"}}"
+                label = f'{curr_id}@{{shape: procs, label: "{type(node).__name__}"}}'
             else:
-                label = f"{curr_id}@{{label: \"{type(node).__name__}\"}}"
+                label = f'{curr_id}@{{label: "{type(node).__name__}"}}'
 
             if parent_id:
                 lines.append(f"    {label}")
