@@ -11,6 +11,7 @@ Visualizing the flow and node structure can greatly help understanding. While we
 
 ### Example: Visualization of Node with Mermaid
 
+{% raw %}
 ```python
 # Generate Mermaid diagram code for a Flow or Node structure
 def build_mermaid(start):
@@ -74,6 +75,7 @@ def build_mermaid(start):
     walk(start)
     return "\n".join(lines)
 ```
+{% endraw %}
 
 ### Usage Example
 
