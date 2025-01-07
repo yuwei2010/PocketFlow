@@ -58,10 +58,7 @@ def build_mermaid(start):
         else:
             # Handle simple Nodes
             curr_id = get_id(node)
-            if isinstance(node, BatchNode):
-                label = f'{curr_id}@{{shape: procs, label: "{type(node).__name__}"}}'
-            else:
-                label = f'{curr_id}@{{label: "{type(node).__name__}"}}'
+            label = f'{curr_id}["{type(node).__name__}"]'
 
             if parent_id:
                 lines.append(f"    {label}")
@@ -116,16 +113,16 @@ The above code produces a Mermaid diagram (e.g., use the [Mermaid Live Editor](h
 
 ```mermaid
 graph LR
-    N1@{shape: procs, label: "DataPrepBatchNode"}
-    N2@{label: "ValidateDataNode"}
+    N1["DataPrepBatchNode"]
+    N2["ValidateDataNode"]
     N1 --> N2
     N2 --> N3
 
     subgraph sub_flow_N4[ModelFlow]
-    N3@{label: "FeatureExtractionNode"}
-    N5@{label: "TrainModelNode"}
+    N3["FeatureExtractionNode"]
+    N5["TrainModelNode"]
     N3 --> N5
-    N6@{label: "EvaluateModelNode"}
+    N6["EvaluateModelNode"]
     N5 --> N6
     end
 ```
