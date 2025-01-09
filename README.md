@@ -31,9 +31,9 @@ A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](http
 
 Documentation: https://minillmflow.github.io/PocketFlow/
 
-## Why Mini LLM Flow?
+## Why Pocket Flow?
 
-Mini LLM Flow is designed to be **the framework used by LLMs**. In the future, LLM projects will be *self-programmed* by LLMs themselves: Users specify requirements, and LLMs will design, build, and maintain. Current LLMs are:
+Pocket Flow is designed to be **the framework used by LLMs**. In the future, LLM projects will be *self-programmed* by LLMs themselves: Users specify requirements, and LLMs will design, build, and maintain. Current LLMs are:
 
 1. **👍 Good at Low-level Details:** LLMs can handle details like *wrappers, tools, and prompts*, which don't belong in a framework. Current frameworks are over-engineered, making them hard for humans (and LLMs) to maintain.
 
@@ -41,7 +41,7 @@ Mini LLM Flow is designed to be **the framework used by LLMs**. In the future, L
 
 The ideal framework for LLMs should (1) **strip away low-level implementation details**, and (2) **keep high-level programming paradigms**. Hence, we provide this minimal (100-line) framework that allows LLMs to focus on what matters.  
 
-Mini LLM Flow is also a *learning resource*, as current frameworks abstract too much away.
+Pocket Flow is also a *learning resource*, as current frameworks abstract too much away.
 
 <div align="center">
   <img src="/assets/minillmflow.jpg" width="400"/>
