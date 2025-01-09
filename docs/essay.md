@@ -8,7 +8,7 @@ nav_order: 1
 # Summarization + QA agent for Paul Graham Essay
 
 ```python
-from minillmflow import *
+from pocketflow import *
 import openai, os, yaml
 
 # Minimal LLM wrapper
@@ -25,7 +25,7 @@ shared = {"data": {}, "summary": {}}
 # Load data into shared['data']
 class LoadData(Node):
     def prep(self, shared):
-        path = "./miniLLMFlow/data/PaulGrahamEssaysLarge"
+        path = "./PocketFlow/data/PaulGrahamEssaysLarge"
         for fn in os.listdir(path):
             with open(os.path.join(path, fn), 'r') as f:
                 shared['data'][fn] = f.read()

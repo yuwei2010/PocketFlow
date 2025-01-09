@@ -4,9 +4,9 @@ title: "Home"
 nav_order: 1
 ---
 
-# Mini LLM Flow
+# Pocke tFlow
 
-A [100-line](https://github.com/zachary62/miniLLMFlow/blob/main/minillmflow/__init__.py) minimalist LLM framework for *Agents, Task Decomposition, RAG, etc*.
+A [100-line](https://github.com/miniLLMFlow/PocketFlow/blob/main/packetflow/__init__.py) minimalist LLM framework for *Agents, Task Decomposition, RAG, etc*.
 
 
 We model the LLM workflow as a **Nested Directed Graph**:
@@ -19,7 +19,7 @@ We model the LLM workflow as a **Nested Directed Graph**:
 
 
 <div align="center">
-  <img src="https://github.com/zachary62/miniLLMFlow/blob/main/assets/minillmflow.jpg?raw=true" width="400"/>
+  <img src="https://github.com/miniLLMFlow/PocketFlow/raw/main/assets/minillmflow.jpg?raw=true" width="400"/>
 </div>
 
 

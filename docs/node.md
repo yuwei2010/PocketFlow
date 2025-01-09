@@ -7,7 +7,7 @@ nav_order: 1
 
 # Node
 
-A **Node** is the smallest building block of Mini LLM Flow. Each Node has 3 steps:
+A **Node** is the smallest building block. Each Node has 3 steps:
 
 1. `prep(shared)`
    - A reliable step for preprocessing data from the `shared` store. 
@@ -31,7 +31,7 @@ A **Node** is the smallest building block of Mini LLM Flow. Each Node has 3 step
 
 ## Fault Tolerance & Retries
 
-Nodes in Mini LLM Flow can **retry** execution if `exec()` raises an exception. You control this via two parameters when you create the Node:
+Nodes can **retry** execution if `exec()` raises an exception. You control this via two parameters when you create the Node:
 
 - `max_retries` (int): How many times to try running `exec()`. The default is `1`, which means **no** retry.
 - `wait` (int): The time to wait (in **seconds**) before each retry attempt. By default, `wait=0` (i.e., no waiting). Increasing this is helpful when you encounter rate-limits or quota errors from your LLM provider and need to back off.

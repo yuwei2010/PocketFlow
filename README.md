@@ -3,9 +3,9 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 [![Docs](https://img.shields.io/badge/docs-latest-blue)](https://minillmflow.github.io/PocketFlow/)
 
-A [100-line](packetflow/__init__.py) minimalist LLM framework for ([Multi-](https://minillmflow.github.io/PocketFlow/multi_agent.html))[Agents](https://minillmflow.github.io/PocketFlow/agent.html), [task decomposition](https://minillmflow.github.io/PocketFlow/decomp.html), [RAG](https://minillmflow.github.io/PocketFlow/rag.html), etc.
+A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](https://minillmflow.github.io/PocketFlow/multi_agent.html))[Agents](https://minillmflow.github.io/PocketFlow/agent.html), [task decomposition](https://minillmflow.github.io/PocketFlow/decomp.html), [RAG](https://minillmflow.github.io/PocketFlow/rag.html), etc.
 
-- Install via  ```pip install packetflow```, or just copy the [source codes](packetflow/__init__.py) (only 100 lines)
+- Install via  ```pip install pocketflow```, or just copy the [source codes](pocketflow/__init__.py) (only 100 lines)
 
 - **💡 Pro tip!!** Build LLM apps with LLMs assistants (ChatGPT, Claude, Cursor.ai, etc.)
 
