@@ -53,7 +53,7 @@ The [100 lines](minillmflow/__init__.py) capture what we see as the core abstrac
 
 - To learn more details, please check out documentation: https://minillmflow.github.io/PocketFlow/
 
-- Beginner Tutorial: [Text summarization for Paul Graham Essay + QA agent](https://colab.research.google.com/github/zachary62/PocketFlow/blob/main/cookbook/demo.ipynb)
+- Beginner Tutorial: [Text summarization for Paul Graham Essay + QA agent](https://colab.research.google.com/github/miniLLMFlow/PocketFlow/blob/main/cookbook/demo.ipynb)
 
     - Have questions for this tutorial? Ask LLM assistants through [this prompt](https://chatgpt.com/share/676f16d2-7064-8000-b9d7-f6874346a6b5)
  
