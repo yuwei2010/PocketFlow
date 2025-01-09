@@ -1,11 +1,11 @@
-<h1 align="center">Mini LLM Flow - LLM Framework in 100 Lines</h1>
+<h1 align="center">Pocket Flow - LLM Framework in 100 Lines</h1>
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-[![Docs](https://img.shields.io/badge/docs-latest-blue)](https://zachary62.github.io/miniLLMFlow/)
+[![Docs](https://img.shields.io/badge/docs-latest-blue)](https://minillmflow.github.io/PocketFlow/)
 
-A [100-line](minillmflow/__init__.py) minimalist LLM framework for ([Multi-](https://minillmflow.github.io/miniLLMFlow/multi_agent.html))[Agents](https://minillmflow.github.io/miniLLMFlow/agent.html), [task decomposition](https://minillmflow.github.io/miniLLMFlow/decomp.html), [RAG](https://minillmflow.github.io/miniLLMFlow/rag.html), etc.
+A [100-line](packetflow/__init__.py) minimalist LLM framework for ([Multi-](https://minillmflow.github.io/PocketFlow/multi_agent.html))[Agents](https://minillmflow.github.io/PocketFlow/agent.html), [task decomposition](https://minillmflow.github.io/PocketFlow/decomp.html), [RAG](https://minillmflow.github.io/PocketFlow/rag.html), etc.
 
-- Install via  ```pip install minillmflow```, or just copy the [source codes](minillmflow/__init__.py) (only 100 lines)
+- Install via  ```pip install packetflow```, or just copy the [source codes](packetflow/__init__.py) (only 100 lines)
 
 - **💡 Pro tip!!** Build LLM apps with LLMs assistants (ChatGPT, Claude, Cursor.ai, etc.)
 
@@ -29,7 +29,7 @@ A [100-line](minillmflow/__init__.py) minimalist LLM framework for ([Multi-](htt
       
     - Alternatively, send the [docs](docs) to newer models like O1 for coding.
 
-Documentation: https://minillmflow.github.io/miniLLMFlow/
+Documentation: https://minillmflow.github.io/PocketFlow/
 
 ## Why Mini LLM Flow?
 
@@ -51,9 +51,9 @@ Mini LLM Flow is also a *learning resource*, as current frameworks abstract too 
 
 The [100 lines](minillmflow/__init__.py) capture what we see as the core abstraction of most LLM frameworks: a **nested directed graph** that breaks down tasks into multiple (LLM) steps, with branching and recursion for agent-like decision-making. From there, it’s easy to layer on more complex features.
 
-- To learn more details, please check out documentation: https://minillmflow.github.io/miniLLMFlow/
+- To learn more details, please check out documentation: https://minillmflow.github.io/PocketFlow/
 
-- Beginner Tutorial: [Text summarization for Paul Graham Essay + QA agent](https://colab.research.google.com/github/zachary62/miniLLMFlow/blob/main/cookbook/demo.ipynb)
+- Beginner Tutorial: [Text summarization for Paul Graham Essay + QA agent](https://colab.research.google.com/github/zachary62/PocketFlow/blob/main/cookbook/demo.ipynb)
 
     - Have questions for this tutorial? Ask LLM assistants through [this prompt](https://chatgpt.com/share/676f16d2-7064-8000-b9d7-f6874346a6b5)
  
