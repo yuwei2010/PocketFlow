@@ -4,7 +4,7 @@ title: "Home"
 nav_order: 1
 ---
 
-# Pocke tFlow
+# Pocket Flow
 
 A [100-line](https://github.com/miniLLMFlow/PocketFlow/blob/main/packetflow/__init__.py) minimalist LLM framework for *Agents, Task Decomposition, RAG, etc*.
 

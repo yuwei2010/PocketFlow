@@ -1,5 +1,5 @@
 # Basic site settings
-title: Mini LLM Flow
+title: Pocket Flow
 description: Minimalist LLM Framework in 100 Lines, Enabling LLMs to Program Themselves
 
 # Theme settings
@@ -11,8 +11,8 @@ nav_sort: case_sensitive
 # Aux links (shown in upper right)
 aux_links:
   "View on GitHub":
-    - "//github.com/zachary62/miniLLMFlow"
-
+    - "//github.com/miniLLMFlow/PocketFlow"
+    
 # Color scheme
 color_scheme: light
 
