@@ -1,7 +1,15 @@
 <h1 align="center">Pocket Flow - LLM Framework in 100 Lines</h1>
 
+
+
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 [![Docs](https://img.shields.io/badge/docs-latest-blue)](https://minillmflow.github.io/PocketFlow/)
+
+<div align="center">
+  <img src="/assets/minillmflow.jpg" width="400"/>
+</div>
+
+<br>
 
 A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](https://minillmflow.github.io/PocketFlow/multi_agent.html))[Agents](https://minillmflow.github.io/PocketFlow/agent.html), [task decomposition](https://minillmflow.github.io/PocketFlow/decomp.html), [RAG](https://minillmflow.github.io/PocketFlow/rag.html), etc.
 
@@ -42,10 +50,6 @@ Pocket Flow is designed to be **the framework used by LLMs**. In the future, LLM
 The ideal framework for LLMs should (1) **strip away low-level implementation details**, and (2) **keep high-level programming paradigms**. Hence, we provide this minimal (100-line) framework that allows LLMs to focus on what matters.  
 
 Pocket Flow is also a *learning resource*, as current frameworks abstract too much away.
-
-<div align="center">
-  <img src="/assets/minillmflow.jpg" width="400"/>
-</div>
 
 ## How Does it Work?
 
