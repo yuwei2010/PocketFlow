@@ -11,16 +11,18 @@
 
 <br>
 
-A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](https://minillmflow.github.io/PocketFlow/multi_agent.html))[Agents](https://minillmflow.github.io/PocketFlow/agent.html), [task decomposition](https://minillmflow.github.io/PocketFlow/decomp.html), [RAG](https://minillmflow.github.io/PocketFlow/rag.html), etc.
+A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](https://minillmflow.github.io/PocketFlow/multi_agent.html))[Agents](https://minillmflow.github.io/PocketFlow/agent.html), [Task Decomposition](https://minillmflow.github.io/PocketFlow/decomp.html), [RAG](https://minillmflow.github.io/PocketFlow/rag.html), etc.
 
 - Install via  ```pip install pocketflow```, or just copy the [source codes](pocketflow/__init__.py) (only 100 lines)
 
+
 - **💡 Pro tip!!** Build LLM apps with LLMs assistants (ChatGPT, Claude, Cursor.ai, etc.)
 
-  - **Claude Project (Sonnet 3.5 strongly recommended!):**
-    
+  <details>
+    <summary><b>Claude Project</b></summary>
+
     - Create a [project](https://www.anthropic.com/news/projects) and upload the [docs](docs) to project knowledge
-      
+  
     - Set project custom instructions. For example:
       ```
       1. check "tool.md" and "llm.md" for the required functions.
@@ -29,13 +31,24 @@ A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](http
       Think out aloud for above first and ask users if your design makes sense.
       4. Finally, implement. Start with simple, minimalistic codes without, for example, typing.
       ```
-    - Ask it to build LLM application!
-   
-  - **ChatGPT:** Check out [GPT assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-mini-llm-flow-assistant)
- 
-    - GPT store seems to use older models. It's good at explaining but not good at coding.
-      
-    - Alternatively, send the [docs](docs) to newer models like O1 for coding.
+    - Ask it to build LLM app (Sonnet 3.5 strongly recommended)!
+      ```
+      Help me build a chatbot based on a directory of PDFs.
+      ```
+  </details>
+
+  <details>
+    <summary><b>ChatGPT</b></summary>
+
+    - Try the [GPT assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-mini-llm-flow-assistant). However, it uses older models, which are good for explaining but not good at coding.
+  
+    - For stronger coding capabilities, consider sending the [docs](docs) to more advanced models like O1.
+  
+        - Paste the docs link (https://github.com/miniLLMFlow/PocketFlow/tree/main/docs) to [Gitingest](https://gitingest.com/).
+
+        - Then, paste the generated contents into your O1 prompt, and ask it to build LLM app.
+  </details>
+
 
 Documentation: https://minillmflow.github.io/PocketFlow/
 
