@@ -6,7 +6,7 @@ nav_order: 1
 
 # Pocket Flow
 
-A [100-line](https://github.com/miniLLMFlow/PocketFlow/blob/main/packetflow/__init__.py) minimalist LLM framework for *Agents, Task Decomposition, RAG, etc*.
+A [100-line](https://github.com/miniLLMFlow/PocketFlow/blob/main/pocketflow/__init__.py) minimalist LLM framework for *Agents, Task Decomposition, RAG, etc*.
 
 
 We model the LLM workflow as a **Nested Directed Graph**:
