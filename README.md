@@ -19,7 +19,7 @@ A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](http
 - **💡 Pro tip!!** Build LLM apps with LLMs assistants (ChatGPT, Claude, Cursor.ai, etc.)
 
   <details>
-    <summary><b>Claude Project</b></summary>
+    <summary><b>Use Claude to build LLM app</b></summary>
 
     - Create a [project](https://www.anthropic.com/news/projects) and upload the [docs](docs) to project knowledge
   
@@ -38,7 +38,7 @@ A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](http
   </details>
 
   <details>
-    <summary><b>ChatGPT</b></summary>
+    <summary><b>Use ChatGPT to build LLM app</b></summary>
 
     - Try the [GPT assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-mini-llm-flow-assistant). However, it uses older models, which are good for explaining but not good at coding.
   
