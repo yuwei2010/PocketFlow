@@ -18,6 +18,7 @@ A **Node** is the smallest building block. Each Node has 3 steps:
    - The **main execution** step, with optional retries and error handling (below).
    - Examples: *primarily for LLMs, but can also for remote APIs*.
    - ⚠️ If retries enabled, ensure idempotent implementation.
+   - ⚠️ This step must not write to the `shared` store. If reading from `shared` is necessary, retrieve and pass it along in `prep()`.
    - Returns `exec_res`, which is passed to `post()`.
 
 3. `post(shared, prep_res, exec_res)`
