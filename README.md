@@ -19,7 +19,7 @@ A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](http
 - **💡 Pro tip!!** Build LLM apps with LLMs assistants (ChatGPT, Claude, Cursor.ai, etc.)
 
   <details>
-    <summary><b>Use Claude to build LLM app</b></summary>
+    <summary><b>Use Claude to build LLM apps</b></summary>
 
     - Create a [project](https://www.anthropic.com/news/projects) and upload the [docs](docs) to project knowledge
   
@@ -31,14 +31,14 @@ A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](http
       Think out aloud for above first and ask users if your design makes sense.
       4. Finally, implement. Start with simple, minimalistic codes without, for example, typing.
       ```
-    - Ask it to build LLM app (Sonnet 3.5 strongly recommended)!
+    - Ask it to build LLM apps (Sonnet 3.5 strongly recommended)!
       ```
       Help me build a chatbot based on a directory of PDFs.
       ```
   </details>
 
   <details>
-    <summary><b>Use ChatGPT to build LLM app</b></summary>
+    <summary><b>Use ChatGPT to build LLM apps</b></summary>
 
     - Try the [GPT assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-mini-llm-flow-assistant). However, it uses older models, which are good for explaining but not good at coding.
   
@@ -46,7 +46,7 @@ A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](http
   
         - Paste the docs link (https://github.com/miniLLMFlow/PocketFlow/tree/main/docs) to [Gitingest](https://gitingest.com/).
 
-        - Then, paste the generated contents into your O1 prompt, and ask it to build LLM app.
+        - Then, paste the generated contents into your O1 prompt, and ask it to build LLM apps.
   </details>
 
 
