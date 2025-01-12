@@ -1,13 +1,14 @@
 ---
 layout: default
-title: "Essay"
+title: "Design Guidance"
 parent: "Apps"
 nav_order: 1
 ---
 
 # LLM System Design Guidance
 
-**Use LLMs to help with system design and implementation wherever possible.**
+{: .important }
+> Use LLMs to help with system design and implementation wherever possible.
 
 1. **Understand Requirements**  
    - Clarify the app’s needs and workflow.  
