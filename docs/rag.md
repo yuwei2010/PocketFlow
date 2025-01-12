@@ -38,7 +38,6 @@ class AnswerQuestion(Node):
 # Connect nodes
 prep = PrepareEmbeddings()
 qa = AnswerQuestion()
-
 prep >> qa
 
 # Create flow

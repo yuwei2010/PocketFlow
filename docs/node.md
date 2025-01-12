@@ -18,7 +18,7 @@ A **Node** is the smallest building block. Each Node has 3 steps:
    - The **main execution** step, with optional retries and error handling (below).
    - Examples: *primarily for LLMs, but can also for remote APIs*.
    - ⚠️ If retries enabled, ensure idempotent implementation.
-   - ⚠️ This step must not write to the `shared` store. If reading from `shared` is necessary, retrieve and pass it along in `prep()`.
+   - ⚠️ This must **NOT** write to `shared`. If reads are necessary, extract them in `prep()` and pass them in `prep_res`.
    - Returns `exec_res`, which is passed to `post()`.
 
 3. `post(shared, prep_res, exec_res)`
@@ -30,7 +30,7 @@ A **Node** is the smallest building block. Each Node has 3 steps:
 {: .note }
 
 
-## Fault Tolerance & Retries
+### Fault Tolerance & Retries
 
 Nodes can **retry** execution if `exec()` raises an exception. You control this via two parameters when you create the Node:
 
@@ -55,10 +55,9 @@ def exec_fallback(self, shared, prep_res, exc):
     raise exc
 ```
 
-By default, it just re-raises `exc`. But you can return a fallback result instead. 
-That fallback result becomes the `exec_res` passed to `post()`.
+By default, it just re-raises `exc`. But you can return a fallback result instead, which becomes the `exec_res` passed to `post()`.
 
-## Example
+### Example: Summarize file
 
 ```python 
 class SummarizeFile(Node):
@@ -83,10 +82,10 @@ class SummarizeFile(Node):
         # Return "default" by not returning anything
 
 summarize_node = SummarizeFile(max_retries=3)
-
-# Run the node standalone for testing (calls prep->exec->post).
-# If exec() fails, it retries up to 3 times before calling exec_fallback().
 summarize_node.set_params({"filename": "test_file.txt"})
+
+# node.run() calls prep->exec->post
+# If exec() fails, it retries up to 3 times before calling exec_fallback()
 action_result = summarize_node.run(shared)
 
 print("Action returned:", action_result)  # Usually "default"

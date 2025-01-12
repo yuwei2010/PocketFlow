@@ -11,6 +11,8 @@ Visualizing the nested graph can help understanding. While we **don’t** includ
 
 ### Example: Visualization of Node with Mermaid
 
+This code recursively traverses the nested graph, assigns unique IDs to each node, and treats Flow nodes as subgraphs to generate Mermaid syntax for a hierarchical visualization.
+
 {% raw %}
 ```python
 def build_mermaid(start):
