@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Example"
+title: "Apps"
 nav_order: 5
 has_children: true
 ---

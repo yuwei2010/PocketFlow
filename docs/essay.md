@@ -1,8 +1,8 @@
 ---
 layout: default
 title: "Essay"
-parent: "Example"
-nav_order: 1
+parent: "Apps"
+nav_order: 2
 ---
 
 # Summarization + QA agent for Paul Graham Essay
