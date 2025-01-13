@@ -15,6 +15,7 @@ A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](http
 
 - Install via  ```pip install pocketflow```, or just copy the [source codes](pocketflow/__init__.py) (only 100 lines)
 
+- If you want a better-documented version of the 100 lines, [check this out](https://chatgpt.com/share/678564bd-1ba4-8000-98e4-a6ffe363c1b8)
 
 - **💡 Pro tip!!** Build LLM apps with LLMs assistants (ChatGPT, Claude, Cursor.ai, etc.)
 
