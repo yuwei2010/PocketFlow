@@ -69,9 +69,6 @@ Pocket Flow is also a *learning resource*, as current frameworks abstract too mu
 
 The [100 lines](pocketflow/__init__.py) capture what we see as the core abstraction of most LLM frameworks: a **Nested Directed Graph** that breaks down tasks into multiple (LLM) steps, with branching and recursion for agent-like decision-making. From there, it’s easy to layer on more complex features.
 
-<div align="center">
-  <img src="./assets/graph.png" width="400"/>
-</div>
 
 
 - To learn more details, please check out documentation: https://minillmflow.github.io/PocketFlow/
@@ -81,3 +78,7 @@ The [100 lines](pocketflow/__init__.py) capture what we see as the core abstract
     - Have questions for this tutorial? Ask LLM assistants through [this prompt](https://chatgpt.com/share/676f16d2-7064-8000-b9d7-f6874346a6b5)
  
 - More coming soon ... Let us know you’d love to see!
+
+<div align="center">
+  <img src="./assets/graph.png" width="500"/>
+</div>
