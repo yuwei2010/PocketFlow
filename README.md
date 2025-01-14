@@ -6,7 +6,7 @@
 [![Docs](https://img.shields.io/badge/docs-latest-blue)](https://minillmflow.github.io/PocketFlow/)
 
 <div align="center">
-  <img src="/assets/minillmflow.jpg" width="400"/>
+  <img src="./assets/minillmflow.jpg" width="400"/>
 </div>
 
 <br>
@@ -67,7 +67,12 @@ Pocket Flow is also a *learning resource*, as current frameworks abstract too mu
 
 ## How Does it Work?
 
-The [100 lines](pocketflow/__init__.py) capture what we see as the core abstraction of most LLM frameworks: a **nested directed graph** that breaks down tasks into multiple (LLM) steps, with branching and recursion for agent-like decision-making. From there, it’s easy to layer on more complex features.
+The [100 lines](pocketflow/__init__.py) capture what we see as the core abstraction of most LLM frameworks: a **Nested Directed Graph** that breaks down tasks into multiple (LLM) steps, with branching and recursion for agent-like decision-making. From there, it’s easy to layer on more complex features.
+
+<div align="center">
+  <img src="./assets/graph.png" width="400"/>
+</div>
+
 
 - To learn more details, please check out documentation: https://minillmflow.github.io/PocketFlow/
 
