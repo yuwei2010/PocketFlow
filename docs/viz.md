@@ -1,15 +1,15 @@
 ---
 layout: default
-title: "Visualization"
+title: "Visualization and Debugging"
 parent: "Details"
 nav_order: 3
 ---
 
-# Visualization
+# Visualization and Debugging
 
-Visualizing the nested graph can help understanding. While we **don’t** include built-in visualization tools, we provide an example using **Mermaid**.
+Similar to LLM wrappers, we **don't** provide built-in visualization and debugging. Here, we recommend some *minimal* (and incomplete) implementations These examples can serve as a starting point for your own tooling.
 
-### Example: Visualization of Node with Mermaid
+## 1. Visualization with Mermaid
 
 This code recursively traverses the nested graph, assigns unique IDs to each node, and treats Flow nodes as subgraphs to generate Mermaid syntax for a hierarchical visualization.
 
@@ -43,17 +43,18 @@ def build_mermaid(start):
 ```
 {% endraw %}
 
-### Usage Example
 
-Here, we define some example Nodes and Flows:
+For example, suppose we have a complex Flow for data science:
 
 ```python
-class DataPrepBatchNode(BatchNode): pass
+class DataPrepBatchNode(BatchNode):
+    def prep(self,shared): return []
 class ValidateDataNode(Node): pass
 class FeatureExtractionNode(Node): pass
 class TrainModelNode(Node): pass
 class EvaluateModelNode(Node): pass
 class ModelFlow(Flow): pass
+class DataScienceFlow(Flow):pass
 
 feature_node = FeatureExtractionNode()
 train_node = TrainModelNode()
@@ -63,23 +64,81 @@ model_flow = ModelFlow(start=feature_node)
 data_prep_node = DataPrepBatchNode()
 validate_node = ValidateDataNode()
 data_prep_node >> validate_node >> model_flow
-build_mermaid(start=data_prep_node)
+data_science_flow = DataScienceFlow(start=data_prep_node)
+result = build_mermaid(start=data_science_flow)
 ```
 
 The code generates a Mermaid diagram:
 
 ```mermaid
 graph LR
-    N1["DataPrepBatchNode"]
-    N2["ValidateDataNode"]
-    N1 --> N2
+    subgraph sub_flow_N1[DataScienceFlow]
+    N2['DataPrepBatchNode']
+    N3['ValidateDataNode']
     N2 --> N3
+    N3 --> N4
 
-    subgraph sub_flow_N4[ModelFlow]
-    N3["FeatureExtractionNode"]
-    N5["TrainModelNode"]
-    N3 --> N5
-    N6["EvaluateModelNode"]
-    N5 --> N6
+    subgraph sub_flow_N5[ModelFlow]
+    N4['FeatureExtractionNode']
+    N6['TrainModelNode']
+    N4 --> N6
+    N7['EvaluateModelNode']
+    N6 --> N7
+    end
+
     end
 ```
+
+## 2. Call Stack Debugging
+
+It would be useful to print the Node call stacks for debugging. This can be achieved by inspecting the runtime call stack:
+
+```python
+import inspect
+
+def get_node_call_stack():
+    stack = inspect.stack()
+    node_names = []
+    seen_ids = set()
+    for frame_info in stack[1:]:
+        local_vars = frame_info.frame.f_locals
+        if 'self' in local_vars:
+            caller_self = local_vars['self']
+            if isinstance(caller_self, BaseNode) and id(caller_self) not in seen_ids:
+                seen_ids.add(id(caller_self))
+                node_names.append(type(caller_self).__name__)
+    return node_names
+```
+
+For example, suppose we have a complex Flow for data science:
+
+```python
+class DataPrepBatchNode(BatchNode): 
+    def prep(self, shared): return []
+class ValidateDataNode(Node): pass
+class FeatureExtractionNode(Node): pass
+class TrainModelNode(Node): pass
+class EvaluateModelNode(Node): 
+    def prep(self, shared):
+        stack = get_node_call_stack()
+        print("Call stack:", stack)
+class ModelFlow(Flow): pass
+class DataScienceFlow(Flow):pass
+
+feature_node = FeatureExtractionNode()
+train_node = TrainModelNode()
+evaluate_node = EvaluateModelNode()
+feature_node >> train_node >> evaluate_node
+model_flow = ModelFlow(start=feature_node)
+data_prep_node = DataPrepBatchNode()
+validate_node = ValidateDataNode()
+data_prep_node >> validate_node >> model_flow
+data_science_flow = DataScienceFlow(start=data_prep_node)
+data_science_flow.run({})
+```
+
+The output would be: `Call stack: ['EvaluateModelNode', 'ModelFlow', 'DataScienceFlow']`
+
+
+
+
