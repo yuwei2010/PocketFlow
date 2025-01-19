@@ -36,6 +36,10 @@ A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](http
       ```
       Help me build a chatbot based on a directory of PDFs.
       ```
+ 
+      <div align="center">
+        <img src="./assets/claude_project.gif"/>
+      </div>
   </details>
 
   <details>
@@ -48,6 +52,8 @@ A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](http
         - Paste the docs link (https://github.com/miniLLMFlow/PocketFlow/tree/main/docs) to [Gitingest](https://gitingest.com/).
 
         - Then, paste the generated contents into your O1 prompt, and ask it to build LLM apps.
+     
+    
   </details>
 
 
