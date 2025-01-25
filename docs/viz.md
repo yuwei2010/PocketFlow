@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Visualization and Debugging"
+title: "Viz and Debug"
 parent: "Details"
 nav_order: 3
 ---

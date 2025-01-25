@@ -41,7 +41,7 @@ We model the LLM workflow as a **Nested Directed Graph**:
 
 - [LLM Wrapper](./llm.md)
 - [Tool](./tool.md)
-- [Visualization and Debugging](./viz.md)
+- [Viz and Debug](./viz.md)
 - Chunking
 
 > We do not provide built-in implementations. 
