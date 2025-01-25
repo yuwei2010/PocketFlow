@@ -54,8 +54,8 @@ def call_llm(prompt):
 ```
 
 > ⚠️ Caching conflicts with Node retries, as retries yield the same result.
-
-To address this, you could use cached results only if not retried.
+>
+> To address this, you could use cached results only if not retried.
 {: .warning }
 
 
