@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="pocketflow",
-    version="0.0.0",
+    version="0.0.1",
     packages=find_packages(),
     author="Zachary Huang",
     author_email="zh2408@columbia.edu",

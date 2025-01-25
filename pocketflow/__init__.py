@@ -27,10 +27,10 @@ class Node(BaseNode):
     def __init__(self,max_retries=1,wait=0): super().__init__();self.max_retries,self.wait=max_retries,wait
     def exec_fallback(self,prep_res,exc): raise exc
     def _exec(self,prep_res):
-        for i in range(self.max_retries):
+        for self.cur_retry in range(self.max_retries):
             try: return self.exec(prep_res)
             except Exception as e:
-                if i==self.max_retries-1: return self.exec_fallback(prep_res,e)
+                if self.cur_retry==self.max_retries-1: return self.exec_fallback(prep_res,e)
                 if self.wait>0: time.sleep(self.wait)
 
 class BatchNode(Node):
