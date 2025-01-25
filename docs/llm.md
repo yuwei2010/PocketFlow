@@ -54,7 +54,28 @@ def call_llm(prompt):
 ```
 
 > ⚠️ Caching conflicts with Node retries, as retries yield the same result.
+
+To address this, you could use cached results only if not retried.
 {: .warning }
+
+
+```python
+from functools import lru_cache
+
+@lru_cache(maxsize=1000)
+def cached_call(prompt):
+    pass
+
+def call_llm(prompt, use_cache):
+    if use_cache:
+        return cached_call(prompt)
+    # Call the underlying function directly
+    return cached_call.__wrapped__(prompt)
+
+class SummarizeNode(Node):
+    def exec(self, text):
+        return call_llm(f"Summarize: {text}", self.cur_retry==0)
+```
 
 
 - Enable logging:
