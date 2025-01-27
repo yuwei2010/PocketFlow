@@ -27,10 +27,10 @@ A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](http
     - Set project custom instructions. For example:
       ```
       1. check "tool.md" and "llm.md" for the required functions.
-      2. design the high-level (batch) flow and nodes.
+      2. design the high-level (batch) flow and nodes in artifact using mermaid
       3. design the shared memory structure: define its fields, data structures, and how they will be updated.
       Think out aloud for above first and ask users if your design makes sense.
-      4. Finally, implement. Start with simple, minimalistic codes without, for example, typing.
+      4. Finally, implement. Start with simple, minimalistic codes without, for example, typing. Write the codes in artifact.
       ```
     - Ask it to build LLM apps (Sonnet 3.5 strongly recommended)!
       ```
