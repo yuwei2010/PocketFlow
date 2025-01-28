@@ -9,6 +9,9 @@ nav_order: 6
 
 **Parallel** Nodes and Flows let you run multiple **Async** Nodes and Flows  **concurrently**—for example, summarizing multiple texts at once. This can improve performance by overlapping I/O and compute. 
 
+> Because of Python’s GIL, parallel nodes and flows can’t truly parallelize CPU-bound tasks (e.g., heavy numerical computations). However, they excel at overlapping I/O-bound work—like LLM calls, database queries, API requests, or file I/O.
+{: .warning }
+
 ## AsyncParallelBatchNode
 
 Like **AsyncBatchNode**, but run `exec_async()` in **parallel**:
@@ -45,10 +48,6 @@ parallel_flow = SummarizeMultipleFiles(start=sub_flow)
 await parallel_flow.run_async(shared)
 ```
 
-> Because of Python’s GIL, parallel nodes and flows can’t truly parallelize CPU-bound tasks (e.g., heavy numerical computations). 
->
-> However, they excel at overlapping I/O-bound work—like LLM calls, database queries, API requests, or file I/O.
-{: .warning }
 
 ## Best Practices
 
