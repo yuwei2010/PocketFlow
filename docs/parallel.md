@@ -45,6 +45,11 @@ parallel_flow = SummarizeMultipleFiles(start=sub_flow)
 await parallel_flow.run_async(shared)
 ```
 
+> Because of Python’s GIL, parallel nodes and flows can’t truly parallelize CPU-bound tasks (e.g., heavy numerical computations). 
+>
+> However, they excel at overlapping I/O-bound work—like LLM calls, database queries, API requests, or file I/O.
+{: .warning }
+
 ## Best Practices
 
 - **Ensure Tasks Are Independent**: If each item depends on the output of a previous item, **do not** parallelize.
