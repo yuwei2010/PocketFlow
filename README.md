@@ -3,7 +3,7 @@
 
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-[![Docs](https://img.shields.io/badge/docs-latest-blue)](https://minillmflow.github.io/PocketFlow/)
+[![Docs](https://img.shields.io/badge/docs-latest-blue)](https://the-pocket.github.io/PocketFlow/)
 
 <div align="center">
   <img src="./assets/minillmflow.jpg" width="400"/>
@@ -11,7 +11,7 @@
 
 <br>
 
-A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](https://minillmflow.github.io/PocketFlow/multi_agent.html))[Agents](https://minillmflow.github.io/PocketFlow/agent.html), [Task Decomposition](https://minillmflow.github.io/PocketFlow/decomp.html), [RAG](https://minillmflow.github.io/PocketFlow/rag.html), etc.
+A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](https://the-pocket.github.io/PocketFlow/multi_agent.html))[Agents](https://the-pocket.github.io/PocketFlow/agent.html), [Task Decomposition](https://the-pocket.github.io/PocketFlow/decomp.html), [RAG](https://the-pocket.github.io/PocketFlow/rag.html), etc.
 
 - Install via  ```pip install pocketflow```, or just copy the [source codes](pocketflow/__init__.py) (only 100 lines)
 
@@ -53,7 +53,7 @@ A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](http
 
     - For stronger coding capabilities, consider sending the [docs](docs) to more advanced models like O1.
   
-        - Paste the docs link (https://github.com/miniLLMFlow/PocketFlow/tree/main/docs) to [Gitingest](https://gitingest.com/).
+        - Paste the docs link (https://github.com/the-pocket/PocketFlow/tree/main/docs) to [Gitingest](https://gitingest.com/).
 
         - Then, paste the generated contents into your O1 prompt, and ask it to build LLM apps.
      
@@ -61,7 +61,7 @@ A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](http
   </details>
 
 
-Documentation: https://minillmflow.github.io/PocketFlow/
+Documentation: https://the-pocket.github.io/PocketFlow/
 
 ## Why Pocket Flow?
 
@@ -81,9 +81,9 @@ The [100 lines](pocketflow/__init__.py) capture what we see as the core abstract
 
 
 
-- To learn more details, please check out documentation: https://minillmflow.github.io/PocketFlow/
+- To learn more details, please check out documentation: https://the-pocket.github.io/PocketFlow/
 
-- Beginner Tutorial: [Text summarization for Paul Graham Essay + QA agent](https://colab.research.google.com/github/miniLLMFlow/PocketFlow/blob/main/cookbook/demo.ipynb)
+- Beginner Tutorial: [Text summarization for Paul Graham Essay + QA agent](https://colab.research.google.com/github/the-pocket/PocketFlow/blob/main/cookbook/demo.ipynb)
 
     - Have questions for this tutorial? Ask LLM assistants through [this prompt](https://chatgpt.com/share/676f16d2-7064-8000-b9d7-f6874346a6b5)
  
