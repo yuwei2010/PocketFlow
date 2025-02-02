@@ -100,6 +100,13 @@ A **Flow** can act like a Node, which enables powerful composition patterns. Thi
 2. Combine multiple smaller Flows into a larger Flow for reuse.  
 3. Node `params` will be a merging of **all** parents' `params`.
 
+> While **Flow** is also a **Node**, it won't run `exec()`.
+>
+> It will run `prep()` and `post()`, before and after calling the nodes within the flow.
+>
+> However, `post()` always receives None for exec_res, and should instead get the flow execution results from the shared store.
+{: .warning }
+
 ### Basic Flow Nesting
 
 Here's how to connect a flow to another node:
