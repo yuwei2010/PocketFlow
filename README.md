@@ -75,7 +75,7 @@ The ideal framework for LLMs should (1) **strip away low-level implementation de
 
 Pocket Flow is also a *learning resource*, as current frameworks abstract too much away.
 
-| Framework      | Computation Models | Communication Models | App-Specific Models                                    | Vendor-Specific Models                                   | LOC               | Package + Dependency Size         |
+| Framework      | Computation Models | Communication Models | App-Specific Models                                    | Vendor-Specific Models                                   | Lines Of Codes            | Package + Dependency Size         |
 |:--------------:|:------------------:|:--------------------:|:-------------------------------------------------------:|:--------------------------------------------------------:|:-----------------:|:---------------------------:|
 | LangChain      | Agent, Chain       | Message              | Many (QA, Summarization, etc.)                         | Many (OpenAI, Pinecone, etc.)                           | *405K*            | *+166MB*                    |
 | CrewAI         | Agent, Chain       | Message, Shared      | Many (FileReadTool, SerperDevTool, etc.)               | Many (OpenAI, Anthropic, Pinecone, etc.)                | *18K*             | *+173MB*                    |
