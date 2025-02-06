@@ -75,16 +75,16 @@ The ideal framework for LLMs should (1) **strip away low-level implementation de
 
 Pocket Flow is also a *learning resource*, as current frameworks abstract too much away.
 
-| Framework      | Computation Models      | Communication Models     | App-Specific Models                                     | Vendor-Specific Models                                    | LOC               | Package + Dependency Size         |
-|:--------------:|:-----------------------:|:------------------------:|:-----------------------------------------------------:|:---------------------------------------------------------:|:------------------------:|:---------------------------:|
-| LangChain      | Agent, Chain           | Message                  | Many (e.g., QA, Summarization, etc.)                    | Many (e.g., OpenAI, Pinecone, etc.)                      | *405K*            | *+166MB*                    |
-| LlamaIndex     | Agent, Graph           | Message, Shared          | Native for RAG (e.g., Summarization, KG Indexing, etc.) | Many [Optional] (e.g., OpenAI, Pinecone, etc.)           | *77K (core-only)* | *+189MB (core-only)*        |
-| CrewAI         | Agent, Chain           | Message, Shared          | Many (e.g., FileReadTool, SerperDevTool, etc.)          | Many (e.g., OpenAI, Anthropic, Pinecone, etc.)           | *18K*             | *+173MB*                    |
-| Haystack       | Agent, Graph           | Message, Shared          | Many (e.g., QA, Summarization, etc.)                    | Many (e.g., OpenAI, Anthropic, Pinecone, etc.)           | *31K*             | *+195MB*                    |
-| SmolAgent      | Agent                  | Message                  | Some (e.g., CodeAgent, VisitWebpageTool, etc.)          | Some (e.g., DuckDuckGo, Hugging Face, etc.)              | *8K*              | *+198MB*                    |
-| LangGraph      | Agent, Graph           | Message, Shared          | Some (e.g., Semantic Search, etc.)                      | Some (e.g., PostgresStore, SqliteSaver, etc.)            | *37K*             | *+51MB*                     |
-| AutoGen        | Agent                  | Message                  | Some (e.g., Tool Agent, Chat Agent, etc.)               | Many [Optional] (e.g., OpenAI, Pinecone, etc.)           | *7K (core-only)*  | *+26MB (core-only)*         |
-| **PocketFlow** | **Graph**                  | **Shared**                   | **None**                                                     | **None**                                                     | **100**            | **+56KB**                     |
+| Framework      | Computation Models | Communication Models | App-Specific Models                                    | Vendor-Specific Models                                   | LOC               | Package + Dep. Size         |
+|:--------------:|:------------------:|:--------------------:|:-------------------------------------------------------:|:--------------------------------------------------------:|:-----------------:|:---------------------------:|
+| LangChain      | Agent, Chain       | Message              | Many (QA, Summarization, etc.)                         | Many (OpenAI, Pinecone, etc.)                           | *405K*            | *+166MB*                    |
+| LlamaIndex     | Agent, Graph       | Message, Shared      | Native for RAG (Summarization, KG Indexing, etc.)      | Many [Optional] (OpenAI, Pinecone, etc.)                | *77K (core-only)* | *+189MB (core-only)*        |
+| CrewAI         | Agent, Chain       | Message, Shared      | Many (FileReadTool, SerperDevTool, etc.)               | Many (OpenAI, Anthropic, Pinecone, etc.)                | *18K*             | *+173MB*                    |
+| Haystack       | Agent, Graph       | Message, Shared      | Many (QA, Summarization, etc.)                         | Many (OpenAI, Anthropic, Pinecone, etc.)                | *31K*             | *+195MB*                    |
+| SmolAgent      | Agent              | Message              | Some (CodeAgent, VisitWebpageTool, etc.)               | Some (DuckDuckGo, Hugging Face, etc.)                   | *8K*              | *+198MB*                    |
+| LangGraph      | Agent, Graph       | Message, Shared      | Some (Semantic Search, etc.)                           | Some (PostgresStore, SqliteSaver, etc.)                 | *37K*             | *+51MB*                     |
+| AutoGen        | Agent              | Message              | Some (Tool Agent, Chat Agent, etc.)                    | Many [Optional] (OpenAI, Pinecone, etc.)                | *7K (core-only)*  | *+26MB (core-only)*         |
+| **PocketFlow** | **Graph**          | **Shared**           | **None**                                                | **None**                                                | **100**           | **+56KB**                   |
 
 
 ## How Does it Work?
