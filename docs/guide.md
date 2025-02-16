@@ -10,9 +10,30 @@ nav_order: 1
 {: .important }
 > Use LLMs to help with system design and implementation wherever possible.
 
+## Recommended LLM Project Structure:
+
+```
+my_project/
+├── utils/
+│   ├── __init__.py
+│   ├── call_llm.py
+│   └── search_web.py
+├── tests/
+│   ├── __init__.py
+│   ├── test_flow.py
+│   └── test_nodes.py
+├── main.py
+├── flow.py
+├── requirements.txt
+└── design.md
+```
+
+
+## System Design Steps:
+
 1. **Understand Requirements**  
-   - Clarify the app’s needs and workflow.  
-   - Determine data access (e.g., from files or databases).
+   - Clarify the app’s needs and requirements.  
+   - Determine data access (e.g., from files or databases). 
 
 2. **High-Level Flow Design**  
    - Represent the process as a *Nested Directed Graph*.  
