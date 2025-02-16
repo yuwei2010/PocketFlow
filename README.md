@@ -77,11 +77,11 @@ Pocket Flow is also a *learning resource*, as current frameworks abstract too mu
 
 | Framework      | Computation Models | Communication Models | App-Specific Models                                    | Vendor-Specific Models                                   | Lines Of Codes            | Package + Dependency Size         |
 |:--------------:|:------------------:|:--------------------:|:-------------------------------------------------------:|:--------------------------------------------------------:|:-----------------:|:---------------------------:|
-| LangChain      | Agent, Chain       | Message              | Many (QA, Summarization, etc.)                         | Many (OpenAI, Pinecone, etc.)                           | *405K*            | *+166MB*                    |
-| CrewAI         | Agent, Chain       | Message, Shared      | Many (FileReadTool, SerperDevTool, etc.)               | Many (OpenAI, Anthropic, Pinecone, etc.)                | *18K*             | *+173MB*                    |
-| SmolAgent      | Agent              | Message              | Some (CodeAgent, VisitWebpageTool, etc.)               | Some (DuckDuckGo, Hugging Face, etc.)                   | *8K*              | *+198MB*                    |
-| LangGraph      | Agent, Graph       | Message, Shared      | Some (Semantic Search, etc.)                           | Some (PostgresStore, SqliteSaver, etc.)                 | *37K*             | *+51MB*                     |
-| AutoGen        | Agent              | Message              | Some (Tool Agent, Chat Agent, etc.)                    | Many [Optional] (OpenAI, Pinecone, etc.)                | *7K (core-only)*  | *+26MB (core-only)*         |
+| LangChain      | Agent, Chain       | Message              | Many                       | Many                          | *405K*            | *+166MB*                    |
+| CrewAI         | Agent, Chain       | Message, Shared      | Many              | Many               | *18K*             | *+173MB*                    |
+| SmolAgent      | Agent              | Message              | Some              | Some              | *8K*              | *+198MB*                    |
+| LangGraph      | Agent, Graph       | Message, Shared      | Some                          | Some                  | *37K*             | *+51MB*                     |
+| AutoGen        | Agent              | Message              | Some                   | Many             | *7K*  | *+26MB*         |
 | **PocketFlow** | **Graph**          | **Shared**           | **None**                                                | **None**                                                | **100**           | **+56KB**                   |
 
 
