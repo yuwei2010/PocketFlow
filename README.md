@@ -102,8 +102,6 @@ From there, it’s easy to layer on more complex features.
 - To learn more details, please check out documentation: https://the-pocket.github.io/PocketFlow/
 
 - Beginner Tutorial: [Text summarization for Paul Graham Essay + QA agent](https://colab.research.google.com/github/the-pocket/PocketFlow/blob/main/cookbook/demo.ipynb)
-
-    - Have questions for this tutorial? Ask LLM assistants through [this prompt](https://chatgpt.com/share/676f16d2-7064-8000-b9d7-f6874346a6b5)
  
 - More coming soon ... Let us know you’d love to see!
 
