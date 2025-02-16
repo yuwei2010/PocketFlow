@@ -11,7 +11,7 @@
 
 <br>
 
-A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](https://the-pocket.github.io/PocketFlow/multi_agent.html))[Agents](https://the-pocket.github.io/PocketFlow/agent.html), [Task Decomposition](https://the-pocket.github.io/PocketFlow/decomp.html), [RAG](https://the-pocket.github.io/PocketFlow/rag.html), etc.
+A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](https://the-pocket.github.io/PocketFlow/multi_agent.html))[Agents](https://the-pocket.github.io/PocketFlow/agent.html), [Prompt Chaining](https://the-pocket.github.io/PocketFlow/decomp.html), [RAG](https://the-pocket.github.io/PocketFlow/rag.html), etc.
 
 - Install via  ```pip install pocketflow```, or just copy the [source codes](pocketflow/__init__.py) (only 100 lines)
 
@@ -90,13 +90,13 @@ Pocket Flow is also a *learning resource*, as current frameworks abstract too mu
 The [100 lines](pocketflow/__init__.py) capture what we see as the core abstraction of most LLM frameworks: **Nested Directed Graph** that breaks down tasks into multiple (LLM) steps, with branching and recursion for agent-like decision-making. 
 
 <div align="center">
-  <img src="./assets/abstraction.png" width="500"/>
+  <img src="./assets/abstraction.png" width="700"/>
 </div>
 
-From there, it’s easy to layer on more complex features.
+From there, it’s easy to layer on more complex features like ([Multi-](https://the-pocket.github.io/PocketFlow/multi_agent.html))[Agents](https://the-pocket.github.io/PocketFlow/agent.html), [Prompt Chaining](https://the-pocket.github.io/PocketFlow/decomp.html), [RAG](https://the-pocket.github.io/PocketFlow/rag.html), etc.
 
 <div align="center">
-  <img src="./assets/paradigm.png" width="500"/>
+  <img src="./assets/paradigm.png" width="700"/>
 </div>
 
 - To learn more details, please check out documentation: https://the-pocket.github.io/PocketFlow/
