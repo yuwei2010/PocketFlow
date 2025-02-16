@@ -26,7 +26,7 @@ A **Node** is the smallest building block. Each Node has 3 steps `prep->exec->po
    - Examples: *update DB, change states, log results*.
    - **Decide the next action** by returning a *string* (`action = "default"` if *None*).
 
-> **Why 3 steps?** To enforce the principle of *separation of concerns*. The data model are operated separately from the business logic on them.
+> **Why 3 steps?** To enforce the principle of *separation of concerns*. The data storage and data processing are operated separately.
 >
 > All steps are *optional*. E.g., you can only implement `prep` and `post` if you just need to process data.
 {: .note }

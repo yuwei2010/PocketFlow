@@ -101,6 +101,14 @@ A **Flow** can act like a Node, which enables powerful composition patterns. Thi
 2. Combine multiple smaller Flows into a larger Flow for reuse.  
 3. Node `params` will be a merging of **all** parents' `params`.
 
+### Flow's Node Methods
+
+A **Flow** is also a **Node**, so it will run `prep()` and `post()`. However:
+
+- It **won't** run `exec()`, as its main logic is to orchestrate its nodes.
+- `post()` always receives `None` for `exec_res` and should instead get the flow execution results from the shared store.
+
+
 ### Basic Flow Nesting
 
 Here's how to connect a flow to another node:
@@ -170,11 +178,4 @@ flowchart LR
         inventoryFlow --> shippingFlow
     end
 ```
-
-### Flow's Node Methods
-
-A **Flow** is also a **Node**, so it will run `prep()` and `post()`. However:
-
-- It **won't** run `exec()`, as its main logic is to orchestrate other nodes.
-- `post()` always receives None for exec_res and should instead get the flow execution results from the shared store.
 

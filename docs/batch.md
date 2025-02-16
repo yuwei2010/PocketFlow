@@ -7,10 +7,9 @@ nav_order: 4
 
 # Batch
 
-**Batch** makes it easier to handle large inputs in one Node or **rerun** a Flow multiple times. Handy for:
+**Batch** makes it easier to handle large inputs in one Node or **rerun** a Flow multiple times. Example use cases:
 - **Chunk-based** processing (e.g., splitting large texts).
-- **Multi-file** processing.
-- **Iterating** over lists of params (e.g., user queries, documents, URLs).
+- **Iterative** processing over lists of input items (e.g., user queries, files, URLs).
 
 ## 1. BatchNode
 
@@ -27,7 +26,7 @@ A **BatchNode** extends `Node` but changes `prep()` and `exec()`:
 class MapSummaries(BatchNode):
     def prep(self, shared):
         # Suppose we have a big file; chunk it
-        content = shared["data"].get("large_text.txt", "")
+        content = shared["data"]
         chunk_size = 10000
         chunks = [content[i:i+chunk_size] for i in range(0, len(content), chunk_size)]
         return chunks
@@ -39,7 +38,7 @@ class MapSummaries(BatchNode):
 
     def post(self, shared, prep_res, exec_res_list):
         combined = "\n".join(exec_res_list)
-        shared["summary"]["large_text.txt"] = combined
+        shared["summary"] = combined
         return "default"
 
 map_summaries = MapSummaries()
@@ -93,6 +92,7 @@ At each level, **BatchFlow** merges its own param dict with the parent’s. By t
 class FileBatchFlow(BatchFlow):
     def prep(self, shared):
         directory = self.params["directory"]
+        # e.g., files = ["file1.txt", "file2.txt", ...]
         files = [f for f in os.listdir(directory) if f.endswith(".txt")]
         return [{"filename": f} for f in files]
 
@@ -101,7 +101,7 @@ class DirectoryBatchFlow(BatchFlow):
         directories = [ "/path/to/dirA", "/path/to/dirB"]
         return [{"directory": d} for d in directories]
 
-
+# MapSummaries have params like {"directory": "/path/to/dirA", "filename": "file1.txt"}
 inner_flow = FileBatchFlow(start=MapSummaries())
 outer_flow = DirectoryBatchFlow(start=inner_flow)
 ```

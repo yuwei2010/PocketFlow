@@ -9,17 +9,22 @@ nav_order: 3
 
 Nodes and Flows **communicate** in two ways:
 
-1. **Shared Store** – A global data structure (often an in-mem dict) that all nodes can read and write. Every Node's `prep()` and `post()` methods receive the **same** `shared` store.  
-2. **Params** – Each node and Flow has a unique `params` dict assigned by the **parent Flow**, typically used as an identifier for tasks. It’s strongly recommended to keep parameter keys and values **immutable**.
+1. **Shared Store (recommended)** 
+
+   - A global data structure (often an in-mem dict) that all nodes can read and write by `prep()` and `post()`.  
+   - Great for data results, large content, or anything multiple nodes need.
+   - You shall design the data structure and populate it ahead.
+
+
+2. **Params (only for [Batch](./batch.md))** 
+   - Each node has a local, ephemeral `params` dict passed in by the **parent Flow**, used as an identifier for tasks. Parameter keys and values shall be **immutable**.
+   - Good for identifiers like filenames or numeric IDs, in Batch mode.
 
 If you know memory management, think of the **Shared Store** like a **heap** (shared by all function calls), and **Params** like a **stack** (assigned by the caller).
 
-
-> **Why not use other communication models like Message Passing?** 
+> **Best Practice:** Use `Shared Store` for almost all cases. It's flexible and easy to manage. It separates data storage from data processing, making the code more readable and easier to maintain. 
 >
-> At a *low-level* between nodes, *Message Passing* works fine for simple DAGs, but in nested or cyclic Flows it gets unwieldy. A shared store keeps things straightforward. 
->
-> That said, *high-level* multi-agent patterns like *Message Passing* and *Event-Driven Design* can still be layered on top via *Async Queues or Pub/Sub* in a shared store (see [Multi-Agents](./multi_agent.md)).
+> `Params` is more a syntax sugar for [Batch](./batch.md).
 {: .note }
 
 ---
@@ -39,24 +44,25 @@ It can also contain local file handlers, DB connections, or a combination for pe
 
 ```python
 class LoadData(Node):
-    def prep(self, shared):
-        # Suppose we read from disk or an API
-        shared["data"]["my_file.txt"] = "Some text content"
+    def post(self, shared, prep_res, exec_res):
+        # We write data to shared store
+        shared["data"] = "Some text content"
         return None
 
 class Summarize(Node):
     def prep(self, shared):
-        # We can read what LoadData wrote
-        content = shared["data"].get("my_file.txt", "")
-        return content
+        # We read data from shared store
+        return shared["data"]
 
     def exec(self, prep_res):
+        # Call LLM to summarize
         prompt = f"Summarize: {prep_res}"
         summary = call_llm(prompt)
         return summary
 
     def post(self, shared, prep_res, exec_res):
-        shared["summary"]["my_file.txt"] = exec_res
+        # We write summary to shared store
+        shared["summary"] = exec_res
         return "default"
 
 load_data = LoadData()
@@ -70,20 +76,21 @@ flow.run(shared)
 
 Here:
 - `LoadData` writes to `shared["data"]`.
-- `Summarize` reads from the same location.  
-No special data-passing—just the same `shared` object.
+- `Summarize` reads from `shared["data"]`, summarizes, and writes to `shared["summary"]`.
 
 ---
 
 ## 2. Params
 
 **Params** let you store *per-Node* or *per-Flow* config that doesn't need to live in the shared store. They are:
-- **Immutable** during a Node’s run cycle (i.e., they don’t change mid-`prep`, `exec`, `post`).
+- **Immutable** during a Node’s run cycle (i.e., they don’t change mid-`prep->exec->post`).
 - **Set** via `set_params()`.
 - **Cleared** and updated each time a parent Flow calls it.
 
 
-> Only set the uppermost Flow params because others will be overwritten by the parent Flow. If you need to set child node params, see [Batch](./batch.md).
+> Only set the uppermost Flow params because others will be overwritten by the parent Flow. 
+> 
+> If you need to set child node params, see [Batch](./batch.md).
 {: .warning }
 
 Typically, **Params** are identifiers (e.g., file name, page number). Use them to fetch the task you assigned or write to a specific part of the shared store.
@@ -123,19 +130,3 @@ flow.run(shared)  # The node summarizes doc2, not doc1
 ```
 
 ---
-
-## 3. Shared Store vs. Params
-
-Think of the **Shared Store** like a heap and **Params** like a stack.
-
-- **Shared Store**:
-  - Public, global.
-  - You can design and populate ahead, e.g., for the input to process.
-  - Great for data results, large content, or anything multiple nodes need.
-  - Keep it tidy—structure it carefully (like a mini schema).
-
-- **Params**:
-  - Local, ephemeral.
-  - Passed in by parent Flows. You should only set it for the uppermost flow.
-  - Perfect for small values like filenames or numeric IDs.
-  - Do **not** persist across different nodes and are reset.
