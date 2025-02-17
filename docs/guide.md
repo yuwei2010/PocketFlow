@@ -94,30 +94,38 @@ def test_call_llm():
     assert call_llm(prompt) is not None
 ```
 
-## System Design Steps:
+## System Design Steps
 
-1. **Understand Requirements**  
-   - Clarify application objectives.
-   - Determine and implement the necessary utility functions (e.g., for LLMs, web searches, file handling).
+1. **Project Requirements**  
+   - Identify the project's core entities.  
+   - Define each functional requirement and map out how these entities interact step by step.
 
-2. **High-Level Flow Design**  
-   - Design the flow on how to use the utility functions to achieve the objectives.
-   - Identify possible branching for *Node Action* and data-heavy steps for *Batch*.
+2. **Utility Functions**  
+   - Determine the low-level utility functions you’ll need (e.g., for LLM calls, web searches, file handling).  
+   - Implement these functions and write basic tests to confirm they work correctly.
 
-3. **Shared Memory Structure**  
-   - For small apps, in-memory data is sufficient.  
-   - For larger or persistent needs, use a database.  
-   - Define data schemas or structures and how states are stored or updated.
+3. **Flow Design**  
+   - Develop a high-level process flow that meets the project’s requirements.  
+   - Specify which utility functions are used at each step.  
+   - Identify possible decision points for *Node Actions* and data-intensive operations for *Batch* tasks.  
+   - Illustrate the flow with a Mermaid diagram.
 
-4. **Implementation**  
-   - Start with minimal, straightforward code (e.g., avoid heavy type checking initially).
-   - For each node, specify data access (for `prep` and `post`) and data processing (for `exec`).
+4. **Shared Memory Structure**  
+   - Decide how to store and update state, whether in memory (for smaller applications) or a database (for larger or persistent needs).  
+   - Define data schemas or models that detail how information is stored, accessed, and updated.
 
-5. **Optimization**  
-   - *Prompt Engineering:* Provide clear instructions and examples to reduce ambiguity.  
-   - *Task Decomposition:* Break complex tasks into manageable steps.
+5. **Implementation**  
+   - Start coding with a simple, direct approach (avoid over-engineering at first).  
+   - For each node in your flow:
+     - **prep**: Determine how data is accessed or retrieved.  
+     - **exec**: Outline the actual processing or logic needed.  
+     - **post**: Handle any final updates or data persistence tasks.
 
-6. **Reliability**  
-   - *Structured Output:* Verify outputs match the desired format, and increase `max_retries`.
-   - *Test Cases:* Create tests for parts of the flow with clear inputs/outputs.  
-   - *Self-Evaluation:* For unclear areas, add another Node for LLMs to review the results.
+6. **Optimization**  
+   - **Prompt Engineering**: Use clear and specific instructions with illustrative examples to reduce ambiguity.  
+   - **Task Decomposition**: Break large, complex tasks into manageable, logical steps.
+
+7. **Reliability**  
+   - **Structured Output**: Verify outputs conform to the required format. Consider increasing `max_retries` if needed.  
+   - **Test Cases**: Develop clear, reproducible tests for each part of the flow.  
+   - **Self-Evaluation**: Introduce an additional Node (powered by LLMs) to review outputs when the results are uncertain.
