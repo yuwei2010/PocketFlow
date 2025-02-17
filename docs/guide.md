@@ -110,7 +110,7 @@ def test_call_llm():
    - Identify possible decision points for *Node Actions* and data-intensive operations for *Batch* tasks.  
    - Illustrate the flow with a Mermaid diagram.
 
-4. **Shared Memory Structure**  
+4. **Data Structure**  
    - Decide how to store and update state, whether in memory (for smaller applications) or a database (for larger or persistent needs).  
    - Define data schemas or models that detail how information is stored, accessed, and updated.
 
