@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "LLM Wrapper"
-parent: "Details"
+parent: "Utility"
 nav_order: 1
 ---
 

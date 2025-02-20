@@ -44,9 +44,7 @@ We model the LLM workflow as a **Nested Directed Graph**:
 - [Viz and Debug](./viz.md)
 - Chunking
 
-> We do not provide built-in implementations. 
->
-> Example implementations are provided as reference.
+> We do not provide built-in utility functions. Example implementations are provided as reference.
 {: .warning }
 
 

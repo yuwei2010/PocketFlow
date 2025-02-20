@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Details"
+title: "Utility"
 nav_order: 3
 has_children: true
 ---

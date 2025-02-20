@@ -105,8 +105,11 @@ def test_call_llm():
    - Implement these functions and write basic tests to confirm they work correctly.
 
 3. **Flow Design**  
-   - Develop a high-level process flow that meets the project’s requirements.  
-   - Specify which utility functions are used at each step.  
+   - Develop a high-level process flow of nodes that meets the project’s requirements.  
+   - For each node in your flow:
+     - **prep**: Determine how data is accessed or retrieved.  
+     - **exec**: Outline the utility function to be used. Ideally, one utility function per node. Highlight the `utility function` name.
+     - **post**: Handle any final updates or data persistence tasks.
    - Identify possible decision points for *Node Actions* and data-intensive operations for *Batch* tasks.  
    - Illustrate the flow with a Mermaid diagram.
 
@@ -115,11 +118,8 @@ def test_call_llm():
    - Define data schemas or models that detail how information is stored, accessed, and updated.
 
 5. **Implementation**  
+   - For each node, implement the `prep`, `exec`, and `post` functions based on the flow design.
    - Start coding with a simple, direct approach (avoid over-engineering at first).  
-   - For each node in your flow:
-     - **prep**: Determine how data is accessed or retrieved.  
-     - **exec**: Outline the actual processing or logic needed.  
-     - **post**: Handle any final updates or data persistence tasks.
 
 6. **Optimization**  
    - **Prompt Engineering**: Use clear and specific instructions with illustrative examples to reduce ambiguity.  
