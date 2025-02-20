@@ -37,7 +37,7 @@ We model the LLM workflow as a **Nested Directed Graph**:
 - [(Advanced) Async](./async.md)
 - [(Advanced) Parallel](./parallel.md)
 
-## Low-Level Details
+## Utility Functions
 
 - [LLM Wrapper](./llm.md)
 - [Tool](./tool.md)
@@ -48,7 +48,7 @@ We model the LLM workflow as a **Nested Directed Graph**:
 {: .warning }
 
 
-## High-Level Paradigm
+## Design Paradigm
 
 - [Structured Output](./structure.md)
 - [Task Decomposition](./decomp.md)
