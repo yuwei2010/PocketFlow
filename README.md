@@ -21,7 +21,9 @@ A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](http
 
 ## Why Pocket Flow?
 
-Pocket Flow may seem too minimal for humans. But here’s the **crucial point**: Pocket Flow is designed for
+At first glance, Pocket Flow seems too minimal and low-level for humans. 
+
+However, it’s for a **new development paradigm**: Pocket Flow is designed for
 
 <p align="center"><strong><em><u>LLM Agents (e.g., Cursor AI) to build LLM Agents!</u></em></strong></p>
 <p align="center"><strong><em><u>LLM Agents (e.g., Cursor AI) to build LLM Agents!</u></em></strong></p> 
