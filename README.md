@@ -21,31 +21,21 @@ A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](http
 
 ## Why Pocket Flow? Let LLM Agents Build LLM Agents for You!
 
-Pocket Flow is designed to be **the framework used by LLM Agents**:
+Pocket Flow is the framework **used by LLM Agents (e.g., Cursor AI) to build LLM Agents** for you.
 
-- 🧑 Human users only need to specify LLM project requirements.
 
-- 🤖 LLM Agents build the LLM project for you, using *Pocket Flow*.
+To set up:
 
-- Demo Cookbook can be found [here](cookbook)
+  - **[Cursor Rules](https://docs.cursor.com/context/rules-for-ai)**: Copy [.cursorrules](assets/.cursorrules) into your project’s root.
 
-To build LLM projects with LLM Agents (Cursor, ChatGPT, Claude, etc.):
-
-  - **[Cursor Rules](https://docs.cursor.com/context/rules-for-ai)**: Copy and paste the [.cursorrules](assets/.cursorrules) (created from [docs](docs)) into the root of your project.
-
-  - **[ChatGPT Project](https://help.openai.com/en/articles/10169521-using-projects-in-chatgpt)**: Create a project and upload the [docs](docs) to project knowledge.
+  - **ChatGPT & Claude**: Create a project ([ChatGPT](https://help.openai.com/en/articles/10169521-using-projects-in-chatgpt) and[Claude](https://www.anthropic.com/news/projects)) and upload the [docs](docs) folder to project knowledge.
   
-  - **[Claude Project](https://www.anthropic.com/news/projects)**: Create a project and upload the [docs](docs) to project knowledge.
-    
-  - **GPT Store**: Try this [GPT assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-mini-llm-flow-assistant). However, it uses older models and is not very good at coding.
-
-
 
 ## What Is Pocket Flow? Graph + Shared Store
 
 The [100 lines](pocketflow/__init__.py) capture what we believe to be the core abstraction of LLM projects:
- - **Computation Model**: A *graph* that breaks down tasks into multiple nodes, with *branching, looping, and nesting*.
- - **Communication Model**: A *shared store* that all graph nodes can read and write to.
+ - **Computation**: A *graph* that breaks down tasks into nodes, with *branching, looping,  and nesting*.
+ - **Communication**: A *shared store* that all nodes can read and write to.
 
 <br>
 <div align="center">
