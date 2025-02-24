@@ -19,10 +19,21 @@ A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](http
 
 - Documentation: https://the-pocket.github.io/PocketFlow/
 
-## Why Pocket Flow? Let LLM Agents Build LLM Agents for You!
+## Why Pocket Flow?
 
-Pocket Flow is the framework **used by LLM Agents (e.g., Cursor AI) to build LLM Agents** for you.
+Pocket Flow may seem too minimal for humans. But here’s the **crucial point**: Pocket Flow is designed for
 
+<p align="center"><strong><em><u>LLM Agents (e.g., Cursor AI) to build LLM Agents! 
+LLM Agents (e.g., Cursor AI) to build LLM Agents!
+LLM Agents (e.g., Cursor AI) to build LLM Agents!</u></em></strong></p>
+
+LLM Agents understand and use a minimal framework very well!
+
+<div align="center">
+<a href="https://youtu.be/0Pv5HVoVBYE" target="_blank">
+  <img src="./assets/youtube.png" width="500" alt="IMAGE ALT TEXT" style="cursor: pointer;">
+</a>
+</div>
 
 To set up:
 
@@ -31,7 +42,7 @@ To set up:
   - **ChatGPT & Claude**: Create a project ([ChatGPT](https://help.openai.com/en/articles/10169521-using-projects-in-chatgpt) and[Claude](https://www.anthropic.com/news/projects)) and upload the [docs](docs) folder to project knowledge.
   
 
-## What Is Pocket Flow? Graph + Shared Store
+## What Is Pocket Flow?
 
 The [100 lines](pocketflow/__init__.py) capture what we believe to be the core abstraction of LLM projects:
  - **Computation**: A *graph* that breaks down tasks into nodes, with *branching, looping,  and nesting*.
