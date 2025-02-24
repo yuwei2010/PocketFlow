@@ -21,26 +21,22 @@ A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](http
 
 ## Why Pocket Flow?
 
+Pocket Flow lets you **build LLM apps just by chatting with agents like Cursor AI**—no need for low-level coding.
+
 <div align="center">
-<a href="https://youtu.be/0Pv5HVoVBYE" target="_blank">
-  <img src="./assets/youtube.png" width="500" alt="IMAGE ALT TEXT" style="cursor: pointer;">
-</a>
+  <a href="https://youtu.be/0Pv5HVoVBYE" target="_blank">
+    <img src="./assets/youtube.png" width="500" alt="IMAGE ALT TEXT" style="cursor: pointer;">
+  </a>
 </div>
 
-Pocket Flow is part of a **New Development Paradigm**: *Let LLM Agents (e.g., Cursor AI) build LLM Agents for humans!*
 
-Now, if you use Cursor AI...
+Pocket Flow is *designed for LLM Agents*.  If you’re using Cursor AI...
 
-- **🫠 with frameworks like LangChain**: You will run into errors (e.g., using deprecated packages, hallucinating new functions, or failing to express new agentic designs).
+1. **🫠 With frameworks like LangChain**: Cursor AI often relies on deprecated packages or “hallucinates” functions.
+2. **😐 with No Framework**: Cursor AI writes functional but not maintainable for real projects.
+3. **🥰 with Pocket Flow**: (1) Minimal and expressive—easy for Cursor AI. (2) Nodes and flows keep the codes **modular and maintainable**. (3) The shared store **separates data from compute logic**.
 
-- **😐 without any framework**: Ironically, this often works better. However, the code it produces is ad hoc and **NOT** modular or maintainable for large projects.
-
-- **🥰 with Pocket Flow**: Pocket Flow is minimal and expressive, so it initially works similarly to the "no framework" approach. But as a project grows, Pocket Flow:
-    - Nodes and flows enforce **a modular design**.
-    - A shared store enforces **the separation of data and compute logic**.
-
-So, the 100-line limit compels Cursor AI to follow good design principles without sacrificing expressiveness, which is essential for real-world projects.
-
+With just 100 lines, Pocket Flow ensures Cursor AI follows good coding practices without sacrificing flexibility.
 
 ---
 
