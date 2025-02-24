@@ -23,9 +23,9 @@ A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](http
 
 Pocket Flow may seem too minimal for humans. But here’s the **crucial point**: Pocket Flow is designed for
 
-<p align="center"><strong><em><u>LLM Agents (e.g., Cursor AI) to build LLM Agents! 
-LLM Agents (e.g., Cursor AI) to build LLM Agents!
-LLM Agents (e.g., Cursor AI) to build LLM Agents!</u></em></strong></p>
+<p align="center"><strong><em><u>LLM Agents (e.g., Cursor AI) to build LLM Agents!</u></em></strong></p>
+<p align="center"><strong><em><u>LLM Agents (e.g., Cursor AI) to build LLM Agents!</u></em></strong></p> 
+<p align="center"><strong><em><u>LLM Agents (e.g., Cursor AI) to build LLM Agents!</u></em></strong></p>
 
 LLM Agents understand and use a minimal framework very well!
 
