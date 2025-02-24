@@ -21,21 +21,28 @@ A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](http
 
 ## Why Pocket Flow?
 
-At first glance, Pocket Flow seems too minimal and low-level for humans. 
-
-However, it’s for a **new development paradigm**: Pocket Flow is designed for
-
-<p align="center"><strong><em><u>LLM Agents (e.g., Cursor AI) to build LLM Agents!</u></em></strong></p>
-<p align="center"><strong><em><u>LLM Agents (e.g., Cursor AI) to build LLM Agents!</u></em></strong></p> 
-<p align="center"><strong><em><u>LLM Agents (e.g., Cursor AI) to build LLM Agents!</u></em></strong></p>
-
-LLM Agents understand and use a minimal framework very well!
-
 <div align="center">
 <a href="https://youtu.be/0Pv5HVoVBYE" target="_blank">
   <img src="./assets/youtube.png" width="500" alt="IMAGE ALT TEXT" style="cursor: pointer;">
 </a>
 </div>
+
+Pocket Flow is part of a **New Development Paradigm**: *Let LLM Agents (e.g., Cursor AI) build LLM Agents for humans!*
+
+Now, if you use Cursor AI...
+
+- **🫠 with frameworks like LangChain**: You will run into errors (e.g., using deprecated packages, hallucinating new functions, or failing to express new agentic designs).
+
+- **😐 without any framework**: Ironically, this often works better. However, the code it produces is ad hoc and **NOT** modular or maintainable for large projects.
+
+- **🥰 with Pocket Flow**: Pocket Flow is minimal and expressive, so it initially works similarly to the "no framework" approach. But as a project grows, Pocket Flow:
+    - Nodes and flows enforce **a modular design**.
+    - A shared store enforces **the separation of data and compute logic**.
+
+So, the 100-line limit compels Cursor AI to follow good design principles without sacrificing expressiveness, which is essential for real-world projects.
+
+
+---
 
 To set up:
 
