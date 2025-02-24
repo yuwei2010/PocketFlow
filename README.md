@@ -44,7 +44,7 @@ To build LLM projects with LLM Agents (Cursor, ChatGPT, Claude, etc.):
 ## What Is Pocket Flow? Graph + Shared Store
 
 The [100 lines](pocketflow/__init__.py) capture what we believe to be the core abstraction of LLM projects:
- - **Computation Model**: A *graph* that breaks down tasks into multiple nodes, with *branching, recursion, and nesting*.
+ - **Computation Model**: A *graph* that breaks down tasks into multiple nodes, with *branching, looping, and nesting*.
  - **Communication Model**: A *shared store* that all graph nodes can read and write to.
 
 <br>
