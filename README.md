@@ -11,7 +11,7 @@
 
 <br>
 
-A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](https://the-pocket.github.io/PocketFlow/multi_agent.html))[Agents](https://the-pocket.github.io/PocketFlow/agent.html), [Prompt Chaining](https://the-pocket.github.io/PocketFlow/decomp.html), [RAG](https://the-pocket.github.io/PocketFlow/rag.html), etc.
+A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](https://the-pocket.github.io/PocketFlow/multi_agent.html))[Agents](https://the-pocket.github.io/PocketFlow/agent.html), [Workflow](https://the-pocket.github.io/PocketFlow/decomp.html), [RAG](https://the-pocket.github.io/PocketFlow/rag.html), etc.
 
 - Install via  ```pip install pocketflow```, or just copy the [source code](pocketflow/__init__.py) (only 100 lines).
 
@@ -27,9 +27,11 @@ Pocket Flow is designed to be **the framework used by LLM Agents**:
 
 - 🤖 LLM Agents build the LLM project for you, using *Pocket Flow*.
 
+- Demo Cookbook can be found [here](cookbook)
+
 To build LLM projects with LLM Agents (Cursor, ChatGPT, Claude, etc.):
 
-  - **[Cursor Rules](https://docs.cursor.com/context/rules-for-ai)**: Copy and paste the [.cursorrules](https://github.com/The-Pocket/PocketFlow/blob/main/assets/.cursorrules) (created from [docs](docs)) into the root of your project.
+  - **[Cursor Rules](https://docs.cursor.com/context/rules-for-ai)**: Copy and paste the [.cursorrules](assets/.cursorrules) (created from [docs](docs)) into the root of your project.
 
   - **[ChatGPT Project](https://help.openai.com/en/articles/10169521-using-projects-in-chatgpt)**: Create a project and upload the [docs](docs) to project knowledge.
   
@@ -51,7 +53,7 @@ The [100 lines](pocketflow/__init__.py) capture what we believe to be the core a
 </div>
 <br>
 
-From there, it’s easy to implement popular design patterns like ([Multi-](https://the-pocket.github.io/PocketFlow/multi_agent.html))[Agents](https://the-pocket.github.io/PocketFlow/agent.html), [Prompt Chaining](https://the-pocket.github.io/PocketFlow/decomp.html), [RAG](https://the-pocket.github.io/PocketFlow/rag.html), etc.
+From there, it’s easy to implement popular design patterns like ([Multi-](https://the-pocket.github.io/PocketFlow/multi_agent.html))[Agents](https://the-pocket.github.io/PocketFlow/agent.html), [Workflow](https://the-pocket.github.io/PocketFlow/decomp.html), [RAG](https://the-pocket.github.io/PocketFlow/rag.html), etc.
 
 <br>
 <div align="center">
