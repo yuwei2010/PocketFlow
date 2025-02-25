@@ -48,7 +48,7 @@ We model the LLM workflow as a **Nested Directed Graph**:
 {: .warning }
 
 
-## Design Paradigm
+## Design Patterns
 
 - [Structured Output](./structure.md)
 - [Task Decomposition](./decomp.md)

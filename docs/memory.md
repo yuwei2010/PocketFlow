@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Chat Memory"
-parent: "Paradigm"
+parent: "Design"
 nav_order: 5
 ---
 

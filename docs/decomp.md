@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Task Decomposition"
-parent: "Paradigm"
+parent: "Design"
 nav_order: 2
 ---
 

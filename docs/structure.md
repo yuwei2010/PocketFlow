@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Structured Output"
-parent: "Paradigm"
+parent: "Design"
 nav_order: 1
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "(Advanced) Multi-Agents"
-parent: "Paradigm"
+parent: "Design"
 nav_order: 7
 ---
 

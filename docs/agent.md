@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Agent"
-parent: "Paradigm"
+parent: "Design"
 nav_order: 6
 ---
 
