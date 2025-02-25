@@ -21,10 +21,12 @@ A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](http
 
 ## Why only 100 lines?
 
-Pocket Flow lets you **build LLM apps simply by chatting with LLM agents** (like Cursor AI)—no need for *any* manual coding.
+Pocket Flow is for a new development paradigmn: 
 
-1. 📝 You **describe your requirements** in conversation or a design doc.
-2. 🤖 The agent **writes and refines** your code automatically.
+> **Build LLM apps Simply by Chatting with LLM agents** —no need for *any* manual coding!
+
+1. 📝 You **describe your app requirements** in conversation or a design doc.
+2. 🤖 The agent (like Cursor AI) **writes and refines** your code automatically.
 3. 💬 You **stay in the loop** just by chatting—*never* by writing boilerplate code or wrestling with complex libraries.
 
 <br>
