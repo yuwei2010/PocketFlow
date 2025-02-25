@@ -30,13 +30,13 @@ Pocket Flow lets you **build LLM apps just by chatting with agents like Cursor A
 </div>
 
 
-Pocket Flow is *designed for LLM Agents*.  If you’re using Cursor AI...
+Pocket Flow is *built for LLM Agents to build LLM apps*—especially if you’re using Cursor AI:
 
-1. **🫠 With LangChain-like frameworks**: Cursor AI gets overwhelmed by complex abstractions and calls deprecated functions by mistake.
-2. **😐 With No Framework**: Cursor AI writes functional but lacks modularity and maintainability.
-3. **🥰 With Pocket Flow**: (1) Minimal and expressive—easy for Cursor AI. (2) Nodes and flows keep the codes **modular and maintainable**. (3) The shared store **separates data from compute logic**.
+1. **🫠 LangChain-like frameworks** overwhelm Cursor AI with complex abstractions and deprecated functions.
+2. **😐 Without No Framework,** Cursor AI writes functional code but lacks modularity and maintainability.
+3. **🥰 With Pocket Flow**: (1) Minimal and expressive—easy for Cursor AI. (2) Nodes and Flows keep the codes **modular and maintainable**. (3) Shared store **separates data from compute logic**.
 
-With just 100 lines, Pocket Flow ensures Cursor AI follows good coding practices without sacrificing flexibility.
+With just 100 lines, Pocket Flow ensures Cursor AI follows solid coding practices without sacrificing flexibility.
 
 ---
 
