@@ -19,24 +19,30 @@ A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](http
 
 - Documentation: https://the-pocket.github.io/PocketFlow/
 
-## Why Pocket Flow?
+## Why only 100 lines?
 
-Pocket Flow lets you **build LLM apps just by chatting with agents like Cursor AI**—no need for low-level coding.
+Pocket Flow lets you **build LLM apps simply by chatting with LLM agents** (like Cursor AI)—no need for *any* manual coding.
 
+1. 📝 You **describe your requirements** in conversation or a design doc.
+2. 🤖 The agent **writes and refines** your code automatically.
+3. 💬 You **stay in the loop** just by chatting—*never* by writing boilerplate code or wrestling with complex libraries.
+
+<br>
 <div align="center">
   <a href="https://youtu.be/0Pv5HVoVBYE" target="_blank">
     <img src="./assets/youtube.png" width="500" alt="IMAGE ALT TEXT" style="cursor: pointer;">
   </a>
 </div>
+<br>
 
 
-Pocket Flow is *built for LLM Agents to build LLM apps*—especially if you’re using Cursor AI:
+Compared to other frameworks, Pocket Flow is **purpose-built for LLM Agents**:
 
-1. **🫠 LangChain-like frameworks** overwhelm Cursor AI with complex abstractions and deprecated functions.
-2. **😐 Without No Framework,** Cursor AI writes functional code but lacks modularity and maintainability.
-3. **🥰 With Pocket Flow**: (1) Minimal and expressive—easy for Cursor AI. (2) Nodes and Flows keep the codes **modular and maintainable**. (3) Shared store **separates data from compute logic**.
+1. **🫠 LangChain-like frameworks** overwhelm Cursor AI with complex and outdated abstractions.
+2. **😐  Ironically, **No Framework** is better as it yields  *functional* code—but it ends up ad hoc, one-shot, and hard to maintaina.
+3. **🥰 With Pocket Flow**: (1) Minimal and expressive—easy for Cursor AI. (2) **Nodes and Flows** keep everything *modular and organized*. (3) A **Shared Store** decouples your data structure from compute logic.
 
-With just 100 lines, Pocket Flow ensures Cursor AI follows solid coding practices without sacrificing flexibility.
+In short, the **100 lines** ensures Cursor AI follows solid coding practices without sacrificing flexibility.
 
 ---
 
@@ -47,7 +53,7 @@ To set up:
   - **ChatGPT & Claude**: Create a project ([ChatGPT](https://help.openai.com/en/articles/10169521-using-projects-in-chatgpt) and[Claude](https://www.anthropic.com/news/projects)) and upload the [docs](docs) folder to project knowledge.
   
 
-## What Is Pocket Flow?
+## How the 100 lines work?
 
 The [100 lines](pocketflow/__init__.py) capture what we believe to be the core abstraction of LLM projects:
  - **Computation**: A *graph* that breaks down tasks into nodes, with *branching, looping,  and nesting*.
