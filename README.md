@@ -6,7 +6,7 @@
 [![Docs](https://img.shields.io/badge/docs-latest-blue)](https://the-pocket.github.io/PocketFlow/)
 
 <div align="center">
-  <img src="./assets/minillmflow.jpg" width="400"/>
+  <img src="./assets/meme.jpg" width="400"/>
 </div>
 
 <br>
@@ -67,7 +67,7 @@ From there, it’s easy to implement popular design patterns like ([Multi-](http
 
 <br>
 <div align="center">
-  <img src="./assets/paradigm.png" width="600"/>
+  <img src="./assets/design.png" width="600"/>
 </div>
 <br>
 

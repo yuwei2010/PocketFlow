@@ -51,7 +51,7 @@ We model the LLM workflow as a **Nested Directed Graph**:
 ## Design Patterns
 
 - [Structured Output](./structure.md)
-- [Task Decomposition](./decomp.md)
+- [Workflow](./decomp.md)
 - [Map Reduce](./mapreduce.md)
 - [RAG](./rag.md)
 - [Chat Memory](./memory.md)
