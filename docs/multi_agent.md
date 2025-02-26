@@ -11,7 +11,7 @@ Multiple [Agents](./flow.md) can work together by handling subtasks and communic
 Communication between agents is typically implemented using message queues in shared storage.
 
 > Most of time, you don't need Multi-Agents. Start with a simple solution first.
-{: .best_practice }
+{: .best-practice }
 
 ### Example Agent Communication: Message Queue
 

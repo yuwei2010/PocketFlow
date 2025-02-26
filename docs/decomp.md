@@ -14,7 +14,7 @@ Many real-world tasks are too complex for one LLM call. The solution is to decom
 > - You don't want to make each task **too granular**, because then *the LLM call doesn't have enough context* and results are *not consistent across nodes*.
 > 
 > You usually need multiple *iterations* to find the *sweet spot*. If the task has too many *edge cases*, consider using [Agents](./agent.md).
-{: .best_practice }
+{: .best-practice }
 
 ### Example: Article Writing
 

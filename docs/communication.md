@@ -23,7 +23,7 @@ Nodes and Flows **communicate** in two ways:
 If you know memory management, think of the **Shared Store** like a **heap** (shared by all function calls), and **Params** like a **stack** (assigned by the caller).
 
 > Use `Shared Store` for almost all cases. It's flexible and easy to manage. It separates *Data Schema* from *Compute Logic*, making the code easier to maintain. `Params` is more a syntax sugar for [Batch](./batch.md).
-{: .best_practice }
+{: .best-practice }
 
 ---
 
