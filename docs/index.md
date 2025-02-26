@@ -19,7 +19,7 @@ We model the LLM workflow as a **Nested Directed Graph**:
 
 
 <div align="center">
-  <img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/minillmflow.jpg?raw=true" width="400"/>
+  <img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/meme.jpg?raw=true" width="400"/>
 </div>
 
 
