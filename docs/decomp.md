@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Task Decomposition"
+title: "Workflow"
 parent: "Design"
 nav_order: 2
 ---
@@ -9,15 +9,12 @@ nav_order: 2
 
 Many real-world tasks are too complex for one LLM call. The solution is to decompose them into a [chain](./flow.md) of multiple Nodes.
 
-### Best Practice
 
-You don't want to make each task **too coarse**, because it may be *too complex for one LLM call*.
-
-You don't want to make each task **too granular**, because then *the LLM call doesn't have enough context* and results are *not consistent across nodes*.
-
-You usually need multiple *iterations* to find the *sweet spot*.
-
-If the task has too many *edge cases*, consider using [Agents](./agent.md).
+> - You don't want to make each task **too coarse**, because it may be *too complex for one LLM call*.
+> - You don't want to make each task **too granular**, because then *the LLM call doesn't have enough context* and results are *not consistent across nodes*.
+> 
+> You usually need multiple *iterations* to find the *sweet spot*. If the task has too many *edge cases*, consider using [Agents](./agent.md).
+{: .best_practice }
 
 ### Example: Article Writing
 

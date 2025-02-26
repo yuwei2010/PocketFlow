@@ -29,3 +29,7 @@ callouts:
   note:
     title: Note
     color: blue
+  best_practice:
+    title: Best Practice
+    color: green
+
