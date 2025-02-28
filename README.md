@@ -42,7 +42,7 @@ In short, the **100 lines** ensures LLM Agents follows *solid coding practices* 
 
   - **For quick questions**: Use  the [GPT assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-pocket-flow-assistant) (note: it uses older models not ideal for coding).
   - **For one-time LLM task**:  Create a [ChatGPT](https://help.openai.com/en/articles/10169521-using-projects-in-chatgpt) or [Claude](https://www.anthropic.com/news/projects) project; upload the [docs](docs) to project knowledge.
-  - **For LLM App development**: Use [Cursor AI](https://www.cursor.com/). Copy [.cursorrules](assets/.cursorrules) nto your project root as **[Cursor Rules](https://docs.cursor.com/context/rules-for-ai)**.
+  - **For LLM App development**: Use [Cursor AI](https://www.cursor.com/). Copy [.cursorrules](assets/.cursorrules) to your project root as **[Cursor Rules](https://docs.cursor.com/context/rules-for-ai)**.
 
 
 ## What can Pocket Flow build?
