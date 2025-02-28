@@ -30,14 +30,16 @@ For a new development paradigmn: **Build LLM Apps by Chatting with LLM agents, N
 <br>
 
 
-**Compared to other frameworks**, Pocket Flow is *purpose-built for LLM Agents* (e.g., Cursor AI):
+**How does Pocket Flow compare to other frameworks?** Pocket Flow is *purpose-built for LLM Agents* (e.g., Cursor AI):
 
 1. **🫠 LangChain-like frameworks** overwhelm Cursor AI with *complex and outdated* abstractions.
 2. 😐  **Without a framework**, code is *ad hoc*—suitable only for immediate tasks, *not modular or maintainable*.
 3. **🥰 With Pocket Flow**: (1) Minimal and expressive—easy for Cursor AI to pick up. (2) *Nodes and Flows* keep everything *modular*. (3) A *Shared Store* decouples your data structure from compute logic.
 
-In short, the **100 lines** ensures LLM Agents follows *solid coding practices* without sacrificing *flexibility*. To start:
-  
+In short, the **100 lines** ensures LLM Agents follows *solid coding practices* without sacrificing *flexibility*. 
+
+**How to set up Pocket Flow for LLM agents?**
+
   - **For quick questions**: Use  the [GPT assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-pocket-flow-assistant) (note: it uses older models not ideal for coding).
   - **For one-time LLM task**:  Create a [ChatGPT](https://help.openai.com/en/articles/10169521-using-projects-in-chatgpt) or [Claude](https://www.anthropic.com/news/projects) project; upload the [docs](docs) to project knowledge.
   - **For LLM App development**: Use [Cursor AI](https://www.cursor.com/). Copy [.cursorrules](assets/.cursorrules) nto your project root as **[Cursor Rules](https://docs.cursor.com/context/rules-for-ai)**.
