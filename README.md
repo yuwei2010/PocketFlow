@@ -1,15 +1,12 @@
-<h1 align="center">Pocket Flow - LLM Framework in 100 Lines</h1>
 
+<div align="center">
+  <img src="./assets/title.png" width="600"/>
+</div>
 
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 [![Docs](https://img.shields.io/badge/docs-latest-blue)](https://the-pocket.github.io/PocketFlow/)
 
-<div align="center">
-  <img src="./assets/meme.jpg" width="400"/>
-</div>
-
-<br>
 
 A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](https://the-pocket.github.io/PocketFlow/multi_agent.html))[Agents](https://the-pocket.github.io/PocketFlow/agent.html), [Workflow](https://the-pocket.github.io/PocketFlow/decomp.html), [RAG](https://the-pocket.github.io/PocketFlow/rag.html), etc.
 
