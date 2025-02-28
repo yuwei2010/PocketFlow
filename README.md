@@ -14,20 +14,15 @@
 A [100-line](pocketflow/__init__.py) minimalist LLM framework for ([Multi-](https://the-pocket.github.io/PocketFlow/multi_agent.html))[Agents](https://the-pocket.github.io/PocketFlow/agent.html), [Workflow](https://the-pocket.github.io/PocketFlow/decomp.html), [RAG](https://the-pocket.github.io/PocketFlow/rag.html), etc.
 
 - Install via  ```pip install pocketflow```, or just copy the [source code](pocketflow/__init__.py) (only 100 lines).
+- To learn more, check out the [documentation](https://the-pocket.github.io/PocketFlow/). For an in-depth design dive, read the [essay](https://github.com/The-Pocket/.github/blob/main/profile/pocketflow.md).
 
-- If the 100 lines are too terse, check out a [friendlier intro](https://chatgpt.com/share/678564bd-1ba4-8000-98e4-a6ffe363c1b8).
+## Why Pocket Flow?
 
-- Documentation: https://the-pocket.github.io/PocketFlow/
+For a new development paradigmn: **Build LLM Apps by Chatting with LLM agents, Not Coding**!
 
-## Why only 100 lines?
+- 🧑 Human **describe LLM App requirements** in a design doc.
+- 🤖 The agent (like Cursor AI) **implements App** your code automatically.
 
-Pocket Flow is for a new development paradigmn: 
-
-> **Build LLM apps Simply by Chatting with LLM agents** —no need for *any* manual coding!
-
-1. 📝 You **describe your app requirements** in conversation or a design doc.
-2. 🤖 The agent (like Cursor AI) **writes and refines** your code automatically.
-3. 💬 You **stay in the loop** just by chatting—*never* by writing boilerplate code or wrestling with complex libraries.
 
 <br>
 <div align="center">
@@ -38,22 +33,23 @@ Pocket Flow is for a new development paradigmn:
 <br>
 
 
-**Compared to other frameworks**, Pocket Flow is *purpose-built for LLM Agents*:
+**Compared to other frameworks**, Pocket Flow is *purpose-built for LLM Agents* (e.g., Cursor AI):
 
-1. **🫠 LangChain-like frameworks** overwhelm Cursor AI with complex and outdated abstractions.
-2. 😐  Ironically, **No Framework** is better as it yields  *functional* code—but it ends up ad hoc, one-shot, and hard to maintaina.
-3. **🥰 With Pocket Flow**: (1) Minimal and expressive—easy for Cursor AI. (2) **Nodes and Flows** keep everything *modular and organized*. (3) A **Shared Store** decouples your data structure from compute logic.
+1. **🫠 LangChain-like frameworks** overwhelm Cursor AI with *complex and outdated* abstractions.
+2. 😐  **Without a framework**, code is *ad hoc*—suitable only for immediate tasks, *not modular or maintainable*.
+3. **🥰 With Pocket Flow**: (1) Minimal and expressive—easy for Cursor AI to pick up. (2) *Nodes and Flows* keep everything *modular*. (3) A *Shared Store* decouples your data structure from compute logic.
 
-In short, the **100 lines** ensures Cursor AI follows solid coding practices without sacrificing flexibility. To start:
-
-  - **[Cursor Rules](https://docs.cursor.com/context/rules-for-ai)**: Copy [.cursorrules](assets/.cursorrules) into your project’s root.
-
-  - **ChatGPT & Claude**: Create a project ([ChatGPT](https://help.openai.com/en/articles/10169521-using-projects-in-chatgpt) and[Claude](https://www.anthropic.com/news/projects)) and upload the [docs](docs) folder to project knowledge.
+In short, the **100 lines** ensures LLM Agents follows *solid coding practices* without sacrificing *flexibility*. To start:
   
+  - **For quick questions**: Use  the [GPT assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-pocket-flow-assistant) (note: it uses older models not ideal for coding).
+  - **For one-time LLM task**:  Create a [ChatGPT](https://help.openai.com/en/articles/10169521-using-projects-in-chatgpt) or [Claude](https://www.anthropic.com/news/projects) project; upload the [docs](docs) to project knowledge.
+  - **For LLM App development**: Use [Cursor AI](https://www.cursor.com/). Copy [.cursorrules](assets/.cursorrules) nto your project root as **[Cursor Rules](https://docs.cursor.com/context/rules-for-ai)**.
 
-## How the 100 lines work?
 
-The [100 lines](pocketflow/__init__.py) capture what we believe to be the core abstraction of LLM projects:
+
+## How does Pocket Flow work?
+
+The [100 lines](pocketflow/__init__.py) capture what we believe to be the core abstraction of LLM frameworks:
  - **Computation**: A *graph* that breaks down tasks into nodes, with *branching, looping,  and nesting*.
  - **Communication**: A *shared store* that all nodes can read and write to.
 
@@ -71,6 +67,18 @@ From there, it’s easy to implement popular design patterns like ([Multi-](http
 </div>
 <br>
 
-- To learn more about how it works, check out the [documentation](https://the-pocket.github.io/PocketFlow/)
-- For an in-depth dive into the design, check out the [essay](https://github.com/The-Pocket/.github/blob/main/profile/pocketflow.md)
 
+## What can Pocket Flow build?
+
+Below are examples LLM Apps and tutorials
+
+<div align="center">
+  
+| App Name  | Difficulty    |  Learning Objectives  |
+| :------------- | :------------- | :--------------------- |
+| [Youtube ELI5 Summarizer](https://github.com/The-Pocket/Tutorial-Youtube-Made-Simple)  | ★☆☆  *Beginner*   | [Map Reduce](https://the-pocket.github.io/PocketFlow/mapreduce.html) | 
+| [AI Paul Graham](https://github.com/The-Pocket/Tutorial-YC-Partner)  | ★☆☆  *Beginner*   | [RAG](https://the-pocket.github.io/PocketFlow/rag.html) | 
+
+</div>
+
+- Do you want to create your own Python project? Start with  [this template](https://github.com/The-Pocket/PocketFlow-Template-Python)
