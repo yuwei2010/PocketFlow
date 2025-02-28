@@ -83,6 +83,9 @@ summary:
         return structured_result
 ```
 
+> Besides using `assert` statements, another popular way to validate schemas is [Pydantic](https://github.com/pydantic/pydantic)
+{: .note }
+
 ### Why YAML instead of JSON?
 
 Current LLMs struggle with escaping. YAML is easier with strings since they don't always need quotes.

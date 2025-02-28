@@ -12,6 +12,14 @@ nav_order: 6
 > Because of Python’s GIL, parallel nodes and flows can’t truly parallelize CPU-bound tasks (e.g., heavy numerical computations). However, they excel at overlapping I/O-bound work—like LLM calls, database queries, API requests, or file I/O.
 {: .warning }
 
+> - **Ensure Tasks Are Independent**: If each item depends on the output of a previous item, **do not** parallelize.
+> 
+> - **Beware of Rate Limits**: Parallel calls can **quickly** trigger rate limits on LLM services. You may need a **throttling** mechanism (e.g., semaphores or sleep intervals).
+> 
+> - **Consider Single-Node Batch APIs**: Some LLMs offer a **batch inference** API where you can send multiple prompts in a single call. This is more complex to implement but can be more efficient than launching many parallel requests and mitigates rate limits.
+{: .best-practice }
+
+
 ## AsyncParallelBatchNode
 
 Like **AsyncBatchNode**, but run `exec_async()` in **parallel**:
@@ -47,12 +55,3 @@ sub_flow = AsyncFlow(start=LoadAndSummarizeFile())
 parallel_flow = SummarizeMultipleFiles(start=sub_flow)
 await parallel_flow.run_async(shared)
 ```
-
-
-## Best Practices
-
-- **Ensure Tasks Are Independent**: If each item depends on the output of a previous item, **do not** parallelize.
-
-- **Beware of Rate Limits**: Parallel calls can **quickly** trigger rate limits on LLM services. You may need a **throttling** mechanism (e.g., semaphores or sleep intervals).
-
-- **Consider Single-Node Batch APIs**: Some LLMs offer a **batch inference** API where you can send multiple prompts in a single call. This is more complex to implement but can be more efficient than launching many parallel requests and mitigates rate limits.

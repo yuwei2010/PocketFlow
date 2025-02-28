@@ -52,7 +52,6 @@ nav_order: 1
    - **Test Cases**: Develop clear, reproducible tests for each part of the flow.  
    - **Self-Evaluation**: Introduce an additional node (powered by LLMs) to review outputs when results are uncertain.
 
-
 ## Example LLM Project File Structure
 
 ```
@@ -63,38 +62,29 @@ my_project/
 │   ├── __init__.py
 │   ├── call_llm.py
 │   └── search_web.py
-├── tests/
-│   ├── __init__.py
-│   ├── test_flow.py
-│   └── test_nodes.py
 ├── requirements.txt
 └── docs/
     └── design.md
 ```
 
-
 ### `docs/`
 
-Store the documentation of the project.
-
-It should include a `design.md` file, which describes 
+Holds all project documentation. Include a `design.md` file covering:
 - Project requirements
-- Required utility functions
-- High-level flow with a mermaid diagram
+- Utility functions
+- High-level flow (with a Mermaid diagram)
 - Shared memory data structure
-- For each node, discuss
-  - Node purpose and design (e.g., should it be a batch or async node?)
-  - How the data shall be read (for `prep`) and written (for `post`)
-  - How the data shall be processed (for `exec`)
+- Node designs:
+  - Purpose and design (e.g., batch or async)
+  - Data read (prep) and write (post)
+  - Data processing (exec)
 
 ### `utils/`
 
-Houses functions for external API calls (e.g., LLMs, web searches, etc.). 
-
-It’s recommended to dedicate one Python file per API call, with names like `call_llm.py` or `search_web.py`. Each file should include:
+Houses functions for external API calls (e.g., LLMs, web searches, etc.). It’s recommended to dedicate one Python file per API call, with names like `call_llm.py` or `search_web.py`. Each file should include:
 
 - The function to call the API
-- A main function to run that API call
+- A main function to run that API call for testing
 
 For instance, here’s a simplified `call_llm.py` example:
 
@@ -109,12 +99,9 @@ def call_llm(prompt):
     )
     return response.choices[0].message.content
 
-def main():
+if __name__ == "__main__":
     prompt = "Hello, how are you?"
     print(call_llm(prompt))
-
-if __name__ == "__main__":
-    main()
 ```
 
 ### `main.py`
@@ -124,17 +111,3 @@ Serves as the project’s entry point.
 ### `flow.py`
 
 Implements the application’s flow, starting with node followed by the flow structure.
-
-
-### `tests/`
-
-Optionally contains all tests. Use `pytest` for testing flows, nodes, and utility functions.
-For example, `test_call_llm.py` might look like:
-
-```python
-from utils.call_llm import call_llm
-
-def test_call_llm():
-    prompt = "Hello, how are you?"
-    assert call_llm(prompt) is not None
-```

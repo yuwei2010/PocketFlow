@@ -7,7 +7,13 @@ nav_order: 3
 
 # Map Reduce
 
-Process large inputs by splitting them into chunks using [BatchNode](./batch.md), then combining results.
+MapReduce is a design pattern suitable when you have either:
+- Large input data (e.g., multiple files to process), or
+- Large output data (e.g., multiple forms to fill)
+
+and there is a logical way to break the task into smaller, ideally independent parts. 
+You first break down the task using [BatchNode](./batch.md) in the map phase, followed by aggregation in the reduce phase.
+
 
 ### Example: Document Summarization
 

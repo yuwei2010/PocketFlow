@@ -11,7 +11,6 @@ Similar to LLM wrappers, we **don't** provide built-in tools. Here, we recommend
 
 ---
 
-
 ## 1. Embedding Calls
 
 ```python

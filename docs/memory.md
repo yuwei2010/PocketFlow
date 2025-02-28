@@ -47,57 +47,79 @@ We can:
 2. Use [vector search](./tool.md) to retrieve relevant exchanges beyond the last 4.
 
 ```python
-class ChatWithMemory(Node):
+################################
+# Node A: Retrieve user input & relevant messages
+################################
+class ChatRetrieve(Node):
     def prep(self, s):
-        # Initialize shared dict
         s.setdefault("history", [])
         s.setdefault("memory_index", None)
-        
         user_input = input("You: ")
-        
-        # Retrieve relevant past if we have enough history and an index
+        return user_input
+
+    def exec(self, user_input):
+        emb = get_embedding(user_input)
         relevant = []
-        if len(s["history"]) > 8 and s["memory_index"]:
-            idx, _ = search_index(s["memory_index"], get_embedding(user_input), top_k=2)
-            relevant = [s["history"][i[0]] for i in idx]
+        if len(shared["history"]) > 8 and shared["memory_index"]:
+            idx, _ = search_index(shared["memory_index"], emb, top_k=2)
+            relevant = [shared["history"][i[0]] for i in idx]
+        return (user_input, relevant)
 
-        return {"user_input": user_input, "recent": s["history"][-8:], "relevant": relevant}
+    def post(self, s, p, r):
+        user_input, relevant = r
+        s["user_input"] = user_input
+        s["relevant"] = relevant
+        return "continue"
 
-    def exec(self, c):
-        messages = [{"role": "system", "content": "You are a helpful assistant."}]
-        # Include relevant history if any
-        if c["relevant"]:
-            messages.append({"role": "system", "content": f"Relevant: {c['relevant']}"})
-        # Add recent history and the current user input
-        messages += c["recent"] + [{"role": "user", "content": c["user_input"]}]
-        return call_llm(messages)
+################################
+# Node B: Call LLM, update history + index
+################################
+class ChatReply(Node):
+    def prep(self, s):
+        user_input = s["user_input"]
+        recent = s["history"][-8:]
+        relevant = s.get("relevant", [])
+        return user_input, recent, relevant
+
+    def exec(self, inputs):
+        user_input, recent, relevant = inputs
+        msgs = [{"role":"system","content":"You are a helpful assistant."}]
+        if relevant:
+            msgs.append({"role":"system","content":f"Relevant: {relevant}"})
+        msgs.extend(recent)
+        msgs.append({"role":"user","content":user_input})
+        ans = call_llm(msgs)
+        return ans
 
     def post(self, s, pre, ans):
-        # Update chat history
-        s["history"] += [
-            {"role": "user", "content": pre["user_input"]},
-            {"role": "assistant", "content": ans}
-        ]
+        user_input, _, _ = pre
+        s["history"].append({"role":"user","content":user_input})
+        s["history"].append({"role":"assistant","content":ans})
         
-        # When first reaching 8 messages, create index
+        # Manage memory index
         if len(s["history"]) == 8:
-            embeddings = []
+            embs = []
             for i in range(0, 8, 2):
-                e = s["history"][i]["content"] + " " + s["history"][i+1]["content"]
-                embeddings.append(get_embedding(e))
-            s["memory_index"] = create_index(embeddings)
-            
-        # Embed older exchanges once we exceed 8 messages
+                text = s["history"][i]["content"] + " " + s["history"][i+1]["content"]
+                embs.append(get_embedding(text))
+            s["memory_index"] = create_index(embs)
         elif len(s["history"]) > 8:
-            pair = s["history"][-10:-8]
-            embedding = get_embedding(pair[0]["content"] + " " + pair[1]["content"])
-            s["memory_index"].add(np.array([embedding]).astype('float32'))
-        
+            text = s["history"][-2]["content"] + " " + s["history"][-1]["content"]
+            new_emb = np.array([get_embedding(text)]).astype('float32')
+            s["memory_index"].add(new_emb)
+
         print(f"Assistant: {ans}")
         return "continue"
 
-chat = ChatWithMemory()
-chat - "continue" >> chat
-flow = Flow(start=chat)
-flow.run({})
+################################
+# Flow wiring
+################################
+retrieve = ChatRetrieve()
+reply = ChatReply()
+retrieve - "continue" >> reply
+reply - "continue" >> retrieve
+
+flow = Flow(start=retrieve)
+shared = {}
+flow.run(shared)
 ```
