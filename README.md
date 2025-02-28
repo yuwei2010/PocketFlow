@@ -43,6 +43,21 @@ In short, the **100 lines** ensures LLM Agents follows *solid coding practices* 
   - **For LLM App development**: Use [Cursor AI](https://www.cursor.com/). Copy [.cursorrules](assets/.cursorrules) nto your project root as **[Cursor Rules](https://docs.cursor.com/context/rules-for-ai)**.
 
 
+## What can Pocket Flow build?
+
+Below are examples LLM Apps and tutorials
+
+<div align="center">
+  
+| App Name  | Difficulty    |  Learning Objectives  |
+| :------------- | :------------- | :--------------------- |
+| [Youtube ELI5 Summarizer](https://github.com/The-Pocket/Tutorial-Youtube-Made-Simple)  | ★☆☆  *Beginner*   | [Map Reduce](https://the-pocket.github.io/PocketFlow/mapreduce.html) | 
+| [AI Paul Graham](https://github.com/The-Pocket/Tutorial-YC-Partner)  | ★☆☆  *Beginner*   | [RAG](https://the-pocket.github.io/PocketFlow/rag.html) | 
+
+</div>
+
+- Do you want to create your own Python project? Start with  [this template](https://github.com/The-Pocket/PocketFlow-Template-Python)
+  
 
 ## How does Pocket Flow work?
 
@@ -65,17 +80,3 @@ From there, it’s easy to implement popular design patterns like ([Multi-](http
 <br>
 
 
-## What can Pocket Flow build?
-
-Below are examples LLM Apps and tutorials
-
-<div align="center">
-  
-| App Name  | Difficulty    |  Learning Objectives  |
-| :------------- | :------------- | :--------------------- |
-| [Youtube ELI5 Summarizer](https://github.com/The-Pocket/Tutorial-Youtube-Made-Simple)  | ★☆☆  *Beginner*   | [Map Reduce](https://the-pocket.github.io/PocketFlow/mapreduce.html) | 
-| [AI Paul Graham](https://github.com/The-Pocket/Tutorial-YC-Partner)  | ★☆☆  *Beginner*   | [RAG](https://the-pocket.github.io/PocketFlow/rag.html) | 
-
-</div>
-
-- Do you want to create your own Python project? Start with  [this template](https://github.com/The-Pocket/PocketFlow-Template-Python)
