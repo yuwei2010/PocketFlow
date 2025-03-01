@@ -11,13 +11,18 @@ nav_order: 1
 
 1. **Project Requirements**: Clearify the requirements for your project.
 
-2. **Utility Functions**: Although the system acts as the main decision-maker, it depends on utility functions for routine tasks and real-world interactions:
-   - `call_llm` (of course)
-   - Routine tasks (e.g., chunking text, formatting strings)  
-   - External inputs (e.g., searching the web, reading emails)  
-   - Output generation (e.g., producing reports, sending emails)
+2. **Utility Functions**: Although the system acts as the main decision-maker, it depends on utility functions for routine tasks and real-world interactions.
 
-   - > **If a human can’t solve it, an LLM can’t automate it!** Before building an LLM system, thoroughly understand the problem by manually solving example inputs to develop intuition.
+   - Example Utility Functions:
+      - `call_llm` (of course)
+      - Routine tasks (e.g., chunking text, formatting strings)  
+      - External inputs (e.g., searching the web, reading emails)  
+      - Output generation (e.g., producing reports, sending emails)
+   
+   - Example Non-Utility Functions:
+      - LLM tasks (e.g., text summarization). These tasks are the core the system and operate on top of the utility functions.
+
+   - > **Start small!** Only include a few most important ones to begin with without too many features.
      {: .best-practice }
 
 3. **Flow Design (Compute)**: Create a high-level design for the application’s flow.
@@ -25,6 +30,8 @@ nav_order: 1
    - For each node, specify:
      - **Purpose**: The high-level compute logic
      - `exec`: The specific utility function to call (ideally, one function per node)
+   - > **If a human can’t solve it, an LLM can’t automate it!** Before building an LLM system, thoroughly understand the problem by manually solving example inputs to develop intuition.
+     {: .best-practice }
 
 4. **Data Schema (Data)**: Plan how data will be stored and updated.
    - For simple apps, use an in-memory dictionary.
@@ -69,7 +76,7 @@ my_project/
     └── design.md
 ```
 
-- **`docs/design.md`**: Contains project documentation and the details of each step above.
+- **`docs/design.md`**: Contains project documentation for each step above. This should be high-level and no-code.
 - **`utils/`**: Contains all utility functions.
   - It’s recommended to dedicate one Python file to each API call, for example `call_llm.py` or `search_web.py`.
   - Each file should also include a `main()` function to try that API call
