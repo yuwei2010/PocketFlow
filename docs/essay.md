@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "essay"
+title: "Essay"
 parent: "Apps"
 nav_order: 2
 ---
