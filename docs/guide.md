@@ -7,50 +7,52 @@ nav_order: 1
 
 # LLM System Design Guidance
 
-
 ## System Design Steps
 
-1. **Project Requirements**: Understand what the project is for and what are required.
+1. **Project Requirements**: Clearify the requirements for your project.
 
-2. **Utility Functions**: LLM Systems are like the brain
+2. **Utility Functions**: Although the system acts as the main decision-maker, it depends on utility functions for routine tasks and real-world interactions:
+   - `call_llm` (of course)
+   - Routine tasks (e.g., chunking text, formatting strings)  
+   - External inputs (e.g., searching the web, reading emails)  
+   - Output generation (e.g., producing reports, sending emails)
 
+> **If a human can’t solve it, an LLM can’t automate it!** Before building an LLM system, thoroughly understand the problem by manually solving example inputs to develop intuition.
+{: .best-practice }
 
-   - Determine the utility functions on which this project depends (e.g., for LLM calls, web searches, file handling).  
-   - Implement these functions and write basic tests to confirm they work correctly.
-
-> After this step, don't jump straight into building an LLM system.  
->
-> First, make sure you clearly understand the problem by manually solving it using some example inputs.  
->
-> It's always easier to first build a solid intuition about the problem and its solution, then focus on automating the process.  
-{: .warning }
-
-3. **Flow Design**  
-   - Build a high-level design of the flow of nodes (for example, using a Mermaid diagram) to automate the solution.  
-   - For each node in your flow, specify:  
-     - **prep**: How data is accessed or retrieved.  
-     - **exec**: The specific utility function to use (ideally one function per node).  
-     - **post**: How data is updated or persisted.  
+3. **Flow Design (Compute)**: Create a high-level design for the application’s flow.
    - Identify potential design patterns, such as Batch, Agent, or RAG.
+   - For each node, specify:
+     - **Purpose**: The high-level compute logic
+     - `exec`: The specific utility function to call (ideally, one function per node)
 
-4. **Data Structure**  
-   - Decide how you will store and update state (in memory for smaller applications or in a database for larger, persistent needs).  
-   - If it isn’t straightforward, define data schemas or models detailing how information is stored, accessed, and updated.  
-   - As you finalize your data structure, you may need to refine your flow design.
+4. **Data Schema (Data)**: Plan how data will be stored and updated.
+   - For simple apps, use an in-memory dictionary.
+   - For more complex apps or when persistence is required, use a database.
+   - For each node, specify:
+     - `prep`: How the node reads data
+     - `post`: How the node writes data
 
-5. **Implementation**  
-   - For each node, implement the **prep**, **exec**, and **post** functions based on the flow design.  
-   - Start coding with a simple, direct approach (avoid over-engineering at first).  
+5. **Implementation**: Implement nodes and flows based on the design.
+   - Start with a simple, direct approach (avoid over-engineering and full-scale type checking or testing). Let it fail fast to identify weaknesses.
    - Add logging throughout the code to facilitate debugging.
 
-6. **Optimization**  
-   - **Prompt Engineering**: Use clear, specific instructions with illustrative examples to reduce ambiguity.  
-   - **Task Decomposition**: Break large or complex tasks into manageable, logical steps.
+6. **Optimization**:
+   - **Use Intuition**: For a quick initial evaluation, human intuition is often a good start.
+   - **Redesign Flow (Back to Step 3)**: Consider breaking down tasks further, introducing agentic decisions, or better managing input contexts.
+   - If your flow design is already solid, move on to micro-optimizations:
+     - **Prompt Engineering**: Use clear, specific instructions with examples to reduce ambiguity.
+     - **In-Context Learning**: Provide robust examples for tasks that are difficult to specify with instructions alone.
+
+> **You’ll likely iterate repeatedly!** Expect to repeat Steps 3–6 hundreds of times.
+>
+> <div align="center"><img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/success.png?raw=true" width="400"/></div>
+{: .best-practice }
 
 7. **Reliability**  
-   - **Structured Output**: Ensure outputs conform to the required format. Consider increasing `max_retries` if needed.  
-   - **Test Cases**: Develop clear, reproducible tests for each part of the flow.  
-   - **Self-Evaluation**: Introduce an additional node (powered by LLMs) to review outputs when results are uncertain.
+   - **Node Retries**: Add checks in the node `exec` to ensure outputs meet requirements, and consider increasing `max_retries` and `wait` times.
+   - **Logging and Visualization**: Maintain logs of all attempts and visualize node results for easier debugging.
+   - **Self-Evaluation**: Add a separate node (powered by an LLM) to review outputs when results are uncertain.
 
 ## Example LLM Project File Structure
 
@@ -67,47 +69,9 @@ my_project/
     └── design.md
 ```
 
-### `docs/`
-
-Holds all project documentation. Include a `design.md` file covering:
-- Project requirements
-- Utility functions
-- High-level flow (with a Mermaid diagram)
-- Shared memory data structure
-- Node designs:
-  - Purpose and design (e.g., batch or async)
-  - Data read (prep) and write (post)
-  - Data processing (exec)
-
-### `utils/`
-
-Houses functions for external API calls (e.g., LLMs, web searches, etc.). It’s recommended to dedicate one Python file per API call, with names like `call_llm.py` or `search_web.py`. Each file should include:
-
-- The function to call the API
-- A main function to run that API call for testing
-
-For instance, here’s a simplified `call_llm.py` example:
-
-```python
-from openai import OpenAI
-
-def call_llm(prompt):
-    client = OpenAI(api_key="YOUR_API_KEY_HERE")
-    response = client.chat.completions.create(
-        model="gpt-4o",
-        messages=[{"role": "user", "content": prompt}]
-    )
-    return response.choices[0].message.content
-
-if __name__ == "__main__":
-    prompt = "Hello, how are you?"
-    print(call_llm(prompt))
-```
-
-### `main.py`
-
-Serves as the project’s entry point.
-
-### `flow.py`
-
-Implements the application’s flow, starting with node followed by the flow structure.
+- **`docs/design.md`**: Contains project documentation and the details of each step above.
+- **`utils/`**: Contains all utility functions.
+  - It’s recommended to dedicate one Python file to each API call, for example `call_llm.py` or `search_web.py`.
+  - Each file should also include a `main()` function to try that API call
+- **`flow.py`**: Implements the application’s flow, starting with node definitions followed by the overall structure.
+- **`main.py`**: Serves as the project’s entry point.
