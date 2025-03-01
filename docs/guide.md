@@ -17,7 +17,7 @@ nav_order: 1
    - External inputs (e.g., searching the web, reading emails)  
    - Output generation (e.g., producing reports, sending emails)
 
-> **If a human can’t solve it, an LLM can’t automate it!** Before building an LLM system, thoroughly understand the problem by manually solving example inputs to develop intuition.
+   - > **If a human can’t solve it, an LLM can’t automate it!** Before building an LLM system, thoroughly understand the problem by manually solving example inputs to develop intuition.
 {: .best-practice }
 
 3. **Flow Design (Compute)**: Create a high-level design for the application’s flow.
@@ -44,10 +44,10 @@ nav_order: 1
      - **Prompt Engineering**: Use clear, specific instructions with examples to reduce ambiguity.
      - **In-Context Learning**: Provide robust examples for tasks that are difficult to specify with instructions alone.
 
-> **You’ll likely iterate repeatedly!** Expect to repeat Steps 3–6 hundreds of times.
->
-> <div align="center"><img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/success.png?raw=true" width="400"/></div>
-{: .best-practice }
+   - > **You’ll likely iterate repeatedly!** Expect to repeat Steps 3–6 hundreds of times.
+     >
+     > <div align="center"><img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/success.png?raw=true" width="400"/></div>
+     {: .best-practice }
 
 7. **Reliability**  
    - **Node Retries**: Add checks in the node `exec` to ensure outputs meet requirements, and consider increasing `max_retries` and `wait` times.
