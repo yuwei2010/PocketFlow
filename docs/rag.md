@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "RAG"
-parent: "Design" 
+parent: "Design Pattern"
 nav_order: 4
 ---
 

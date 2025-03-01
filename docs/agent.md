@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Agent"
-parent: "Design"
+parent: "Design Pattern"
 nav_order: 6
 ---
 

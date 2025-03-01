@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Structured Output"
-parent: "Design"
+parent: "Design Pattern"
 nav_order: 1
 ---
 

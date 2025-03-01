@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Workflow"
-parent: "Design"
+parent: "Design Pattern"
 nav_order: 2
 ---
 

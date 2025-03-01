@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Map Reduce"
-parent: "Design"
+parent: "Design Pattern"
 nav_order: 3
 ---
 

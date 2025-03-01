@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Tool"
-parent: "Utility"
+parent: "Utility Function"
 nav_order: 2
 ---
 

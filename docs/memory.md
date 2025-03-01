@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Chat Memory"
-parent: "Design"
+parent: "Design Pattern"
 nav_order: 5
 ---
 

@@ -10,11 +10,11 @@ nav_order: 1
 
 ## System Design Steps
 
-1. **Project Requirements**  
-   - Identify the project's core entities, and provide a step-by-step user story.  
-   - Define a list of both functional and non-functional requirements.
+1. **Project Requirements**: Understand what the project is for and what are required.
 
-2. **Utility Functions**  
+2. **Utility Functions**: LLM Systems are like the brain
+
+
    - Determine the utility functions on which this project depends (e.g., for LLM calls, web searches, file handling).  
    - Implement these functions and write basic tests to confirm they work correctly.
 
