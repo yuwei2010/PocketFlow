@@ -59,9 +59,4 @@ We model the LLM workflow as a **Nested Directed Graph**:
 - [(Advanced) Multi-Agents](./multi_agent.md)
 - Evaluation
 
-## Example LLM Apps
-
-[LLM System Design Guidance](./guide.md)
-
-- [Summarization + QA agent for Paul Graham Essay](./essay.md)
-- More coming soon...
+## [LLM Application Development Playbook](./guide.md)

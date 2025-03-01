@@ -1,11 +1,11 @@
 ---
 layout: default
-title: "Design Guidance"
+title: "Development Playbook"
 parent: "Apps"
 nav_order: 1
 ---
 
-# LLM System Design Guidance
+# LLM Application Development Playbook
 
 ## System Design Steps
 
@@ -44,7 +44,7 @@ nav_order: 1
      - **Prompt Engineering**: Use clear, specific instructions with examples to reduce ambiguity.
      - **In-Context Learning**: Provide robust examples for tasks that are difficult to specify with instructions alone.
 
-   - > **You’ll likely iterate repeatedly!** Expect to repeat Steps 3–6 hundreds of times.
+   - > **You’ll likely iterate a lot!** Expect to repeat Steps 3–6 hundreds of times.
      >
      > <div align="center"><img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/success.png?raw=true" width="400"/></div>
      {: .best-practice }
