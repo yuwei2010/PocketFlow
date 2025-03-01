@@ -18,7 +18,7 @@ nav_order: 1
    - Output generation (e.g., producing reports, sending emails)
 
    - > **If a human can’t solve it, an LLM can’t automate it!** Before building an LLM system, thoroughly understand the problem by manually solving example inputs to develop intuition.
-   {: .best-practice }
+     {: .best-practice }
 
 3. **Flow Design (Compute)**: Create a high-level design for the application’s flow.
    - Identify potential design patterns, such as Batch, Agent, or RAG.
