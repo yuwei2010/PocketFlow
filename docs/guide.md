@@ -9,6 +9,8 @@ nav_order: 1
 
 ## System Design Steps
 
+Start with a high-level design. Steps 1–4 should primarily be documented in docs/design.md, except for step 2, which you may implement the utility functions once their design is first complete.
+
 1. **Project Requirements**: Clearify the requirements for your project.
 
 2. **Utility Functions**: Although the system acts as the main decision-maker, it depends on utility functions for routine tasks and real-world interactions.
