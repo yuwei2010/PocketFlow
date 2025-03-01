@@ -1,3 +1,10 @@
+---
+layout: default
+title: "essay"
+parent: "Apps"
+nav_order: 2
+---
+
 # Summarization + QA agent for Paul Graham Essay
 
 ```python
