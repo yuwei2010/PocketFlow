@@ -44,7 +44,7 @@ For a new development paradigmn: **Build LLM Apps by Chatting with LLM agents, N
     <summary>👈 <b>How does Pocket Flow compare to other frameworks?</b> Pocket Flow is <i>purpose-built for LLM Agents</i>:</summary>
 <br>
   
-1. **🫠 LangChain-like frameworks** overwhelm Cursor AI with *complex and outdated* abstractions.
+1. **🫠 LangChain-like frameworks** overwhelm Cursor AI with *complex* abstractions, *deprecated* functions and *irritating* dependency issues.
 2. 😐  **Without a framework**, code is *ad hoc*—suitable only for immediate tasks, *not modular or maintainable*.
 3. **🥰 With Pocket Flow**: (1) Minimal and expressive—easy for Cursor AI to pick up. (2) *Nodes and Flows* keep everything *modular*. (3) A *Shared Store* decouples your data structure from compute logic.
 
