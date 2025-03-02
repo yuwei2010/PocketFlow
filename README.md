@@ -36,7 +36,9 @@ For a new development paradigmn: **Build LLM Apps by Chatting with LLM agents, N
       
   - **For quick questions**: Use  the [GPT assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-pocket-flow-assistant) (note: it uses older models not ideal for coding).
   - **For one-time LLM task**:  Create a [ChatGPT](https://help.openai.com/en/articles/10169521-using-projects-in-chatgpt) or [Claude](https://www.anthropic.com/news/projects) project; upload the [docs](docs) to project knowledge.
-  - **For LLM App development**: Use [Cursor AI](https://www.cursor.com/). Copy [.cursorrules](.cursorrules) to your project root as **[Cursor Rules](https://docs.cursor.com/context/rules-for-ai)**.
+  - **For LLM App development**: Use [Cursor AI](https://www.cursor.com/).
+      - If you want to start a new project, check out the [project template](https://github.com/The-Pocket/PocketFlow-Template-Python).
+      - If you already have a project, copy [.cursorrules](.cursorrules) to your project root as [Cursor Rules](https://docs.cursor.com/context/rules-for-ai).
 
   </details>
 
