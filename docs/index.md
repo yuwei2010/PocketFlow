@@ -59,4 +59,4 @@ We model the LLM workflow as a **Nested Directed Graph**:
 - [(Advanced) Multi-Agents](./multi_agent.md)
 - Evaluation
 
-## [LLM Application Development Playbook](./guide.md)
+## [Build your LLM App](./guide.md)

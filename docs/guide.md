@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Development Playbook"
+title: "Build your LLM App"
 ---
 
 # LLM Application Development Playbook
@@ -22,12 +22,11 @@ These system designs should be a collaboration between humans and AI assistants:
 | 6. Optimization        | ★★☆ Medium | ★★☆ Medium | The human reviews the code and evaluates the results, while the AI helps optimize. |
 | 7. Reliability         | ★☆☆ Low   | ★★★ High  | The AI helps write test cases and address corner cases.                 |
 
-1. **Project Requirements**: Clarify the requirements for your project, and evaluate whether an AI system is a good fit.
-    - An AI system is suitable for routine tasks that require common sense (e.g., filling out forms, replying to emails).
-    - An AI system is suitable for creative tasks where all inputs are provided (e.g., building slides, writing SQL).
-    - An AI system is **not** suitable for tasks that are highly ambiguous and require complex information inputs (e.g., building a startup).
-    - > **If a human can’t solve it, an LLM can’t automate it!**  
-      Before building an LLM system, thoroughly understand the problem by manually solving example inputs to develop intuition.  
+1. **Project Requirements**: Clarify the requirements for your project, and evaluate whether an AI system is a good fit. An AI systems are:
+    - suitable for routine tasks that require common sense (e.g., filling out forms, replying to emails).
+    - suitable for creative tasks where all inputs are provided (e.g., building slides, writing SQL).
+    - **NOT** suitable for tasks that are highly ambiguous and require complex information (e.g., building a startup).
+    - > **If a human can’t solve it, an LLM can’t automate it!** Before building an LLM system, thoroughly understand the problem by manually solving example inputs to develop intuition.  
       {: .best-practice }
 
 2. **Utility Functions**: AI system is the decision-maker and relies on *external utility functions* to:
