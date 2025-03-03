@@ -7,25 +7,42 @@ nav_order: 1
 
 # LLM Application Development Playbook
 
+> If you are an AI assistant involved in building LLM Apps, read this guide **VERY, VERY** carefully! This is the most important chapter in the entire document. Throughout development, you should always (1) start with a small and simple solution, (2) design at a high level (`docs/design.md`) before implementation, and (3) frequently ask humans for feedback and clarification.
+{: .warning }
+
+
+
+
 ## System Design Steps
 
-Start with a high-level design. Steps 1–4 should primarily be documented in docs/design.md, except for step 2, which you may implement the utility functions once their design is first complete.
+
+These system designs should be a collaboration between humans and AI assistants:
+
+| Stage                  | Human      | AI        | Comment                                                                 |
+|:-----------------------|:----------:|:---------:|:------------------------------------------------------------------------|
+| 1. Project Requirements | ★★★ High  | ★☆☆ Low   | Humans understand the requirements and context best.                    |
+| 2. Utility Functions   | ★★☆ Medium | ★★☆ Medium | The human is familiar with external APIs and integrations, and the AI assists with implementation. |
+| 3. Flow Design         | ★★☆ Medium | ★★☆ Medium | The human identifies complex and ambiguous parts, and the AI helps with redesign. |
+| 4. Data Schema         | ★☆☆ Low   | ★★★ High  | The AI assists in designing the data schema based on the flow.          |
+| 5. Implementation      | ★☆☆ Low   | ★★★ High  | The human identifies complex and ambiguous parts, and the AI helps with redesign. |
+| 6. Optimization        | ★★☆ Medium | ★★☆ Medium | The human reviews the code and evaluates the results, while the AI helps optimize. |
+| 7. Reliability         | ★☆☆ Low   | ★★★ High  | The AI helps write test cases and address corner cases.                 |
 
 1. **Project Requirements**: Clearify the requirements for your project.
 
-2. **Utility Functions**: Although the system acts as the main decision-maker, it depends on utility functions for routine tasks and real-world interactions.
+2. **Utility Functions**: The AI system acts as the decision-maker, but it relies on **external utility functions** for input/output and tool usage.
 
-   - Example Utility Functions:
-      - `call_llm` (of course)
-      - Routine tasks (e.g., chunking text, formatting strings)  
-      - External inputs (e.g., searching the web, reading emails)  
-      - Output generation (e.g., producing reports, sending emails)
-   
-   - Example Non-Utility Functions:
-      - LLM tasks (e.g., text summarization). These tasks are the core the system and operate on top of the utility functions.
+   - **Example Utility Functions**:
+      - Reading inputs (e.g., getting Slack messages, reading emails)
+      - Writing outputs (e.g., generating reports, sending emails)
+      - External tool usage (e.g., calling LLMs, searching the web)
 
-   - > **Start small!** Only include a few most important ones to begin with without too many features.
-     {: .best-practice }
+   - **Example Non-Utility Functions**:
+      - LLM-based tasks (e.g., summarizing text, analyzing sentiment). These tasks are **core internal functions** built on top of the utility functions and will be designed in step 3.
+
+   -  > **Start small!** Only include the most important ones to begin with!
+      > <div align="center"><img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/utility.png?raw=true" width="400"/></div>
+      {: .best-practice }
 
 3. **Flow Design (Compute)**: Create a high-level design for the application’s flow.
    - Identify potential design patterns, such as Batch, Agent, or RAG.
