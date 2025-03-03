@@ -1,8 +1,6 @@
 ---
 layout: default
 title: "Development Playbook"
-parent: "Apps"
-nav_order: 1
 ---
 
 # LLM Application Development Playbook
@@ -38,7 +36,6 @@ These system designs should be a collaboration between humans and AI assistants:
    - Writing outputs (e.g., generating reports, sending emails)
    - External tool usage (e.g., calling LLMs, searching the web)
    - **LLM-based tasks** (e.g., summarizing text, analyzing sentiment) are **not** utility functions. Instead, they are *internal core functions* within the AI system—designed in step 3—and are built on top of the utility functions.
-
    -  > **Start small!** Only include the most important ones to begin with!
       {: .best-practice }
 
