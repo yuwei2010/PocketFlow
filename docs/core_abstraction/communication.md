@@ -81,7 +81,7 @@ Here:
 ## 2. Params
 
 **Params** let you store *per-Node* or *per-Flow* config that doesn't need to live in the shared store. They are:
-- **Immutable** during a Node’s run cycle (i.e., they don’t change mid-`prep->exec->post`).
+- **Immutable** during a Node's run cycle (i.e., they don't change mid-`prep->exec->post`).
 - **Set** via `set_params()`.
 - **Cleared** and updated each time a parent Flow calls it.
 

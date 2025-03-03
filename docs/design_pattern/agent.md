@@ -8,11 +8,11 @@ nav_order: 6
 # Agent
 
 Agent is a powerful design pattern, where node can take dynamic actions based on the context it receives.
-To express an agent, create a Node (the agent) with [branching](./flow.md) to other nodes (Actions).
+To express an agent, create a Node (the agent) with [branching](../core_abstraction/flow.md) to other nodes (Actions).
 
 > The core of build **performant** and **reliable** agents boils down to:
 > 
-> 1. **Context Management:** Provide *clear, relevant context* so agents can understand the problem.E.g., Rather than dumping an entire chat history or entire files, use a [Workflow](./decomp.md) that filters out and includes only the most relevant information.
+> 1. **Context Management:** Provide *clear, relevant context* so agents can understand the problem.E.g., Rather than dumping an entire chat history or entire files, use a [Workflow](./workflow.md) that filters out and includes only the most relevant information.
 >
 > 2. **Action Space:** Define *a well-structured, unambiguous, and easy-to-use* set of actions. For instance, avoid creating overlapping actions like `read_databases` and `read_csvs`. Instead, unify data sources (e.g., move CSVs into a database) and design a single action. The action can be parameterized (e.g., string for search) or  programmable (e.g., SQL queries).
 {: .best-practice }

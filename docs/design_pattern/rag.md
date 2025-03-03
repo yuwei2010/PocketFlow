@@ -8,7 +8,7 @@ nav_order: 4
 # RAG (Retrieval Augmented Generation)
 
 For certain LLM tasks like answering questions, providing context is essential.
-Use [vector search](./tool.md) to find relevant context for LLM responses.
+Use [vector search](../utility_function/tool.md) to find relevant context for LLM responses.
 
 ### Example: Question Answering
 

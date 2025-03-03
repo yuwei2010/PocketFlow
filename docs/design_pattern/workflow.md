@@ -7,7 +7,7 @@ nav_order: 2
 
 # Workflow
 
-Many real-world tasks are too complex for one LLM call. The solution is to decompose them into a [chain](./flow.md) of multiple Nodes.
+Many real-world tasks are too complex for one LLM call. The solution is to decompose them into a [chain](../core_abstraction/flow.md) of multiple Nodes.
 
 
 > - You don't want to make each task **too coarse**, because it may be *too complex for one LLM call*.
@@ -46,3 +46,5 @@ writing_flow = Flow(start=outline)
 shared = {"topic": "AI Safety"}
 writing_flow.run(shared)
 ```
+
+For *dynamic cases*, consider using [Agents](./agent.md).

@@ -30,18 +30,18 @@ We model the LLM workflow as a **Nested Directed Graph**:
 
 ## Core Abstraction
 
-- [Node](./node.md)
-- [Flow](./flow.md)
-- [Communication](./communication.md)
-- [Batch](./batch.md)
-- [(Advanced) Async](./async.md)
-- [(Advanced) Parallel](./parallel.md)
+- [Node](./core_abstraction/node.md)
+- [Flow](./core_abstraction/flow.md)
+- [Communication](./core_abstraction/communication.md)
+- [Batch](./core_abstraction/batch.md)
+- [(Advanced) Async](./core_abstraction/async.md)
+- [(Advanced) Parallel](./core_abstraction/parallel.md)
 
 ## Utility Function
 
-- [LLM Wrapper](./llm.md)
-- [Tool](./tool.md)
-- [Viz and Debug](./viz.md)
+- [LLM Wrapper](./utility_function/llm.md)
+- [Tool](./utility_function/tool.md)
+- [Viz and Debug](./utility_function/viz.md)
 - Chunking
 
 > We do not provide built-in utility functions. Example implementations are provided as reference.
@@ -50,13 +50,13 @@ We model the LLM workflow as a **Nested Directed Graph**:
 
 ## Design Pattern
 
-- [Structured Output](./structure.md)
-- [Workflow](./decomp.md)
-- [Map Reduce](./mapreduce.md)
-- [RAG](./rag.md)
-- [Chat Memory](./memory.md)
-- [Agent](./agent.md)
-- [(Advanced) Multi-Agents](./multi_agent.md)
+- [Structured Output](./design_pattern/structure.md)
+- [Workflow](./design_pattern/workflow.md)
+- [Map Reduce](./design_pattern/mapreduce.md)
+- [RAG](./design_pattern/rag.md)
+- [Chat Memory](./design_pattern/memory.md)
+- [Agent](./design_pattern/agent.md)
+- [(Advanced) Multi-Agents](./design_pattern/multi_agent.md)
 - Evaluation
 
-## [Build your LLM App](./guide.md)
+## [Develop your LLM Apps](./guide.md)
