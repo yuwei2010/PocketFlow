@@ -8,11 +8,7 @@ title: "Development Playbook"
 > If you are an AI assistant involved in building LLM Apps, read this guide **VERY, VERY** carefully! This is the most important chapter in the entire document. Throughout development, you should always (1) start with a small and simple solution, (2) design at a high level (`docs/design.md`) before implementation, and (3) frequently ask humans for feedback and clarification.
 {: .warning }
 
-
-
-
 ## System Design Steps
-
 
 These system designs should be a collaboration between humans and AI assistants:
 
@@ -26,7 +22,13 @@ These system designs should be a collaboration between humans and AI assistants:
 | 6. Optimization        | ★★☆ Medium | ★★☆ Medium | The human reviews the code and evaluates the results, while the AI helps optimize. |
 | 7. Reliability         | ★☆☆ Low   | ★★★ High  | The AI helps write test cases and address corner cases.                 |
 
-1. **Project Requirements**: Clearify the requirements for your project.
+1. **Project Requirements**: Clarify the requirements for your project, and evaluate whether an AI system is a good fit.
+    - An AI system is suitable for routine tasks that require common sense (e.g., filling out forms, replying to emails).
+    - An AI system is suitable for creative tasks where all inputs are provided (e.g., building slides, writing SQL).
+    - An AI system is **not** suitable for tasks that are highly ambiguous and require complex information inputs (e.g., building a startup).
+    - > **If a human can’t solve it, an LLM can’t automate it!**  
+      Before building an LLM system, thoroughly understand the problem by manually solving example inputs to develop intuition.  
+      {: .best-practice }
 
 2. **Utility Functions**: AI system is the decision-maker and relies on *external utility functions* to:
 
@@ -39,13 +41,13 @@ These system designs should be a collaboration between humans and AI assistants:
    -  > **Start small!** Only include the most important ones to begin with!
       {: .best-practice }
 
-3. **Flow Design (Compute)**: Create a high-level design for the application’s flow.
-   - Identify potential design patterns, such as Batch, Agent, or RAG.
-   - For each node, specify:
-     - **Purpose**: The high-level compute logic
-     - `exec`: The specific utility function to call (ideally, one function per node)
-   - > **If a human can’t solve it, an LLM can’t automate it!** Before building an LLM system, thoroughly understand the problem by manually solving example inputs to develop intuition.
-     {: .best-practice }
+3. **Flow Design (Compute)**: Create a high-level outline for your application’s flow.
+    - Identify potential design patterns (e.g., Batch, Agent, RAG).
+    - For each node, specify:
+      - **Purpose**: The high-level compute logic
+      - **Type**: Regular node, Batch node, async node, or another type
+      - `exec`: The specific utility function to call (ideally, one function per node)
+
 
 4. **Data Schema (Data)**: Plan how data will be stored and updated.
    - For simple apps, use an in-memory dictionary.
