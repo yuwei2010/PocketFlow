@@ -28,14 +28,14 @@ These system designs should be a collaboration between humans and AI assistants:
 
 1. **Project Requirements**: Clearify the requirements for your project.
 
-2. **Utility Functions**: Although the AI system is the decision-maker, it relies on **external utility functions**:
+2. **Utility Functions**: AI system is the decision-maker and relies on *external utility functions* to:
 
    <div align="center"><img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/utility.png?raw=true" width="400"/></div>
 
-   - Reading inputs (e.g., retrieving Slack messages, reading emails)
-   - Writing outputs (e.g., generating reports, sending emails)
-   - External tool usage (e.g., calling LLMs, searching the web)
-   - **LLM-based tasks** (e.g., summarizing text, analyzing sentiment) are **not** utility functions. Instead, they are *internal core functions* within the AI system—designed in step 3—and are built on top of the utility functions.
+   - Read inputs (e.g., retrieving Slack messages, reading emails)
+   - Write outputs (e.g., generating reports, sending emails)
+   - Use external tools (e.g., calling LLMs, searching the web)
+   - In contrast, *LLM-based tasks* (e.g., summarizing text, analyzing sentiment) are **NOT** utility functions. Instead, they are *internal core functions* within the AI system—designed in step 3—and are built on top of the utility functions.
    -  > **Start small!** Only include the most important ones to begin with!
       {: .best-practice }
 
