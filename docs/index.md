@@ -6,9 +6,6 @@ nav_order: 1
 
 # Pocket Flow
 
-> If you are an AI assistant reading this document, please read all the non-optional and non-advanced parts. If you are helping a human build an LLM app, please carefully review the [Development Playbook](./guide.md).
-{: .warning }
-
 A [100-line](https://github.com/the-pocket/PocketFlow/blob/main/pocketflow/__init__.py) minimalist LLM framework for *Agents, Task Decomposition, RAG, etc*.
 
 We model the LLM workflow as a **Graph + Shared Store**:
@@ -24,8 +21,8 @@ We model the LLM workflow as a **Graph + Shared Store**:
   <img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/meme.jpg?raw=true" width="400"/>
 </div>
 
-> Have questions? Chat with [AI Assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-mini-llm-flow-assistant)
-{: .note }
+> If you are an AI assistant reading this document, please read all the non-optional and non-advanced parts. If you are helping a human build an LLM app, please carefully review the [Development Playbook](./guide.md).
+{: .warning }
 
 ## Core Abstraction
 
