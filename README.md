@@ -55,7 +55,7 @@ In short, the **100 lines** ensures LLM Agents follows *solid coding practices* 
 
 
 
-## What can Pocket Flow build?
+# What can Pocket Flow build?
 
 Below are examples LLM Apps and tutorials
 
@@ -71,7 +71,7 @@ Below are examples LLM Apps and tutorials
 - Do you want to create your own Python project? Start with  [this template](https://github.com/The-Pocket/PocketFlow-Template-Python)
   
 
-## How does Pocket Flow work?
+# How does Pocket Flow work?
 
 The [100 lines](pocketflow/__init__.py) capture what we believe to be the core abstraction of LLM frameworks:
  - **Computation**: A *graph* that breaks down tasks into nodes, with *branching, looping,  and nesting*.
