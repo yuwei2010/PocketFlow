@@ -62,8 +62,8 @@ Below are examples LLM Apps and tutorials
   
 | App Name  | Difficulty    |  Learning Objectives  |
 | :------------- | :------------- | :--------------------- |
-| [Youtube ELI5 Summarizer](https://github.com/The-Pocket/Tutorial-Youtube-Made-Simple)  | ★☆☆  *Beginner*   | [Map Reduce](https://the-pocket.github.io/PocketFlow/mapreduce.html) | 
-| [AI Paul Graham](https://github.com/The-Pocket/Tutorial-YC-Partner)  | ★☆☆  *Beginner*   | [RAG](https://the-pocket.github.io/PocketFlow/rag.html) | 
+| [Youtube ELI5 Summarizer](https://github.com/The-Pocket/Tutorial-Youtube-Made-Simple)  | ★☆☆  *Beginner*   | [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) | 
+| [AI Paul Graham](https://github.com/The-Pocket/Tutorial-YC-Partner)  | ★☆☆  *Beginner*   | [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html) | 
 
 </div>
 
@@ -82,7 +82,7 @@ The [100 lines](pocketflow/__init__.py) capture what we believe to be the core a
 </div>
 <br>
 
-From there, it’s easy to implement popular design patterns like ([Multi-](https://the-pocket.github.io/PocketFlow/multi_agent.html))[Agents](https://the-pocket.github.io/PocketFlow/agent.html), [Workflow](https://the-pocket.github.io/PocketFlow/decomp.html), [RAG](https://the-pocket.github.io/PocketFlow/rag.html), etc.
+From there, it’s easy to implement popular design patterns like ([Multi-](https://the-pocket.github.io/PocketFlow/design_pattern/multi_agent.html))[Agents](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html), [Workflow](https://the-pocket.github.io/PocketFlow/design_pattern/workflow.html), [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html), etc.
 
 <br>
 <div align="center">
