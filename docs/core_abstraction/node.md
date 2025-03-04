@@ -13,7 +13,6 @@ A **Node** is the smallest building block. Each Node has 3 steps `prep->exec->po
   <img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/node.png?raw=true" width="400"/>
 </div>
 
-
 1. `prep(shared)`
    - **Read and preprocess data** from `shared` store. 
    - Examples: *query DB, read files, or serialize data into a string*.
@@ -31,13 +30,10 @@ A **Node** is the smallest building block. Each Node has 3 steps `prep->exec->po
    - Examples: *update DB, change states, log results*.
    - **Decide the next action** by returning a *string* (`action = "default"` if *None*).
 
-
-
 > **Why 3 steps?** To enforce the principle of *separation of concerns*. The data storage and data processing are operated separately.
 >
 > All steps are *optional*. E.g., you can only implement `prep` and `post` if you just need to process data.
 {: .note }
-
 
 ### Fault Tolerance & Retries
 
@@ -106,5 +102,4 @@ action_result = summarize_node.run(shared)
 
 print("Action returned:", action_result)  # "default"
 print("Summary stored:", shared["summary"])
-```  
-
+```

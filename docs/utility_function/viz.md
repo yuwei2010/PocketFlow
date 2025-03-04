@@ -138,5 +138,3 @@ data_science_flow.run({})
 ```
 
 The output would be: `Call stack: ['EvaluateModelNode', 'ModelFlow', 'DataScienceFlow']`
-
-

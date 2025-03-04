@@ -70,7 +70,6 @@ Agent received: Network connectivity: stable | timestamp_2
 Agent received: Processing load: optimal | timestamp_3
 ```
 
-
 ### Interactive Multi-Agent Example: Taboo Game
 
 Here's a more complex example where two agents play the word-guessing game Taboo. 

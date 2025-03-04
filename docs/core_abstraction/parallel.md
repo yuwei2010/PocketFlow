@@ -19,7 +19,6 @@ nav_order: 6
 > - **Consider Single-Node Batch APIs**: Some LLMs offer a **batch inference** API where you can send multiple prompts in a single call. This is more complex to implement but can be more efficient than launching many parallel requests and mitigates rate limits.
 {: .best-practice }
 
-
 ## AsyncParallelBatchNode
 
 Like **AsyncBatchNode**, but run `exec_async()` in **parallel**:

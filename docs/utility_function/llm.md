@@ -77,7 +77,6 @@ class SummarizeNode(Node):
         return call_llm(f"Summarize: {text}", self.cur_retry==0)
 ```
 
-
 - Enable logging:
 
 ```python

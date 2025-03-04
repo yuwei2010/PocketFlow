@@ -68,7 +68,6 @@ def execute_sql(query):
     return result
 ```
 
-
 > ⚠️ Beware of SQL injection risk
 {: .warning }
 

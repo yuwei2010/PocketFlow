@@ -14,7 +14,6 @@ MapReduce is a design pattern suitable when you have either:
 and there is a logical way to break the task into smaller, ideally independent parts. 
 You first break down the task using [BatchNode](../core_abstraction/batch.md) in the map phase, followed by aggregation in the reduce phase.
 
-
 ### Example: Document Summarization
 
 ```python

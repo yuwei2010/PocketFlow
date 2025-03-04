@@ -15,7 +15,6 @@ Nodes and Flows **communicate** in two ways:
    - Great for data results, large content, or anything multiple nodes need.
    - You shall design the data structure and populate it ahead.
 
-
 2. **Params (only for [Batch](./batch.md))** 
    - Each node has a local, ephemeral `params` dict passed in by the **parent Flow**, used as an identifier for tasks. Parameter keys and values shall be **immutable**.
    - Good for identifiers like filenames or numeric IDs, in Batch mode.
@@ -85,7 +84,6 @@ Here:
 - **Set** via `set_params()`.
 - **Cleared** and updated each time a parent Flow calls it.
 
-
 > Only set the uppermost Flow params because others will be overwritten by the parent Flow. 
 > 
 > If you need to set child node params, see [Batch](./batch.md).
@@ -126,5 +124,3 @@ flow = Flow(start=node)
 flow.set_params({"filename": "doc2.txt"})
 flow.run(shared)  # The node summarizes doc2, not doc1
 ```
-
----

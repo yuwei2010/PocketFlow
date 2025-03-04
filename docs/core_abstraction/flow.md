@@ -86,7 +86,6 @@ flowchart TD
 - `node.run(shared)`: Just runs that node alone (calls `prep->exec->post()`), returns an Action. 
 - `flow.run(shared)`: Executes from the start node, follows Actions to the next node, and so on until the flow can't continue.
 
-
 > `node.run(shared)` **does not** proceed to the successor.
 > This is mainly for debugging or testing a single node.
 > 
@@ -107,7 +106,6 @@ A **Flow** is also a **Node**, so it will run `prep()` and `post()`. However:
 
 - It **won't** run `exec()`, as its main logic is to orchestrate its nodes.
 - `post()` always receives `None` for `exec_res` and should instead get the flow execution results from the shared store.
-
 
 ### Basic Flow Nesting
 
@@ -178,4 +176,3 @@ flowchart LR
         inventoryFlow --> shippingFlow
     end
 ```
-
