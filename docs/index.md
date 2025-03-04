@@ -6,16 +6,20 @@ nav_order: 1
 
 # Pocket Flow
 
+> If you are an AI assistant reading this document, please read all the non-optional and non-advanced parts. If you are helping a human build an LLM app, please carefully review the [Development Playbook](./guide.md).
+{: .warning }
+
 A [100-line](https://github.com/the-pocket/PocketFlow/blob/main/pocketflow/__init__.py) minimalist LLM framework for *Agents, Task Decomposition, RAG, etc*.
 
 
-We model the LLM workflow as a **Nested Directed Graph**:
+We model the LLM workflow as a **Graph + Shared Store**:
 - **Nodes** handle simple (LLM) tasks.
 - Nodes connect through **Actions** (labeled edges) for *Agents*.  
 - **Flows** orchestrate a directed graph of Nodes for *Task Decomposition*.
+- Nodes within Flows communicate through a **Shared Store**.
 - A Flow can be used as a Node (for **Nesting**).
 - **Batch** Nodes/Flows for data-intensive tasks.
-- **Async** Nodes/Flows allow waits or **Parallel** execution
+- **Async** Nodes/Flows allow waits for asynchronous tasks.
 
 
 <div align="center">
@@ -41,7 +45,7 @@ We model the LLM workflow as a **Nested Directed Graph**:
 
 - [LLM Wrapper](./utility_function/llm.md)
 - [Tool](./utility_function/tool.md)
-- [Viz and Debug](./utility_function/viz.md)
+- [(Optional) Viz and Debug](./utility_function/viz.md)
 - Chunking
 
 > We do not provide built-in utility functions. Example implementations are provided as reference.
@@ -54,8 +58,8 @@ We model the LLM workflow as a **Nested Directed Graph**:
 - [Workflow](./design_pattern/workflow.md)
 - [Map Reduce](./design_pattern/mapreduce.md)
 - [RAG](./design_pattern/rag.md)
-- [Chat Memory](./design_pattern/memory.md)
 - [Agent](./design_pattern/agent.md)
+- [(Optional) Chat Memory](./design_pattern/memory.md)
 - [(Advanced) Multi-Agents](./design_pattern/multi_agent.md)
 - Evaluation
 
