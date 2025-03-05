@@ -1,10 +1,10 @@
 ---
 layout: default
-title: "Tool"
+title: "Web Search"
 parent: "Utility Function"
 nav_order: 4
 ---
-## Tool
+## Web Search
 
 We recommend some implementations of commonly used web search tools.
 
