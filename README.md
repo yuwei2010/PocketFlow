@@ -70,7 +70,7 @@ In short, the **100 lines** ensures LLM Agents follows *solid coding practices* 
 | :------------- | :-------------  | :------------- | :--------------------- |
 | [Youtube Summarizer](https://github.com/The-Pocket/Tutorial-Youtube-Made-Simple)  | Explain YouTube Videos to you like you're 5 | ★☆☆  *Beginner*   | [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) | 
 | [YC Adice Retriever](https://github.com/The-Pocket/Tutorial-YC-Partner)  | AI Paul Graham, in case you don't get in | ★☆☆  *Beginner*   | [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html) |
-| [Cold Opener Generator](https://github.com/The-Pocket/Tutorial-Cold-Email-Personalization)  | Instant icebreakers that turn cold leads hot | ★☆☆  *Beginner*   | [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) | 
+| [Cold Opener Generator](https://github.com/The-Pocket/Tutorial-Cold-Email-Personalization)  | Instant icebreakers that turn cold leads hot | ★☆☆  *Beginner*   | [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html), Web Search | 
 
 </div>
 
