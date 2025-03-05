@@ -59,7 +59,7 @@ In short, the **100 lines** ensures LLM Agents follows *solid coding practices* 
 
 ## What can Pocket Flow build?
 
-Below are examples LLM Apps and tutorials
+✨ Below are examples of LLM Apps built on top of Pocket Flow + Cursor AI:
 
 <div align="center">
   
