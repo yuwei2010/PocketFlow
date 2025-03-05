@@ -22,7 +22,7 @@ Pocket Flow: A [100-line](pocketflow/__init__.py) minimalist LLM framework
 
 ## What can Pocket Flow build?
 
-✨ Below are examples of LLM Apps built on top of Pocket Flow + Cursor AI:
+✨ Below are examples of LLM Apps, with [Step-by-Step YouTube Tutorials](https://www.youtube.com/@ZacharyLLM?sub_confirmation=1):
 
 <div align="center">
   
