@@ -19,13 +19,29 @@ Pocket Flow: A [100-line](pocketflow/__init__.py) minimalist LLM framework
 - To learn more, check out the [documentation](https://the-pocket.github.io/PocketFlow/). For an in-depth design dive, read the [essay](https://github.com/The-Pocket/.github/blob/main/profile/pocketflow.md).
 - 🎉 We now have a [discord](https://discord.gg/hUHHE9Sa6T)
 
+
+## What can Pocket Flow build?
+
+✨ Below are examples of LLM Apps built on top of Pocket Flow + Cursor AI:
+
+<div align="center">
+  
+| Formal App Name  | Informal One-Liner |Difficulty    |  Learning Objectives  |
+| :------------- | :-------------  | :------------- | :--------------------- |
+| [Youtube Summarizer](https://github.com/The-Pocket/Tutorial-Youtube-Made-Simple)  | Explain YouTube Videos to you like you're 5 | ★☆☆  *Beginner*   | [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) | 
+| [YC Adice Retriever](https://github.com/The-Pocket/Tutorial-YC-Partner)  | AI Paul Graham, in case you don't get in | ★☆☆  *Beginner*   | [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html) |
+| [Cold Opener Generator](https://github.com/The-Pocket/Tutorial-Cold-Email-Personalization)  | Instant icebreakers that turn cold leads hot | ★☆☆  *Beginner*   | [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) <br> Web Search | 
+
+</div>
+
+- Want to create your own Python project? Start with  [this template](https://github.com/The-Pocket/PocketFlow-Template-Python)
+
 ## Why Pocket Flow?
 
 For a new development paradigmn: **Build LLM Apps by Chatting with LLM agents, Not Coding**!
 
 - 🧑 Human **describe LLM App requirements** in a design doc.
 - 🤖 The agent (like Cursor AI) **implements App** your code automatically.
-
 
 <br>
 <div align="center">
@@ -34,7 +50,6 @@ For a new development paradigmn: **Build LLM Apps by Chatting with LLM agents, N
   </a>
 </div>
 <br>
-
 
   <details>
     <summary>👈 <b>How to set up Pocket Flow for LLM agents?</b></summary>
@@ -58,24 +73,6 @@ For a new development paradigmn: **Build LLM Apps by Chatting with LLM agents, N
 
 In short, the **100 lines** ensures LLM Agents follows *solid coding practices* without sacrificing *flexibility*. 
   </details>
-
-
-## What can Pocket Flow build?
-
-✨ Below are examples of LLM Apps built on top of Pocket Flow + Cursor AI:
-
-<div align="center">
-  
-| Formal App Name  | Informal One-Liner |Difficulty    |  Learning Objectives  |
-| :------------- | :-------------  | :------------- | :--------------------- |
-| [Youtube Summarizer](https://github.com/The-Pocket/Tutorial-Youtube-Made-Simple)  | Explain YouTube Videos to you like you're 5 | ★☆☆  *Beginner*   | [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) | 
-| [YC Adice Retriever](https://github.com/The-Pocket/Tutorial-YC-Partner)  | AI Paul Graham, in case you don't get in | ★☆☆  *Beginner*   | [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html) |
-| [Cold Opener Generator](https://github.com/The-Pocket/Tutorial-Cold-Email-Personalization)  | Instant icebreakers that turn cold leads hot | ★☆☆  *Beginner*   | [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) <br> Web Search | 
-
-</div>
-
-- Do you want to create your own Python project? Start with  [this template](https://github.com/The-Pocket/PocketFlow-Template-Python)
-  
 
 ## How does Pocket Flow work?
 
