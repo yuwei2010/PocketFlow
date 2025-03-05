@@ -6,7 +6,9 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 [![Docs](https://img.shields.io/badge/docs-latest-blue)](https://the-pocket.github.io/PocketFlow/)
-
+ <a href="https://discord.gg/hUHHE9Sa6T">
+    <img src="https://img.shields.io/discord/1346833819172601907?logo=discord&style=flat">
+</a>
 
 Pocket Flow: A [100-line](pocketflow/__init__.py) minimalist LLM framework
 
@@ -15,6 +17,7 @@ Pocket Flow: A [100-line](pocketflow/__init__.py) minimalist LLM framework
 - **Principled**: Designed for clear [modularity](https://the-pocket.github.io/PocketFlow/core_abstraction/node.html) and [separation of concerns](https://the-pocket.github.io/PocketFlow/core_abstraction/communication.html).
 - To install, ```pip install pocketflow```or just copy the [source code](pocketflow/__init__.py) (only 100 lines).
 - To learn more, check out the [documentation](https://the-pocket.github.io/PocketFlow/). For an in-depth design dive, read the [essay](https://github.com/The-Pocket/.github/blob/main/profile/pocketflow.md).
+- 🎉 We now have a [discord](https://discord.gg/hUHHE9Sa6T)
 
 ## Why Pocket Flow?
 
