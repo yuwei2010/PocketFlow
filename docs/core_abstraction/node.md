@@ -66,7 +66,7 @@ class RetryNode(Node):
 To **gracefully handle** the exception (after all retries) rather than raising it, override:
 
 ```python 
-def exec_fallback(self, shared, prep_res, exc):
+def exec_fallback(self, prep_res, exc):
     raise exc
 ```
 
@@ -86,7 +86,7 @@ class SummarizeFile(Node):
         summary = call_llm(prompt)  # might fail
         return summary
 
-    def exec_fallback(self, shared, prep_res, exc):
+    def exec_fallback(self, prep_res, exc):
         # Provide a simple fallback instead of crashing
         return "There was an error processing your request."
 
