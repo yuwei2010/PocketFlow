@@ -29,14 +29,14 @@ These system designs should be a collaboration between humans and AI assistants:
     - > **If a human can’t solve it, an LLM can’t automate it!** Before building an LLM system, thoroughly understand the problem by manually solving example inputs to develop intuition.  
       {: .best-practice }
 
-2. **Utility Functions**: AI system is the decision-maker and relies on *external utility functions* to:
+2. **Utility Functions**: Think of the AI system as the brain, responsible for decision-making. It needs a body—these *external utility functions*—to interact with the real world:
 
    <div align="center"><img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/utility.png?raw=true" width="400"/></div>
 
-   - Read inputs (e.g., retrieving Slack messages, reading emails)
-   - Write outputs (e.g., generating reports, sending emails)
-   - Use external tools (e.g., calling LLMs, searching the web)
-   - In contrast, *LLM-based tasks* (e.g., summarizing text, analyzing sentiment) are **NOT** utility functions. Instead, they are *internal core functions* within the AI system—designed in step 3—and are built on top of the utility functions.
+  - Reading inputs (e.g., retrieving Slack messages, reading emails)
+  - Writing outputs (e.g., generating reports, sending emails)
+  - Using external tools (e.g., calling LLMs, searching the web)
+  - Keep in mind that *LLM-based tasks* (e.g., summarizing text, analyzing sentiment) are **not** utility functions; rather, they are *core functions* internal in the AI system, and will be designed in step 3.
    -  > **Start small!** Only include the most important ones to begin with!
       {: .best-practice }
 
