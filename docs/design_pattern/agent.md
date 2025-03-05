@@ -11,7 +11,7 @@ Agent is a powerful design pattern, where node can take dynamic actions based on
 To express an agent, create a Node (the agent) with [branching](../core_abstraction/flow.md) to other nodes (Actions).
 
 <div align="center">
-  <img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/agent.png?raw=true" width="400"/>
+  <img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/agent.png?raw=true" width="250"/>
 </div>
 
 > The core of build **performant** and **reliable** agents boils down to:
