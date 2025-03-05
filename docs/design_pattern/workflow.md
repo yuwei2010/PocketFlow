@@ -9,6 +9,10 @@ nav_order: 2
 
 Many real-world tasks are too complex for one LLM call. The solution is to decompose them into a [chain](../core_abstraction/flow.md) of multiple Nodes.
 
+<div align="center">
+  <img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/workflow.png?raw=true" width="400"/>
+</div>
+
 > - You don't want to make each task **too coarse**, because it may be *too complex for one LLM call*.
 > - You don't want to make each task **too granular**, because then *the LLM call doesn't have enough context* and results are *not consistent across nodes*.
 > 
