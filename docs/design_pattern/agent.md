@@ -10,6 +10,10 @@ nav_order: 6
 Agent is a powerful design pattern, where node can take dynamic actions based on the context it receives.
 To express an agent, create a Node (the agent) with [branching](../core_abstraction/flow.md) to other nodes (Actions).
 
+<div align="center">
+  <img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/agent.png?raw=true" width="400"/>
+</div>
+
 > The core of build **performant** and **reliable** agents boils down to:
 > 
 > 1. **Context Management:** Provide *clear, relevant context* so agents can understand the problem.E.g., Rather than dumping an entire chat history or entire files, use a [Workflow](./workflow.md) that filters out and includes only the most relevant information.
