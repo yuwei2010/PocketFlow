@@ -156,24 +156,8 @@ def crawl_web(url):
 
 ---
 
-## 7. Basic Search (SerpAPI example)
 
-```python
-def search_google(query):
-    import requests
-    params = {
-        "engine": "google",
-        "q": query,
-        "api_key": "YOUR_API_KEY"
-    }
-    r = requests.get("https://serpapi.com/search", params=params)
-    return r.json()
-```
-
----
-
-
-## 8. Audio Transcription (OpenAI Whisper)
+## 7. Audio Transcription (OpenAI Whisper)
 
 ```python
 def transcribe_audio(file_path):
@@ -185,7 +169,7 @@ def transcribe_audio(file_path):
 
 ---
 
-## 9. Text-to-Speech (TTS)
+## 8. Text-to-Speech (TTS)
 
 ```python
 def text_to_speech(text):
@@ -197,7 +181,7 @@ def text_to_speech(text):
 
 ---
 
-## 10. Sending Email
+## 9. Sending Email
 
 ```python
 def send_email(to_address, subject, body, from_address, password):

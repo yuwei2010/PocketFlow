@@ -38,6 +38,7 @@ We model the LLM workflow as a **Graph + Shared Store**:
 - [LLM Wrapper](./utility_function/llm.md)
 - [Tool](./utility_function/tool.md)
 - [(Optional) Viz and Debug](./utility_function/viz.md)
+- [(Optional) Web Search](./utility_function/websearch.md)
 - Chunking
 
 > We do not provide built-in utility functions. Example implementations are provided as reference.
