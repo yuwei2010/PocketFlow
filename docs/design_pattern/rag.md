@@ -8,7 +8,11 @@ nav_order: 4
 # RAG (Retrieval Augmented Generation)
 
 For certain LLM tasks like answering questions, providing context is essential.
-Use [vector search](../utility_function/tool.md) to find relevant context for LLM responses.
+Most common way to retrive text-based context is through embedding:
+1. Given texts, you first [chunk](../utility_function/chunking.md) them.
+2. Next, you [embed](../utility_function/embedding.md) each chunk.
+3. Then you store the chunks in [vector databases](../utility_function/vector.md).
+4. Finally, given a query, you embed the query and find the closest chunk in the vector databases.
 
 ### Example: Question Answering
 

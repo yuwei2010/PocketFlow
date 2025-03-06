@@ -32,7 +32,7 @@ def fixed_size_chunk(text, chunk_size=100):
 
 However, sentences are often cut awkwardly, losing coherence.
 
-### Sentence-Based Chunking
+### 2. Sentence-Based Chunking
 
 ```python
 import nltk
@@ -47,7 +47,7 @@ def sentence_based_chunk(text, max_sentences=2):
 
 However, might not handle very long sentences or paragraphs well.
 
-### Other Chunking
+### 3. Other Chunking
 
 - **Paragraph-Based**: Split text by paragraphs (e.g., newlines). Large paragraphs can create big chunks.
 - **Semantic**: Use embeddings or topic modeling to chunk by semantic boundaries.

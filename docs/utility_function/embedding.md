@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Web Search"
-parent: "Embedding"
+title: "Embedding"
+parent: "Utility Function"
 nav_order: 6
 ---
 
@@ -15,7 +15,7 @@ Below you will find an overview table of various text embedding APIs, along with
 {: .best-practice }
 
 
-| **API** | **Free Tier** | **Pricing** | **Docs** |
+| **API** | **Free Tier** | **Pricing Model** | **Docs** |
 | --- | --- | --- | --- |
 | **OpenAI** | ~$5 credit | ~$0.0001/1K tokens | [OpenAI Embeddings](https://platform.openai.com/docs/api-reference/embeddings) |
 | **Azure OpenAI** | $200 credit | Same as OpenAI (~$0.0001/1K tokens) | [Azure OpenAI Embeddings](https://learn.microsoft.com/azure/cognitive-services/openai/how-to/create-resource?tabs=portal) |

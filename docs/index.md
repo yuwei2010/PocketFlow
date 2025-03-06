@@ -41,7 +41,8 @@ We model the LLM workflow as a **Graph + Shared Store**:
 - [(Optional) Web Search](./utility_function/websearch.md)
 - [(Optional) Chunking](./utility_function/chunking.md)
 - [(Optional) Embedding](./utility_function/embedding.md)
-- [(Optional) Vector](./utility_function/vector.md)
+- [(Optional) Vector Databases](./utility_function/vector.md)
+- [(Optional) Text-to-Speech](./utility_function/text_to_speech.md)
 
 > We do not provide built-in utility functions. Example implementations are provided as reference.
 {: .warning }

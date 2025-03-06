@@ -8,7 +8,7 @@ nav_order: 4
 
 We recommend some implementations of commonly used web search tools.
 
-| **API**                         | **Free Tier**                                | **Pricing Model**                                              | **Official API Page**                                                  |
+| **API**                         | **Free Tier**                                | **Pricing Model**                                              | **Docs**                                                  |
 |---------------------------------|-----------------------------------------------|-----------------------------------------------------------------|------------------------------------------------------------------------|
 | **Google Custom Search JSON API** | 100 queries/day free       | $5 per 1000 queries.           | [Link](https://developers.google.com/custom-search/v1/overview)        |
 | **Bing Web Search API**         | 1,000 queries/month               | $15–$25 per 1,000 queries. | [Link](https://azure.microsoft.com/en-us/services/cognitive-services/bing-web-search-api/) |
