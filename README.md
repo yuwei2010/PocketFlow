@@ -13,10 +13,15 @@
 Pocket Flow: A [100-line](pocketflow/__init__.py) minimalist LLM framework
 
 - **Expressive**: Support ([Multi-](https://the-pocket.github.io/PocketFlow/design_pattern/multi_agent.html))[Agents](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html), [Workflow](https://the-pocket.github.io/PocketFlow/design_pattern/workflow.html), [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html), etc.—everything you’d expect from larger frameworks.
+  
 - **Lightweight**: Only the [core graph abstraction](https://the-pocket.github.io/PocketFlow/core_abstraction/) in 100 lines. No dependencies or vendor lock-ins.
+  
 - **Principled**: Designed for clear [modularity](https://the-pocket.github.io/PocketFlow/core_abstraction/node.html) and [separation of concerns](https://the-pocket.github.io/PocketFlow/core_abstraction/communication.html).
+  
 - To install, ```pip install pocketflow```or just copy the [source code](pocketflow/__init__.py) (only 100 lines).
+  
 - To learn more, check out the [documentation](https://the-pocket.github.io/PocketFlow/). For an in-depth design dive, read the [essay](https://github.com/The-Pocket/.github/blob/main/profile/pocketflow.md).
+  
 - 🎉 We now have a [discord](https://discord.gg/hUHHE9Sa6T)
 
 
@@ -52,7 +57,7 @@ For a new development paradigmn: **Build LLM Apps by Chatting with LLM agents, N
 <br>
 
   <details>
-    <summary>👈 <b>How to set up Pocket Flow for LLM agents?</b></summary>
+    <summary>👈 (Click to expand) <b>How to set up Pocket Flow for LLM agents?</b></summary>
 <br>
       
   - **For quick questions**: Use  the [GPT assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-pocket-flow-assistant) (note: it uses older models not ideal for coding).
@@ -64,9 +69,10 @@ For a new development paradigmn: **Build LLM Apps by Chatting with LLM agents, N
   </details>
 
   <details>
-    <summary>👈 <b>How does Pocket Flow compare to other frameworks?</b> Pocket Flow is <i>purpose-built for LLM Agents</i>:</summary>
+    <summary>👈 (Click to expand) <b>How does Pocket Flow compare to other frameworks?</b></summary>
 <br>
-  
+
+ Pocket Flow is <i>purpose-built for LLM Agents</i>:
 1. **🫠 LangChain-like frameworks** overwhelm Cursor AI with *complex* abstractions, *deprecated* functions and *irritating* dependency issues.
 2. 😐  **Without a framework**, code is *ad hoc*—suitable only for immediate tasks, *not modular or maintainable*.
 3. **🥰 With Pocket Flow**: (1) Minimal and expressive—easy for Cursor AI to pick up. (2) *Nodes and Flows* keep everything *modular*. (3) A *Shared Store* decouples your data structure from compute logic.
