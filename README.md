@@ -14,9 +14,9 @@ Pocket Flow: A [100-line](pocketflow/__init__.py) minimalist LLM framework
 
 - **Expressive**: Support ([Multi-](https://the-pocket.github.io/PocketFlow/design_pattern/multi_agent.html))[Agents](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html), [Workflow](https://the-pocket.github.io/PocketFlow/design_pattern/workflow.html), [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html), etc.—everything you’d expect from larger frameworks.
   
-- **Lightweight**: Only the [core graph abstraction](https://the-pocket.github.io/PocketFlow/core_abstraction/) in 100 lines. No dependencies or vendor lock-ins.
+- **Lightweight**: Only the *core graph abstraction* in 100 lines. No dependencies or vendor lock-ins.
   
-- **Principled**: Designed for clear [modularity](https://the-pocket.github.io/PocketFlow/core_abstraction/node.html) and [separation of concerns](https://the-pocket.github.io/PocketFlow/core_abstraction/communication.html).
+- **Principled**: Designed for clear *modularity* and *separation of concerns*.
   
 - To install, ```pip install pocketflow```or just copy the [source code](pocketflow/__init__.py) (only 100 lines).
   
