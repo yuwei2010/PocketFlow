@@ -10,13 +10,15 @@
     <img src="https://img.shields.io/discord/1346833819172601907?logo=discord&style=flat">
 </a>
 
-Pocket Flow: A [100-line](pocketflow/__init__.py) minimalist LLM framework
+Pocket Flow is a [100-line](pocketflow/__init__.py) minimalist LLM framework
 
-- **Expressive**: Support ([Multi-](https://the-pocket.github.io/PocketFlow/design_pattern/multi_agent.html))[Agents](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html), [Workflow](https://the-pocket.github.io/PocketFlow/design_pattern/workflow.html), [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html), etc.—everything you’d expect from larger frameworks.
+- **Expressive**: Everything you love from larger frameworks—([Multi-](https://the-pocket.github.io/PocketFlow/design_pattern/multi_agent.html))[Agents](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html), [Workflow](https://the-pocket.github.io/PocketFlow/design_pattern/workflow.html), [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html), and more.
   
-- **Lightweight**: Only the *core graph abstraction* in 100 lines. No dependencies or vendor lock-ins.
+- **Lightweight**: Just the pure core graph abstraction in 100 lines. Zero bloat, zero dependencies, zero vendor lock-in.
   
-- **Principled**: Designed for clear *modularity* and *separation of concerns*.
+- **Principled**: Built with modularity and clear separation of concerns at its heart.
+
+- **AI-Friendly**: Intuitive enough for AI agents to assist humans in building complex LLM applications.
   
 - To install, ```pip install pocketflow```or just copy the [source code](pocketflow/__init__.py) (only 100 lines).
   
