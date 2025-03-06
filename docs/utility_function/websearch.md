@@ -17,7 +17,7 @@ We recommend some implementations of commonly used web search tools.
 | **SerpApi**              | 100 searches/month free            | Start at $75/month for 5,000 searches| [Link](https://serpapi.com/)                                             |
 | **RapidAPI**           | Many  options    | Many  options             | [Link](https://rapidapi.com/search?term=search&sortBy=ByRelevance)      |
 
-## Example Python Code Samples
+## Example Python Code
 
 ### 1. Google Custom Search JSON API
 ```python

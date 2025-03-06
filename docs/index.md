@@ -39,7 +39,9 @@ We model the LLM workflow as a **Graph + Shared Store**:
 - [Tool](./utility_function/tool.md)
 - [(Optional) Viz and Debug](./utility_function/viz.md)
 - [(Optional) Web Search](./utility_function/websearch.md)
-- Chunking
+- [(Optional) Chunking](./utility_function/chunking.md)
+- [(Optional) Embedding](./utility_function/embedding.md)
+- [(Optional) Vector](./utility_function/vector.md)
 
 > We do not provide built-in utility functions. Example implementations are provided as reference.
 {: .warning }
