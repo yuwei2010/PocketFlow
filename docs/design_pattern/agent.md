@@ -21,8 +21,7 @@ Now decide your action by return:
 thinking: |
     Based on the context:
 action: action_name
-```
-"""
+```"""
 ```
 
 Then, connect this agent node with [branching](../core_abstraction/flow.md) to other action nodes.
