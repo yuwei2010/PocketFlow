@@ -5,7 +5,7 @@ parent: "Utility Function"
 nav_order: 5
 ---
 
-## Text Chunking
+# Text Chunking
 
 We recommend some implementations of commonly used text chunking approaches.
 
