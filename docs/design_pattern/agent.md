@@ -7,19 +7,39 @@ nav_order: 6
 
 # Agent
 
-Agent is a powerful design pattern, where node can take dynamic actions based on the context it receives.
-To express an agent, create a Node (the agent) with [branching](../core_abstraction/flow.md) to other nodes (Actions).
+An agent is a powerful design pattern in which a node can take dynamic actions based on the context it receives. To express an agent, create a Node with a prompt template like:
+
+```python
+"""
+Here is the context: {context}
+Now, choose your next actions:
+1. Action name, what it is for, and what the parameters are
+2. ...
+
+Now decide your action by return:
+```yaml
+thinking: |
+    Based on the context:
+action: action_name
+```
+"""
+```
+
+Then, connect this agent node with [branching](../core_abstraction/flow.md) to other action nodes.
+
+> The core of building **performant** and **reliable** agents boils down to:
+>
+> 1. **Context Management:** Provide *clear, relevant context* so agents can understand the problem. For example, rather than dumping an entire chat history or entire files, use a [Workflow](./workflow.md) that filters out and includes only the most relevant information.
+>
+> 2. **Action Space:** Define *a well-structured, unambiguous, and easy-to-use* set of actions. For instance, avoid creating overlapping actions like `read_databases` and `read_csvs`. Instead, unify data sources (e.g., move CSVs into a database) and design a single action. The action can be parameterized (e.g., with a search string) or be programmable (e.g., through SQL queries).
+{: .best-practice }
+
+
 
 <div align="center">
   <img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/agent.png?raw=true" width="250"/>
 </div>
 
-> The core of build **performant** and **reliable** agents boils down to:
-> 
-> 1. **Context Management:** Provide *clear, relevant context* so agents can understand the problem.E.g., Rather than dumping an entire chat history or entire files, use a [Workflow](./workflow.md) that filters out and includes only the most relevant information.
->
-> 2. **Action Space:** Define *a well-structured, unambiguous, and easy-to-use* set of actions. For instance, avoid creating overlapping actions like `read_databases` and `read_csvs`. Instead, unify data sources (e.g., move CSVs into a database) and design a single action. The action can be parameterized (e.g., string for search) or  programmable (e.g., SQL queries).
-{: .best-practice }
 
 ### Example: Search Agent
 
