@@ -8,13 +8,13 @@ nav_order: 1
 
 A [100-line](https://github.com/the-pocket/PocketFlow/blob/main/pocketflow/__init__.py) minimalist LLM framework for *Agents, Task Decomposition, RAG, etc*.
 
+<div align="center">
+  <img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/meme.jpg?raw=true" width="400"/>
+</div>
 
-- **Expressive**: Everything you love from larger frameworks—([Multi-](./design_pattern/multi_agent.html))[Agents](./design_pattern/agent.html), [Workflow](./design_pattern/workflow.html), [RAG](./design_pattern/rag.html), and more.
-  
-- **Lightweight**: Just the core graph abstraction in 100 lines. Zero bloat, zero dependencies, zero vendor lock-in.
-  
+- **Expressive**: Everything you love from larger frameworks—([Multi-](./design_pattern/multi_agent.html))[Agents](./design_pattern/agent.html), [Workflow](./design_pattern/workflow.html), [RAG](./design_pattern/rag.html), and more.  
+- **Lightweight**: Just the core graph abstraction in 100 lines. ZERO bloat, dependencies, and vendor lock-in.
 - **Principled**: Built with modularity and clear separation of concerns at its heart.
-
 - **AI-Friendly**: Intuitive enough for AI agents to assist humans in building complex LLM applications.
 
 
@@ -33,19 +33,17 @@ We model the LLM workflow as a **Graph + Shared Store**:
 
 From there, it’s easy to implement popular design patterns:
 
-- [Structured Output](./design_pattern/structure.md)
-- [Workflow](./design_pattern/workflow.md)
-- [Map Reduce](./design_pattern/mapreduce.md)
-- [RAG](./design_pattern/rag.md)
-- [Agent](./design_pattern/agent.md)
-- [(Optional) Chat Memory](./design_pattern/memory.md)
-- [(Advanced) Multi-Agents](./design_pattern/multi_agent.md)
-- Evaluation
+- [Structured Output](./design_pattern/structure.md) formats outputs consistently.
+- [Workflow](./design_pattern/workflow.md) chains multiple tasks into pipelines.
+- [Map Reduce](./design_pattern/mapreduce.md) splits data tasks into Map and Reduce steps.
+- [RAG](./design_pattern/rag.md) integrates data retrieval with generation.
+- [Agent](./design_pattern/agent.md) autonomously makes decisions.
+- [(Optional) Chat Memory](./design_pattern/memory.md) preserves conversation context.
+- [(Advanced) Multi-Agents](./design_pattern/multi_agent.md) coordinate multiple agents.
 
 ## Utility Function
 
-We do not provide built-in utility functions in codes. 
-But we provide example implementations in docs:
+We do not provide built-in utility functions in *codes*, but we do provide example implementations in *docs*:
 
 - [LLM Wrapper](./utility_function/llm.md)
 - [Tool](./utility_function/tool.md)
@@ -56,4 +54,4 @@ But we provide example implementations in docs:
 - [(Optional) Vector Databases](./utility_function/vector.md)
 - [(Optional) Text-to-Speech](./utility_function/text_to_speech.md)
 
-## [Develop your LLM Apps](./guide.md)
+## Read to Develop your LLM Apps? [Read this guide!](./guide.md)
