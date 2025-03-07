@@ -35,9 +35,9 @@ Pocket Flow is a [100-line](pocketflow/__init__.py) minimalist LLM framework
   
 | Formal App Name  | Informal One-Liner |Difficulty    |  Learning Objectives  |
 | :------------- | :-------------  | :------------- | :--------------------- |
-| [Youtube Summarizer](https://github.com/The-Pocket/Tutorial-Youtube-Made-Simple)  | Explain YouTube Videos to you like you're 5 | ★☆☆  *Beginner*   | [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) | 
-| [Cold Opener Generator](https://github.com/The-Pocket/Tutorial-Cold-Email-Personalization)  | Instant icebreakers that turn cold leads hot | ★☆☆  *Beginner*   | [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) <br> [Web Search](https://the-pocket.github.io/PocketFlow/utility_function/websearch.html) | 
-| [Ask AI Paul Graham](https://github.com/The-Pocket/Tutorial-YC-Partner)  | Ask AI Paul Graham, in case you don't get in | ★★☆  *Medium*   | [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html) <br> [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) <br> [Text-to-Speech](https://the-pocket.github.io/PocketFlow/utility_function/text_to_speech.html) |
+| [Youtube Summarizer](https://github.com/The-Pocket/Tutorial-Youtube-Made-Simple)  | Explain YouTube Videos to you like you're 5 | ★☆☆ <br> *Beginner*   | [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) | 
+| [Cold Opener Generator](https://github.com/The-Pocket/Tutorial-Cold-Email-Personalization)  | Instant icebreakers that turn cold leads hot | ★☆☆ <br> *Beginner*   | [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) <br> [Web Search](https://the-pocket.github.io/PocketFlow/utility_function/websearch.html) | 
+| [Ask AI Paul Graham](https://github.com/The-Pocket/Tutorial-YC-Partner)  | Ask AI Paul Graham, in case you don't get in | ★★☆ <br> *Medium*   | [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html) <br> [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) <br> [Text-to-Speech](https://the-pocket.github.io/PocketFlow/utility_function/text_to_speech.html) |
 
 </div>
 
