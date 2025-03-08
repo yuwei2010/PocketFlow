@@ -7,23 +7,15 @@ nav_order: 4
 
 # RAG (Retrieval Augmented Generation)
 
-For certain LLM tasks like answering questions, providing context is essential.
-Most common way to retrive text-based context is through embedding:
-1. Given texts, you first [chunk](../utility_function/chunking.md) them.
-2. Next, you [embed](../utility_function/embedding.md) each chunk.
-3. Then you store the chunks in [vector databases](../utility_function/vector.md).
-4. Finally, given a query, you embed the query and find the closest chunk in the vector databases.
+For certain LLM tasks like answering questions, providing relevant context is essential. One common architecture is a **two-stage** RAG pipeline:
+
+1. **Offline stage**: Preprocess and index documents ("building the index").
+2. **Online stage**: Given a question, generate answers by retrieving the most relevant context from the index.
 
 <div align="center">
   <img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/rag.png?raw=true" width="250"/>
 </div>
 
-# RAG (Retrieval Augmented Generation)
-
-For certain LLM tasks like answering questions, providing relevant context is essential. One common architecture is a **two-stage** RAG pipeline:
-
-1. **Offline stage**: Preprocess and index documents ("building the index").
-2. **Online stage**: Given a question, generate answers by retrieving the most relevant context from the index.
 
 ---
 ## Stage 1: Offline Indexing
