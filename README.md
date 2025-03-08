@@ -45,7 +45,7 @@ Pocket Flow is a [100-line](pocketflow/__init__.py) minimalist LLM framework
 
 ## Why Pocket Flow?
 
-For a new development paradigmn: **Build LLM Apps by Chatting with LLM agents, Not Coding**!
+For a new development paradigmn: **[Vibe Coding](https://x.com/karpathy/status/1886192184808149383)**!
 
 - 🧑 Human **describe LLM App requirements** in a design doc.
 - 🤖 The agent (like Cursor AI) **implements App** your code automatically.
