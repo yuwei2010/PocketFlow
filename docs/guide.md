@@ -40,7 +40,7 @@ These system designs should be a collaboration between humans and AI assistants:
     -  > **Start small!** Only include the most important ones to begin with!
         {: .best-practice }
 
-3. **Flow Design**: Create a high-level outline for your system's flow.
+3. **Flow Design**: Outline how your system orchestrates steps.
     - Identify potential design patterns (e.g., Batch, Agent, RAG).
     - For each node, specify:
       - **Purpose**: The high-level compute logic
