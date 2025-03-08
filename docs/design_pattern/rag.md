@@ -9,13 +9,12 @@ nav_order: 4
 
 For certain LLM tasks like answering questions, providing relevant context is essential. One common architecture is a **two-stage** RAG pipeline:
 
-1. **Offline stage**: Preprocess and index documents ("building the index").
-2. **Online stage**: Given a question, generate answers by retrieving the most relevant context from the index.
-
 <div align="center">
-  <img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/rag.png?raw=true" width="250"/>
+  <img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/rag.png?raw=true" width="400"/>
 </div>
 
+1. **Offline stage**: Preprocess and index documents ("building the index").
+2. **Online stage**: Given a question, generate answers by retrieving the most relevant context.
 
 ---
 ## Stage 1: Offline Indexing
