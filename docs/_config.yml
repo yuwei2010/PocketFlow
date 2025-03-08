@@ -41,3 +41,9 @@ callouts:
   best-practice:
     title: Best Practice
     color: green
+  
+# The custom navigation
+nav:
+  - Home: index.md       # Link to your main docs index
+  - GitHub: "https://github.com/the-pocket/PocketFlow"
+  - Discord: "https://discord.gg/hUHHE9Sa6T"
