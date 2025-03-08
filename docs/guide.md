@@ -3,9 +3,9 @@ layout: default
 title: "Build your LLM App"
 ---
 
-# LLM Application Development Playbook
+# LLM System Design Playbook
 
-> If you are an AI assistant involved in building LLM Apps, read this guide **VERY, VERY** carefully! This is the most important chapter in the entire document. Throughout development, you should always (1) start with a small and simple solution, (2) design at a high level (`docs/design.md`) before implementation, and (3) frequently ask humans for feedback and clarification.
+> If you are an AI assistant involved in building LLM Systems, read this guide **VERY, VERY** carefully! This is the most important chapter in the entire document. Throughout development, you should always (1) start with a small and simple solution, (2) design at a high level (`docs/design.md`) before implementation, and (3) frequently ask humans for feedback and clarification.
 {: .warning }
 
 ## System Design Steps
@@ -40,7 +40,7 @@ These system designs should be a collaboration between humans and AI assistants:
     -  > **Start small!** Only include the most important ones to begin with!
         {: .best-practice }
 
-3. **Flow Design**: Create a high-level outline for your application’s flow.
+3. **Flow Design**: Create a high-level outline for your system's flow.
     - Identify potential design patterns (e.g., Batch, Agent, RAG).
     - For each node, specify:
       - **Purpose**: The high-level compute logic
@@ -49,8 +49,8 @@ These system designs should be a collaboration between humans and AI assistants:
 
 
 4. **Data Design**: Plan how data will be stored and updated.
-   - For simple apps, use an in-memory dictionary.
-   - For more complex apps or when persistence is required, use a database.
+   - For simple systems, use an in-memory dictionary.
+   - For more complex systems or when persistence is required, use a database.
    - For each node, specify:
      - `prep`: How the node reads data
      - `post`: How the node writes data
@@ -95,5 +95,5 @@ my_project/
 - **`utils/`**: Contains all utility functions.
   - It’s recommended to dedicate one Python file to each API call, for example `call_llm.py` or `search_web.py`.
   - Each file should also include a `main()` function to try that API call
-- **`flow.py`**: Implements the application’s flow, starting with node definitions followed by the overall structure.
+- **`flow.py`**: Implements the system's flow, starting with node definitions followed by the overall structure.
 - **`main.py`**: Serves as the project’s entry point.
