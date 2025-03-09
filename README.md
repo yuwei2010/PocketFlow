@@ -24,7 +24,7 @@ Pocket Flow is a [100-line](pocketflow/__init__.py) minimalist LLM framework
   
 - To learn more, check out the [documentation](https://the-pocket.github.io/PocketFlow/). For an in-depth design dive, read the [essay](https://github.com/The-Pocket/.github/blob/main/profile/pocketflow.md).
   
-- 🎉 We now have a [discord](https://discord.gg/hUHHE9Sa6T)
+- 🎉 We now have a [discord](https://discord.gg/hUHHE9Sa6T)!
 
 
 ## What can Pocket Flow build?
@@ -41,9 +41,9 @@ Pocket Flow is a [100-line](pocketflow/__init__.py) minimalist LLM framework
 
 </div>
 
-- Want to learn how I vibe code these LLM Apps? Check out [my YouTube](https://www.youtube.com/@ZacharyLLM?sub_confirmation=1)
+- Want to learn how I vibe code these LLM Apps? Check out [my YouTube](https://www.youtube.com/@ZacharyLLM?sub_confirmation=1)!
   
-- Want to create your own Python project? Start with  [this template](https://github.com/The-Pocket/PocketFlow-Template-Python)
+- Want to create your own Python project? Start with  [this template](https://github.com/The-Pocket/PocketFlow-Template-Python)!
 
 ## Why Pocket Flow?
 
@@ -51,7 +51,7 @@ Pocket Flow is a [100-line](pocketflow/__init__.py) minimalist LLM framework
 
 - 😎 **Humans** craft the **high-level requirements and system design**.
   
-- 🤖 **AI agents** (e.g., Cursor AI) handle the **low-level implementation**
+- 🤖 **AI agents** (e.g., Cursor AI) handle the **low-level implementation**.
 
 
 <br>
@@ -63,7 +63,7 @@ Pocket Flow is a [100-line](pocketflow/__init__.py) minimalist LLM framework
 <br>
 
 
-Compare to other frameworks, Pocket Flow is <i>purpose-built for LLM Agents</i>
+Compare to other frameworks, Pocket Flow is <i>purpose-built for LLM Agents</i>:
 
 1. **🫠 LangChain-like frameworks** overwhelm Cursor AI with *complex* abstractions, *deprecated* functions and *irritating* dependency issues.
    
@@ -79,7 +79,9 @@ In short, the **100 lines** ensures LLM Agents follows *solid coding practices* 
 ## How does Pocket Flow work?
 
 The [100 lines](pocketflow/__init__.py) capture what we believe to be the core abstraction of LLM frameworks:
+
  - **Computation**: A *graph* that breaks down tasks into nodes, with *branching, looping,  and nesting*.
+
  - **Communication**: A *shared store* that all nodes can read and write to.
 
 <br>
