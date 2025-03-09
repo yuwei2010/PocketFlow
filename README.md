@@ -52,8 +52,8 @@ For a new development paradigmn: **[Vibe Coding](https://x.com/karpathy/status/1
 
 <br>
 <div align="center">
-  <a href="https://youtu.be/0Pv5HVoVBYE" target="_blank">
-    <img src="./assets/youtube.png" width="500" alt="IMAGE ALT TEXT" style="cursor: pointer;">
+  <a href="https://youtu.be/Cf38Bi8U0Js" target="_blank">
+    <img src="./assets/tutorial.png" width="500" alt="IMAGE ALT TEXT" style="cursor: pointer;">
   </a>
 </div>
 <br>
