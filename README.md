@@ -35,18 +35,18 @@ Pocket Flow is a [100-line](pocketflow/__init__.py) minimalist LLM framework
   
 | Formal App Name  | Informal One-Liner |Difficulty    |  Learning Objectives  |
 | :------------- | :-------------  | :------------- | :--------------------- |
+| [Ask AI Paul Graham](https://github.com/The-Pocket/Tutorial-YC-Partner)  | Ask AI Paul Graham, in case you don't get in | ★★☆ <br> *Medium*   | [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html) <br> [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) <br> [Text-to-Speech](https://the-pocket.github.io/PocketFlow/utility_function/text_to_speech.html) |
 | [Youtube Summarizer](https://github.com/The-Pocket/Tutorial-Youtube-Made-Simple)  | Explain YouTube Videos to you like you're 5 | ★☆☆ <br> *Beginner*   | [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) | 
 | [Cold Opener Generator](https://github.com/The-Pocket/Tutorial-Cold-Email-Personalization)  | Instant icebreakers that turn cold leads hot | ★☆☆ <br> *Beginner*   | [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) <br> [Web Search](https://the-pocket.github.io/PocketFlow/utility_function/websearch.html) | 
-| [Ask AI Paul Graham](https://github.com/The-Pocket/Tutorial-YC-Partner)  | Ask AI Paul Graham, in case you don't get in | ★★☆ <br> *Medium*   | [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html) <br> [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) <br> [Text-to-Speech](https://the-pocket.github.io/PocketFlow/utility_function/text_to_speech.html) |
 
 </div>
 
-- Want to learn how I vibe code these LLM Apps? Check out [my YouTube](https://www.youtube.com/@ZacharyLLM?sub_confirmation=1):
+- Want to learn how I vibe code these LLM Apps? Check out [my YouTube](https://www.youtube.com/@ZacharyLLM?sub_confirmation=1)
 - Want to create your own Python project? Start with  [this template](https://github.com/The-Pocket/PocketFlow-Template-Python)
 
 ## Why Pocket Flow?
 
-For a new development paradigmn: **[Vibe Coding](https://x.com/karpathy/status/1886192184808149383)**!
+For **[Vibe Coding](https://x.com/karpathy/status/1886192184808149383)**, the fastest development paradigmn!
 
 - 🧑 Human **describe LLM App requirements** in a design doc.
 - 🤖 The agent (like Cursor AI) **implements App** your code automatically.
@@ -59,29 +59,19 @@ For a new development paradigmn: **[Vibe Coding](https://x.com/karpathy/status/1
 </div>
 <br>
 
-  <details>
-    <summary>👈 (Click to expand) <b>How to set up Pocket Flow for LLM agents?</b></summary>
-<br>
-      
-  - **For quick questions**: Use  the [GPT assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-pocket-flow-assistant) (note: it uses older models not ideal for coding).
-  - **For one-time LLM task**:  Create a [ChatGPT](https://help.openai.com/en/articles/10169521-using-projects-in-chatgpt) or [Claude](https://www.anthropic.com/news/projects) project; upload the [docs](docs) to project knowledge.
-  - **For LLM App development**: Use [Cursor AI](https://www.cursor.com/).
-      - If you want to start a new project, check out the [project template](https://github.com/The-Pocket/PocketFlow-Template-Python).
-      - If you already have a project, copy [.cursorrules](.cursorrules) to your project root as [Cursor Rules](https://docs.cursor.com/context/rules-for-ai).
 
-  </details>
+Compare to other frameworks, Pocket Flow is <i>purpose-built for LLM Agents</i>
 
-  <details>
-    <summary>👈 (Click to expand) <b>How does Pocket Flow compare to other frameworks?</b></summary>
-<br>
-
- Pocket Flow is <i>purpose-built for LLM Agents</i>:
 1. **🫠 LangChain-like frameworks** overwhelm Cursor AI with *complex* abstractions, *deprecated* functions and *irritating* dependency issues.
-2. 😐  **Without a framework**, code is *ad hoc*—suitable only for immediate tasks, *not modular or maintainable*.
-3. **🥰 With Pocket Flow**: (1) Minimal and expressive—easy for Cursor AI to pick up. (2) *Nodes and Flows* keep everything *modular*. (3) A *Shared Store* decouples your data structure from compute logic.
+   
+3. 😐  **Without a framework**, code is *ad hoc*—suitable only for immediate tasks, *not modular or maintainable*.
+   
+5. **🥰 With Pocket Flow**: (1) Minimal and expressive—easy for Cursor AI to pick up. (2) *Nodes and Flows* keep everything *modular*. (3) A *Shared Store* decouples your data structure from compute logic.
 
-In short, the **100 lines** ensures LLM Agents follows *solid coding practices* without sacrificing *flexibility*. 
-  </details>
+In short, the **100 lines** ensures LLM Agents follows *solid coding practices* without sacrificing *simplicity* or *flexibility*. 
+
+
+
 
 ## How does Pocket Flow work?
 
@@ -102,3 +92,19 @@ From there, it’s easy to implement popular design patterns like ([Multi-](http
   <img src="./assets/design.png" width="600"/>
 </div>
 <br>
+
+
+## How to start Vibe Coding with Pocket Flow?
+
+    
+- **For quick questions**: Use  the [GPT assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-pocket-flow-assistant) (note: it uses older models not ideal for coding).
+  
+- **For one-time LLM task**:  Create a [ChatGPT](https://help.openai.com/en/articles/10169521-using-projects-in-chatgpt) or [Claude](https://www.anthropic.com/news/projects) project; upload the [docs](docs) to project knowledge.
+  
+- **For LLM App development**: Use [Cursor AI](https://www.cursor.com/).
+  
+    - If you want to start a new project, check out the [project template](https://github.com/The-Pocket/PocketFlow-Template-Python).
+      
+    - If you already have a project, copy [.cursorrules](.cursorrules) to your project root as [Cursor Rules](https://docs.cursor.com/context/rules-for-ai).
+
+
