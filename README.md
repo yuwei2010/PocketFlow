@@ -42,6 +42,7 @@ Pocket Flow is a [100-line](pocketflow/__init__.py) minimalist LLM framework
 </div>
 
 - Want to learn how I vibe code these LLM Apps? Check out [my YouTube](https://www.youtube.com/@ZacharyLLM?sub_confirmation=1)
+  
 - Want to create your own Python project? Start with  [this template](https://github.com/The-Pocket/PocketFlow-Template-Python)
 
 ## Why Pocket Flow?
