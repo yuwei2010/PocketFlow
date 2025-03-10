@@ -42,22 +42,22 @@ These system designs should be a collaboration between humans and AI assistants:
 
 3. **Flow Design**: Outline how your system orchestrates steps.
     - Identify potential design patterns (e.g., Batch, Agent, RAG).
-    - For each node, specify:
-      - **Purpose**: The high-level compute logic
-      - **Type**: Regular node, Batch node, async node, or another type
-      - `exec`: The specific utility function to call (ideally, one function per node)
-
+    - For each node, provide a high-level purpose description.
+    - Draw the Flow in mermaid diagram.
 
 4. **Data Design**: Plan how data will be stored and updated.
    - For simple systems, use an in-memory dictionary.
    - For more complex systems or when persistence is required, use a database.
-   - For each node, specify:
+   - **Remove Data Redundancy**: Don't store the same data. Use in-mem reference or foriegn key.
+   - For each node, design its access pattern:
+     - `type`: Decide between Regular, Batch, or Async
      - `prep`: How the node reads data
+     - `exec`: Which utility function this node use
      - `post`: How the node writes data
 
-5. **Implementation**: Implement nodes and flows based on the design.
-   - Start with a simple, direct approach (avoid over-engineering and full-scale type checking or testing). 
-   - Let it FAIL FAST! Initially, refrain from adding `try` logic so you can quickly identify weak points in the system.
+5. **Implementation**: Implement the intial nodes and flows based on the design.
+   - **"Keep it simple, stupid!** Avoid complex features and full-scale type checking. 
+   - **FAIL FAST**! Refrain from  `try` logic so you can quickly identify weak points in the system.
    - Add logging throughout the code to facilitate debugging.
 
 6. **Optimization**:
