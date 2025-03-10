@@ -48,16 +48,16 @@ These system designs should be a collaboration between humans and AI assistants:
 4. **Data Design**: Plan how data will be stored and updated.
    - For simple systems, use an in-memory dictionary.
    - For more complex systems or when persistence is required, use a database.
-   - **Remove Data Redundancy**: Don't store the same data. Use in-mem reference or foriegn key.
+   - **Remove Data Redundancy**: Don’t store the same data. Use in-memory references or foreign keys.
    - For each node, design its access pattern:
      - `type`: Decide between Regular, Batch, or Async
      - `prep`: How the node reads data
-     - `exec`: Which utility function this node use
+     - `exec`: Which utility function this node uses
      - `post`: How the node writes data
 
-5. **Implementation**: Implement the intial nodes and flows based on the design.
-   - **"Keep it simple, stupid!** Avoid complex features and full-scale type checking. 
-   - **FAIL FAST**! Refrain from  `try` logic so you can quickly identify weak points in the system.
+5. **Implementation**: Implement the initial nodes and flows based on the design.
+   - **“Keep it simple, stupid!”** Avoid complex features and full-scale type checking.
+   - **FAIL FAST**! Refrain from `try` logic so you can quickly identify any weak points in the system.
    - Add logging throughout the code to facilitate debugging.
 
 6. **Optimization**:
