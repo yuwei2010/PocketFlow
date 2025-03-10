@@ -55,11 +55,12 @@ Pocket Flow is a [100-line](pocketflow/__init__.py) minimalist LLM framework
 
 <br>
 <div align="center">
-  <img src="./assets/vibe_coding.gif" width="600"/>
+  <a href="https://youtu.be/Cf38Bi8U0Js" target="_blank">
+    <img src="./assets/tutorial.png" width="500" alt="IMAGE ALT TEXT" style="cursor: pointer;">
+  </a>
 </div>
 <br>
 
-Check out [YouTube Tutorial for Vibe Coding AI Paul Graham](https://youtu.be/Cf38Bi8U0Js)
 
 Compare to other frameworks, Pocket Flow is <i>purpose-built for LLM Agents</i>:
 
