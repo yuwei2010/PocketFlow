@@ -18,7 +18,7 @@ Pocket Flow is a [100-line](pocketflow/__init__.py) minimalist LLM framework
   
 - **Principled**: Built with modularity and clear separation of concerns at its heart for maintainable codes.
 
-- **AI-Friendly**: Intuitive enough for AI agents (e.g., Cursor AI) to assist humans in [Vibe Coding](https://x.com/karpathy/status/1886192184808149383).
+- **AI-Friendly**: Intuitive enough for AI agents (e.g., Cursor AI) to help humans code.
   
 - To install, ```pip install pocketflow```or just copy the [source code](pocketflow/__init__.py) (only 100 lines).
   
