@@ -53,6 +53,14 @@ Pocket Flow is a [100-line](pocketflow/__init__.py) minimalist LLM framework
   
 - 🤖 **AI agents** (e.g., Cursor AI) handle the **low-level implementation**.
 
+<br>
+<div align="center">
+  <img src="./assets/vibe_coding.gif" width="600"/>
+</div>
+<br>
+
+Check out [YouTube Tutorial for Vibe Coding AI Paul Graham](https://youtu.be/Cf38Bi8U0Js)
+
 Compare to other frameworks, Pocket Flow is <i>purpose-built for LLM Agents</i>:
 
 1. **🫠 LangChain-like frameworks** overwhelm Cursor AI with *complex* abstractions, *deprecated* functions and *irritating* dependency issues.
