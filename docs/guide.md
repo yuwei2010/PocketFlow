@@ -56,7 +56,8 @@ These system designs should be a collaboration between humans and AI assistants:
      - `post`: How the node writes data
 
 5. **Implementation**: Implement nodes and flows based on the design.
-   - Start with a simple, direct approach (avoid over-engineering and full-scale type checking or testing). Let it fail fast to identify weaknesses.
+   - Start with a simple, direct approach (avoid over-engineering and full-scale type checking or testing). 
+   - Let it FAIL FAST! Initially, refrain from adding `try` logic so you can quickly identify weak points in the system.
    - Add logging throughout the code to facilitate debugging.
 
 6. **Optimization**:
