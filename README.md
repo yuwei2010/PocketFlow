@@ -77,11 +77,7 @@ In short, the **100 lines** ensures LLM Agents follows *solid coding practices* 
 
 ## How does Pocket Flow work?
 
-The [100 lines](pocketflow/__init__.py) capture what we believe to be the core abstraction of LLM frameworks:
-
- - **Computation**: A *graph* that breaks down tasks into nodes, with *branching, looping,  and nesting*.
-
- - **Communication**: A *shared store* that all nodes can read and write to.
+The [100 lines](pocketflow/__init__.py) capture the core Graph abstraction of LLM frameworks:
 
 <br>
 <div align="center">
