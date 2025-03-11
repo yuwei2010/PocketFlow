@@ -98,7 +98,7 @@ From there, it’s easy to implement popular design patterns like ([Multi-](http
 <br>
 
 
-## How to start Vibe Coding with Pocket Flow?
+## How to start?
 
     
 - **For quick questions**: Use  the [GPT assistant](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-pocket-flow-assistant) (note: it uses older models not ideal for coding).
