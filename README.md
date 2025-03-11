@@ -16,7 +16,7 @@ Pocket Flow is a [100-line](pocketflow/__init__.py) minimalist LLM framework
   
 - **Expressive**: Everything you love from larger frameworks—([Multi-](https://the-pocket.github.io/PocketFlow/design_pattern/multi_agent.html))[Agents](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html), [Workflow](https://the-pocket.github.io/PocketFlow/design_pattern/workflow.html), [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html), and more.
 
-- **AI-Friendly**: Intuitive enough for AI agents (e.g., Cursor AI) to help humans code.
+- **AI-Friendly**: Intuitive enough for AI agents (e.g., Cursor AI) to  build agents!
   
 - **Principled**: Built with modularity and clear separation of concerns at its heart for maintainable codes.
   
@@ -47,7 +47,7 @@ Pocket Flow is a [100-line](pocketflow/__init__.py) minimalist LLM framework
 
 ## Why Pocket Flow?
 
-🚀 **[Vibe Coding](https://x.com/karpathy/status/1886192184808149383)** – the fastest paradigm for building LLM systems!
+🚀 **Agents build Agents** – the fastest paradigm for building LLM systems!
 
 - 😎 **Humans** craft the **high-level requirements and system design**.
   
