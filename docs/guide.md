@@ -14,13 +14,13 @@ These system designs should be a collaboration between humans and AI assistants:
 
 | Stage                  | Human      | AI        | Comment                                                                 |
 |:-----------------------|:----------:|:---------:|:------------------------------------------------------------------------|
-| 1. Requirements | ★★★ High  | ★☆☆ Low   | Humans understand the requirements and context best.                    |
-| 2. Utilities   | ★★☆ Medium | ★★☆ Medium | The human is familiar with external APIs and integrations, and the AI assists with implementation. |
-| 3. Flow Design         | ★★☆ Medium | ★★☆ Medium | The human identifies complex and ambiguous parts, and the AI helps with redesign. |
-| 4. Data Design         | ★☆☆ Low   | ★★★ High  | The AI assists in designing the data schema based on the flow.          |
-| 5. Implementation      | ★☆☆ Low   | ★★★ High  | The human identifies complex and ambiguous parts, and the AI helps with redesign. |
-| 6. Optimization        | ★★☆ Medium | ★★☆ Medium | The human reviews the code and evaluates the results, while the AI helps optimize. |
-| 7. Reliability         | ★☆☆ Low   | ★★★ High  | The AI helps write test cases and address corner cases.                 |
+| 1. Requirements | ★★★ High  | ★☆☆ Low   | Humans understand the requirements and context.                    |
+| 2. Flow          | ★★☆ Medium | ★★☆ Medium |  Humans specify the high-level design, and the AI fills in the details. |
+| 3. Utilities   | ★★☆ Medium | ★★☆ Medium | Humans provide available external APIs and integrations, and the AI helps with implementation. |
+| 4. Node          | ★☆☆ Low   | ★★★ High  | The AI helps design the node types and data handling based on the flow.          |
+| 5. Implementation      | ★☆☆ Low   | ★★★ High  |  The AI implements the flow based on the design. |
+| 6. Optimization        | ★★☆ Medium | ★★☆ Medium | Humans evaluate the results, and the AI helps optimize. |
+| 7. Reliability         | ★☆☆ Low   | ★★★ High  |  The AI writes test cases and addresses corner cases.     |
 
 1. **Requirements**: Clarify the requirements for your project, and evaluate whether an AI system is a good fit. AI systems are:
     - suitable for routine tasks that require common sense (e.g., filling out forms, replying to emails).
@@ -29,27 +29,31 @@ These system designs should be a collaboration between humans and AI assistants:
     - > **If a human can’t solve it, an LLM can’t automate it!** Before building an LLM system, thoroughly understand the problem by manually solving example inputs to develop intuition.  
       {: .best-practice }
 
-2. **Utilities**: Think of the AI system as the brain for decision-making. It needs a body—these *external utility functions*—to interact with the real world:
 
-    <div align="center"><img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/utility.png?raw=true" width="400"/></div>
-
-    - Reading inputs (e.g., retrieving Slack messages, reading emails)
-    - Writing outputs (e.g., generating reports, sending emails)
-    - Using external tools (e.g., calling LLMs, searching the web)
-    - Keep in mind that *LLM-based tasks* (e.g., summarizing text, analyzing sentiment) are **not** utility functions; rather, they are *core functions* internal in the AI system, and will be designed in step 3.
-    -  > **Start small!** Only include the most important ones to begin with!
-        {: .best-practice }
-
-3. **Flow Design**: Outline how your system orchestrates steps.
-    - Identify potential design patterns (e.g., Batch, Agent, RAG).
+2. **Flow Design**: Outline at a high level, describe how your AI system orchestrates nodes.
+    - Identify applicable design patterns (e.g., [Map Reduce](./design_pattern/mapreduce.md), [Agent](./design_pattern/agent.md), [RAG](./design_pattern/rag.md)).
     - For each node, provide a high-level purpose description.
     - Draw the Flow in mermaid diagram.
 
-4. **Data Design**: Plan how data will be stored and updated.
-   - For simple systems, use an in-memory dictionary.
-   - For more complex systems or when persistence is required, use a database.
-   - **Remove Data Redundancy**: Don’t store the same data. Use in-memory references or foreign keys.
-   - For each node, design its access pattern:
+3. **Utilities**: Based on the Flow Design, identify and implement necessary utility functions.
+    - Think of your AI system as the brain. It needs a body—these *external utility functions*—to interact with the real world:
+        <div align="center"><img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/utility.png?raw=true" width="400"/></div>
+
+        - Reading inputs (e.g., retrieving Slack messages, reading emails)
+        - Writing outputs (e.g., generating reports, sending emails)
+        - Using external tools (e.g., calling LLMs, searching the web)
+
+    - NOTE: *LLM-based tasks* (e.g., summarizing text, analyzing sentiment) are **NOT** utility functions; rather, they are *core functions* internal in the AI system.
+    -  > **Start small!** Only include the most important ones to begin with!
+        {: .best-practice }
+
+
+4. **Node Design**: Plan how each node will read and write data, and use utility functions.
+   - Start with the shared data design
+      - For simple systems, use an in-memory dictionary.
+      - For more complex systems or when persistence is required, use a database.
+      - **Remove Data Redundancy**: Don’t store the same data. Use in-memory references or foreign keys.
+   - For each node, design its type and data handling:
      - `type`: Decide between Regular, Batch, or Async
      - `prep`: How the node reads data
      - `exec`: Which utility function this node uses
@@ -57,7 +61,7 @@ These system designs should be a collaboration between humans and AI assistants:
 
 5. **Implementation**: Implement the initial nodes and flows based on the design.
    - **“Keep it simple, stupid!”** Avoid complex features and full-scale type checking.
-   - **FAIL FAST**! Refrain from `try` logic so you can quickly identify any weak points in the system.
+   - **FAIL FAST**! Avoid `try` logic so you can quickly identify any weak points in the system.
    - Add logging throughout the code to facilitate debugging.
 
 6. **Optimization**:
