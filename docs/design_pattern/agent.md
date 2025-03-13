@@ -7,38 +7,47 @@ nav_order: 6
 
 # Agent
 
-An agent is a powerful design pattern in which a node can take dynamic actions based on the context it receives. To express an agent, create a Node with a prompt template like:
+Agent is a powerful design pattern in which nodes can take dynamic actions based on the context.
 
-```python
-"""
-Here is the context: {context}
-Now, choose your next actions:
-1. Action name, what it is for, and what the parameters are
-2. ...
+The core of building **high-performance** and **reliable** agents boils down to:
 
-Now decide your action by return:
-```yaml
-thinking: |
-    Based on the context:
-action: action_name
-```"""
-```
+1. **Context Management:** Provide *relevant, minimal context* so that agents can understand the problem. For example, rather than including an entire chat history or entire files, use a [Workflow](./workflow.md) that includes only the most relevant information. This is because, even if LLMs have larger contexts, they can exhibit the ["lost in the middle"](https://arxiv.org/abs/2307.03172) phenomenon, focusing primarily on the middle portion of the input.
 
-Then, connect this agent node with [branching](../core_abstraction/flow.md) to other action nodes.
-
-> The core of building **performant** and **reliable** agents boils down to:
->
-> 1. **Context Management:** Provide *clear, relevant context* so agents can understand the problem. For example, rather than dumping an entire chat history or entire files, use a [Workflow](./workflow.md) that filters out and includes only the most relevant information.
->
-> 2. **Action Space:** Define *a well-structured, unambiguous, and easy-to-use* set of actions. For instance, avoid creating overlapping actions like `read_databases` and `read_csvs`. Instead, unify data sources (e.g., move CSVs into a database) and design a single action. The action can be parameterized (e.g., with a search string) or be programmable (e.g., through SQL queries).
-{: .best-practice }
-
-
+2. **Action Space:** Define *a well-structured, unambiguous, and easy-to-use* set of actions. For instance, avoid creating overlapping actions like `read_databases` and `read_csvs`. Instead, unify data sources (e.g., move CSVs into a database) and design a single action. The action can be parameterized (e.g., with a search string) or be programmable (e.g., through SQL queries).
 
 <div align="center">
   <img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/agent.png?raw=true" width="250"/>
 </div>
 
+To implement an agent:
+
+1. Implement the nodes that provide context and perform actions.
+2. Connect these nodes with an agent node, using [branching](../core_abstraction/flow.md) to direct the flow to other action nodes.
+3. Implement the agent node, with an example prompt template that looks like this:
+
+```python
+"""
+Here is the context: {context}
+
+Here are the actions:
+1. Name: search
+   Description: Use web search to get results
+   Parameters:
+      query: str of what to search
+2. Name: answer
+   Description: Conclude based on the results
+   Parameters:
+      result: str of what to answer
+
+Now decide your action by returning:
+```yaml
+thinking: |
+    Based on the context, ...
+action: search or answer
+parameters:
+    ...
+```"""
+```
 
 ### Example: Search Agent
 
