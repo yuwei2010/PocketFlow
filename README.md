@@ -45,6 +45,8 @@ Current LLM frameworks are bloated. You only need 100 lines for LLM Framework!
 
 </div>
 
+Pocket Flow also makes an excellent educational resource by revealing exactly how an LLM framework works under the hood—without the heavy abstractions of larger libraries.
+
 ## How does Pocket Flow work?
 
 The [100 lines](pocketflow/__init__.py) capture the core abstraction of LLM frameworks: Graph!
