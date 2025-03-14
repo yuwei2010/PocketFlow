@@ -26,7 +26,7 @@ Pocket Flow is a [100-line](pocketflow/__init__.py) minimalist LLM framework
 
 ## Why Pocket Flow?
 
-Current LLM frameworks are bloated. You only need 100 lines for LLM Framework!
+Current LLM frameworks are bloated... You only need 100 lines for LLM Framework!
 
 <div align="center">
   <img src="./assets/meme.jpg" width="400"/>
@@ -45,7 +45,41 @@ Current LLM frameworks are bloated. You only need 100 lines for LLM Framework!
 
 </div>
 
-Pocket Flow also makes an excellent educational resource by revealing exactly how an LLM framework works under the hood—without the heavy abstractions of larger libraries.
+**Pocket Flow** is also a educational resource for understanding LLM frameworks:
+
+- Larger frameworks are overly abstract and hide away details.
+
+- **Pocket Flow** shows exactly how everything works under the hood.
+
+## How to Use Pocket Flow?
+
+🚀 Through **Agent Coding**—the fastest LLM App development paradigm-where humans design and agents code!
+
+<br>
+<div align="center">
+  <a href="https://youtu.be/Cf38Bi8U0Js" target="_blank">
+    <img src="./assets/tutorial.png" width="500" alt="IMAGE ALT TEXT" style="cursor: pointer;">
+  </a>
+</div>
+<br>
+
+
+✨ Below are examples of LLM Apps:
+
+<div align="center">
+  
+| Formal App Name  | Informal One-Liner | Difficulty    |  Topics  | Human <br> Design | Agent <br> Code |
+| :------------- | :-------------  | :-------------: | :---------------------: |  :---: |  :---: |
+| [Ask AI Paul Graham](https://github.com/The-Pocket/Tutorial-YC-Partner)  | Ask AI Paul Graham, in case you don't get in | ★★☆ <br> *Medium*   | [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html) <br> [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) <br> [TTS](https://the-pocket.github.io/PocketFlow/utility_function/text_to_speech.html) | [Design](https://github.com/The-Pocket/Tutorial-AI-Paul-Graham/blob/main/docs/design.md) | [Code](https://github.com/The-Pocket/Tutorial-AI-Paul-Graham/blob/main/flow.py)
+| [Youtube Summarizer](https://github.com/The-Pocket/Tutorial-Youtube-Made-Simple)  | Explain YouTube Videos to you like you're 5 | ★☆☆ <br> *Beginner*   | [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) |  [Design](https://github.com/The-Pocket/Tutorial-Youtube-Made-Simple/blob/main/docs/design.md) | [Code](https://github.com/The-Pocket/Tutorial-Youtube-Made-Simple/blob/main/flow.py)
+| [Cold Opener Generator](https://github.com/The-Pocket/Tutorial-Cold-Email-Personalization)  | Instant icebreakers that turn cold leads hot | ★☆☆ <br> *Beginner*   | [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) <br> [Web Search](https://the-pocket.github.io/PocketFlow/utility_function/websearch.html) |  [Design](https://github.com/The-Pocket/Tutorial-Cold-Email-Personalization/blob/master/docs/design.md) | [Code](https://github.com/The-Pocket/Tutorial-Cold-Email-Personalization/blob/master/flow.py)
+
+</div>
+
+- Want to learn **Agent Coding**? Check out [my YouTube](https://www.youtube.com/@ZacharyLLM?sub_confirmation=1)!
+  
+- Want to build your own LLM App? Start with [this template](https://github.com/The-Pocket/PocketFlow-Template-Python)!
+
 
 ## How does Pocket Flow work?
 
@@ -64,43 +98,6 @@ From there, it’s easy to implement popular design patterns like ([Multi-](http
 
 
 
-## How to Use Pocket Flow?
-
-
-🚀 It's highly recommended to **build Agents with Agents**—the fastest development paradigm!
-
-- 😎 **Humans** craft the **high-level requirements and system design**.
-
-- 🤖 **AI agents** (e.g., Cursor AI) handle the **low-level implementation**.
-
-Check out the video to see the process in action!
-
-<br>
-<div align="center">
-  <a href="https://youtu.be/Cf38Bi8U0Js" target="_blank">
-    <img src="./assets/tutorial.png" width="500" alt="IMAGE ALT TEXT" style="cursor: pointer;">
-  </a>
-</div>
-<br>
-
-
-## What can Pocket Flow build?
-
-✨ Below are examples of LLM Apps:
-
-<div align="center">
-  
-| Formal App Name  | Informal One-Liner |Difficulty    |  Learning Objectives  |
-| :------------- | :-------------  | :-------------: | :--------------------- |
-| [Ask AI Paul Graham](https://github.com/The-Pocket/Tutorial-YC-Partner)  | Ask AI Paul Graham, in case you don't get in | ★★☆ <br> *Medium*   | [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html) <br> [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) <br> [Text-to-Speech](https://the-pocket.github.io/PocketFlow/utility_function/text_to_speech.html) |
-| [Youtube Summarizer](https://github.com/The-Pocket/Tutorial-Youtube-Made-Simple)  | Explain YouTube Videos to you like you're 5 | ★☆☆ <br> *Beginner*   | [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) | 
-| [Cold Opener Generator](https://github.com/The-Pocket/Tutorial-Cold-Email-Personalization)  | Instant icebreakers that turn cold leads hot | ★☆☆ <br> *Beginner*   | [Map Reduce](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) <br> [Web Search](https://the-pocket.github.io/PocketFlow/utility_function/websearch.html) | 
-
-</div>
-
-- Want to learn how I built these LLM Apps? Check out [my YouTube](https://www.youtube.com/@ZacharyLLM?sub_confirmation=1)!
-  
-- Want to create your own Python project? Start with  [this template](https://github.com/The-Pocket/PocketFlow-Template-Python)!
 
 
 
