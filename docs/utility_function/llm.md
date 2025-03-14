@@ -5,26 +5,78 @@ parent: "Utility Function"
 nav_order: 1
 ---
 
-# LLM Wrappers  
+# LLM Wrappers
 
-We **don't** provide built-in LLM wrappers. Instead, please implement your own, for example by asking an assistant like ChatGPT or Claude. If you ask ChatGPT to "implement a `call_llm` function that takes a prompt and returns the LLM response," you shall get something like:
+We **don't** provide built-in LLM wrappers. Instead, please implement your own or check out libraries like [litellm](https://github.com/BerriAI/litellm). 
+Here, we provide some minimal example implementations:
 
-```python
-def call_llm(prompt):
-    from openai import OpenAI
-    client = OpenAI(api_key="YOUR_API_KEY_HERE")
-    r = client.chat.completions.create(
-        model="gpt-4o",
-        messages=[{"role": "user", "content": prompt}]
-    )
-    return r.choices[0].message.content
+1. OpenAI
+    ```python
+    def call_llm(prompt):
+        from openai import OpenAI
+        client = OpenAI(api_key="YOUR_API_KEY_HERE")
+        r = client.chat.completions.create(
+            model="gpt-4o",
+            messages=[{"role": "user", "content": prompt}]
+        )
+        return r.choices[0].message.content
 
-# Example usage
-call_llm("How are you?")
-```
+    # Example usage
+    call_llm("How are you?")
+    ```
+    > Store the API key in an environment variable like OPENAI_API_KEY for security.
 
-> Store the API key in an environment variable like OPENAI_API_KEY for security.
-{: .note }
+2. Claude (Anthropic)
+    ```python
+    def call_llm(prompt):
+        from anthropic import Anthropic
+        client = Anthropic(api_key="YOUR_API_KEY_HERE")
+        response = client.messages.create(
+            model="claude-2",
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=100
+        )
+        return response.content
+    ```
+
+3. Google (Generative AI Studio / PaLM API)
+    ```python
+    def call_llm(prompt):
+        import google.generativeai as genai
+        genai.configure(api_key="YOUR_API_KEY_HERE")
+        response = genai.generate_text(
+            model="models/text-bison-001",
+            prompt=prompt
+        )
+        return response.result
+    ```
+
+4. Azure (Azure OpenAI)
+    ```python
+    def call_llm(prompt):
+        from openai import AzureOpenAI
+        client = AzureOpenAI(
+            azure_endpoint="https://<YOUR_RESOURCE_NAME>.openai.azure.com/",
+            api_key="YOUR_API_KEY_HERE",
+            api_version="2023-05-15"
+        )
+        r = client.chat.completions.create(
+            model="<YOUR_DEPLOYMENT_NAME>",
+            messages=[{"role": "user", "content": prompt}]
+        )
+        return r.choices[0].message.content
+    ```
+
+5. Ollama (Local LLM)
+    ```python
+    def call_llm(prompt):
+        from ollama import chat
+        response = chat(
+            model="llama2",
+            messages=[{"role": "user", "content": prompt}]
+        )
+        return response.message.content
+    ```
 
 ## Improvements
 Feel free to enhance your `call_llm` function as needed. Here are examples:
