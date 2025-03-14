@@ -2,7 +2,7 @@
 layout: default
 title: "RAG"
 parent: "Design Pattern"
-nav_order: 4
+nav_order: 3
 ---
 
 # RAG (Retrieval Augmented Generation)

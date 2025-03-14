@@ -34,12 +34,11 @@ We model the LLM workflow as a **Graph + Shared Store**:
 
 From there, it’s easy to implement popular design patterns:
 
-- [Structured Output](./design_pattern/structure.md) formats outputs consistently.
-- [Workflow](./design_pattern/workflow.md) chains multiple tasks into pipelines.
-- [Map Reduce](./design_pattern/mapreduce.md) splits data tasks into Map and Reduce steps.
-- [RAG](./design_pattern/rag.md) integrates data retrieval with generation.
 - [Agent](./design_pattern/agent.md) autonomously makes decisions.
-- [(Optional) Chat Memory](./design_pattern/memory.md) preserves conversation context.
+- [Workflow](./design_pattern/workflow.md) chains multiple tasks into pipelines.
+- [RAG](./design_pattern/rag.md) integrates data retrieval with generation.
+- [Map Reduce](./design_pattern/mapreduce.md) splits data tasks into Map and Reduce steps.
+- [Structured Output](./design_pattern/structure.md) formats outputs consistently.
 - [(Advanced) Multi-Agents](./design_pattern/multi_agent.md) coordinate multiple agents.
 
 ## Utility Function

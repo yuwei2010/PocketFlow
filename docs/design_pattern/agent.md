@@ -2,7 +2,7 @@
 layout: default
 title: "Agent"
 parent: "Design Pattern"
-nav_order: 6
+nav_order: 1
 ---
 
 # Agent
