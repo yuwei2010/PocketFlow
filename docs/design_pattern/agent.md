@@ -11,9 +11,9 @@ Agent is a powerful design pattern in which nodes can take dynamic actions based
 
 The core of building **high-performance** and **reliable** agents boils down to:
 
-1. **Context Management:** Provide *relevant, minimal context.* For example, rather than including an entire chat history, use [RAG](./rag.md) to retrieve only the most relevant parts. Even if LLMs have larger context windows, they can exhibit the ["lost in the middle"](https://arxiv.org/abs/2307.03172), often focusing on the start and end portions of the context while disregarding the middle.
+1. **Input Context:** Provide *relevant, minimal context.* For example, rather than including an entire chat history, use [RAG](./rag.md) to retrieve only the most relevant parts. Even with larger context windows, LLMs can still fall victim to ["lost in the middle"](https://arxiv.org/abs/2307.03172) focusing mainly on the start and end while overlooking the middle.
 
-2. **Action Space:** Define *a well-structured and unambiguous* set of actions. Avoid overlapping actions like `read_databases` and `read_csvs`. Instead, unify data sources (e.g., import CSVs into a database) and design a single action. That action can be parameterized (e.g., a search string) or made programmable (e.g., SQL queries).
+2. **Action Space:** Provide *a well-structured and unambiguous* set of actions—avoiding overlap like separate `read_databases` or  `read_csvs`. Instead, import CSVs into the database and then use one parameterized (e.g., table name) or programmable action (e.g., via SQL) to query data.
 
 <div align="center">
   <img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/agent.png?raw=true" width="350"/>
@@ -22,7 +22,7 @@ The core of building **high-performance** and **reliable** agents boils down to:
 Agent Implementation Steps:
 
 1. **Context and Action:** Implement nodes that supply context and perform actions.  
-2. **Branching:** Connect action nodes with an agent node, using [branching](../core_abstraction/flow.md) to direct the flow to other action nodes, and potentially loop back.  
+2. **Branching:** Use branching to connect each action node to an agent node, allowing the agent to direct the [flow](../core_abstraction/flow.md) between action nodes—and potentially loop back as needed.
 3. **Agent Node:** Provide a prompt—for example:
 
 ```python
