@@ -11,7 +11,7 @@ Agent is a powerful design pattern in which nodes can take dynamic actions based
 
 The core of building **high-performance** and **reliable** agents boils down to:
 
-1. **Input Context:** Provide *relevant, minimal context.* For example, rather than including an entire chat history, use [RAG](./rag.md) to retrieve only the most relevant parts. Even with larger context windows, LLMs can still fall victim to ["lost in the middle"](https://arxiv.org/abs/2307.03172) focusing mainly on the start and end while overlooking the middle.
+1. **Input Context:** Provide *relevant, minimal context.* For example, rather than including an entire chat history, retrieve the most relevant via [RAG](./rag.md). Even with larger context windows, LLMs still fall victim to ["lost in the middle"](https://arxiv.org/abs/2307.03172), overlooking mid-prompt content.
 
 2. **Action Space:** Provide *a well-structured and unambiguous* set of actions—avoiding overlap like separate `read_databases` or  `read_csvs`. Instead, import CSVs into the database and then use one parameterized (e.g., table name) or programmable action (e.g., via SQL) to query data.
 
@@ -26,7 +26,7 @@ Agent Implementation Steps:
 3. **Agent Node:** Provide a prompt—for example:
 
 ```python
-"""
+f"""
 Here is the context: {context}
 
 Here are the actions:
