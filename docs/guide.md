@@ -32,8 +32,13 @@ These system designs should be a collaboration between humans and AI assistants:
 
 2. **Flow Design**: Outline at a high level, describe how your AI system orchestrates nodes.
     - Identify applicable design patterns (e.g., [Map Reduce](./design_pattern/mapreduce.md), [Agent](./design_pattern/agent.md), [RAG](./design_pattern/rag.md)).
-    - For each node, provide a high-level purpose description.
-    - Draw the Flow in mermaid diagram.
+    - Draw the Flow in a mermaid diagram. For example:
+      ```mermaid
+      flowchart LR
+          firstNode[First Node] --> secondNode[Second Node]
+          secondNode --> thirdNode[Third Node]
+      ```
+    - For each node in the flow, provide a high-level purpose description.
 
 3. **Utilities**: Based on the Flow Design, identify and implement necessary utility functions.
     - Think of your AI system as the brain. It needs a body—these *external utility functions*—to interact with the real world:
@@ -44,8 +49,12 @@ These system designs should be a collaboration between humans and AI assistants:
         - Using external tools (e.g., calling LLMs, searching the web)
 
     - NOTE: *LLM-based tasks* (e.g., summarizing text, analyzing sentiment) are **NOT** utility functions; rather, they are *core functions* internal in the AI system.
-    -  > **Start small!** Only include the most important ones to begin with!
-        {: .best-practice }
+    - For each utility function, implement it and write a simple test (e.g., under `if __name__ == "__main__":` ).
+    - Document their input/output, as well as why they are necessary. For example:
+      - *Name*: Embedding (`utils/get_embedding.py`)
+      - *Input*: `str`
+      - *Output*: a vector of 3072 floats
+      - *Necessity:* Used by the second node to embed text
 
 
 4. **Node Design**: Plan how each node will read and write data, and use utility functions.
@@ -53,11 +62,13 @@ These system designs should be a collaboration between humans and AI assistants:
       - For simple systems, use an in-memory dictionary.
       - For more complex systems or when persistence is required, use a database.
       - **Remove Data Redundancy**: Don’t store the same data. Use in-memory references or foreign keys.
-   - For each node, design its type and data handling:
-     - `type`: Decide between Regular, Batch, or Async
-     - `prep`: How the node reads data
-     - `exec`: Which utility function this node uses
-     - `post`: How the node writes data
+   - For each node, specify its type, how it reads and writes data, and which utility function it uses. 
+   - Keep it specific but high-level without codes. For example:
+     - `type`: Regular (or Batch, or Async)
+     - `prep`: Read "text" from the shared store
+     - `exec`: Call the embedding utility function
+     - `post`: Write "embedding" to the shared store
+
 
 5. **Implementation**: Implement the initial nodes and flows based on the design.
    - **“Keep it simple, stupid!”** Avoid complex features and full-scale type checking.
