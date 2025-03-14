@@ -25,6 +25,7 @@ Here, we provide some minimal example implementations:
     call_llm("How are you?")
     ```
     > Store the API key in an environment variable like OPENAI_API_KEY for security.
+    {: .best-practice }
 
 2. Claude (Anthropic)
     ```python
