@@ -54,4 +54,4 @@ We provide utility functions not in *codes*, but in *docs*:
 - [(Optional) Vector Databases](./utility_function/vector.md)
 - [(Optional) Text-to-Speech](./utility_function/text_to_speech.md)
 
-## Read to Develop your LLM Apps? [Read this guide!](./guide.md)
+## Ready to build your Apps? [Learn Agentic Coding!](./guide.md)

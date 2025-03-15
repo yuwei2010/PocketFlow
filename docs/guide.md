@@ -1,11 +1,11 @@
 ---
 layout: default
-title: "Build your LLM App"
+title: "Agentic Coding"
 ---
 
-# LLM System Design Playbook
+# Agentic Coding: Humans Design, Agents code!
 
-> If you are an AI assistant involved in building LLM Systems, read this guide **VERY, VERY** carefully! This is the most important chapter in the entire document. Throughout development, you should always (1) start with a small and simple solution, (2) design at a high level (`docs/design.md`) before implementation, and (3) frequently ask humans for feedback and clarification.
+> If you are an AI agents involved in building LLM Systems, read this guide **VERY, VERY** carefully! This is the most important chapter in the entire document. Throughout development, you should always (1) start with a small and simple solution, (2) design at a high level (`docs/design.md`) before implementation, and (3) frequently ask humans for feedback and clarification.
 {: .warning }
 
 ## System Design Steps
