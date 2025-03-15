@@ -6,7 +6,7 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
-.setup.py
+
 
 # IDE specific files
 .idea/
@@ -73,4 +73,5 @@ htmlcov/
 
 
 test.ipynb
+setup.py
 .pytest_cache/
