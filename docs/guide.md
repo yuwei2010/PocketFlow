@@ -26,7 +26,7 @@ Agentic Coding should be a collaboration between Human System Design and Agent I
     - suitable for routine tasks that require common sense (e.g., filling out forms, replying to emails).
     - suitable for creative tasks where all inputs are provided (e.g., building slides, writing SQL).
     - **NOT** suitable for tasks that are highly ambiguous and require complex info (e.g., building a startup).
-    - > **If a human can’t solve it, an LLM can’t automate it!** Before building an LLM system, thoroughly understand the problem by manually solving example inputs to develop intuition.  
+    - > **If Humans can’t specify it, AI Agents can’t automate it!** Before building an LLM system, thoroughly understand the problem by manually solving example inputs to develop intuition.  
       {: .best-practice }
 
 
