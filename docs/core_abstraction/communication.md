@@ -11,7 +11,7 @@ Nodes and Flows **communicate** in 2 ways:
 
 1. **Shared Store (for almost all the cases)** 
 
-   - A global data structure (often an in-mem dict) that all nodes can read and write by `prep()` and `post()`.  
+   - A global data structure (often an in-mem dict) that all nodes can read ( `prep()`) and write (`post()`).  
    - Great for data results, large content, or anything multiple nodes need.
    - You shall design the data structure and populate it ahead.
 
