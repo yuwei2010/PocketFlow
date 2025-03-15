@@ -7,9 +7,9 @@ nav_order: 3
 
 # Communication
 
-Nodes and Flows **communicate** in two ways:
+Nodes and Flows **communicate** in 2 ways:
 
-1. **Shared Store (recommended)** 
+1. **Shared Store (for almost all the cases)** 
 
    - A global data structure (often an in-mem dict) that all nodes can read and write by `prep()` and `post()`.  
    - Great for data results, large content, or anything multiple nodes need.
@@ -21,7 +21,7 @@ Nodes and Flows **communicate** in two ways:
 
 If you know memory management, think of the **Shared Store** like a **heap** (shared by all function calls), and **Params** like a **stack** (assigned by the caller).
 
-> Use `Shared Store` for almost all cases. It's flexible and easy to manage. It separates *Data Schema* from *Compute Logic*, making the code easier to maintain. `Params` is more a syntax sugar for [Batch](./batch.md).
+> **Separation of Concerns:** Use `Shared Store` for almost all cases to separate *Data Schema* from *Compute Logic*!  This approach is both flexible and easy to manage, resulting in more maintainable code. `Params` is more a syntax sugar for [Batch](./batch.md).
 {: .best-practice }
 
 ---
