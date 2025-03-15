@@ -6,6 +6,7 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+.setup.py
 
 # IDE specific files
 .idea/
