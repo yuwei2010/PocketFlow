@@ -8,11 +8,11 @@ title: "Agentic Coding"
 > If you are an AI agents involved in building LLM Systems, read this guide **VERY, VERY** carefully! This is the most important chapter in the entire document. Throughout development, you should always (1) start with a small and simple solution, (2) design at a high level (`docs/design.md`) before implementation, and (3) frequently ask humans for feedback and clarification.
 {: .warning }
 
-## System Design Steps
+## Agentic Coding Steps
 
-These system designs should be a collaboration between humans and AI assistants:
+Agentic Coding should be a collaboration between Human System Design and Agent Implementation:
 
-| Stage                  | Human      | AI        | Comment                                                                 |
+| Steps                  | Human      | AI        | Comment                                                                 |
 |:-----------------------|:----------:|:---------:|:------------------------------------------------------------------------|
 | 1. Requirements | ★★★ High  | ★☆☆ Low   | Humans understand the requirements and context.                    |
 | 2. Flow          | ★★☆ Medium | ★★☆ Medium |  Humans specify the high-level design, and the AI fills in the details. |
