@@ -30,6 +30,10 @@ We model the LLM workflow as a **Graph + Shared Store**:
 - [(Advanced) Async](./core_abstraction/async.md) nodes/flows allow waiting for asynchronous tasks.
 - [(Advanced) Parallel](./core_abstraction/parallel.md) nodes/flows handle I/O-bound tasks.
 
+<div align="center">
+  <img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/abstraction.png" width="500"/>
+</div>
+
 ## Design Pattern
 
 From there, it’s easy to implement popular design patterns:
@@ -40,6 +44,10 @@ From there, it’s easy to implement popular design patterns:
 - [Map Reduce](./design_pattern/mapreduce.md) splits data tasks into Map and Reduce steps.
 - [Structured Output](./design_pattern/structure.md) formats outputs consistently.
 - [(Advanced) Multi-Agents](./design_pattern/multi_agent.md) coordinate multiple agents.
+
+<div align="center">
+  <img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/design.png" width="500"/>
+</div>
 
 ## Utility Function
 
