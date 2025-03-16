@@ -13,44 +13,56 @@ Agent is a powerful design pattern in which nodes can take dynamic actions based
   <img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/agent.png?raw=true" width="350"/>
 </div>
 
-Agent Implementation Steps:
+## Implement Agent with Graph
 
 1. **Context and Action:** Implement nodes that supply context and perform actions.  
-2. **Branching:** Use branching to connect each action node to an agent node, allowing the agent to direct the [flow](../core_abstraction/flow.md) between action nodes—and potentially loop back as needed.
-3. **Agent Node:** Provide a prompt—for example:
+2. **Branching:** Use branching to connect each action node to an agent node. Use action to allow the agent to direct the [flow](../core_abstraction/flow.md) between nodes—and potentially loop back for multi-step.
+3. **Agent Node:** Provide a prompt to decide action—for example:
 
 ```python
 f"""
-Here is the context: {context}
+### CONTEXT
+Task: {task_description}
+Previous Actions: {previous_actions}
+Current State: {current_state}
 
-Here are the actions:
-1. Name: search
-   Description: Use web search to get results
-   Parameters:
-      query: str of what to search
-2. Name: answer
-   Description: Conclude based on the results
-   Parameters:
-      result: str of what to answer
+### ACTION SPACE
+[1] search
+  Description: Use web search to get results
+  Parameters:
+    - query (str): What to search for
 
-Now decide your action by returning:
+[2] answer
+  Description: Conclude based on the results
+  Parameters:
+    - result (str): Final answer to provide
+
+### NEXT ACTION
+Decide the next action based on the current context and available action space.
+Return your response in the following format:
+
 ```yaml
 thinking: |
-    Based on the context, ...
-action: search or answer
+    <your step-by-step reasoning process>
+action: <action_name>
 parameters:
-    ...
+    <parameter_name>: <parameter_value>
 ```"""
 ```
 
 The core of building **high-performance** and **reliable** agents boils down to:
 
-1. **Input Context:** Provide *relevant, minimal context.* For example, rather than including an entire chat history, retrieve the most relevant via [RAG](./rag.md). Even with larger context windows, LLMs still fall victim to ["lost in the middle"](https://arxiv.org/abs/2307.03172), overlooking mid-prompt content.
+1. **Context Management:** Provide *relevant, minimal context.* For example, rather than including an entire chat history, retrieve the most relevant via [RAG](./rag.md). Even with larger context windows, LLMs still fall victim to ["lost in the middle"](https://arxiv.org/abs/2307.03172), overlooking mid-prompt content.
 
 2. **Action Space:** Provide *a well-structured and unambiguous* set of actions—avoiding overlap like separate `read_databases` or  `read_csvs`. Instead, import CSVs into the database and then use one parameterized (e.g., table name) or programmable action (e.g., via SQL) to query data.
 
+## Example Good Action Design
 
-### Example: Search Agent
+**Incremental:** Feed content in manageable chunks (500 lines or 1 page) instead of all at once.
+
+**Overview-zoom-in:** First provide high-level structure (table of contents, summary), then allow drilling into details (raw texts).
+
+## Example: Search Agent
 
 This agent:
 1. Decides whether to search or answer
