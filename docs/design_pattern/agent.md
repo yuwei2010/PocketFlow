@@ -58,13 +58,13 @@ The core of building **high-performance** and **reliable** agents boils down to:
 
 ## Example Good Action Design
 
-**Incremental:** Feed content in manageable chunks (500 lines or 1 page) instead of all at once.
+- **Incremental:** Feed content in manageable chunks (500 lines or 1 page) instead of all at once.
 
-**Overview-zoom-in:** First provide high-level structure (table of contents, summary), then allow drilling into details (raw texts).
+- **Overview-zoom-in:** First provide high-level structure (table of contents, summary), then allow drilling into details (raw texts).
 
-**Parameterized/Programmable:** Instead of fixed actions, enable parameterized (columns to select) or programmable (SQL queries) actions, for example, to read CSV files.
+- **Parameterized/Programmable:** Instead of fixed actions, enable parameterized (columns to select) or programmable (SQL queries) actions, for example, to read CSV files.
 
-**Backtracking:** Let the agent undo the last step instead of restarting entirely, preserving progress when encountering errors or dead ends.
+- **Backtracking:** Let the agent undo the last step instead of restarting entirely, preserving progress when encountering errors or dead ends.
 
 ## Example: Search Agent
 
