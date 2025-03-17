@@ -49,7 +49,7 @@ From there, it’s easy to implement popular design patterns:
 
 ## Utility Function
 
-We **do not** provide built-in utilities. Instead, we offer *examples*—please *implement your own*.
+We **do not** provide built-in utilities. Instead, we offer *examples*—please *implement your own*:
 
 - [LLM Wrapper](./utility_function/llm.md)
 - [Viz and Debug](./utility_function/viz.md)
