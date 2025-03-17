@@ -54,7 +54,6 @@ Agentic Coding should be a collaboration between Human System Design and Agent I
       - *Output*: a vector of 3072 floats
       - *Necessity:* Used by the second node to embed text
 
-
 4. **Node Design**: Plan how each node will read and write data, and use utility functions.
    - Start with the shared data design
       - For simple systems, use an in-memory dictionary.
@@ -65,7 +64,6 @@ Agentic Coding should be a collaboration between Human System Design and Agent I
      - `prep`: Read "text" from the shared store
      - `exec`: Call the embedding utility function
      - `post`: Write "embedding" to the shared store
-
 
 5. **Implementation**: Implement the initial nodes and flows based on the design.
    - 🎉 If you’ve reached this step, humans have finished the design. Now *Agentic Coding* begins!

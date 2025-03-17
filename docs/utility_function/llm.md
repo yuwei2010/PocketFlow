@@ -7,7 +7,7 @@ nav_order: 1
 
 # LLM Wrappers
 
-We **don't** provide built-in LLM wrappers. Instead, please implement your own or check out libraries like [litellm](https://github.com/BerriAI/litellm). 
+Check out libraries like [litellm](https://github.com/BerriAI/litellm). 
 Here, we provide some minimal example implementations:
 
 1. OpenAI
@@ -141,8 +141,3 @@ def call_llm(prompt):
     return response
 ```
 
-## Why Not Provide Built-in LLM Wrappers?
-I believe it is a **bad practice** to provide LLM-specific implementations in a general framework:
-- **LLM APIs change frequently**. Hardcoding them makes maintenance a nightmare.
-- You may need **flexibility** to switch vendors, use fine-tuned models, or deploy local LLMs.
-- You may need **optimizations** like prompt caching, request batching, or response streaming.

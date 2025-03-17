@@ -25,7 +25,7 @@ We model the LLM workflow as a **Graph + Shared Store**:
 - [Flow](./core_abstraction/flow.md) connects nodes through **Actions** (labeled edges).
 - [Shared Store](./core_abstraction/communication.md) enables communication between nodes within flows.
 - [Batch](./core_abstraction/batch.md) nodes/flows allow for data-intensive tasks.
-- [(Advanced) Async](./core_abstraction/async.md) nodes/flows allow waiting for asynchronous tasks.
+- [Async](./core_abstraction/async.md) nodes/flows allow waiting for asynchronous tasks.
 - [(Advanced) Parallel](./core_abstraction/parallel.md) nodes/flows handle I/O-bound tasks.
 
 <div align="center">
@@ -49,15 +49,20 @@ From there, it’s easy to implement popular design patterns:
 
 ## Utility Function
 
-We provide utility functions not in *codes*, but in *docs*:
+We **DON'T** provide built-in utility functions. Instead, please implement your own. I believe it is a **bad practice** to provide vendor-specific implementations in a general framework:
+
+- **Vendor APIs change frequently**. Hardcoding them makes maintenance a nightmare.
+- You may need **flexibility** to switch vendors, use fine-tuned models, or deploy local LLMs.
+- You may need **optimizations** like prompt caching, request batching, or response streaming.
+
+However, we provide example implementations for commonly used utility functions.
 
 - [LLM Wrapper](./utility_function/llm.md)
-- [Tool](./utility_function/tool.md)
-- [(Optional) Viz and Debug](./utility_function/viz.md)
-- [(Optional) Web Search](./utility_function/websearch.md)
-- [(Optional) Chunking](./utility_function/chunking.md)
-- [(Optional) Embedding](./utility_function/embedding.md)
-- [(Optional) Vector Databases](./utility_function/vector.md)
-- [(Optional) Text-to-Speech](./utility_function/text_to_speech.md)
+- [Viz and Debug](./utility_function/viz.md)
+- [Web Search](./utility_function/websearch.md)
+- [Chunking](./utility_function/chunking.md)
+- [Embedding](./utility_function/embedding.md)
+- [Vector Databases](./utility_function/vector.md)
+- [Text-to-Speech](./utility_function/text_to_speech.md)
 
 ## Ready to build your Apps? [Learn Agentic Coding!](./guide.md)

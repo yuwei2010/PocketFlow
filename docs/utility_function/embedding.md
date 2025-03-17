@@ -2,7 +2,7 @@
 layout: default
 title: "Embedding"
 parent: "Utility Function"
-nav_order: 6
+nav_order: 5
 ---
 
 # Embedding
