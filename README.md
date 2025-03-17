@@ -46,7 +46,7 @@ Current LLM frameworks are bloated... You only need 100 lines for LLM Framework!
 
 ## How to Use Pocket Flow?
 
-🚀 Through **Agent Coding**—the fastest LLM App development paradigm-where humans design and agents code!
+🚀 Through **Agentic Coding**—the fastest LLM App development paradigm-where humans design and agents code!
 
 <br>
 <div align="center">
@@ -70,7 +70,7 @@ Current LLM frameworks are bloated... You only need 100 lines for LLM Framework!
 
 </div>
 
-- Want to learn **Agent Coding**? Check out [my YouTube](https://www.youtube.com/@ZacharyLLM?sub_confirmation=1)! Read this [Guide](https://the-pocket.github.io/PocketFlow/guide.html)!
+- Want to learn **Agentic Coding**? Check out [my YouTube](https://www.youtube.com/@ZacharyLLM?sub_confirmation=1)! Read this [Guide](https://the-pocket.github.io/PocketFlow/guide.html)!
   
 - Want to build your own LLM App? Start with [this template](https://github.com/The-Pocket/PocketFlow-Template-Python)!
 
