@@ -43,11 +43,6 @@ Current LLM frameworks are bloated... You only need 100 lines for LLM Framework!
 
 </div>
 
-**Pocket Flow** is also a educational resource for understanding LLM frameworks:
-
-- Larger frameworks are overly abstract and hide away details.
-
-- **Pocket Flow** shows exactly how everything works under the hood.
 
 ## How to Use Pocket Flow?
 
