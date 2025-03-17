@@ -49,7 +49,7 @@ From there, it’s easy to implement popular design patterns:
 
 ## Utility Function
 
-We **do not** provide built-in utilities. Instead, we offer **example** implementations for common needs—please **implement your own**.
+We **do not** provide built-in utilities. Instead, we offer *example* implementations—please *implement your own*.
 
 - [LLM Wrapper](./utility_function/llm.md)
 - [Viz and Debug](./utility_function/viz.md)
@@ -59,9 +59,9 @@ We **do not** provide built-in utilities. Instead, we offer **example** implemen
 - [Vector Databases](./utility_function/vector.md)
 - [Text-to-Speech](./utility_function/text_to_speech.md)
 
-**Why not built-in utilities?**: I believe it's a *bad practice* to embed vendor-specific APIs in a general framework:
-- **API Volatility**: Frequent changes lead to heavy maintenance for hardcoded APIs.
-- **Flexibility**: You may want to switch vendors, use fine-tuned models, or run them locally.
-- **Optimizations**: Prompt caching, batching, and streaming are easier when you’re not locked into a single vendor.
+**Why not built-in?**: I believe it's a *bad practice* for vendor-specific APIs in a general framework:
+- *API Volatility*: Frequent changes lead to heavy maintenance for hardcoded APIs.
+- *Flexibility*: You may want to switch vendors, use fine-tuned models, or run them locally.
+- *Optimizations*: Prompt caching, batching, and streaming are easier without vendor lock-in.
 
 ## Ready to build your Apps? [Learn Agentic Coding!](./guide.md)
