@@ -49,7 +49,7 @@ From there, it’s easy to implement popular design patterns:
 
 ## Utility Function
 
-We **do not** provide built-in utilities. Instead, we offer *example* implementations—please *implement your own*.
+We **do not** provide built-in utilities. Instead, we offer *examples*—please *implement your own*.
 
 - [LLM Wrapper](./utility_function/llm.md)
 - [Viz and Debug](./utility_function/viz.md)
@@ -64,4 +64,6 @@ We **do not** provide built-in utilities. Instead, we offer *example* implementa
 - *Flexibility*: You may want to switch vendors, use fine-tuned models, or run them locally.
 - *Optimizations*: Prompt caching, batching, and streaming are easier without vendor lock-in.
 
-## Ready to build your Apps? [Learn Agentic Coding!](./guide.md)
+## Ready to build your Apps? 
+
+Check out [Agentic Coding Guidance](./guide.md), the fastest way to develop LLM projects with Pocket Flow!
