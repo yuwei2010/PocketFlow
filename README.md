@@ -63,9 +63,12 @@ From there, it’s easy to implement popular design patterns like ([Multi-](http
   
 |  Tutorial Name  | Difficulty    | Topics  |  Description  |  
 | :-------------:  | :-------------: | :-------------: | :--------------------- |  
-| [Research Agent](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-agent) | ☆☆☆ *Dummy*   | [Agent](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html) |  An AI agent that can search the web and answer questions |
-| [Parallel Summarization](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-parallel-batch) | ☆☆☆ *Dummy*   | [Parallel](https://the-pocket.github.io/PocketFlow/core_abstraction/parallel.html) | A parallel execution demo that shows 3x speedup |
-| [Streaming Controller](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-llm-streaming) | ☆☆☆ *Dummy*   | Streaming | A real-time LLM streaming demo with user interrupt capability |
+| [Research Agent](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-agent) | ☆☆☆ <br> *Dummy*   | [Agent](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html) |  An AI agent that can search the web and answer questions |
+| [Research Supervisor](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-supervisor) | ☆☆☆ <br> Dummy | Supervisor| Research agent is getting unreliable... Let's build a supervision process|
+| [Parallel Summarizer](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-parallel-batch) | ☆☆☆ <br> *Dummy*   | [Parallel](https://the-pocket.github.io/PocketFlow/core_abstraction/parallel.html) | A parallel execution demo that shows 3x speedup |
+| [Streaming Controller](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-llm-streaming) | ☆☆☆ <br> *Dummy*   | Streaming | A real-time LLM streaming demo with user interrupt capability |
+
+
 
 </div>
 
