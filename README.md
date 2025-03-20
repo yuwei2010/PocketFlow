@@ -43,10 +43,34 @@ Current LLM frameworks are bloated... You only need 100 lines for LLM Framework!
 
 </div>
 
+## How does Pocket Flow work?
+
+The [100 lines](pocketflow/__init__.py) capture the core abstraction of LLM frameworks: Graph!
+
+<div align="center">
+  <img src="./assets/abstraction.png" width="500"/>
+</div>
+
+From there, it’s easy to implement popular design patterns like ([Multi-](https://the-pocket.github.io/PocketFlow/design_pattern/multi_agent.html))[Agents](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html), [Workflow](https://the-pocket.github.io/PocketFlow/design_pattern/workflow.html), [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html), etc.
+
+<div align="center">
+  <img src="./assets/design.png" width="500"/>
+</div>
+
+✨ Below are tutorials for Tutorial For Dummies:
+
+<div align="center">
+  
+|  Tutorial Name  |  Description  |  Difficulty    | Topics  |
+| :-------------:  | :-------------: | :-------------: | :---------------------: |  
+| [Research Agent](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-agent) | An AI agent that can search the web and answer questions | ☆☆☆ *Dummy*   | [Agent](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html) |
+
+</div>
+
 
 ## How to Use Pocket Flow?
 
-🚀 Through **Agentic Coding**—the fastest LLM App development paradigm-where humans design and agents code!
+🚀 Through **Agentic Coding**—the fastest LLM App development paradigm-where *humans design* and *agents code*!
 
 <br>
 <div align="center">
@@ -56,8 +80,7 @@ Current LLM frameworks are bloated... You only need 100 lines for LLM Framework!
 </div>
 <br>
 
-
-✨ Below are examples of LLM Apps:
+✨ Below are examples of more complex LLM Apps:
 
 <div align="center">
   
@@ -75,19 +98,6 @@ Current LLM frameworks are bloated... You only need 100 lines for LLM Framework!
 - Want to build your own LLM App? Start with [this template](https://github.com/The-Pocket/PocketFlow-Template-Python)!
 
 
-## How does Pocket Flow work?
-
-The [100 lines](pocketflow/__init__.py) capture the core abstraction of LLM frameworks: Graph!
-
-<div align="center">
-  <img src="./assets/abstraction.png" width="500"/>
-</div>
-
-From there, it’s easy to implement popular design patterns like ([Multi-](https://the-pocket.github.io/PocketFlow/design_pattern/multi_agent.html))[Agents](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html), [Workflow](https://the-pocket.github.io/PocketFlow/design_pattern/workflow.html), [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html), etc.
-
-<div align="center">
-  <img src="./assets/design.png" width="500"/>
-</div>
 
 
 
