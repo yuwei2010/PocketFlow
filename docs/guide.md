@@ -64,15 +64,32 @@ Agentic Coding should be a collaboration between Human System Design and Agent I
         - **NOTE**: *LLM-based tasks* (e.g., summarizing text, analyzing sentiment) are **NOT** utility functions; rather, they are *core functions* internal in the AI system.
     - For each utility function, implement it and write a simple test.
     - Document their input/output, as well as why they are necessary. For example:
-      - *Name*: Embedding (`utils/get_embedding.py`)
-      - *Input*: `str`
-      - *Output*: a vector of 3072 floats
-      - *Necessity:* Used by the second node to embed text
+      - `name`: `get_embedding` (`utils/get_embedding.py`)
+      - `input`: `str`
+      - `output`: a vector of 3072 floats
+      - `necessity`: Used by the second node to embed text
+    - Example utility implementation:
+      ```python
+      # utils/call_llm.py
+      from openai import OpenAI
+
+      def call_llm(prompt):    
+          client = OpenAI(api_key="YOUR_API_KEY_HERE")
+          r = client.chat.completions.create(
+              model="gpt-4o",
+              messages=[{"role": "user", "content": prompt}]
+          )
+          return r.choices[0].message.content
+          
+      if __name__ == "__main__":
+          prompt = "What is the meaning of life?"
+          print(call_llm(prompt))
+      ```
     - > **Sometimes, design Utilies before Flow:**  For example, for an LLM project to automate a legacy system, the bottleneck will likely be the available interface to that system. Start by designing the hardest utilities for interfacing, and then build the flow around them.
       {: .best-practice }
 
 4. **Node Design**: Plan how each node will read and write data, and use utility functions.
-   - One core design principle for PocketFlow is to use a shared store, so start with a shared store design:
+   - One core design principle for PocketFlow is to use a [shared store](./core_abstraction/communication.md), so start with a shared store design:
       - For simple systems, use an in-memory dictionary.
       - For more complex systems or when persistence is required, use a database.
       - **Don't Repeat Yourself**: Use in-memory references or foreign keys.
@@ -89,7 +106,7 @@ Agentic Coding should be a collaboration between Human System Design and Agent I
             "results": {}                   # Empty dict to store outputs
         }
         ```
-   - For each node, describe its type, how it reads and writes data, and which utility function it uses. Keep it specific but high-level without codes. For example:
+   - For each [Node](./core_abstraction/node.md), describe its type, how it reads and writes data, and which utility function it uses. Keep it specific but high-level without codes. For example:
      - `type`: Regular (or Batch, or Async)
      - `prep`: Read "text" from the shared store
      - `exec`: Call the embedding utility function
@@ -133,9 +150,44 @@ my_project/
     └── design.md
 ```
 
-- **`docs/design.md`**: Contains project documentation for each step above. This should be high-level and no-code.
+- **`docs/design.md`**: Contains project documentation for each step above. This should be *high-level* and *no-code*.
 - **`utils/`**: Contains all utility functions.
   - It's recommended to dedicate one Python file to each API call, for example `call_llm.py` or `search_web.py`.
   - Each file should also include a `main()` function to try that API call
 - **`flow.py`**: Implements the system's flow, starting with node definitions followed by the overall structure.
+  ```python
+  from pocketflow import Node, Flow
+  from utils.call_llm import call_llm
+
+  class AnswerNode(Node):
+      def prep(self, shared):
+          # Read question from shared
+          return shared["question"]
+      
+      def exec(self, question):
+          return call_llm(question)
+      
+      def post(self, shared, prep_res, exec_res):
+          # Store the answer in shared
+          shared["answer"] = exec_res
+
+  answer_node = AnswerNode()
+  qa_flow = Flow(start=answer_node)
+  ```
 - **`main.py`**: Serves as the project's entry point.
+  ```python
+  from flow import qa_flow
+
+  def main():
+      shared = {
+          "question": "In one sentence, what's the end of universe?",
+          "answer": None
+      }
+
+      qa_flow.run(shared)
+      print("Question:", shared["question"])
+      print("Answer:", shared["answer"])
+
+  if __name__ == "__main__":
+      main()
+  ```
