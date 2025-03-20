@@ -156,8 +156,21 @@ my_project/
   - Each file should also include a `main()` function to try that API call
 - **`flow.py`**: Implements the system's flow, starting with node definitions followed by the overall structure.
   ```python
+  # flow.py
   from pocketflow import Node, Flow
   from utils.call_llm import call_llm
+
+  # Example with two nodes in a flow
+  class GetQuestionNode(Node):
+      def exec(self, _):
+          # Get question directly from user input
+          user_question = input("Enter your question: ")
+          return user_question
+      
+      def post(self, shared, prep_res, exec_res):
+          # Store the user's question
+          shared["question"] = exec_res
+          return "default"  # Go to the next node
 
   class AnswerNode(Node):
       def prep(self, shared):
@@ -165,28 +178,39 @@ my_project/
           return shared["question"]
       
       def exec(self, question):
+          # Call LLM to get the answer
           return call_llm(question)
       
       def post(self, shared, prep_res, exec_res):
           # Store the answer in shared
           shared["answer"] = exec_res
 
+  # Create nodes
+  get_question_node = GetQuestionNode()
   answer_node = AnswerNode()
-  qa_flow = Flow(start=answer_node)
+  
+  # Connect nodes in sequence
+  get_question_node >> answer_node
+  
+  # Create flow starting with input node
+  qa_flow = Flow(start=get_question_node)
   ```
 - **`main.py`**: Serves as the project's entry point.
   ```python
+  # main.py
   from flow import qa_flow
 
+  # Example main function
+  # Please replace this with your own main function
   def main():
       shared = {
-          "question": "In one sentence, what's the end of universe?",
-          "answer": None
+          "question": None,  # Will be populated by GetQuestionNode from user input
+          "answer": None     # Will be populated by AnswerNode
       }
 
       qa_flow.run(shared)
-      print("Question:", shared["question"])
-      print("Answer:", shared["answer"])
+      print(f"Question: {shared['question']}")
+      print(f"Answer: {shared['answer']}")
 
   if __name__ == "__main__":
       main()
