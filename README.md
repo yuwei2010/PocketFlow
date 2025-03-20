@@ -61,9 +61,9 @@ From there, it’s easy to implement popular design patterns like ([Multi-](http
 
 <div align="center">
   
-|  Tutorial Name  |  Description  |  Difficulty    | Topics  |
-| :-------------:  | :-------------: | :-------------: | :---------------------: |  
-| [Research Agent](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-agent) | An AI agent that can search the web and answer questions | ☆☆☆ *Dummy*   | [Agent](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html) |
+|  Tutorial Name  | Difficulty    | Topics  |  Description  |  
+| :-------------:  | :-------------: | :-------------: | ---------------------: |  
+| [Research Agent](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-agent) | ☆☆☆ *Dummy*   | [Agent](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html) |  An AI agent that can search the web and answer questions |
 
 </div>
 
