@@ -22,22 +22,37 @@ Agentic Coding should be a collaboration between Human System Design and Agent I
 | 6. Optimization        | ★★☆ Medium | ★★☆ Medium | Humans evaluate the results, and the AI helps optimize. |
 | 7. Reliability         | ★☆☆ Low   | ★★★ High  |  The AI writes test cases and addresses corner cases.     |
 
-1. **Requirements**: Clarify the requirements for your project, and evaluate whether an AI system is a good fit. AI systems are:
-    - suitable for routine tasks that require common sense (e.g., filling out forms, replying to emails).
-    - suitable for creative tasks where all inputs are provided (e.g., building slides, writing SQL).
-    - **NOT** suitable for tasks that are highly ambiguous and require complex info (e.g., building a startup).
-    - > **If Humans can’t specify it, AI Agents can’t automate it!** Before building an LLM system, thoroughly understand the problem by manually solving example inputs to develop intuition.  
-      {: .best-practice }
-
+1. **Requirements**: Clarify the requirements for your project, and evaluate whether an AI system is a good fit. 
+    - Understand AI systems' strengths and limitations:
+      - **Good for**: Routine tasks requiring common sense (filling forms, replying to emails)
+      - **Good for**: Creative tasks with well-defined inputs (building slides, writing SQL)
+      - **Not good for**: Ambiguous problems requiring complex decision-making (business strategy, startup planning)
+    - **Keep It User-Centric:** Explain the "problem" from the user's perspective rather than just listing features.
+    - **Balance complexity vs. impact**: Aim to deliver the highest value features with minimal complexity early.
 
 2. **Flow Design**: Outline at a high level, describe how your AI system orchestrates nodes.
     - Identify applicable design patterns (e.g., [Map Reduce](./design_pattern/mapreduce.md), [Agent](./design_pattern/agent.md), [RAG](./design_pattern/rag.md)).
+      - For each node in the flow, start with a high-level one-line description of what it does.
+      - If using **Map Reduce**, specify how to map (what to split) and how to reduce (how to combine).
+      - If using **Agent**, specify what are the inputs (context) and what are the possible actions.
+      - If using **RAG**, specify what to embed, noting that there's usually both offline (indexing) and online (retrieval) workflows.
     - Outline the flow and draw it in a mermaid diagram. For example:
       ```mermaid
       flowchart LR
-          firstNode[First Node] --> secondNode[Second Node]
-          secondNode --> thirdNode[Third Node]
+          start[Start] --> batch[Batch]
+          batch --> check[Check]
+          check -->|OK| process
+          check -->|Error| fix[Fix]
+          fix --> check
+          
+          subgraph process[Process]
+            step1[Step 1] --> step2[Step 2]
+          end
+          
+          process --> endNode[End]
       ```
+    - > **If Humans can't specify the flow, AI Agents can't automate it!** Before building an LLM system, thoroughly understand the problem and potential solution by manually solving example inputs to develop intuition.  
+      {: .best-practice }
 
 3. **Utilities**: Based on the Flow Design, identify and implement necessary utility functions.
     - Think of your AI system as the brain. It needs a body—these *external utility functions*—to interact with the real world:
@@ -57,10 +72,23 @@ Agentic Coding should be a collaboration between Human System Design and Agent I
       {: .best-practice }
 
 4. **Node Design**: Plan how each node will read and write data, and use utility functions.
-   - Start with the shared data design
+   - One core design principle for PocketFlow is to use a shared store, so start with a shared store design:
       - For simple systems, use an in-memory dictionary.
       - For more complex systems or when persistence is required, use a database.
-      - **Don't Repeat Yourself"**: Use in-memory references or foreign keys.
+      - **Don't Repeat Yourself**: Use in-memory references or foreign keys.
+      - Example shared store design:
+        ```python
+        shared = {
+            "user": {
+                "id": "user123",
+                "context": {                # Another nested dict
+                    "weather": {"temp": 72, "condition": "sunny"},
+                    "location": "San Francisco"
+                }
+            },
+            "results": {}                   # Empty dict to store outputs
+        }
+        ```
    - For each node, describe its type, how it reads and writes data, and which utility function it uses. Keep it specific but high-level without codes. For example:
      - `type`: Regular (or Batch, or Async)
      - `prep`: Read "text" from the shared store
@@ -68,8 +96,8 @@ Agentic Coding should be a collaboration between Human System Design and Agent I
      - `post`: Write "embedding" to the shared store
 
 5. **Implementation**: Implement the initial nodes and flows based on the design.
-   - 🎉 If you’ve reached this step, humans have finished the design. Now *Agentic Coding* begins!
-   - **“Keep it simple, stupid!”** Avoid complex features and full-scale type checking.
+   - 🎉 If you've reached this step, humans have finished the design. Now *Agentic Coding* begins!
+   - **"Keep it simple, stupid!"** Avoid complex features and full-scale type checking.
    - **FAIL FAST**! Avoid `try` logic so you can quickly identify any weak points in the system.
    - Add logging throughout the code to facilitate debugging.
 
@@ -80,7 +108,7 @@ Agentic Coding should be a collaboration between Human System Design and Agent I
      - **Prompt Engineering**: Use clear, specific instructions with examples to reduce ambiguity.
      - **In-Context Learning**: Provide robust examples for tasks that are difficult to specify with instructions alone.
 
-   - > **You’ll likely iterate a lot!** Expect to repeat Steps 3–6 hundreds of times.
+   - > **You'll likely iterate a lot!** Expect to repeat Steps 3–6 hundreds of times.
      >
      > <div align="center"><img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/success.png?raw=true" width="400"/></div>
      {: .best-practice }
@@ -107,7 +135,7 @@ my_project/
 
 - **`docs/design.md`**: Contains project documentation for each step above. This should be high-level and no-code.
 - **`utils/`**: Contains all utility functions.
-  - It’s recommended to dedicate one Python file to each API call, for example `call_llm.py` or `search_web.py`.
+  - It's recommended to dedicate one Python file to each API call, for example `call_llm.py` or `search_web.py`.
   - Each file should also include a `main()` function to try that API call
 - **`flow.py`**: Implements the system's flow, starting with node definitions followed by the overall structure.
-- **`main.py`**: Serves as the project’s entry point.
+- **`main.py`**: Serves as the project's entry point.
