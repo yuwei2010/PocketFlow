@@ -65,6 +65,8 @@ From there, it’s easy to implement popular design patterns like ([Multi-](http
 | :-------------:  | :-------------: | :-------------: | :--------------------- |  
 | [Research Agent](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-agent) | ☆☆☆ *Dummy*   | [Agent](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html) |  An AI agent that can search the web and answer questions |
 | [Parallel Summarization](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-parallel-batch) | ☆☆☆ *Dummy*   | [Parallel](https://the-pocket.github.io/PocketFlow/core_abstraction/parallel.html) | A parallel execution demo that shows 3x speedup |
+| [Streaming Controller](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-llm-streaming) | ☆☆☆ *Dummy*   | Streaming | A real-time LLM streaming demo with user interrupt capability |
+
 </div>
 
 👀 Want to see other tutorials for dummies? [Create an issue!](https://github.com/The-Pocket/PocketFlow/issues/new)
