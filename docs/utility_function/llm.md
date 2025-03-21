@@ -33,11 +33,13 @@ Here, we provide some minimal example implementations:
         from anthropic import Anthropic
         client = Anthropic(api_key="YOUR_API_KEY_HERE")
         response = client.messages.create(
-            model="claude-2",
-            messages=[{"role": "user", "content": prompt}],
-            max_tokens=100
+            model="claude-3-7-sonnet-20250219",
+            max_tokens=3000,
+            messages=[
+                {"role": "user", "content": prompt}
+            ]
         )
-        return response.content
+        return response.content[0].text
     ```
 
 3. Google (Generative AI Studio / PaLM API)
