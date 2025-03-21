@@ -67,6 +67,7 @@ From there, it’s easy to implement popular design patterns like ([Multi-](http
 | [Research Supervisor](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-supervisor) | ☆☆☆ <br> Dummy | Supervisor| Research agent is getting unreliable... Let's build a supervision process|
 | [Parallel Summarizer](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-parallel-batch) | ☆☆☆ <br> *Dummy*   | [Parallel](https://the-pocket.github.io/PocketFlow/core_abstraction/parallel.html) | A parallel execution demo that shows 3x speedup |
 | [Streaming Controller](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-llm-streaming) | ☆☆☆ <br> *Dummy*   | Streaming | A real-time LLM streaming demo with user interrupt capability |
+| [Extended Thinking](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-thinking) | ☆☆☆ <br> *Dummy*   | Thinking |  Solve complex reasoning problems through step-by-step thinking |
 
 
 
