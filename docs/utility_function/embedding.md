@@ -29,12 +29,18 @@ Below you will find an overview table of various text embedding APIs, along with
 
 ### 1. OpenAI
 ```python
-import openai
+from openai import OpenAI
 
-openai.api_key = "YOUR_API_KEY"
-resp = openai.Embedding.create(model="text-embedding-ada-002", input="Hello world")
-vec = resp["data"][0]["embedding"]
-print(vec)
+client = OpenAI(api_key="YOUR_API_KEY")
+response = client.embeddings.create(
+    model="text-embedding-ada-002",
+    input=text
+)
+    
+# Extract the embedding vector from the response
+embedding = response.data[0].embedding
+embedding = np.array(embedding, dtype=np.float32)
+print(embedding)
 ```
 
 ### 2. Azure OpenAI
