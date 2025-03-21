@@ -63,12 +63,13 @@ From there, it's easy to implement popular design patterns like ([Multi-](https:
   
 |  Tutorial Name  | Difficulty    | Topics  |  Description  |  
 | :-------------:  | :-------------: | :-------------: | :--------------------- |  
+| [Simple Chat](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-chat) | ☆☆☆ <br> *Dummy*   | Chat |  A basic chat application with conversation history |
+| [RAG System](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-rag) | ☆☆☆ <br> *Dummy*   | [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html) | A simple RAG that retrieves relevant documents based on queries |
 | [Research Agent](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-agent) | ☆☆☆ <br> *Dummy*   | [Agent](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html) |  An AI agent that can search the web and answer questions |
 | [Research Supervisor](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-supervisor) | ☆☆☆ <br> Dummy | Supervisor| Research agent is getting unreliable... Let's build a supervision process|
 | [Parallel Summarizer](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-parallel-batch) | ☆☆☆ <br> *Dummy*   | [Parallel](https://the-pocket.github.io/PocketFlow/core_abstraction/parallel.html) | A parallel execution demo that shows 3x speedup |
 | [Streaming Controller](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-llm-streaming) | ☆☆☆ <br> *Dummy*   | Streaming | A real-time LLM streaming demo with user interrupt capability |
 | [Extended Thinking](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-thinking) | ☆☆☆ <br> *Dummy*   | Thinking |  Solve complex reasoning problems through step-by-step thinking |
-| [RAG System](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-rag) | ☆☆☆ <br> *Dummy*   | [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html) | A simple RAG that retrieves relevant documents based on queries |
 
 
 
