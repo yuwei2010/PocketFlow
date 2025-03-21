@@ -57,7 +57,7 @@ From there, it’s easy to implement popular design patterns like ([Multi-](http
   <img src="./assets/design.png" width="500"/>
 </div>
 
-✨ Below are tutorials for Tutorial For Dummies:
+✨ Below are basic tutorials:
 
 <div align="center">
   
