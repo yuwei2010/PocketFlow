@@ -46,32 +46,32 @@ Current LLM frameworks are bloated... You only need 100 lines for LLM Framework!
 ## How does Pocket Flow work?
 
 The [100 lines](pocketflow/__init__.py) capture the core abstraction of LLM frameworks: Graph!
-
+<br>
 <div align="center">
-  <img src="./assets/abstraction.png" width="500"/>
+  <img src="./assets/abstraction.png" width="900"/>
 </div>
+<br>
 
 From there, it's easy to implement popular design patterns like ([Multi-](https://the-pocket.github.io/PocketFlow/design_pattern/multi_agent.html))[Agents](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html), [Workflow](https://the-pocket.github.io/PocketFlow/design_pattern/workflow.html), [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html), etc.
-
+<br>
 <div align="center">
-  <img src="./assets/design.png" width="500"/>
+  <img src="./assets/design.png" width="900"/>
 </div>
-
+<br>
 ✨ Below are basic tutorials:
 
 <div align="center">
   
-|  Tutorial Name  | Difficulty    | Topics  |  Description  |  
-| :-------------:  | :-------------: | :-------------: | :--------------------- |  
-| [Simple Chat](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-chat) | ☆☆☆ <br> *Dummy*   | Chat |  A basic chat application with conversation history |
-| [Retrieval-augmented Generation](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-rag) | ☆☆☆ <br> *Dummy*   | [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html) | A simple RAG that retrieves relevant documents based on queries |
-| [Research Agent](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-agent) | ☆☆☆ <br> *Dummy*   | [Agent](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html) |  An AI agent that can search the web and answer questions |
-| [Streaming Controller](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-llm-streaming) | ☆☆☆ <br> *Dummy*   | Streaming | A real-time LLM streaming demo with user interrupt capability |
-| [Parallel Summarizer](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-parallel-batch) | ★☆☆ <br> *Beginner*   | [Parallel](https://the-pocket.github.io/PocketFlow/core_abstraction/parallel.html) | A parallel execution demo that shows 3x speedup |
-| [Research Supervisor](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-supervisor) | ★☆☆ <br> *Beginner* | Supervisor| Research agent is getting unreliable... Let's build a supervision process|
-| [Chain-of-Thought](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-thinking) | ★☆☆ <br> *Beginner*   | Thinking |  Solve complex reasoning problems through step-by-step thinking |
-| [Chat with Memory](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-chat-memory) | ★☆☆ <br> *Beginner* | Memory | A chat application with short-term and long-term memory |
-
+|  Name  | Difficulty    |  Description  |  
+| :-------------:  | :-------------: | :--------------------- |  
+| [Chat](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-chat) | ☆☆☆ <br> *Dummy*   | A basic chat application with conversation history |
+| [RAG](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-rag) | ☆☆☆ <br> *Dummy*   | A simple RAG that retrieves relevant documents based on queries |
+| [Agent](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-agent) | ☆☆☆ <br> *Dummy*   | A research agent that can search the web and answer questions |
+| [Streaming](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-llm-streaming) | ☆☆☆ <br> *Dummy*   | A real-time LLM streaming demo with user interrupt capability |
+| [Parallel](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-parallel-batch) | ★☆☆ <br> *Beginner*   | A parallel execution demo that shows 3x speedup |
+| [Supervisor](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-supervisor) | ★☆☆ <br> *Beginner* | Research agent is getting unreliable... Let's build a supervision process|
+| [Thinking](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-thinking) | ★☆☆ <br> *Beginner*   | Solve complex reasoning problems through step-by-step thinking |
+| [Memory](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-chat-memory) | ★☆☆ <br> *Beginner* | A chat application with short-term and long-term memory |
 
 </div>
 
