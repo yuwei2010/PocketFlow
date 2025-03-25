@@ -29,7 +29,7 @@ We model the LLM workflow as a **Graph + Shared Store**:
 - [(Advanced) Parallel](./core_abstraction/parallel.md) nodes/flows handle I/O-bound tasks.
 
 <div align="center">
-  <img src="https://github.com/the-pocket/.github/raw/main/assets/abstraction.png" width="900"/>
+  <img src="https://github.com/the-pocket/.github/raw/main/assets/abstraction.png" width="700"/>
 </div>
 
 ## Design Pattern
@@ -44,7 +44,7 @@ From there, it’s easy to implement popular design patterns:
 - [(Advanced) Multi-Agents](./design_pattern/multi_agent.md) coordinate multiple agents.
 
 <div align="center">
-  <img src="https://github.com/the-pocket/.github/raw/main/assets/design.png" width="900"/>
+  <img src="https://github.com/the-pocket/.github/raw/main/assets/design.png" width="700"/>
 </div>
 
 ## Utility Function
