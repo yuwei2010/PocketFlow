@@ -1,6 +1,6 @@
 
 <div align="center">
-  <img src="./assets/title.png" width="600"/>
+  <img src="https://github.com/The-Pocket/.github/raw/main/assets/title.png" width="600"/>
 </div>
 
 
@@ -29,7 +29,7 @@ Pocket Flow is a [100-line](pocketflow/__init__.py) minimalist LLM framework
 Current LLM frameworks are bloated... You only need 100 lines for LLM Framework!
 
 <div align="center">
-  <img src="./assets/meme.jpg" width="400"/>
+  <img src="https://github.com/The-Pocket/.github/raw/main/assets/meme.jpg" width="400"/>
 
 
   |                | **Abstraction**          | **App-Specific Wrappers**                                      | **Vendor-Specific Wrappers**                                    | **Lines**       | **Size**    |
@@ -48,14 +48,14 @@ Current LLM frameworks are bloated... You only need 100 lines for LLM Framework!
 The [100 lines](pocketflow/__init__.py) capture the core abstraction of LLM frameworks: Graph!
 <br>
 <div align="center">
-  <img src="./assets/abstraction.png" width="900"/>
+  <img src="https://github.com/The-Pocket/.github/raw/main/assets/abstraction.png" width="900"/>
 </div>
 <br>
 
 From there, it's easy to implement popular design patterns like ([Multi-](https://the-pocket.github.io/PocketFlow/design_pattern/multi_agent.html))[Agents](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html), [Workflow](https://the-pocket.github.io/PocketFlow/design_pattern/workflow.html), [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html), etc.
 <br>
 <div align="center">
-  <img src="./assets/design.png" width="900"/>
+  <img src="https://github.com/The-Pocket/.github/raw/main/assets/design.png" width="900"/>
 </div>
 <br>
 ✨ Below are basic tutorials:
@@ -88,7 +88,7 @@ From there, it's easy to implement popular design patterns like ([Multi-](https:
 <br>
 <div align="center">
   <a href="https://youtu.be/Cf38Bi8U0Js" target="_blank">
-    <img src="./assets/tutorial.png" width="500" alt="IMAGE ALT TEXT" style="cursor: pointer;">
+    <img src="https://github.com/The-Pocket/.github/raw/main/assets/tutorial.png" width="500" alt="IMAGE ALT TEXT" style="cursor: pointer;">
   </a>
 </div>
 <br>

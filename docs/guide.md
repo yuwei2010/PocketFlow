@@ -56,7 +56,7 @@ Agentic Coding should be a collaboration between Human System Design and Agent I
 
 3. **Utilities**: Based on the Flow Design, identify and implement necessary utility functions.
     - Think of your AI system as the brain. It needs a body—these *external utility functions*—to interact with the real world:
-        <div align="center"><img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/utility.png?raw=true" width="400"/></div>
+        <div align="center"><img src="https://github.com/the-pocket/.github/raw/main/assets/utility.png?raw=true" width="400"/></div>
 
         - Reading inputs (e.g., retrieving Slack messages, reading emails)
         - Writing outputs (e.g., generating reports, sending emails)
@@ -127,7 +127,7 @@ Agentic Coding should be a collaboration between Human System Design and Agent I
 
    - > **You'll likely iterate a lot!** Expect to repeat Steps 3–6 hundreds of times.
      >
-     > <div align="center"><img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/success.png?raw=true" width="400"/></div>
+     > <div align="center"><img src="https://github.com/the-pocket/.github/raw/main/assets/success.png?raw=true" width="400"/></div>
      {: .best-practice }
 
 8. **Reliability**  

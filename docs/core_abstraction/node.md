@@ -10,7 +10,7 @@ nav_order: 1
 A **Node** is the smallest building block. Each Node has 3 steps `prep->exec->post`:
 
 <div align="center">
-  <img src="https://github.com/the-pocket/PocketFlow/raw/main/assets/node.png?raw=true" width="400"/>
+  <img src="https://github.com/the-pocket/.github/raw/main/assets/node.png?raw=true" width="400"/>
 </div>
 
 1. `prep(shared)`
