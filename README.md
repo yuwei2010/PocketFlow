@@ -87,6 +87,16 @@ From there, it's easy to implement popular design patterns like ([Multi-](https:
 
 🚀 Through **Agentic Coding**—the fastest LLM App development paradigm-where *humans design* and *agents code*!
 
+
+<br>
+<div align="center">
+  <a href="https://zacharyhuang.substack.com/p/agentic-coding-the-most-fun-way-to" target="_blank">
+    <img src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F423a39af-49e8-483b-bc5a-88cc764350c6_1050x588.png" width="700" alt="IMAGE ALT TEXT" style="cursor: pointer;">
+  </a>
+</div>
+<br>
+
+
 ✨ Below are examples of more complex LLM Apps:
 
 <div align="center">
