@@ -87,14 +87,6 @@ From there, it's easy to implement popular design patterns like ([Multi-](https:
 
 🚀 Through **Agentic Coding**—the fastest LLM App development paradigm-where *humans design* and *agents code*!
 
-<br>
-<div align="center">
-  <a href="https://youtu.be/Cf38Bi8U0Js" target="_blank">
-    <img src="https://github.com/The-Pocket/.github/raw/main/assets/tutorial.png" width="500" alt="IMAGE ALT TEXT" style="cursor: pointer;">
-  </a>
-</div>
-<br>
-
 ✨ Below are examples of more complex LLM Apps:
 
 <div align="center">
