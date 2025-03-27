@@ -22,7 +22,9 @@ Pocket Flow is a [100-line](pocketflow/__init__.py) minimalist LLM framework
   
 - To learn more, check out the [documentation](https://the-pocket.github.io/PocketFlow/). For an in-depth design dive, read the [essay](https://github.com/The-Pocket/.github/blob/main/profile/pocketflow.md).
   
-- 🎉 We now have a [discord](https://discord.gg/hUHHE9Sa6T)!
+- 🎉 Join our [discord](https://discord.gg/hUHHE9Sa6T)!
+
+- 🎉 Thanks to [@zvictor](https://www.github.com/zvictor) and [@jackylee941130](https://www.github.com/jackylee941130), we now have a [TypeScript version](https://github.com/The-Pocket/PocketFlow-Typescript)!
 
 ## Why Pocket Flow?
 
