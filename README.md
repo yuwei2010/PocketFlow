@@ -20,7 +20,7 @@ Pocket Flow is a [100-line](pocketflow/__init__.py) minimalist LLM framework
 
 - To install, ```pip install pocketflow```or just copy the [source code](pocketflow/__init__.py) (only 100 lines).
   
-- To learn more, check out the [documentation](https://the-pocket.github.io/PocketFlow/). For an in-depth design dive, read the [essay](https://github.com/The-Pocket/.github/blob/main/profile/pocketflow.md).
+- To learn more, check out the [documentation](https://the-pocket.github.io/PocketFlow/). For an in-depth design dive, read the [essay](https://zacharyhuang.substack.com/p/i-built-an-llm-framework-in-just).
   
 - 🎉 Join our [discord](https://discord.gg/hUHHE9Sa6T)!
 
