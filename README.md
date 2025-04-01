@@ -10,7 +10,7 @@
     <img src="https://img.shields.io/discord/1346833819172601907?logo=discord&style=flat">
 </a>
 
-Pocket Flow is a [100-line](pocketflow/__init__.py) minimalist LLM framework
+Pocket Flow is a [100-line](https://github.com/The-Pocket/PocketFlow/blob/main/pocketflow/__init__.py) minimalist LLM framework
 
 - **Lightweight**: Just 100 lines. Zero bloat, zero dependencies, zero vendor lock-in.
   
@@ -18,7 +18,7 @@ Pocket Flow is a [100-line](pocketflow/__init__.py) minimalist LLM framework
 
 - **[Agentic Coding](https://zacharyhuang.substack.com/p/agentic-coding-the-most-fun-way-to)**: Let AI Agents (e.g., Cursor AI) build Agents—10x productivity boost!
 
-- To install, ```pip install pocketflow```or just copy the [source code](pocketflow/__init__.py) (only 100 lines).
+- To install, ```pip install pocketflow```or just copy the [source code](https://github.com/The-Pocket/PocketFlow/blob/main/pocketflow/__init__.py) (only 100 lines).
   
 - To learn more, check out the [documentation](https://the-pocket.github.io/PocketFlow/). To learn the motivation, read the [story](https://zacharyhuang.substack.com/p/i-built-an-llm-framework-in-just).
   
@@ -47,7 +47,7 @@ Current LLM frameworks are bloated... You only need 100 lines for LLM Framework!
 
 ## How does Pocket Flow work?
 
-The [100 lines](pocketflow/__init__.py) capture the core abstraction of LLM frameworks: Graph!
+The [100 lines](https://github.com/The-Pocket/PocketFlow/blob/main/pocketflow/__init__.py) capture the core abstraction of LLM frameworks: Graph!
 <br>
 <div align="center">
   <img src="https://github.com/The-Pocket/.github/raw/main/assets/abstraction.png" width="900"/>
@@ -91,7 +91,6 @@ From there, it's easy to implement popular design patterns like ([Multi-](https:
 
 🚀 Through **Agentic Coding**—the fastest LLM App development paradigm-where *humans design* and *agents code*!
 
-
 <br>
 <div align="center">
   <a href="https://zacharyhuang.substack.com/p/agentic-coding-the-most-fun-way-to" target="_blank">
@@ -99,7 +98,6 @@ From there, it's easy to implement popular design patterns like ([Multi-](https:
   </a>
 </div>
 <br>
-
 
 ✨ Below are examples of more complex LLM Apps:
 
@@ -115,18 +113,10 @@ From there, it's easy to implement popular design patterns like ([Multi-](https:
 </div>
 
 - Want to learn **Agentic Coding**?
-  - To setup, read this [post](https://zacharyhuang.substack.com/p/agentic-coding-the-most-fun-way-to)! 
-  - Check out [my YouTube](https://www.youtube.com/@ZacharyLLM?sub_confirmation=1)! Read this [Guide](https://the-pocket.github.io/PocketFlow/guide.html)!
-  
-- Want to build your own LLM App? Start with [this template](https://github.com/The-Pocket/PocketFlow-Template-Python)!
 
+  - Check out [my YouTube](https://www.youtube.com/@ZacharyLLM?sub_confirmation=1) for video tutorial on how some apps above are made!
 
+  - Want to build your own LLM App? Read this [post](https://zacharyhuang.substack.com/p/agentic-coding-the-most-fun-way-to)! Start with [this template](https://github.com/The-Pocket/PocketFlow-Template-Python)!
 
-
-
-
-
-
-
-
+  - Want to learn the detailed steps? Read this [Guide](https://the-pocket.github.io/PocketFlow/guide.html)!
 
