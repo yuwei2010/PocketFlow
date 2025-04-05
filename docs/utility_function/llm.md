@@ -32,14 +32,14 @@ Here, we provide some minimal example implementations:
     def call_llm(prompt):
         from anthropic import Anthropic
         client = Anthropic(api_key="YOUR_API_KEY_HERE")
-        response = client.messages.create(
+        r = client.messages.create(
             model="claude-3-7-sonnet-20250219",
             max_tokens=3000,
             messages=[
                 {"role": "user", "content": prompt}
             ]
         )
-        return response.content[0].text
+        return r.content[0].text
     ```
 
 3. Google (Generative AI Studio / PaLM API)
@@ -47,11 +47,11 @@ Here, we provide some minimal example implementations:
     def call_llm(prompt):
         import google.generativeai as genai
         genai.configure(api_key="YOUR_API_KEY_HERE")
-        response = genai.generate_text(
+        r = genai.generate_text(
             model="models/text-bison-001",
             prompt=prompt
         )
-        return response.result
+        return r.result
     ```
 
 4. Azure (Azure OpenAI)
@@ -80,6 +80,19 @@ Here, we provide some minimal example implementations:
         )
         return response.message.content
     ```
+    
+6. DeepSeek
+    ```python
+    def call_llm(prompt):
+        from openai import OpenAI
+        client = OpenAI(api_key="YOUR_DEEPSEEK_API_KEY", base_url="https://api.deepseek.com")
+        r = client.chat.completions.create(
+            model="deepseek-chat",
+            messages=[{"role": "user", "content": prompt}]
+        )
+        return r.choices[0].message.content
+    ```
+
 
 ## Improvements
 Feel free to enhance your `call_llm` function as needed. Here are examples:
