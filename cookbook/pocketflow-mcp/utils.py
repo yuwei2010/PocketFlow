@@ -42,6 +42,39 @@ def local_get_tools(server_script_path=None):
                 },
                 "required": ["a", "b"]
             }
+        },
+        {
+            "name": "subtract",
+            "description": "Subtract b from a",
+            "inputSchema": {
+                "properties": {
+                    "a": {"type": "integer"},
+                    "b": {"type": "integer"}
+                },
+                "required": ["a", "b"]
+            }
+        },
+        {
+            "name": "multiply",
+            "description": "Multiply two numbers together",
+            "inputSchema": {
+                "properties": {
+                    "a": {"type": "integer"},
+                    "b": {"type": "integer"}
+                },
+                "required": ["a", "b"]
+            }
+        },
+        {
+            "name": "divide",
+            "description": "Divide a by b",
+            "inputSchema": {
+                "properties": {
+                    "a": {"type": "integer"},
+                    "b": {"type": "integer"}
+                },
+                "required": ["a", "b"]
+            }
         }
     ]
 
@@ -86,6 +119,23 @@ def local_call_tool(server_script_path=None, tool_name=None, arguments=None):
     if tool_name == "add":
         if "a" in arguments and "b" in arguments:
             return arguments["a"] + arguments["b"]
+        else:
+            return "Error: Missing required arguments 'a' or 'b'"
+    elif tool_name == "subtract":
+        if "a" in arguments and "b" in arguments:
+            return arguments["a"] - arguments["b"]
+        else:
+            return "Error: Missing required arguments 'a' or 'b'"
+    elif tool_name == "multiply":
+        if "a" in arguments and "b" in arguments:
+            return arguments["a"] * arguments["b"]
+        else:
+            return "Error: Missing required arguments 'a' or 'b'"
+    elif tool_name == "divide":
+        if "a" in arguments and "b" in arguments:
+            if arguments["b"] == 0:
+                return "Error: Division by zero is not allowed"
+            return arguments["a"] / arguments["b"]
         else:
             return "Error: Missing required arguments 'a' or 'b'"
     else:
