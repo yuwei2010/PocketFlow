@@ -4,6 +4,9 @@ import asyncio
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
+# Global flag to control whether to use MCP or local implementation
+MCP = False
+
 def call_llm(prompt):    
     client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", "your-api-key"))
     r = client.chat.completions.create(
@@ -12,7 +15,14 @@ def call_llm(prompt):
     )
     return r.choices[0].message.content
 
-def get_tools(server_script_path):
+def get_tools(server_script_path=None):
+    """Get available tools, either from MCP server or locally based on MCP global setting."""
+    if MCP:
+        return mcp_get_tools(server_script_path)
+    else:
+        return local_get_tools(server_script_path)
+    
+def mcp_get_tools(server_script_path):
     """Get available tools from an MCP server.
     """
     async def _get_tools():
@@ -97,6 +107,13 @@ def local_get_tools(server_script_path=None):
     return [DictObject(tool) for tool in tools]
 
 def call_tool(server_script_path=None, tool_name=None, arguments=None):
+    """Call a tool, either from MCP server or locally based on MCP global setting."""
+    if MCP:
+        return mcp_call_tool(server_script_path, tool_name, arguments)
+    else:
+        return local_call_tool(server_script_path, tool_name, arguments)
+    
+def mcp_call_tool(server_script_path=None, tool_name=None, arguments=None):
     """Call a tool on an MCP server.
     """
     async def _call_tool():

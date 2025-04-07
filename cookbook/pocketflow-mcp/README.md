@@ -4,9 +4,10 @@ This project shows how to build an agent that performs addition using PocketFlow
 
 ## Features
 
-- Addition operations through a simple terminal interface
+- Mathematical operation tools through a simple terminal interface
 - Integration with Model Context Protocol (MCP)
 - Comparison between MCP and direct function calling
+- **Simple toggle** between MCP and local function calling
 
 ## How to Run
 
@@ -26,9 +27,10 @@ This project shows how to build an agent that performs addition using PocketFlow
 
 To compare both approaches, this demo provides local function alternatives that don't require MCP:
 
-- To use traditional function calling instead of MCP, replace:
-  - `get_tools()` with `local_get_tools()`
-  - `call_tool()` with `local_call_tool()`
+- **Toggle with a simple flag:** Set `MCP = True` or `MCP = False` at the top of `utils.py` to switch between MCP and local implementations.
+- No code changes needed! The application automatically uses either:
+  - MCP server tools when `MCP = True`
+  - Local function implementations when `MCP = False`
 
 This allows you to see the difference between the two approaches while keeping the same workflow.
 
@@ -53,7 +55,7 @@ flowchart LR
 
 The agent uses PocketFlow to create a workflow where:
 1. It takes user input about numbers
-2. Connects to the MCP server for addition operations
+2. Connects to the MCP server for mathematical operations (or uses local functions based on the `MCP` flag)
 3. Returns the result
 
 ## Files
