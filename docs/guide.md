@@ -85,7 +85,7 @@ Agentic Coding should be a collaboration between Human System Design and Agent I
           prompt = "What is the meaning of life?"
           print(call_llm(prompt))
       ```
-    - > **Sometimes, design Utilies before Flow:**  For example, for an LLM project to automate a legacy system, the bottleneck will likely be the available interface to that system. Start by designing the hardest utilities for interfacing, and then build the flow around them.
+    - > **Sometimes, design Utilities before Flow:**  For example, for an LLM project to automate a legacy system, the bottleneck will likely be the available interface to that system. Start by designing the hardest utilities for interfacing, and then build the flow around them.
       {: .best-practice }
 
 4. **Node Design**: Plan how each node will read and write data, and use utility functions.

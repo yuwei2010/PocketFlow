@@ -82,7 +82,7 @@ summarize_all_files.run(shared)
 ## 3. Nested or Multi-Level Batches
 
 You can nest a **BatchFlow** in another **BatchFlow**. For instance:
-- **Outer** batch: returns a list of diretory param dicts (e.g., `{"directory": "/pathA"}`, `{"directory": "/pathB"}`, ...).
+- **Outer** batch: returns a list of directory param dicts (e.g., `{"directory": "/pathA"}`, `{"directory": "/pathB"}`, ...).
 - **Inner** batch: returning a list of per-file param dicts.
 
 At each level, **BatchFlow** merges its own param dict with the parent’s. By the time you reach the **innermost** node, the final `params` is the merged result of **all** parents in the chain. This way, a nested structure can keep track of the entire context (e.g., directory + file name) at once.
