@@ -2,6 +2,8 @@
 
 This project shows how to build an agent that performs addition using PocketFlow and Model Context Protocol (MCP). It presents a comparison between using MCP and basic function calling approaches.
 
+This implementation is based  on the tutorial: [MCP Simply Explained: Function Calling Rebranded or Genuine Breakthrough?](https://zacharyhuang.substack.com/p/mcp-simply-explained-function-calling)
+
 ## Features
 
 - Mathematical operation tools through a simple terminal interface
