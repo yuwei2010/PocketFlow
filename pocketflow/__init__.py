@@ -37,17 +37,17 @@ class BatchNode(Node):
     def _exec(self,items): return [super(BatchNode,self)._exec(i) for i in (items or [])]
 
 class Flow(BaseNode):
-    def __init__(self,start): super().__init__(); self.start=start
-    def start(self,start): self.start=start; return start
+    def __init__(self,start=None): super().__init__(); self.start_node=start
+    def start(self,start): self.start_node=start; return start
     def get_next_node(self,curr,action):
         nxt=curr.successors.get(action or "default")
         if not nxt and curr.successors: warnings.warn(f"Flow ends: '{action}' not found in {list(curr.successors)}")
         return nxt
     def _orch(self,shared,params=None):
-        curr,p,last_action =copy.copy(self.start),(params or {**self.params}),None
+        curr,p,last_action =copy.copy(self.start_node),(params or {**self.params}),None
         while curr: curr.set_params(p); last_action=curr._run(shared); curr=copy.copy(self.get_next_node(curr,last_action))
         return last_action
-    def _run(self,shared): pr=self.prep(shared); self._orch(shared); return self.post(shared,pr,None)
+    def _run(self,shared): p=self.prep(shared); o=self._orch(shared); return self.post(shared,p,o)
     def post(self,shared,prep_res,exec_res): return exec_res
 
 class BatchFlow(Flow):
@@ -81,10 +81,10 @@ class AsyncParallelBatchNode(AsyncNode,BatchNode):
 
 class AsyncFlow(Flow,AsyncNode):
     async def _orch_async(self,shared,params=None):
-        curr,p,last_action =copy.copy(self.start),(params or {**self.params}),None
+        curr,p,last_action =copy.copy(self.start_node),(params or {**self.params}),None
         while curr: curr.set_params(p); last_action=await curr._run_async(shared) if isinstance(curr,AsyncNode) else curr._run(shared); curr=copy.copy(self.get_next_node(curr,last_action))
         return last_action
-    async def _run_async(self,shared): p=await self.prep_async(shared); await self._orch_async(shared); return await self.post_async(shared,p,None)
+    async def _run_async(self,shared): p=await self.prep_async(shared); o=await self._orch_async(shared); return await self.post_async(shared,p,o)
     async def post_async(self,shared,prep_res,exec_res): return exec_res
 
 class AsyncBatchFlow(AsyncFlow,BatchFlow):

@@ -6,7 +6,6 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from pocketflow import Node, AsyncNode, AsyncFlow
 
-
 class AsyncNumberNode(AsyncNode):
     """
     Simple async node that sets 'current' to a given number.
@@ -29,7 +28,6 @@ class AsyncNumberNode(AsyncNode):
         # Return a condition for the flow
         return "number_set"
 
-
 class AsyncIncrementNode(AsyncNode):
     """
     Demonstrates incrementing the 'current' value asynchronously.
@@ -42,6 +40,37 @@ class AsyncIncrementNode(AsyncNode):
         await asyncio.sleep(0.01)  # simulate async I/O
         return "done"
 
+class AsyncSignalNode(AsyncNode):
+    """ An async node that returns a specific signal string from post_async. """
+    def __init__(self, signal="default_async_signal"):
+        super().__init__()
+        self.signal = signal
+
+    # No prep needed usually if just signaling
+    async def prep_async(self, shared_storage):
+        await asyncio.sleep(0.01) # Simulate async work
+
+    async def post_async(self, shared_storage, prep_result, exec_result):
+        # Store the signal in shared storage for verification
+        shared_storage['last_async_signal_emitted'] = self.signal
+        await asyncio.sleep(0.01) # Simulate async work
+        print(self.signal)
+        return self.signal # Return the specific action string
+
+class AsyncPathNode(AsyncNode):
+    """ An async node to indicate which path was taken in the outer flow. """
+    def __init__(self, path_id):
+        super().__init__()
+        self.path_id = path_id
+
+    async def prep_async(self, shared_storage):
+        await asyncio.sleep(0.01) # Simulate async work
+        shared_storage['async_path_taken'] = self.path_id
+
+    # post_async implicitly returns None (for default transition out if needed)
+    async def post_async(self, shared_storage, prep_result, exec_result):
+         await asyncio.sleep(0.01)
+         # Return None by default
 
 class TestAsyncNode(unittest.TestCase):
     """
@@ -149,6 +178,51 @@ class TestAsyncFlow(unittest.TestCase):
         self.assertEqual(shared_storage["path"], "positive", 
                          "Should have taken the positive branch")
 
+    def test_async_composition_with_action_propagation(self):
+        """
+        Test AsyncFlow branches based on action from nested AsyncFlow's last node.
+        """
+        async def run_test():
+            shared_storage = {}
+
+            # 1. Define an inner async flow ending with AsyncSignalNode
+            # Use existing AsyncNumberNode which should return None from post_async implicitly
+            inner_start_node = AsyncNumberNode(200)
+            inner_end_node = AsyncSignalNode("async_inner_done") # post_async -> "async_inner_done"
+            inner_start_node - "number_set" >> inner_end_node
+            # Inner flow will execute start->end, Flow exec returns "async_inner_done"
+            inner_flow = AsyncFlow(start=inner_start_node)
+
+            # 2. Define target async nodes for the outer flow branches
+            path_a_node = AsyncPathNode("AsyncA") # post_async -> None
+            path_b_node = AsyncPathNode("AsyncB") # post_async -> None
+
+            # 3. Define the outer async flow starting with the inner async flow
+            outer_flow = AsyncFlow(start=inner_flow)
+
+            # 4. Define branches FROM the inner_flow object based on its returned action
+            inner_flow - "async_inner_done" >> path_b_node  # This path should be taken
+            inner_flow - "other_action" >> path_a_node      # This path should NOT be taken
+
+            # 5. Run the outer async flow and capture the last action
+            # Execution: inner_start -> inner_end -> path_b
+            last_action_outer = await outer_flow.run_async(shared_storage)
+
+            # 6. Return results for assertion
+            return shared_storage, last_action_outer
+
+        # Run the async test function
+        shared_storage, last_action_outer = asyncio.run(run_test())
+
+        # 7. Assert the results
+        # Check state after inner flow execution
+        self.assertEqual(shared_storage.get('current'), 200) # From AsyncNumberNode
+        self.assertEqual(shared_storage.get('last_async_signal_emitted'), "async_inner_done")
+        # Check that the correct outer path was taken
+        self.assertEqual(shared_storage.get('async_path_taken'), "AsyncB")
+        # Check the action returned by the outer flow. The last node executed was
+        # path_b_node, which returns None from its post_async method.
+        self.assertIsNone(last_action_outer)
 
 if __name__ == '__main__':
     unittest.main()
