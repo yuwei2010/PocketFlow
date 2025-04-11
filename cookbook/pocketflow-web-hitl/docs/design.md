@@ -4,7 +4,7 @@
 
 *   **Goal:** Create a web service for task submission, processing, human review (Approve/Reject loop via UI), and finalization.
 *   **Interface:** Simple web UI (HTML/JS) for input, status display, and feedback buttons.
-*   **Backend:** Flask application using PocketFlow for workflow management.
+*   **Backend:** FastAPI using PocketFlow for workflow management.
 *   **Real-time Updates:** Use Server-Sent Events (SSE) to push status changes (pending, running, waiting_for_review, completed, failed) and intermediate results to the client without page reloads.
 *   **State:** Use in-memory storage for task state (Warning: Not suitable for production).
 
@@ -35,7 +35,7 @@ flowchart TD
 
 ## 3. Utilities
 
-For this specific example, the core "utility" is the processing logic itself. Let's simulate it with a simple function. The Flask server acts as the external interface.
+For this specific example, the core "utility" is the processing logic itself. Let's simulate it with a simple function. The FastAPI server acts as the external interface.
 
 * `process_task(input_data)`: A placeholder function. In a real scenario, this might call an LLM (`utils/call_llm.py`).
 
