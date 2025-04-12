@@ -1,4 +1,3 @@
-# FILE: pocketflow_a2a_agent/__main__.py
 import click
 import logging
 import os
@@ -10,7 +9,18 @@ from common.types import AgentCard, AgentCapabilities, AgentSkill, MissingAPIKey
 # Import your custom TaskManager (which now imports from your original files)
 from task_manager import PocketFlowTaskManager
 
-logging.basicConfig(level=logging.INFO)
+# --- Configure logging ---
+# Set level to INFO to see server start, requests, responses
+# Set level to DEBUG to see raw response bodies from client
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+# Optionally silence overly verbose libraries
+# logging.getLogger("httpx").setLevel(logging.WARNING)
+# logging.getLogger("httpcore").setLevel(logging.WARNING)
+# logging.getLogger("uvicorn.access").setLevel(logging.WARNING)
+
 logger = logging.getLogger(__name__)
 
 @click.command()

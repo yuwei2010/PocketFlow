@@ -1,10 +1,10 @@
-# FILE: minimal_a2a_client.py
 import asyncio
 import asyncclick as click # Using asyncclick for async main
 from uuid import uuid4
 import json # For potentially inspecting raw errors
 import anyio
 import functools
+import logging
 
 # Import from the common directory placed alongside this script
 from common.client import A2AClient
@@ -14,6 +14,17 @@ from common.types import (
     TextPart, # Used to construct the message
     JSONRPCResponse # Potentially useful for error checking
 )
+
+# --- Configure logging ---
+# Set level to INFO to see client requests and responses
+# Set level to DEBUG to see raw response bodies and SSE data lines
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+# Optionally silence overly verbose libraries
+# logging.getLogger("httpx").setLevel(logging.WARNING)
+# logging.getLogger("httpcore").setLevel(logging.WARNING)
 
 # --- ANSI Colors (Optional but helpful) ---
 C_RED = "\x1b[31m"
