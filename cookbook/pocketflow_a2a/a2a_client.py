@@ -3,6 +3,8 @@ import asyncio
 import asyncclick as click # Using asyncclick for async main
 from uuid import uuid4
 import json # For potentially inspecting raw errors
+import anyio
+import functools
 
 # Import from the common directory placed alongside this script
 from common.client import A2AClient
@@ -51,16 +53,19 @@ async def cli(agent_url: str):
     while True:
         taskId = uuid4().hex # Generate a new task ID for each interaction
         try:
-            prompt = await click.prompt(
+            # Use functools.partial to prepare the prompt function call
+            prompt_func = functools.partial(
+                click.prompt,
                 colorize(C_CYAN, "\nEnter your question (:q or quit to exit)"),
                 prompt_suffix=" > ",
-                type=str # Ensure prompt returns string
+                type=str
             )
-        except RuntimeError:
-             # This can happen if stdin is closed, e.g., in some test runners
-            print(colorize(C_RED, "Failed to read input. Exiting."))
+            # Run the synchronous prompt function in a worker thread
+            prompt = await anyio.to_thread.run_sync(prompt_func)
+        except (EOFError, RuntimeError, KeyboardInterrupt):
+            # Catch potential errors during input or if stdin closes
+            print(colorize(C_RED, "\nInput closed or interrupted. Exiting."))
             break
-
 
         if prompt.lower() in [":q", "quit"]:
             print(colorize(C_YELLOW, "Exiting client."))

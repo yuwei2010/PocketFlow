@@ -9,13 +9,13 @@ from common.types import (
     JSONRPCResponse, SendTaskRequest, SendTaskResponse,
     SendTaskStreamingRequest, SendTaskStreamingResponse, Task, TaskSendParams,
     TaskState, TaskStatus, TextPart, Artifact, UnsupportedOperationError,
-    InternalError, InvalidParamsError
+    InternalError, InvalidParamsError, 
+    Message
 )
 import common.server.utils as server_utils
 
 # Import directly from your original PocketFlow files
-from .flow import create_agent_flow # Assumes flow.py is in the same directory
-from .utils import call_llm, search_web # Make utils functions available if needed elsewhere
+from flow import create_agent_flow
 
 logger = logging.getLogger(__name__)
 
@@ -62,9 +62,10 @@ class PocketFlowTaskManager(InMemoryTaskManager):
             # executor to avoid blocking the event loop. For simplicity here, we run it directly.
             # Consider adding a timeout if flows can hang.
             logger.info(f"Running PocketFlow for task {task_params.id}...")
-            final_state_dict = agent_flow.run(shared_data)
+            agent_flow.run(shared_data) # Run the flow, modifying shared_data in place
             logger.info(f"PocketFlow completed for task {task_params.id}")
-            answer_text = final_state_dict.get("answer", "Agent did not produce a final answer text.")
+            # Access the original shared_data dictionary, which was modified by the flow
+            answer_text = shared_data.get("answer", "Agent did not produce a final answer text.")
 
             # --- Package result into A2A Task ---
             final_task_status = TaskStatus(state=TaskState.COMPLETED)

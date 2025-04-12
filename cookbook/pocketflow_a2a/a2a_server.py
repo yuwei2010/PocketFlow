@@ -8,7 +8,7 @@ from common.server import A2AServer
 from common.types import AgentCard, AgentCapabilities, AgentSkill, MissingAPIKeyError
 
 # Import your custom TaskManager (which now imports from your original files)
-from .task_manager import PocketFlowTaskManager
+from task_manager import PocketFlowTaskManager
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
