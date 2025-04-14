@@ -2,6 +2,8 @@
 
 This project demonstrates how to take an existing agent built with the PocketFlow library and make it accessible to other agents using the **Agent-to-Agent (A2A) communication protocol**.
 
+This implementation is based  on the tutorial: [A2A Protocol Simply Explained: Here are 3 key differences to MCP!](https://zacharyhuang.substack.com/p/a2a-protocol-simply-explained-here)
+
 ## How it Works: A2A Integration
 
 This project combines two main parts:
