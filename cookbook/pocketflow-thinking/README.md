@@ -1,87 +1,91 @@
 # Chain-of-Thought
 
-This project demonstrates a Chain-of-Thought mode implementation that enables LLMs to solve complex reasoning problems by thinking step-by-step. It's designed to improve problem-solving accuracy through deliberate reasoning.
+This project demonstrates an implementation that orchestrates a Chain-of-Thought process, enabling LLMs to solve complex reasoning problems by thinking step-by-step. It's designed to improve problem-solving accuracy through deliberate, structured reasoning managed externally.
 
 ## Features
 
-- Improves model reasoning on complex problems
-- Works with models like Claude 3.7 Sonnet that support Chain-of-Thought
-- Solves problems that direct prompting often fails on
-- Provides detailed reasoning traces for verification
+- Improves model reasoning on complex problems.
+- Leverages capable instruction-following models (e.g., Claude 3.7 Sonnet, GPT-4 series) to perform structured Chain-of-Thought reasoning.
+- Solves problems that direct prompting often fails on by breaking them down systematically.
+- Provides detailed reasoning traces, including step-by-step evaluation and planning, for verification.
 
 ## Getting Started
 
-1. Install the required packages:
-   ```bash
-   pip install -r requirements.txt
-   ```
+1.  **Install Packages:**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-2. Set up your API key:
-   ```bash
-   export ANTHROPIC_API_KEY="your-api-key-here"
-   ```
-   
-   Let's do a quick check to make sure your API key is working properly:
-   ```bash
-   python utils.py
-   ```
+2.  **Set API Key:**
+    ```bash
+    export ANTHROPIC_API_KEY="your-api-key-here"
+    ```
 
-3. Run a test problem to see thinking mode in action:
-   ```bash
-   python main.py
-   ```
+3.  **Verify API Key (Optional):**
+    Run a quick check to ensure your key and environment are set up correctly.
+    ```bash
+    python utils.py
+    ```
 
-   By default, we will ask the example question:
+4.  **Run Default Example:**
+    Execute the main script to see the process in action with the default Jane Street problem.
+    ```bash
+    python main.py
+    ```
+    The default question is:
+    > You keep rolling a fair die until you roll three, four, five in that order consecutively on three rolls. What is the probability that you roll the die an odd number of times?
 
-   > You keep rolling a fair die until you roll three, four, five in that order consecutively on three rolls. What is the probability that you roll the die an odd number of times?
-
-4. Try your own reasoning problem:
-   ```bash
-   python main.py --"Your complex reasoning problem here"
-   ```
+5.  **Run Custom Problem:**
+    Provide your own reasoning problem using the `--` argument.
+    ```bash
+    python main.py --"Your complex reasoning problem here"
+    ```
 
 ## How It Works
 
-The implementation uses a self-looping Chain of Thought node that allows an LLM to think through complex problems step by step:
+The implementation uses a self-looping PocketFlow node (`ChainOfThoughtNode`) that guides an LLM through a structured problem-solving process:
 
 ```mermaid
 flowchart LR
     cot[ChainOfThoughtNode] -->|"continue"| cot
 ```
 
-Each time the node loops, it:
-1. Reads the problem and previous thoughts
-2. Generates the next thought or final solution
-3. Decides whether more thinking is needed
+In each loop (thought step), the node directs the LLM to:
+1.  Evaluate the previous thought's reasoning and results.
+2.  Execute the next pending step according to a maintained plan.
+3.  Update the plan, marking the step done (with results) or noting issues.
+4.  Refine the plan if steps need breaking down or errors require correction.
+5.  Decide if further thinking (`next_thought_needed`) is required based on the plan state.
 
-This approach helps LLMs solve problems that would be difficult with a single-pass approach.
+This external orchestration enforces a systematic approach, helping models tackle problems that are difficult with a single prompt.
 
 ## Comparison with Different Approaches
 
-- **Standard prompting**: Telling the AI to "think step by step" or providing examples helps, but the thinking is usually not significant enough
-- **Extended thinking models**: Models like Claude 3.7 Sonnet, GPT-4o, and Deepseek R1 natively support extended thinking with much better results
-- **This implementation**: Explores how to achieve Chain-of-Thought with non-thinking models
+-   **Standard Prompting**: Techniques like asking the model to "think step by step" within a single prompt can help, but the reasoning might lack depth or structure, and the model can easily lose track or make unrecoverable errors.
+-   **Native Extended Thinking Modes**: Some models (like Claude 3.7, GPT-o1, etc.) offer dedicated modes or features explicitly for extended reasoning, often yielding strong results directly via API calls.
+-   **This Implementation**: Demonstrates how to orchestrate a structured Chain-of-Thought process using standard LLMs (even those without a specific native 'extended thinking' mode), managing the steps, planning, and evaluation externally via prompt engineering and flow control.
 
 ## Example Thinking Process
 
-Let's try out this [Jane Street Quant Trading Interview Question](https://www.youtube.com/watch?v=gQJTkuEVPrU)
+Let's try out this challenging [Jane Street Quant Trading Interview Question](https://www.youtube.com/watch?v=gQJTkuEVPrU):
 
 > **Problem**: You keep rolling a fair die until you roll three, four, five in that order consecutively on three rolls. What is the probability that you roll the die an odd number of times?
 
-This problem demonstrates why Chain-of-Thought is valuable:
+This problem demonstrates why structured Chain-of-Thought is valuable:
 
-- **Standard models without thinking**: Get the wrong answer
-- **Models with extended thinking**: Find the correct answer (216/431 ≈ 0.5012.)
+-   **Standard models (single prompt)**: Often get the wrong answer or provide flawed reasoning.
+-   **Models using native thinking modes**: Can find the correct answer (216/431 ≈ 0.5012), though performance and reasoning clarity may vary.
+-   **This implementation (orchestrating a capable LLM)**: Can guide the model towards the correct answer by enforcing a step-by-step plan, evaluation, and refinement loop.
 
 For comparison:
-- [Claude 3.7 Sonnet (without thinking)](https://claude.ai/share/da139326-42fe-42d9-9d7b-35870daa5c1b): Wrong answer
-- [Claude 3.7 Sonnet with thinking](https://claude.ai/share/6f4140ed-f33c-4949-8778-a57719498e40): Correct answer after 3m, 45s
-- [GPT-o1 with thinking](https://chatgpt.com/share/67fee0fd-2600-8000-bcdf-76e40a986ee4): Correct answer after 2m, 0s
-- [GPT-o1 pro with thinking](https://chatgpt.com/share/67fee11b-530c-8000-92d1-609b6ca49c9c): Correct answer after 4m, 24s
+-   [Claude 3.7 Sonnet (single prompt)](https://claude.ai/share/da139326-42fe-42d9-9d7b-35870daa5c1b): Wrong answer
+-   [Claude 3.7 Sonnet (using built-in thinking)](https://claude.ai/share/6f4140ed-f33c-4949-8778-a57719498e40): Correct answer after 3m, 45s
+-   [GPT-4o (using built-in thinking)](https://chatgpt.com/share/67fee0fd-2600-8000-bcdf-76e40a986ee4): Correct answer after 2m, 0s
+-   [GPT-4 Turbo (using built-in thinking)](https://chatgpt.com/share/67fee11b-530c-8000-92d1-609b6ca49c9c): Correct answer after 4m, 24s
 
-Below is an example of how Claude 3.7 Sonnet (without native thinking) to solve this complex problem, and get the correct result:
+Below is an example output trace showing how **this implementation guides Claude 3.7 Sonnet** through the problem-solving process:
 
-> **Note:** Even with thinking mode, models don't always get the right answer, but their accuracy significantly improves on complex reasoning tasks.
+> **Note:** Even with structured thinking orchestration, models don't always get the right answer, especially on very complex or novel problems. However, this approach significantly improves the robustness of the reasoning process and provides a traceable path for verification and debugging.
 
 ```
 🤔 Processing question: You keep rolling a fair die until you roll three, four, five in that order consecutively on three rolls. What is the probability that you roll the die an odd number of times?
