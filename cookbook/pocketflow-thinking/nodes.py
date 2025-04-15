@@ -1,3 +1,4 @@
+# cookbook/pocketflow-thinking/nodes.py
 from pocketflow import Node
 import yaml
 from utils import call_llm
@@ -8,80 +9,62 @@ class ChainOfThoughtNode(Node):
         problem = shared.get("problem", "")
         thoughts = shared.get("thoughts", [])
         current_thought_number = shared.get("current_thought_number", 0)
-        # Increment the current thought number in the shared store
-        shared["current_thought_number"] = current_thought_number + 1
-        total_thoughts_estimate = shared.get("total_thoughts_estimate", 5)
         
-        # Format previous thoughts
+        # Increment the current thought number for the next step
+        shared["current_thought_number"] = current_thought_number + 1
+        
+        # Format previous thoughts simply
         thoughts_text = "\n".join([
-            f"Thought {t['thought_number']}: {t['content']}" +
-            (f" (Revision of Thought {t['revises_thought']})" if t.get('is_revision') and t.get('revises_thought') else "") +
-            (f" (Branch from Thought {t['branch_from_thought']}, Branch ID: {t['branch_id']})" 
-             if t.get('branch_from_thought') else "")
+            f"Thought {t['thought_number']}: {t['current_thinking']}" + 
+            (f"\n  (Plan: {t.get('next_thought_planning', 'N/A')})" if t.get('next_thought_needed') else "")
             for t in thoughts
         ])
         
         return {
             "problem": problem,
             "thoughts_text": thoughts_text,
-            "thoughts": thoughts,
             "current_thought_number": current_thought_number + 1, 
-            "total_thoughts_estimate": total_thoughts_estimate
         }
     
     def exec(self, prep_res):
         problem = prep_res["problem"]
         thoughts_text = prep_res["thoughts_text"]
         current_thought_number = prep_res["current_thought_number"] 
-        total_thoughts_estimate = prep_res["total_thoughts_estimate"]
         
-        # Create the prompt for the LLM
+        # Create the simplified prompt for the LLM
         prompt = f"""
-You are solving a hard problem using Chain of Thought reasoning. Think step-by-step.
+You are solving a complex problem step-by-step. Focus on generating the next logical thought in the sequence.
 
 Problem: {problem}
 
 Previous thoughts:
 {thoughts_text if thoughts_text else "No previous thoughts yet."}
 
-Please generate the next thought (Thought {current_thought_number}). You can:
-1. Continue with the next logical step
-2. Revise a previous thought if needed
-3. Branch into a new line of thinking
-4. Generate a hypothesis if you have enough information
-5. Verify a hypothesis against your reasoning
-6. Provide a final solution if you've reached a conclusion
+Your task is to generate the next thought (Thought {current_thought_number}). Think about the current step required to move closer to the solution.
 
-Current thought number: {current_thought_number}
-Current estimate of total thoughts needed: {total_thoughts_estimate}
-
-Format your response as a YAML structure with these fields:
-- content: Your thought content
-- next_thought_needed: true/false (true if more thinking is needed)
-- is_revision: true/false (true if revising a previous thought)
-- revises_thought: null or number (if is_revision is true)
-- branch_from_thought: null or number (if branching from previous thought)
-- branch_id: null or string (a short identifier for this branch)
-- total_thoughts: number (your updated estimate if changed)
-
-Only set next_thought_needed to false when you have a complete solution and the content explains the solution.
-Output in YAML format:
+Format your response ONLY as a YAML structure enclosed in ```yaml ... ```:
 ```yaml
-content: |
-  # If you have a complete solution, explain the solution here.
-  # If it's a revision, provide the updated thought here.
-  # If it's a branch, provide the new thought here.
-next_thought_needed: true/false
-is_revision: true/false
-revises_thought: null or number
-branch_from_thought: null or number
-branch_id: null or string
-total_thoughts: number
+current_thinking: |
+  # Your detailed thinking for this step. 
+  # If this step provides the final answer, state the final answer clearly here.
+next_thought_needed: true # Set to false ONLY when 'current_thinking' contains the complete final answer.
+next_thought_planning: |
+  # Optional: Briefly describe what the *next* thought should focus on. Leave empty if none or if finished.
 ```"""
         
         response = call_llm(prompt)
+        
+        # Simple YAML extraction
         yaml_str = response.split("```yaml")[1].split("```")[0].strip()
         thought_data = yaml.safe_load(yaml_str)
+
+        # --- Validation ---
+        # Ensure required keys are present after parsing
+        assert "current_thinking" in thought_data, "LLM response missing 'current_thinking'"
+        assert "next_thought_needed" in thought_data, "LLM response missing 'next_thought_needed'"
+        # 'next_thought_planning' is optional, so no assert needed, but we can ensure it exists
+        thought_data.setdefault("next_thought_planning", "") 
+        # --- End Validation ---
         
         # Add thought number
         thought_data["thought_number"] = current_thought_number
@@ -92,25 +75,22 @@ total_thoughts: number
         # Add the new thought to the list
         if "thoughts" not in shared:
             shared["thoughts"] = []
-        
         shared["thoughts"].append(exec_res)
         
-        # Update total_thoughts_estimate if changed
-        if "total_thoughts" in exec_res and exec_res["total_thoughts"] != shared.get("total_thoughts_estimate", 5):
-            shared["total_thoughts_estimate"] = exec_res["total_thoughts"]
-        
-        # If we're done, extract the solution from the last thought
-        if exec_res.get("next_thought_needed", True) == False:
-            shared["solution"] = exec_res["content"]
+        # If we're done, extract the solution from the last thought's thinking
+        if exec_res.get("next_thought_needed") == False:
+            shared["solution"] = exec_res["current_thinking"]
             print("\n=== FINAL SOLUTION ===")
-            print(exec_res["content"])
+            print(exec_res["current_thinking"])
             print("======================\n")
             return "end"
         
         # Otherwise, continue the chain
-        print(f"\n{exec_res['content']}")
-        print(f"Next thought needed: {exec_res.get('next_thought_needed', True)}")
-        print(f"Total thoughts estimate: {shared.get('total_thoughts_estimate', 5)}")
+        print(f"\nThought {exec_res['thought_number']}:")
+        print(exec_res['current_thinking'])
+        if exec_res.get('next_thought_planning'):
+            print(f"\nNext step planned: {exec_res['next_thought_planning']}")
+        # print(f"Next thought needed: {exec_res.get('next_thought_needed')}") # Redundant if planning shown
         print("-" * 50)
         
         return "continue"  # Continue the chain

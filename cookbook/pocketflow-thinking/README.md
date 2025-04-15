@@ -12,24 +12,33 @@ This project demonstrates an extended thinking mode implementation that enables 
 ## Getting Started
 
 1. Install the required packages:
-```bash
-pip install -r requirements.txt
-```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 2. Set up your API key:
-```bash
-export ANTHROPIC_API_KEY="your-api-key-here"
-```
+   ```bash
+   export ANTHROPIC_API_KEY="your-api-key-here"
+   ```
+   
+   Let's do a quick check to make sure your API key is working properly:
+   ```bash
+   python utils.py
+   ```
 
 3. Run a test problem to see thinking mode in action:
-```bash
-python main.py
-```
+   ```bash
+   python main.py
+   ```
+
+   By default, we will ask the example question:
+
+   > Break a stick, then break the longer piece again. What's the probability of forming a triangle?
 
 4. Try your own reasoning problem:
-```bash
-python main.py --"Your complex reasoning problem here"
-```
+   ```bash
+   python main.py --"Your complex reasoning problem here"
+   ```
 
 ## How It Works
 

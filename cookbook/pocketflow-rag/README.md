@@ -17,6 +17,12 @@ This project demonstrates a simplified RAG system that retrieves relevant docume
    ```
    Or update it directly in `utils.py`
 
+   Let's do a quick check to make sure your API key is working properly:
+
+   ```bash
+   python utils.py
+   ```
+
 2. Install and run with the default query:
    ```bash
    pip install -r requirements.txt
