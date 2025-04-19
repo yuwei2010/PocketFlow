@@ -2,6 +2,8 @@
 
 A minimal demo application showing how to use PocketFlow to extract structured data from a resume using direct prompting and YAML formatting. Why YAML? Check out the [doc](https://the-pocket.github.io/PocketFlow/design_pattern/structure.html).
 
+This implementation is based on: [Structured Output for Beginners: 3 Must-Know Prompting Tips](https://zacharyhuang.substack.com/p/structured-output-for-beginners-3).
+
 ## Features
 
 - Extracts structured data using prompt engineering
