@@ -129,7 +129,7 @@ if __name__ == "__main__":
     shared["target_skills"] = target_skills_to_find
 
     # --- Define and Run Flow ---
-    parser_node = ResumeParserNode()
+    parser_node = ResumeParserNode(max_retries=3, wait=10)
     flow = Flow(start=parser_node)
     flow.run(shared) # Execute the parsing node
 
