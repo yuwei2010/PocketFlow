@@ -1,7 +1,7 @@
 from pocketflow import Node, Flow, BatchNode
 import numpy as np
 import faiss
-from utils import call_llm, get_embedding, get_simple_embedding, fixed_size_chunk
+from utils import call_llm, get_embedding, fixed_size_chunk
 
 # Nodes for the offline flow
 class ChunkDocumentsNode(BatchNode):
