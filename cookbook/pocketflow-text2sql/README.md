@@ -2,6 +2,8 @@
 
 A PocketFlow example demonstrating a text-to-SQL workflow that converts natural language questions into executable SQL queries for an SQLite database, including an LLM-powered debugging loop for failed queries.
 
+- Check out the [Substack Post Tutorial](https://zacharyhuang.substack.com/p/text-to-sql-from-scratch-tutorial) for more!
+
 ## Features
 
 -   **Schema Awareness**: Automatically retrieves the database schema to provide context to the LLM.
