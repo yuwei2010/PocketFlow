@@ -28,11 +28,11 @@ def build_mermaid(start):
             return parent and link(parent, get_id(node))
         visited.add(node)
         if isinstance(node, Flow):
-            node.start and parent and link(parent, get_id(node.start))
+            node.start_node and parent and link(parent, get_id(node.start_node))
             lines.append(f"\n    subgraph sub_flow_{get_id(node)}[{type(node).__name__}]")
-            node.start and walk(node.start)
+            node.start_node and walk(node.start_node)
             for nxt in node.successors.values():
-                node.start and walk(nxt, get_id(node.start)) or (parent and link(parent, get_id(nxt))) or walk(nxt)
+                node.start_node and walk(nxt, get_id(node.start_node)) or (parent and link(parent, get_id(nxt))) or walk(nxt)
             lines.append("    end\n")
         else:
             lines.append(f"    {(nid := get_id(node))}['{type(node).__name__}']")
