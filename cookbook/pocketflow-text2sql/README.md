@@ -157,11 +157,6 @@ Electronics | 3
 Home Goods | 2
 Sports | 1
 
-=================================
-
-/home/zh2408/.venv/lib/python3.9/site-packages/pocketflow/__init__.py:43: UserWarning: Flow ends: 'None' not found in ['error_retry']
-  if not nxt and curr.successors: warnings.warn(f"Flow ends: '{action}' not found in {list(curr.successors)}")
-
 === Workflow Completed Successfully ===
 ====================================
 ```
