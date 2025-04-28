@@ -1,7 +1,7 @@
 """Flow definitions for parallel image processing."""
 
-from pocketflow import AsyncFlow, AsyncParallelBatchFlow, AsyncBatchFlow
-from nodes import LoadImage, ApplyFilter, SaveImage, NoOp
+from pocketflow import AsyncParallelBatchFlow, AsyncBatchFlow
+from nodes import LoadImage, ApplyFilter, SaveImage
 
 def create_base_flow():
     """Create flow for processing a single image with one filter."""
@@ -9,12 +9,10 @@ def create_base_flow():
     load = LoadImage()
     apply_filter = ApplyFilter()
     save = SaveImage()
-    noop = NoOp()
     
     # Connect nodes
     load - "apply_filter" >> apply_filter
     apply_filter - "save" >> save
-    save - "default" >> noop
     
     # Create flow
     return load

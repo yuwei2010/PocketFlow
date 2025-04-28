@@ -13,7 +13,7 @@ A [100-line](https://github.com/the-pocket/PocketFlow/blob/main/pocketflow/__ini
 - **Agentic-Coding**: Intuitive enough for AI agents to help humans build complex LLM applications.
 
 <div align="center">
-  <img src="https://github.com/the-pocket/.github/raw/main/assets/meme.jpg?raw=true" width="400"/>
+  <img src="https://github.com/the-pocket/.github/raw/main/assets/meme.jpg?raw=true" alt="Pocket Flow – 100-line minimalist LLM framework" width="400"/>
 </div>
 
 
@@ -29,7 +29,7 @@ We model the LLM workflow as a **Graph + Shared Store**:
 - [(Advanced) Parallel](./core_abstraction/parallel.md) nodes/flows handle I/O-bound tasks.
 
 <div align="center">
-  <img src="https://github.com/the-pocket/.github/raw/main/assets/abstraction.png" width="700"/>
+  <img src="https://github.com/the-pocket/.github/raw/main/assets/abstraction.png" alt="Pocket Flow – Core Abstraction" width="700"/>
 </div>
 
 ## Design Pattern
@@ -44,7 +44,7 @@ From there, it’s easy to implement popular design patterns:
 - [(Advanced) Multi-Agents](./design_pattern/multi_agent.md) coordinate multiple agents.
 
 <div align="center">
-  <img src="https://github.com/the-pocket/.github/raw/main/assets/design.png" width="700"/>
+  <img src="https://github.com/the-pocket/.github/raw/main/assets/design.png" alt="Pocket Flow – Design Pattern" width="700"/>
 </div>
 
 ## Utility Function
