@@ -2,6 +2,8 @@
 
 A PocketFlow example demonstrating a text-to-SQL workflow that converts natural language questions into executable SQL queries for an SQLite database, including an LLM-powered debugging loop for failed queries.
 
+- Check out the [Substack Post Tutorial](https://zacharyhuang.substack.com/p/text-to-sql-from-scratch-tutorial) for more!
+
 ## Features
 
 -   **Schema Awareness**: Automatically retrieves the database schema to provide context to the LLM.
@@ -154,11 +156,6 @@ Apparel | 1
 Electronics | 3
 Home Goods | 2
 Sports | 1
-
-=================================
-
-/home/zh2408/.venv/lib/python3.9/site-packages/pocketflow/__init__.py:43: UserWarning: Flow ends: 'None' not found in ['error_retry']
-  if not nxt and curr.successors: warnings.warn(f"Flow ends: '{action}' not found in {list(curr.successors)}")
 
 === Workflow Completed Successfully ===
 ====================================
