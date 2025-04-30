@@ -16,9 +16,9 @@ For certain LLM tasks like answering questions, providing relevant context is es
 ## Stage 1: Offline Indexing
 
 We create three Nodes:
-1. `ChunkDocs` – [chunks](mdc:../utility_function/chunking.md) raw text.
-2. `EmbedDocs` – [embeds](mdc:../utility_function/embedding.md) each chunk.
-3. `StoreIndex` – stores embeddings into a [vector database](mdc:../utility_function/vector.md).
+1. `ChunkDocs` – [chunks](../utility_function/chunking.md) raw text.
+2. `EmbedDocs` – [embeds](../utility_function/embedding.md) each chunk.
+3. `StoreIndex` – stores embeddings into a [vector database](../utility_function/vector.md).
 
 ```python
 class ChunkDocs(BatchNode):

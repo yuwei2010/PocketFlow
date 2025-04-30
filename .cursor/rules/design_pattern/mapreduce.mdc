@@ -13,7 +13,7 @@ and there is a logical way to break the task into smaller, ideally independent p
 
 
 
-You first break down the task using [BatchNode](mdc:../core_abstraction/batch.md) in the map phase, followed by aggregation in the reduce phase.
+You first break down the task using [BatchNode](../core_abstraction/batch.md) in the map phase, followed by aggregation in the reduce phase.
 
 ### Example: Document Summarization
 
@@ -65,5 +65,5 @@ print("Individual Summaries:", shared["file_summaries"])
 print("\nFinal Summary:\n", shared["all_files_summary"])
 ```
 
-> **Performance Tip**: The example above works sequentially. You can speed up the map phase by running it in parallel. See [(Advanced) Parallel](mdc:../core_abstraction/parallel.md) for more details.
+> **Performance Tip**: The example above works sequentially. You can speed up the map phase by running it in parallel. See [(Advanced) Parallel](../core_abstraction/parallel.md) for more details.
 {: .note }
