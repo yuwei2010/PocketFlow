@@ -81,7 +81,7 @@ summary:
         return structured_result
 ```
 
-> Besides using `assert` statements, another popular way to validate schemas is [Pydantic](mdc:https:/github.com/pydantic/pydantic)
+> Besides using `assert` statements, another popular way to validate schemas is [Pydantic](https://github.com/pydantic/pydantic)
 {: .note }
 
 ### Why YAML instead of JSON?

@@ -5,14 +5,14 @@ alwaysApply: false
 ---
 # Workflow
 
-Many real-world tasks are too complex for one LLM call. The solution is to **Task Decomposition**: decompose them into a [chain](mdc:../core_abstraction/flow.md) of multiple Nodes.
+Many real-world tasks are too complex for one LLM call. The solution is to **Task Decomposition**: decompose them into a [chain](../core_abstraction/flow.md) of multiple Nodes.
 
 
 
 > - You don't want to make each task **too coarse**, because it may be *too complex for one LLM call*.
 > - You don't want to make each task **too granular**, because then *the LLM call doesn't have enough context* and results are *not consistent across nodes*.
 > 
-> You usually need multiple *iterations* to find the *sweet spot*. If the task has too many *edge cases*, consider using [Agents](mdc:agent.md).
+> You usually need multiple *iterations* to find the *sweet spot*. If the task has too many *edge cases*, consider using [Agents](mdc:./agent.md).
 {: .best-practice }
 
 ### Example: Article Writing
@@ -46,4 +46,4 @@ shared = {"topic": "AI Safety"}
 writing_flow.run(shared)
 ```
 
-For *dynamic cases*, consider using [Agents](mdc:agent.md).
+For *dynamic cases*, consider using [Agents](mdc:./agent.md).

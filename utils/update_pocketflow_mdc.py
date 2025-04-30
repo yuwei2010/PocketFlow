@@ -101,6 +101,10 @@ def get_mdc_description(md_file, frontmatter, heading):
     else:
         subsection = heading
     
+    # For the combined guide and index
+    if Path(md_file).name == "guide.md":
+        return "Guidelines for using PocketFlow, Agentic Coding"
+    
     # For index.md at root level, use a different format
     if Path(md_file).name == "index.md" and section == "":
         return "Guidelines for using PocketFlow, a minimalist LLM framework"
@@ -137,6 +141,20 @@ def process_markdown_content(content, remove_local_refs=False):
     
     return content
 
+def get_documentation_first_policy():
+    """Return the DOCUMENTATION FIRST POLICY text to be included in the guide"""
+    return """# DOCUMENTATION FIRST POLICY
+
+**CRITICAL INSTRUCTION**: When implementing a Pocket Flow app:
+
+1. **ALWAYS REQUEST MDC FILES FIRST** - Before writing any code, request and review all relevant MDC documentation files. This doc provides an explaination of the documents.
+2. **UNDERSTAND THE FRAMEWORK** - Gain comprehensive understanding of the Pocket Flow framework from documentation
+3. **AVOID ASSUMPTION-DRIVEN DEVELOPMENT** - Do not base your implementation on assumptions or guesswork. Even if the human didn't explicitly mention pocket flow in their request, if the code you are editing is using pocket flow, you should request relevant docs to help you understand best practice as well before editing.
+
+**VERIFICATION**: Begin each implementation with a brief summary of the documentation you've reviewed to inform your approach.
+
+"""
+
 def generate_mdc_header(md_file, description, always_apply=False):
     """Generate MDC file header with appropriate frontmatter"""
     # Determine if we should include globs
@@ -163,13 +181,64 @@ def has_substantive_content(content):
     # If there's almost nothing left after cleaning, consider it empty
     return len(cleaned_content) > 20  # Arbitrary threshold, adjust as needed
 
+def create_combined_guide(docs_dir, rules_dir):
+    """Create a combined guide that includes both the guide and index content"""
+    docs_path = Path(docs_dir)
+    rules_path = Path(rules_dir)
+    
+    guide_file = docs_path / "guide.md"
+    index_file = docs_path / "index.md"
+    
+    if not guide_file.exists() or not index_file.exists():
+        print("Warning: guide.md or index.md not found, skipping combined guide creation")
+        return False
+    
+    # Get guide content and index content
+    with open(guide_file, 'r', encoding='utf-8') as f:
+        guide_content = f.read()
+    
+    with open(index_file, 'r', encoding='utf-8') as f:
+        index_content = f.read()
+    
+    # Process the content
+    processed_guide = process_markdown_content(guide_content, remove_local_refs=True)
+    processed_index = process_markdown_content(index_content, remove_local_refs=True)
+    
+    # Get the documentation first policy
+    doc_first_policy = get_documentation_first_policy()
+    
+    # Combine the content with the documentation first policy at the beginning
+    combined_content = doc_first_policy + processed_guide + "\n\n" + processed_index
+    
+    # Generate the MDC header
+    description = "Guidelines for using PocketFlow, Agentic Coding"
+    mdc_header = generate_mdc_header(guide_file, description, always_apply=True)
+    
+    # Combine header and processed content
+    mdc_content = mdc_header + combined_content
+    
+    # Create the output path with the new filename
+    output_path = rules_path / "guide_for_pocketflow.mdc"
+    
+    # Write the MDC file
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write(mdc_content)
+    
+    print(f"Created combined guide MDC file: {output_path}")
+    return True
+
 def convert_md_to_mdc(md_file, output_dir, docs_dir, special_treatment=False):
     """Convert a markdown file to MDC format and save to the output directory"""
     try:
         print(f"Processing: {md_file}")
         
-        # Skip empty index.md files in subfolders
+        # Skip guide.md and index.md as they'll be handled separately
         file_name = Path(md_file).name
+        if file_name in ["guide.md", "index.md"]:
+            print(f"Skipping {file_name} for individual processing - it will be included in the combined guide")
+            return True
+        
+        # Skip empty index.md files in subfolders
         parent_dir = Path(md_file).parent.name
         
         # Check if this is an index.md in a subfolder (not the main index.md)
@@ -194,14 +263,11 @@ def convert_md_to_mdc(md_file, output_dir, docs_dir, special_treatment=False):
         with open(md_file, 'r', encoding='utf-8') as f:
             content = f.read()
         
-        # Check if this file should have special treatment (index.md or guide.md)
-        is_special = special_treatment or Path(md_file).name == "guide.md"
-        
         # Process the content
-        processed_content = process_markdown_content(content, remove_local_refs=is_special)
+        processed_content = process_markdown_content(content, remove_local_refs=special_treatment)
         
         # Generate the MDC header
-        mdc_header = generate_mdc_header(md_file, description, always_apply=is_special)
+        mdc_header = generate_mdc_header(md_file, description, always_apply=special_treatment)
         
         # Combine header and processed content
         mdc_content = mdc_header + processed_content
@@ -255,15 +321,8 @@ def generate_mdc_files(docs_dir, rules_dir):
     # Create the rules directory if it doesn't exist
     rules_path.mkdir(parents=True, exist_ok=True)
     
-    # Process the main index.md file first
-    index_file = docs_path / "index.md"
-    if index_file.exists():
-        convert_md_to_mdc(index_file, rules_path, docs_dir, special_treatment=True)
-    
-    # Process guide.md file with special treatment (if it exists)
-    guide_file = docs_path / "guide.md"
-    if guide_file.exists():
-        convert_md_to_mdc(guide_file, rules_path, docs_dir, special_treatment=True)
+    # Create the combined guide file first (includes both guide.md and index.md)
+    create_combined_guide(docs_dir, rules_dir)
     
     # Process all other markdown files
     success_count = 0
@@ -272,8 +331,8 @@ def generate_mdc_files(docs_dir, rules_dir):
     # Find all markdown files
     md_files = list(docs_path.glob("**/*.md"))
     
-    # Skip the main index.md and guide.md files as we've already processed them
-    md_files = [f for f in md_files if f != index_file and f != guide_file]
+    # Skip the main index.md and guide.md files as we've already processed them in create_combined_guide
+    md_files = [f for f in md_files if f.name != "index.md" and f.name != "guide.md"]
     
     # Process each markdown file
     for md_file in md_files:
@@ -282,8 +341,8 @@ def generate_mdc_files(docs_dir, rules_dir):
         else:
             failure_count += 1
     
-    print(f"\nProcessed {len(md_files) + 2} markdown files:")
-    print(f"  - Successfully converted: {success_count + 2}")
+    print(f"\nProcessed {len(md_files) + 1} markdown files:")  # +1 for the combined guide
+    print(f"  - Successfully converted: {success_count + 1}")  # +1 for the combined guide
     print(f"  - Failed conversions: {failure_count}")
     
     return success_count > 0 and failure_count == 0
