@@ -1,103 +1,103 @@
 import asyncio
 import time
+import os
+from pocketflow import AsyncFlow, AsyncParallelBatchNode
+from utils import call_llm
 
-from pocketflow import AsyncBatchNode, AsyncParallelBatchNode, AsyncFlow
+# --- Node Definitions ---
 
-####################################
-# Dummy async function (1s delay)
-####################################
-async def dummy_llm_summarize(text):
-    """Simulates an async LLM call that takes 1 second."""
-    await asyncio.sleep(1)
-    return f"Summarized({len(text)} chars)"
-
-###############################################
-# 1) AsyncBatchNode (sequential) version
-###############################################
-
-class SummariesAsyncNode(AsyncBatchNode):
-    """
-    Processes items sequentially in an async manner.
-    The next item won't start until the previous item has finished.
-    """
-
+class TranslateTextNodeParallel(AsyncParallelBatchNode):
+    """Translates README into multiple languages in parallel and saves files."""
     async def prep_async(self, shared):
-        # Return a list of items to process.
-        # Each item is (filename, content).
-        return list(shared["data"].items())
+        """Reads text and target languages from shared store."""
+        text = shared.get("text", "(No text provided)")
+        languages = shared.get("languages", [])
+        return [(text, lang) for lang in languages]
 
-    async def exec_async(self, item):
-        filename, content = item
-        print(f"[Sequential] Summarizing {filename}...")
-        summary = await dummy_llm_summarize(content)
-        return (filename, summary)
+    async def exec_async(self, data_tuple):
+        """Calls the async LLM utility for each target language."""
+        text, language = data_tuple
+        
+        prompt = f"""
+Please translate the following markdown file into {language}. 
+But keep the original markdown format, links and code blocks.
+Directly return the translated text, without any other text or comments.
+
+Original: 
+{text}
+
+Translated:"""
+        
+        result = await call_llm(prompt)
+        print(f"Translated {language} text")
+        return {"language": language, "translation": result}
 
     async def post_async(self, shared, prep_res, exec_res_list):
-        # exec_res_list is a list of (filename, summary)
-        shared["sequential_summaries"] = dict(exec_res_list)
-        return "done_sequential"
+        """Stores the dictionary of {language: translation} pairs and writes to files."""
+        output_dir = shared.get("output_dir", "translations")
+        os.makedirs(output_dir, exist_ok=True)
+        
+        for result in exec_res_list:
+            if isinstance(result, dict):
+                language = result.get("language", "unknown")
+                translation = result.get("translation", "")
+                
+                filename = os.path.join(output_dir, f"README_{language.upper()}.md")
+                try:
+                    import aiofiles
+                    async with aiofiles.open(filename, "w", encoding="utf-8") as f:
+                        await f.write(translation)
+                    print(f"Saved translation to {filename}")
+                except ImportError:
+                    with open(filename, "w", encoding="utf-8") as f:
+                        f.write(translation)
+                    print(f"Saved translation to {filename} (sync fallback)")
+                except Exception as e:
+                    print(f"Error writing file {filename}: {e}")
+            else:
+                print(f"Warning: Skipping invalid result item: {result}")
+        return "default"
 
-###############################################
-# 2) AsyncParallelBatchNode (concurrent) version
-###############################################
+# --- Flow Creation ---
 
-class SummariesAsyncParallelNode(AsyncParallelBatchNode):
-    """
-    Processes items in parallel. Many LLM calls start at once.
-    """
+def create_parallel_translation_flow():
+    """Creates and returns the parallel translation flow."""
+    translate_node = TranslateTextNodeParallel(max_retries=3)
+    return AsyncFlow(start=translate_node)
 
-    async def prep_async(self, shared):
-        return list(shared["data"].items())
-
-    async def exec_async(self, item):
-        filename, content = item
-        print(f"[Parallel] Summarizing {filename}...")
-        summary = await dummy_llm_summarize(content)
-        return (filename, summary)
-
-    async def post_async(self, shared, prep_res, exec_res_list):
-        shared["parallel_summaries"] = dict(exec_res_list)
-        return "done_parallel"
-
-###############################################
-# Demo comparing the two approaches
-###############################################
+# --- Main Execution ---
 
 async def main():
-    # We'll use the same data for both flows
-    shared_data = {
-        "data": {
-            "file1.txt": "Hello world 1",
-            "file2.txt": "Hello world 2",
-            "file3.txt": "Hello world 3",
-        }
+    source_readme_path = "../../README.md"
+    try:
+        with open(source_readme_path, "r", encoding='utf-8') as f:
+            text = f.read()
+    except FileNotFoundError:
+        print(f"Error: Could not find the source README file at {source_readme_path}")
+        exit(1)
+    except Exception as e:
+        print(f"Error reading file {source_readme_path}: {e}")
+        exit(1)
+
+    shared = {
+        "text": text,
+        "languages": ["Chinese", "Spanish", "Japanese", "German", "Russian", "Portuguese", "French", "Korean"],
+        "output_dir": "translations"
     }
 
-    # 1) Run the sequential version
-    seq_node = SummariesAsyncNode()
-    seq_flow = AsyncFlow(start=seq_node)
+    translation_flow = create_parallel_translation_flow()
 
-    print("\n=== Running Sequential (AsyncBatchNode) ===")
-    t0 = time.time()
-    await seq_flow.run_async(shared_data)
-    t1 = time.time()
+    print(f"Starting parallel translation into {len(shared['languages'])} languages...")
+    start_time = time.perf_counter()
 
-    # 2) Run the parallel version
-    par_node = SummariesAsyncParallelNode()
-    par_flow = AsyncFlow(start=par_node)
+    await translation_flow.run_async(shared)
 
-    print("\n=== Running Parallel (AsyncParallelBatchNode) ===")
-    t2 = time.time()
-    await par_flow.run_async(shared_data)
-    t3 = time.time()
-
-    # Show times
-    print("\n--- Results ---")
-    print(f"Sequential Summaries: {shared_data.get('sequential_summaries')}")
-    print(f"Parallel Summaries:   {shared_data.get('parallel_summaries')}")
-
-    print(f"Sequential took: {t1 - t0:.2f} seconds")
-    print(f"Parallel took:   {t3 - t2:.2f} seconds")
+    end_time = time.perf_counter()
+    duration = end_time - start_time
+    print(f"\nTotal parallel translation time: {duration:.4f} seconds")
+    print("\n=== Translation Complete ===")
+    print(f"Translations saved to: {shared['output_dir']}")
+    print("============================")
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(main()) 

@@ -1,52 +1,69 @@
-# Sequential vs Parallel Processing
+# PocketFlow Parallel Batch Translation Example
 
-Demonstrates how AsyncParallelBatchNode accelerates processing by 3x over AsyncBatchNode.
+This example demonstrates translating a document (the main PocketFlow README.md) into multiple target languages concurrently using PocketFlow's parallel batch processing capabilities (`AsyncParallelBatchNode` and `AsyncFlow`).
 
-## Features
+It showcases how to leverage asynchronous operations and parallelism to potentially speed up I/O-bound tasks, such as making multiple LLM API calls simultaneously.
 
-- Processes identical tasks with two approaches
-- Compares sequential vs parallel execution time
-- Shows 3x speed improvement with parallel processing
+## Goal
 
-## Run It
+Translate the content of `PocketFlow/README.md` into a predefined list of languages:
+`["Chinese", "Spanish", "Japanese", "German", "Russian", "Portuguese", "French", "Korean"]`
+
+The primary focus is to execute these translation tasks *in parallel* and measure the total time taken, allowing for comparison with a sequential approach (like the one demonstrated in the standard `pocketflow-batch` example).
+
+## PocketFlow Concepts Used
+
+-   **`AsyncParallelBatchNode`**: Processes an iterable (the list of target languages) by running an asynchronous task (translation using an LLM) for each item concurrently.
+-   **`AsyncFlow`**: Manages the execution of flows containing asynchronous nodes.
+-   **Asynchronous Utility**: A helper function (`call_llm_async`) that interacts with the Anthropic API asynchronously.
+
+## File Structure
+
+```
+pocketflow-parallel-batch/
+├── main.py           # Defines the PocketFlow node and flow, orchestrates the parallel translation
+├── utils.py          # Contains the asynchronous `call_llm_async` utility using Anthropic API
+├── requirements.txt  # Dependencies: pocketflow, anthropic, python-dotenv, httpx
+└── README.md         # This explanation file
+```
+
+## Setup
+
+1.  **Navigate to the example directory**:
+    ```bash
+    cd cookbook/pocketflow-parallel-batch
+    ```
+2.  **Create and activate a virtual environment** (recommended):
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # Or `venv\Scripts\activate` on Windows
+    ```
+3.  **Install dependencies**:
+    ```bash
+    pip install -r requirements.txt
+    ```
+4.  **Set up Anthropic API Key**: Create a `.env` file in this directory:
+    ```
+    ANTHROPIC_API_KEY=your_anthropic_api_key_here
+    ```
+    Or, set the `ANTHROPIC_API_KEY` environment variable.
+
+## Running the Example
+
+Execute the main script from within the `pocketflow-parallel-batch` directory:
 
 ```bash
-pip install pocketflow
 python main.py
 ```
 
-## Output
+The script will:
+1.  Read the content of `../../README.md`.
+2.  Initiate the `AsyncFlow`.
+3.  The `ParallelTranslateReadme` node will concurrently request translations for the README content into each target language via the Anthropic API.
+4.  Print status messages for each requested and received translation.
+5.  Report the list of languages for which translations were successfully generated.
+6.  Display the total time taken for the entire parallel process.
 
-```
-=== Running Sequential (AsyncBatchNode) ===
-[Sequential] Summarizing file1.txt...
-[Sequential] Summarizing file2.txt...
-[Sequential] Summarizing file3.txt...
+## Parallel vs. Sequential Comparison
 
-=== Running Parallel (AsyncParallelBatchNode) ===
-[Parallel] Summarizing file1.txt...
-[Parallel] Summarizing file2.txt...
-[Parallel] Summarizing file3.txt...
-
-Sequential took: 3.00 seconds
-Parallel took:   1.00 seconds
-```
-
-## Key Points
-
-- **Sequential**: Total time = sum of all item times
-  - Good for: Rate-limited APIs, maintaining order
-
-- **Parallel**: Total time ≈ longest single item time
-  - Good for: I/O-bound tasks, independent operations 
-
-## Tech Dive Deep
-
-- **Python's GIL** prevents true CPU-bound parallelism, but LLM calls are I/O-bound
-- **Async/await** overlaps waiting time between requests
-  - Example: `await client.chat.completions.create(...)`
-  - See: [OpenAI's async usage](https://github.com/openai/openai-python?tab=readme-ov-file#async-usage)
-
-For maximum performance and cost efficiency, consider using batch APIs:
-- [OpenAI's Batch API](https://platform.openai.com/docs/guides/batch) lets you process multiple prompts in a single request
-- Reduces overhead and can be more cost-effective for large workloads 
+Note the total execution time reported by this script. Compare it to the time it would take if each language translation were performed one after the other (sequentially). For tasks involving multiple independent API calls like this, the parallel approach using `AsyncParallelBatchNode` is expected to be significantly faster, limited primarily by the LLM API's response time and potential rate limits, rather than the sum of individual call durations. 

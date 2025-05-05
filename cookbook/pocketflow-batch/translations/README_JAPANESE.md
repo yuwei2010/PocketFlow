@@ -1,7 +1,8 @@
 <div align="center">
-  <img src="https://github.com/The-Pocket/.github/raw/main/assets/title.png" width="600"/>
+  <img src="https://github.com/The-Pocket/.github/raw/main/assets/title.png" alt="Pocket Flow – 100行のミニマリストLLMフレームワーク" width="600"/>
 </div>
 
+[English](https://github.com/The-Pocket/PocketFlow/blob/main/README.md) | [中文](https://github.com/The-Pocket/PocketFlow/blob/main/cookbook/pocketflow-batch/translations/README_CHINESE.md) | [Español](https://github.com/The-Pocket/PocketFlow/blob/main/cookbook/pocketflow-batch/translations/README_SPANISH.md) | 日本語 | [Deutsch](https://github.com/The-Pocket/PocketFlow/blob/main/cookbook/pocketflow-batch/translations/README_GERMAN.md) | [Русский](https://github.com/The-Pocket/PocketFlow/blob/main/cookbook/pocketflow-batch/translations/README_RUSSIAN.md) | [Português](https://github.com/The-Pocket/PocketFlow/blob/main/cookbook/pocketflow-batch/translations/README_PORTUGUESE.md) | [Français](https://github.com/The-Pocket/PocketFlow/blob/main/cookbook/pocketflow-batch/translations/README_FRENCH.md) | [한국어](https://github.com/The-Pocket/PocketFlow/blob/main/cookbook/pocketflow-batch/translations/README_KOREAN.md)
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 [![Docs](https://img.shields.io/badge/docs-latest-blue)](https://the-pocket.github.io/PocketFlow/)
@@ -11,49 +12,48 @@
 
 Pocket Flowは[100行](https://github.com/The-Pocket/PocketFlow/blob/main/pocketflow/__init__.py)のミニマリストLLMフレームワークです
 
-- **軽量**: わずか100行。余分なもの一切なし、依存関係なし、ベンダーロックインなし。
+- **軽量**: わずか100行。余分なコードなし、依存関係なし、ベンダーロックインなし。
   
-- **表現力**: あなたが好きなもの全て—([マルチ-](https://the-pocket.github.io/PocketFlow/design_pattern/multi_agent.html))[エージェント](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html)、[ワークフロー](https://the-pocket.github.io/PocketFlow/design_pattern/workflow.html)、[RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html)など。
+- **表現力**: あなたが愛するすべて—([マルチ](https://the-pocket.github.io/PocketFlow/design_pattern/multi_agent.html))[エージェント](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html)、[ワークフロー](https://the-pocket.github.io/PocketFlow/design_pattern/workflow.html)、[RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html)など。
 
 - **[エージェンティックコーディング](https://zacharyhuang.substack.com/p/agentic-coding-the-most-fun-way-to)**: AIエージェント（例：Cursor AI）にエージェントを構築させる—生産性が10倍に！
 
-- インストールするには、```pip install pocketflow```または[ソースコード](https://github.com/The-Pocket/PocketFlow/blob/main/pocketflow/__init__.py)をコピーするだけです（わずか100行）。
-  
-- 詳細については[ドキュメント](https://the-pocket.github.io/PocketFlow/)をご覧ください。動機について学ぶには、[ストーリー](https://zacharyhuang.substack.com/p/i-built-an-llm-framework-in-just)をお読みください。
-  
-- 🎉 私たちの[Discord](https://discord.gg/hUHHE9Sa6T)に参加してください！
-
-- 🎉 [@zvictor](https://www.github.com/zvictor)、[@jackylee941130](https://www.github.com/jackylee941130)、[@ZebraRoy](https://www.github.com/ZebraRoy)のおかげで、[TypeScriptバージョン](https://github.com/The-Pocket/PocketFlow-Typescript)もできました！
+Pocket Flowを始めるには：
+- インストールするには、```pip install pocketflow```または[ソースコード](https://github.com/The-Pocket/PocketFlow/blob/main/pocketflow/__init__.py)（わずか100行）をコピーするだけです。
+- 詳細については、[ドキュメント](https://the-pocket.github.io/PocketFlow/)をご覧ください。動機については、この[ストーリー](https://zacharyhuang.substack.com/p/i-built-an-llm-framework-in-just)をお読みください。
+- 質問がありますか？この[AIアシスタント](https://chatgpt.com/g/g-677464af36588191b9eba4901946557b-pocket-flow-assistant)をチェックするか、[イシューを作成してください！](https://github.com/The-Pocket/PocketFlow/issues/new)
+- 🎉 私たちの[Discord](https://discord.gg/hUHHE9Sa6T)に参加して、Pocket Flowを使用する他の開発者とつながりましょう！
+- 🎉 Pocket Flowは最初Pythonでしたが、現在は[Typescript](https://github.com/The-Pocket/PocketFlow-Typescript)、[Java](https://github.com/The-Pocket/PocketFlow-Java)、[C++](https://github.com/The-Pocket/PocketFlow-CPP)、[Go](https://github.com/The-Pocket/PocketFlow-Go)バージョンもあります！
 
 ## なぜPocket Flow？
 
-現在のLLMフレームワークは膨大すぎます... LLMフレームワークには100行だけで十分です！
+現在のLLMフレームワークは膨大すぎます...LLMフレームワークには100行だけで十分です！
 
 <div align="center">
   <img src="https://github.com/The-Pocket/.github/raw/main/assets/meme.jpg" width="400"/>
 
 
-  |                | **抽象化**          | **アプリ固有のラッパー**                                      | **ベンダー固有のラッパー**                                    | **行数**       | **サイズ**    |
+  |                | **抽象化**          | **アプリ固有ラッパー**                                      | **ベンダー固有ラッパー**                                    | **行数**       | **サイズ**    |
 |----------------|:-----------------------------: |:-----------------------------------------------------------:|:------------------------------------------------------------:|:---------------:|:----------------------------:|
 | LangChain  | エージェント、チェーン               | 多数 <br><sup><sub>(例：QA、要約)</sub></sup>              | 多数 <br><sup><sub>(例：OpenAI、Pineconeなど)</sub></sup>                   | 405K          | +166MB                     |
 | CrewAI     | エージェント、チェーン            | 多数 <br><sup><sub>(例：FileReadTool、SerperDevTool)</sub></sup>         | 多数 <br><sup><sub>(例：OpenAI、Anthropic、Pineconeなど)</sub></sup>        | 18K           | +173MB                     |
-| SmolAgent   | エージェント                      | いくつか <br><sup><sub>(例：CodeAgent、VisitWebTool)</sub></sup>         | いくつか <br><sup><sub>(例：DuckDuckGo、Hugging Faceなど)</sub></sup>           | 8K            | +198MB                     |
-| LangGraph   | エージェント、グラフ           | いくつか <br><sup><sub>(例：セマンティック検索)</sub></sup>                     | いくつか <br><sup><sub>(例：PostgresStore、SqliteSaverなど) </sub></sup>        | 37K           | +51MB                      |
-| AutoGen    | エージェント                | いくつか <br><sup><sub>(例：ツールエージェント、チャットエージェント)</sub></sup>              | 多数 <sup><sub>[オプション]<br> (例：OpenAI、Pineconeなど)</sub></sup>        | 7K <br><sup><sub>(コアのみ)</sub></sup>    | +26MB <br><sup><sub>(コアのみ)</sub></sup>          |
+| SmolAgent   | エージェント                      | 一部 <br><sup><sub>(例：CodeAgent、VisitWebTool)</sub></sup>         | 一部 <br><sup><sub>(例：DuckDuckGo、Hugging Faceなど)</sub></sup>           | 8K            | +198MB                     |
+| LangGraph   | エージェント、グラフ           | 一部 <br><sup><sub>(例：セマンティック検索)</sub></sup>                     | 一部 <br><sup><sub>(例：PostgresStore、SqliteSaverなど) </sub></sup>        | 37K           | +51MB                      |
+| AutoGen    | エージェント                | 一部 <br><sup><sub>(例：ツールエージェント、チャットエージェント)</sub></sup>              | 多数 <sup><sub>[オプション]<br> (例：OpenAI、Pineconeなど)</sub></sup>        | 7K <br><sup><sub>(コアのみ)</sub></sup>    | +26MB <br><sup><sub>(コアのみ)</sub></sup>          |
 | **PocketFlow** | **グラフ**                    | **なし**                                                 | **なし**                                                  | **100**       | **+56KB**                  |
 
 </div>
 
-## Pocket Flowはどのように動作しますか？
+## Pocket Flowはどのように機能するか？
 
-[100行](https://github.com/The-Pocket/PocketFlow/blob/main/pocketflow/__init__.py)のコードはLLMフレームワークの核となる抽象化を捉えています：グラフ！
+[100行](https://github.com/The-Pocket/PocketFlow/blob/main/pocketflow/__init__.py)のコードは、LLMフレームワークの核心的な抽象化を捉えています：グラフ！
 <br>
 <div align="center">
   <img src="https://github.com/The-Pocket/.github/raw/main/assets/abstraction.png" width="900"/>
 </div>
 <br>
 
-そこから、([マルチ-](https://the-pocket.github.io/PocketFlow/design_pattern/multi_agent.html))[エージェント](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html)、[ワークフロー](https://the-pocket.github.io/PocketFlow/design_pattern/workflow.html)、[RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html)などの人気のあるデザインパターンを簡単に実装できます。
+そこから、([マルチ](https://the-pocket.github.io/PocketFlow/design_pattern/multi_agent.html))[エージェント](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html)、[ワークフロー](https://the-pocket.github.io/PocketFlow/design_pattern/workflow.html)、[RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html)などの人気のあるデザインパターンを簡単に実装できます。
 <br>
 <div align="center">
   <img src="https://github.com/The-Pocket/.github/raw/main/assets/design.png" width="900"/>
@@ -66,29 +66,33 @@ Pocket Flowは[100行](https://github.com/The-Pocket/PocketFlow/blob/main/pocket
 |  名前  | 難易度    |  説明  |  
 | :-------------:  | :-------------: | :--------------------- |  
 | [チャット](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-chat) | ☆☆☆ <br> *超簡単*   | 会話履歴を持つ基本的なチャットボット |
-| [構造化出力](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-structured-output) | ☆☆☆ <br> *超簡単* | プロンプトによる履歴書からの構造化データの抽出 |
+| [構造化出力](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-structured-output) | ☆☆☆ <br> *超簡単* | プロンプトを使用して履歴書から構造化データを抽出する |
 | [ワークフロー](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-workflow) | ☆☆☆ <br> *超簡単*   | 概要を作成し、コンテンツを書き、スタイルを適用するライティングワークフロー |
 | [エージェント](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-agent) | ☆☆☆ <br> *超簡単*   | ウェブを検索して質問に答えることができる研究エージェント |
 | [RAG](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-rag) | ☆☆☆ <br> *超簡単*   | シンプルな検索拡張生成プロセス |
-| [マップ-リデュース](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-map-reduce) | ☆☆☆ <br> *超簡単* | バッチ評価のためのマップリデュースパターンを使用した履歴書資格処理 |
+| [バッチ](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-batch) | ☆☆☆ <br> *超簡単* | マークダウンコンテンツを複数の言語に翻訳するバッチプロセッサ |
 | [ストリーミング](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-llm-streaming) | ☆☆☆ <br> *超簡単*   | ユーザー中断機能を備えたリアルタイムLLMストリーミングデモ |
 | [チャットガードレール](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-chat-guardrail) | ☆☆☆ <br> *超簡単*  | 旅行関連のクエリのみを処理する旅行アドバイザーチャットボット |
+| [マップリデュース](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-map-reduce) | ★☆☆ <br> *初級* | バッチ評価のためのマップリデュースパターンを使用した履歴書資格プロセッサ |
 | [マルチエージェント](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-multi-agent) | ★☆☆ <br> *初級* | 2つのエージェント間の非同期通信のためのタブーワードゲーム |
-| [スーパーバイザー](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-supervisor) | ★☆☆ <br> *初級* | 研究エージェントが信頼性に欠ける場合... 監視プロセスを構築しましょう |
-| [並列](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-parallel-batch) | ★☆☆ <br> *初級*   | 3倍の速度向上を示す並列実行デモ |
-| [並列フロー](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-parallel-batch-flow) | ★☆☆ <br> *初級*   | 複数のフィルターで8倍の速度向上を示す並列画像処理デモ |
-| [多数決](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-majority-vote) | ★☆☆ <br> *初級* | 複数の解決策を集約して推論精度を向上させる |
+| [スーパーバイザー](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-supervisor) | ★☆☆ <br> *初級* | 研究エージェントが信頼性を失っています...監視プロセスを構築しましょう |
+| [並列処理](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-parallel-batch) | ★☆☆ <br> *初級*   | 3倍の高速化を示す並列実行デモ |
+| [並列フロー](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-parallel-batch-flow) | ★☆☆ <br> *初級*   | 複数のフィルターを使用した8倍の高速化を示す並列画像処理デモ |
+| [多数決](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-majority-vote) | ★☆☆ <br> *初級* | 複数の解決策の試みを集約して推論精度を向上させる |
 | [思考](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-thinking) | ★☆☆ <br> *初級*   | 思考連鎖を通じて複雑な推論問題を解決する |
-| [メモリ](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-chat-memory) | ★☆☆ <br> *初級* | 短期および長期記憶を持つチャットボット |
-| [MCP](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-mcp) | ★☆☆ <br> *初級* | 数値演算のためのモデルコンテキストプロトコルを使用するエージェント |
+| [メモリ](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-chat-memory) | ★☆☆ <br> *初級* | 短期記憶と長期記憶を持つチャットボット |
+| [Text2SQL](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-text2sql) | ★☆☆ <br> *初級* | 自動デバッグループを使用して自然言語をSQLクエリに変換する |
+| [MCP](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-mcp) | ★☆☆ <br> *初級* | 数値演算のためにモデルコンテキストプロトコルを使用するエージェント |
+| [A2A](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-a2a) | ★☆☆ <br> *初級* | エージェント間通信のためのエージェント間プロトコルでラップされたエージェント |
+| [Web HITL](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-web-hitl) | ★☆☆ <br> *初級* | SSE更新機能付きの人間レビューループ用最小限のWebサービス |
 
 </div>
 
-👀 他の超簡単なチュートリアルが見たいですか？[課題を作成してください！](https://github.com/The-Pocket/PocketFlow/issues/new)
+👀 他の超簡単なチュートリアルを見たいですか？[イシューを作成してください！](https://github.com/The-Pocket/PocketFlow/issues/new)
 
 ## Pocket Flowの使い方は？
 
-🚀 **エージェンティックコーディング**を通じて—最速のLLMアプリ開発パラダイムで、*人間が設計し*、*エージェントがコードを書く*！
+🚀 **エージェンティックコーディング**を通じて—最速のLLMアプリ開発パラダイムで、*人間が設計して* *エージェントがコードを書く*！
 
 <br>
 <div align="center">
@@ -104,17 +108,16 @@ Pocket Flowは[100行](https://github.com/The-Pocket/PocketFlow/blob/main/pocket
   
 |  アプリ名     |  難易度    | トピック  | 人間による設計 | エージェントによるコード |
 | :-------------:  | :-------------: | :---------------------: |  :---: |  :---: |
-| [Cursorを使ってCursorを構築](https://github.com/The-Pocket/Tutorial-Cursor) <br> <sup><sub>もうすぐシンギュラリティに到達します...</sup></sub> | ★★★ <br> *上級*   | [エージェント](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html) | [設計書](https://github.com/The-Pocket/Tutorial-Cursor/blob/main/docs/design.md) | [フローコード](https://github.com/The-Pocket/Tutorial-Cursor/blob/main/flow.py)
-| [AI Paul Grahamに質問する](https://github.com/The-Pocket/Tutorial-YC-Partner) <br> <sup><sub>もし入れなかった場合は、AI Paul Grahamに聞いてみましょう</sup></sub> | ★★☆ <br> *中級*   | [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html) <br> [マップリデュース](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) <br> [TTS](https://the-pocket.github.io/PocketFlow/utility_function/text_to_speech.html) | [設計書](https://github.com/The-Pocket/Tutorial-AI-Paul-Graham/blob/main/docs/design.md) | [フローコード](https://github.com/The-Pocket/Tutorial-AI-Paul-Graham/blob/main/flow.py)
-| [Youtubeサマライザー](https://github.com/The-Pocket/Tutorial-Youtube-Made-Simple)  <br> <sup><sub> 5歳児にもわかるようにYouTube動画を説明 </sup></sub> | ★☆☆ <br> *初級*   | [マップリデュース](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) |  [設計書](https://github.com/The-Pocket/Tutorial-Youtube-Made-Simple/blob/main/docs/design.md) | [フローコード](https://github.com/The-Pocket/Tutorial-Youtube-Made-Simple/blob/main/flow.py)
-| [コールドオープナージェネレーター](https://github.com/The-Pocket/Tutorial-Cold-Email-Personalization)  <br> <sup><sub> 冷たいリードを熱くする即席アイスブレーカー </sup></sub> | ★☆☆ <br> *初級*   | [マップリデュース](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) <br> [Web検索](https://the-pocket.github.io/PocketFlow/utility_function/websearch.html) |  [設計書](https://github.com/The-Pocket/Tutorial-Cold-Email-Personalization/blob/master/docs/design.md) | [フローコード](https://github.com/The-Pocket/Tutorial-Cold-Email-Personalization/blob/master/flow.py)
+| [CursorでCursorを構築](https://github.com/The-Pocket/Tutorial-Cursor) <br> <sup><sub>シンギュラリティがもうすぐ来ます...</sup></sub> | ★★★ <br> *上級*   | [エージェント](https://the-pocket.github.io/PocketFlow/design_pattern/agent.html) | [設計ドキュメント](https://github.com/The-Pocket/Tutorial-Cursor/blob/main/docs/design.md) | [フローコード](https://github.com/The-Pocket/Tutorial-Cursor/blob/main/flow.py)
+| [コードベース知識ビルダー](https://github.com/The-Pocket/Tutorial-Codebase-Knowledge) <br> <sup><sub>人生は短すぎて、他人のコードを混乱して見つめている暇はありません</sup></sub> |  ★★☆ <br> *中級* | [ワークフロー](https://the-pocket.github.io/PocketFlow/design_pattern/workflow.html) | [設計ドキュメント](https://github.com/The-Pocket/Tutorial-Codebase-Knowledge/blob/main/docs/design.md) | [フローコード](https://github.com/The-Pocket/Tutorial-Codebase-Knowledge/blob/main/flow.py)
+| [AI Paul Grahamに質問する](https://github.com/The-Pocket/Tutorial-YC-Partner) <br> <sup><sub>AI Paul Grahamに質問する、あなたが入れない場合のために</sup></sub> | ★★☆ <br> *中級*  | [RAG](https://the-pocket.github.io/PocketFlow/design_pattern/rag.html) <br> [マップリデュース](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) <br> [TTS](https://the-pocket.github.io/PocketFlow/utility_function/text_to_speech.html) | [設計ドキュメント](https://github.com/The-Pocket/Tutorial-AI-Paul-Graham/blob/main/docs/design.md) | [フローコード](https://github.com/The-Pocket/Tutorial-AI-Paul-Graham/blob/main/flow.py)
+| [Youtube要約ツール](https://github.com/The-Pocket/Tutorial-Youtube-Made-Simple)  <br> <sup><sub> YouTubeビデオを5歳児にもわかるように説明 </sup></sub> | ★☆☆ <br> *初級*   | [マップリデュース](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) |  [設計ドキュメント](https://github.com/The-Pocket/Tutorial-Youtube-Made-Simple/blob/main/docs/design.md) | [フローコード](https://github.com/The-Pocket/Tutorial-Youtube-Made-Simple/blob/main/flow.py)
+| [コールドオープナージェネレーター](https://github.com/The-Pocket/Tutorial-Cold-Email-Personalization)  <br> <sup><sub> 冷たいリードを熱くする即席のアイスブレーカー </sup></sub> | ★☆☆ <br> *初級*   | [マップリデュース](https://the-pocket.github.io/PocketFlow/design_pattern/mapreduce.html) <br> [ウェブ検索](https://the-pocket.github.io/PocketFlow/utility_function/websearch.html) |  [設計ドキュメント](https://github.com/The-Pocket/Tutorial-Cold-Email-Personalization/blob/master/docs/design.md) | [フローコード](https://github.com/The-Pocket/Tutorial-Cold-Email-Personalization/blob/master/flow.py)
 
 </div>
 
 - **エージェンティックコーディング**を学びたいですか？
 
-  - 上記のアプリがどのように作られたかのビデオチュートリアルについては、[私のYouTube](https://www.youtube.com/@ZacharyLLM?sub_confirmation=1)をチェックしてください！
+  - 上記のアプリがどのように作られたかのビデオチュートリアルについては、[YouTube](https://www.youtube.com/@ZacharyLLM?sub_confirmation=1)をチェックしてください！
 
   - 自分のLLMアプリを構築したいですか？この[投稿](https://zacharyhuang.substack.com/p/agentic-coding-the-most-fun-way-to)を読んでください！[このテンプレート](https://github.com/The-Pocket/PocketFlow-Template-Python)から始めましょう！
-
-  - 詳細な手順を学びたいですか？この[ガイド](https://the-pocket.github.io/PocketFlow/guide.html)を読んでください！

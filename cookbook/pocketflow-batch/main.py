@@ -1,4 +1,5 @@
 import os
+import time
 from pocketflow import BatchNode, Flow
 from utils import call_llm
 
@@ -25,9 +26,7 @@ Original:
 Translated:"""
         
         result = call_llm(prompt)
-        
         print(f"Translated {language} text")
-
         return {"language": language, "translation": result}
 
     def post(self, shared, prep_res, exec_res_list):
@@ -58,11 +57,20 @@ if __name__ == "__main__":
         "output_dir": "translations"
     }
 
+    # --- Time Measurement Start ---
+    print(f"Starting sequential translation into {len(shared['languages'])} languages...")
+    start_time = time.perf_counter()
+
     # Run the translation flow
     translate_node = TranslateTextNode(max_retries=3)
     flow = Flow(start=translate_node)
     flow.run(shared)
 
+    # --- Time Measurement End ---
+    end_time = time.perf_counter()
+    duration = end_time - start_time
+
+    print(f"\nTotal sequential translation time: {duration:.4f} seconds") # Print duration
     print("\n=== Translation Complete ===")
     print(f"Translations saved to: {shared['output_dir']}")
     print("============================")
