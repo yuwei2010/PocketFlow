@@ -1,69 +1,92 @@
-# PocketFlow Parallel Batch Translation Example
+# Parallel Batch Translation Process
 
-This example demonstrates translating a document (the main PocketFlow README.md) into multiple target languages concurrently using PocketFlow's parallel batch processing capabilities (`AsyncParallelBatchNode` and `AsyncFlow`).
-
-It showcases how to leverage asynchronous operations and parallelism to potentially speed up I/O-bound tasks, such as making multiple LLM API calls simultaneously.
+This project demonstrates using PocketFlow's async and parallel features (`AsyncFlow`, `AsyncParallelBatchNode`) to translate a document into multiple languages concurrently.
 
 ## Goal
 
-Translate the content of `PocketFlow/README.md` into a predefined list of languages:
-`["Chinese", "Spanish", "Japanese", "German", "Russian", "Portuguese", "French", "Korean"]`
+Translate `../../README.md` into multiple languages (Chinese, Spanish, etc.) in parallel, saving each to a file in the `translations/` directory. The main goal is to compare execution time against a sequential process.
 
-The primary focus is to execute these translation tasks *in parallel* and measure the total time taken, allowing for comparison with a sequential approach (like the one demonstrated in the standard `pocketflow-batch` example).
+## Getting Started
 
-## PocketFlow Concepts Used
-
--   **`AsyncParallelBatchNode`**: Processes an iterable (the list of target languages) by running an asynchronous task (translation using an LLM) for each item concurrently.
--   **`AsyncFlow`**: Manages the execution of flows containing asynchronous nodes.
--   **Asynchronous Utility**: A helper function (`call_llm_async`) that interacts with the Anthropic API asynchronously.
-
-## File Structure
-
-```
-pocketflow-parallel-batch/
-├── main.py           # Defines the PocketFlow node and flow, orchestrates the parallel translation
-├── utils.py          # Contains the asynchronous `call_llm_async` utility using Anthropic API
-├── requirements.txt  # Dependencies: pocketflow, anthropic, python-dotenv, httpx
-└── README.md         # This explanation file
-```
-
-## Setup
-
-1.  **Navigate to the example directory**:
-    ```bash
-    cd cookbook/pocketflow-parallel-batch
-    ```
-2.  **Create and activate a virtual environment** (recommended):
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # Or `venv\Scripts\activate` on Windows
-    ```
-3.  **Install dependencies**:
-    ```bash
-    pip install -r requirements.txt
-    ```
-4.  **Set up Anthropic API Key**: Create a `.env` file in this directory:
-    ```
-    ANTHROPIC_API_KEY=your_anthropic_api_key_here
-    ```
-    Or, set the `ANTHROPIC_API_KEY` environment variable.
-
-## Running the Example
-
-Execute the main script from within the `pocketflow-parallel-batch` directory:
-
+1. Install requirements:
 ```bash
-python main.py
+pip install -r requirements.txt
 ```
 
-The script will:
-1.  Read the content of `../../README.md`.
-2.  Initiate the `AsyncFlow`.
-3.  The `ParallelTranslateReadme` node will concurrently request translations for the README content into each target language via the Anthropic API.
-4.  Print status messages for each requested and received translation.
-5.  Report the list of languages for which translations were successfully generated.
-6.  Display the total time taken for the entire parallel process.
+2. Set API Key:
+   Set the environment variable for your Anthropic API key.
+   ```bash
+   export ANTHROPIC_API_KEY="your-api-key-here"
+   ```
+   *(Replace `"your-api-key-here"` with your actual key)*
+   *(Alternatively, place `ANTHROPIC_API_KEY=your-api-key-here` in a `.env` file)*
 
-## Parallel vs. Sequential Comparison
+3. Verify API Key (Optional):
+   Run a quick check using the utility script.
+   ```bash
+   python utils.py
+   ```
+   *(Note: This requires a valid API key to be set.)*
 
-Note the total execution time reported by this script. Compare it to the time it would take if each language translation were performed one after the other (sequentially). For tasks involving multiple independent API calls like this, the parallel approach using `AsyncParallelBatchNode` is expected to be significantly faster, limited primarily by the LLM API's response time and potential rate limits, rather than the sum of individual call durations. 
+4. Run the translation process:
+   ```bash
+   python main.py
+   ```
+
+## How It Works
+
+The implementation uses an `AsyncParallelBatchNode` that processes translation requests concurrently. The `TranslateTextNodeParallel`:
+
+1. Prepares batches, pairing the source text with each target language.
+
+2. Executes translation calls to the LLM for all languages concurrently using `async` operations.
+
+3. Saves the translated content to individual files (`translations/README_LANGUAGE.md`).
+
+This approach leverages `asyncio` and parallel execution to speed up I/O-bound tasks like multiple API calls.
+
+## Example Output & Comparison
+
+Running this parallel version significantly reduces the total time compared to a sequential approach:
+
+```
+# --- Sequential Run Output (from pocketflow-batch) ---
+Starting sequential translation into 8 languages...
+Translated Chinese text
+...
+Translated Korean text
+Saved translation to translations/README_CHINESE.md
+...
+Saved translation to translations/README_KOREAN.md
+
+Total sequential translation time: ~1136 seconds
+
+=== Translation Complete ===
+Translations saved to: translations
+============================
+
+
+# --- Parallel Run Output (this example) ---
+Starting parallel translation into 8 languages...
+Translated French text
+Translated Portuguese text
+... # Messages may appear interleaved
+Translated Spanish text
+Saved translation to translations/README_CHINESE.md
+...
+Saved translation to translations/README_KOREAN.md
+
+Total parallel translation time: ~209 seconds
+
+=== Translation Complete ===
+Translations saved to: translations
+============================
+```
+*(Actual times will vary based on API response speed and system.)*
+
+## Files
+
+- [`main.py`](./main.py): Implements the parallel batch translation node and flow.
+- [`utils.py`](./utils.py): Async wrapper for calling the Anthropic model.
+- [`requirements.txt`](./requirements.txt): Project dependencies (includes `aiofiles`).
+- [`translations/`](./translations/): Output directory (created automatically). 
