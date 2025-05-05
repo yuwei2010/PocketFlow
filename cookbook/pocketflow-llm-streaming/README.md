@@ -2,7 +2,7 @@
 
 Demonstrates real-time LLM response streaming with user interrupt capability.
 
-- Check out the [Substack Post Tutorial](https://zacharyhuang.substack.com/p/text-to-sql-from-scratch-tutorial) for more!
+- Check out the [Substack Post Tutorial](https://zacharyhuang.substack.com/p/streaming-llm-responses-tutorial) for more!
 
 ## Features
 
