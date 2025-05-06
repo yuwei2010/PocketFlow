@@ -2,6 +2,8 @@
 
 This project demonstrates using PocketFlow's async and parallel features (`AsyncFlow`, `AsyncParallelBatchNode`) to translate a document into multiple languages concurrently.
 
+- Check out the [Substack Post Tutorial](https://pocketflow.substack.com/p/parallel-llm-calls-from-scratch-tutorial) for more!
+
 ## Goal
 
 Translate `../../README.md` into multiple languages (Chinese, Spanish, etc.) in parallel, saving each to a file in the `translations/` directory. The main goal is to compare execution time against a sequential process.
