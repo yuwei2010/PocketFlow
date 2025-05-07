@@ -89,7 +89,151 @@ graph LR
     end
 ```
 
-## 2. Call Stack Debugging
+## 2. Interactive D3.js Visualization
+
+For more complex flows, a static diagram may not be sufficient. We provide a D3.js-based interactive visualization that allows for dragging nodes, showing group boundaries for flows, and connecting flows at their boundaries.
+
+### Converting Flow to JSON
+
+First, we convert the PocketFlow graph to JSON format suitable for D3.js:
+
+```python
+def flow_to_json(start):
+    """Convert a flow to JSON format suitable for D3.js visualization.
+    
+    This function walks through the flow graph and builds a structure with:
+    - nodes: All non-Flow nodes with their group memberships
+    - links: Connections between nodes within the same group
+    - group_links: Connections between different groups (for inter-flow connections)
+    - flows: Flow information for group labeling
+    """
+    nodes = []
+    links = []
+    group_links = []  # For connections between groups (Flow to Flow)
+    ids = {}
+    node_types = {}
+    flow_nodes = {}  # Keep track of flow nodes
+    ctr = 1
+
+    def get_id(n):
+        nonlocal ctr
+        if n not in ids:
+            ids[n] = ctr
+            node_types[ctr] = type(n).__name__
+            if isinstance(n, Flow):
+                flow_nodes[ctr] = n  # Store flow reference
+            ctr += 1
+        return ids[n]
+
+    def walk(node, parent=None, group=None, parent_group=None, action=None):
+        # Traverse the flow graph recursively
+        # ...implementation details...
+
+    # Start the traversal
+    walk(start)
+
+    # Post-processing: Generate group links based on node connections between different groups
+    node_groups = {n["id"]: n["group"] for n in nodes}
+    filtered_links = []
+    
+    for link in links:
+        source_id = link["source"]
+        target_id = link["target"]
+        source_group = node_groups.get(source_id, 0)
+        target_group = node_groups.get(target_id, 0)
+        
+        # If source and target are in different groups and both groups are valid
+        if source_group != target_group and source_group > 0 and target_group > 0:
+            # Add to group links if not already there
+            # Skip adding this link to filtered_links - we don't want direct node connections across groups
+        else:
+            # Keep links within the same group
+            filtered_links.append(link)
+    
+    return {
+        "nodes": nodes,
+        "links": filtered_links,  # Use filtered links instead of all links
+        "group_links": group_links,
+        "flows": {str(k): v.__class__.__name__ for k, v in flow_nodes.items()},
+    }
+```
+
+### Creating the Visualization
+
+Then, we generate an HTML file with D3.js visualization:
+
+```python
+def create_d3_visualization(json_data, output_dir="./viz", filename="flow_viz"):
+    """Create a D3.js visualization from JSON data.
+    
+    This generates an HTML file with an interactive visualization where:
+    - Nodes are represented as circles
+    - Flows are shown as dashed rectangles (groups)
+    - Inter-group connections are shown as dashed lines connecting at group boundaries
+    - Node and group labels are displayed
+    - Nodes can be dragged to reorganize the layout
+    """
+    # Create output directory
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # Save JSON data to file
+    json_path = os.path.join(output_dir, f"{filename}.json")
+    with open(json_path, "w") as f:
+        json.dump(json_data, f, indent=2)
+    
+    # Generate HTML with D3.js visualization
+    # ...HTML template with D3.js code...
+    
+    # Write HTML to file
+    html_path = os.path.join(output_dir, f"{filename}.html")
+    with open(html_path, "w") as f:
+        f.write(html_content)
+    
+    print(f"Visualization created at {html_path}")
+    return html_path
+```
+
+### Convenience Function
+
+A convenience function to visualize flows:
+
+```python
+def visualize_flow(flow, flow_name):
+    """Helper function to visualize a flow with both mermaid and D3.js"""
+    print(f"\n--- {flow_name} Mermaid Diagram ---")
+    print(build_mermaid(start=flow))
+
+    print(f"\n--- {flow_name} D3.js Visualization ---")
+    json_data = flow_to_json(flow)
+    create_d3_visualization(
+        json_data, filename=f"{flow_name.lower().replace(' ', '_')}"
+    )
+```
+
+### Usage Example
+
+```python
+from visualize import visualize_flow
+
+# Create a complex flow with nested subflows
+# ...flow definition...
+
+# Generate visualization
+visualize_flow(data_science_flow, "Data Science Flow")
+```
+
+This generates:
+1. A mermaid diagram in the console
+2. A JSON file with the flow structure
+3. An HTML file with the interactive D3.js visualization
+
+The D3.js visualization offers several advantages:
+- **Interactivity**: Nodes can be dragged to reorganize the layout
+- **Group visualization**: Flows are shown as groups with their own boundaries
+- **Inter-group connections**: Links between groups connect at boundaries for cleaner visualization
+- **Action labels**: Edge labels show transition actions
+
+## 3. Call Stack Debugging
 
 It would be useful to print the Node call stacks for debugging. This can be achieved by inspecting the runtime call stack:
 
