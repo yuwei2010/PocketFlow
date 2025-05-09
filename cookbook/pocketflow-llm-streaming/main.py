@@ -18,7 +18,7 @@ class StreamNode(Node):
         # Get prompt from shared store
         prompt = shared["prompt"]
         # Get chunks from LLM function
-        chunks = fake_stream_llm(prompt)
+        chunks = stream_llm(prompt)
         return chunks, interrupt_event, listener_thread
 
     def exec(self, prep_res):
