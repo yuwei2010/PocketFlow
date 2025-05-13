@@ -1,30 +1,20 @@
-import os
 from openai import OpenAI
+import os
 
-def call_llm(prompt, history=None):
+def call_llm(messages):
     client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", "your-api-key"))
-
-    messages = []
-    if history:
-        messages.extend(history)
-    messages.append({"role": "user", "content": prompt})
-
-    r = client.chat.completions.create(
+    
+    response = client.chat.completions.create(
         model="gpt-4o",
-        messages=messages
+        messages=messages,
+        temperature=0.7
     )
-    return r.choices[0].message.content
+    
+    return response.choices[0].message.content
 
 if __name__ == "__main__":
-    print("Testing LLM call...")
-    
-    response = call_llm("Tell me a short joke")
-    print(f"LLM (Simple Joke): {response}")
-
-    chat_history = [
-        {"role": "user", "content": "What is the capital of France?"},
-        {"role": "assistant", "content": "The capital of France is Paris."}
-    ]
-    follow_up_prompt = "And what is a famous landmark there?"
-    response_with_history = call_llm(follow_up_prompt, history=chat_history)
-    print(f"LLM (Follow-up with History): {response_with_history}") 
+    # Test the LLM call
+    messages = [{"role": "user", "content": "In a few words, what's the meaning of life?"}]
+    response = call_llm(messages)
+    print(f"Prompt: {messages[0]['content']}")
+    print(f"Response: {response}")
