@@ -1,10 +1,5 @@
 import sounddevice as sd
 import numpy as np
-import time
-# import wave # No longer needed for dummy file saving in main for play_audio_file
-# import tempfile # No longer needed for dummy file saving in main
-# import os # No longer needed for dummy file saving in main
-# import soundfile as sf # No longer needed as play_audio_file is removed
 
 DEFAULT_SAMPLE_RATE = 44100
 DEFAULT_CHANNELS = 1
@@ -39,10 +34,7 @@ def record_audio(sample_rate = DEFAULT_SAMPLE_RATE,
     silence_counter = 0
     chunks_recorded = 0
 
-    stream = None
-    try:
-        stream = sd.InputStream(samplerate=sample_rate, channels=channels, dtype='float32')
-        stream.start()
+    with sd.InputStream(samplerate=sample_rate, channels=channels, dtype='float32') as stream:
 
         for i in range(max_chunks):
             audio_chunk, overflowed = stream.read(chunk_size_frames)
@@ -76,20 +68,10 @@ def record_audio(sample_rate = DEFAULT_SAMPLE_RATE,
             
             if i == max_chunks - 1 and not is_recording:
                 print("No speech detected within the maximum recording duration.")
-                stream.stop()
-                stream.close()
                 return None, sample_rate
 
         if not recorded_frames and is_recording:
-             print("Recording started but captured no frames before stopping. This might be due to immediate silence.")
-
-    except Exception as e:
-        print(f"Error during recording: {e}")
-        return None, sample_rate
-    finally:
-        if stream and not stream.closed:
-            stream.stop()
-            stream.close()
+            print("Recording started but captured no frames before stopping. This might be due to immediate silence.")
 
     if not recorded_frames:
         print("No audio was recorded.")
