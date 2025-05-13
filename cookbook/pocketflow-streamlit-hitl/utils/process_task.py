@@ -7,7 +7,7 @@ def process_task(task_input: str) -> str:
     """
     print(f"Processing task: {task_input[:50]}...")
 
-    result = f"Rephrased text for the following input: {task_input}"
+    result = f"Dummy rephrased text for the following input: {task_input}"
 
     # Simulate some work
     time.sleep(2) 

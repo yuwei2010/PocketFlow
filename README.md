@@ -87,7 +87,8 @@ From there, it's easy to implement popular design patterns like ([Multi-](https:
 | [Text2SQL](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-text2sql) | ★☆☆ <br> *Beginner* | Convert natural language to SQL queries with an auto-debug loop |
 | [MCP](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-mcp) | ★☆☆ <br> *Beginner* |  Agent using Model Context Protocol for numerical operations |
 | [A2A](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-a2a) | ★☆☆ <br> *Beginner* | Agent wrapped with Agent-to-Agent protocol for inter-agent communication |
-| [Web HITL](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-web-hitl) | ★☆☆ <br> *Beginner* | A minimal web service for a human review loop with SSE updates |
+| [Streamlit HITL](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-streamlit-hitl) | ★☆☆ <br> *Beginner* | Streamlit app for human-in-the-loop review |
+| [FastAPI HITL](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-fastapi-hitl)    | ★☆☆ <br> *Beginner* | FastAPI app  for async human review loop with SSE |
 
 </div>
 
