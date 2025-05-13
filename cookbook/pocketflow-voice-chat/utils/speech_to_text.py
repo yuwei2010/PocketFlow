@@ -8,7 +8,7 @@ def speech_to_text_api(audio_data: bytes, sample_rate: int):
     # The API expects a file-like object. We can use io.BytesIO for in-memory bytes.
     # We also need to give it a name, as if it were a file upload.
     audio_file = io.BytesIO(audio_data)
-    audio_file.name = "audio.mp3"  # Provide a dummy filename with a common audio extension
+    audio_file.name = "audio.wav"  # Corrected to WAV format
 
     transcript = client.audio.transcriptions.create(
         model="gpt-4o-transcribe",
