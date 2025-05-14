@@ -10,8 +10,6 @@ def main():
     shared = {
         "user_audio_data": None,
         "user_audio_sample_rate": None,
-        "user_text_query": None,
-        "llm_text_response": None,
         "chat_history": [],
         "continue_conversation": True # Flag to control the main conversation loop
     }
