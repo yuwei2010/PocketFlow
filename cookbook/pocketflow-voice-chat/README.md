@@ -2,6 +2,9 @@
 
 This project demonstrates a voice-based interactive chat application built with PocketFlow. Users can speak their queries, and the system will respond with spoken answers from an LLM, maintaining conversation history.
 
+- Check out the [Substack Post Tutorial](https://pocketflow.substack.com/p/build-your-own-voice-chatbot-from) for more!
+
+
 ## Features
 
 -   **Voice Activity Detection (VAD)**: Automatically detects when the user starts and stops speaking.
