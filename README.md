@@ -73,20 +73,20 @@ From there, it's easy to implement popular design patterns like ([Multi-](https:
 | [Workflow](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-workflow) | ☆☆☆ <sup>*Dummy*</sup> | A writing workflow that outlines, writes content, and applies styling |
 | [Agent](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-agent) | ☆☆☆ <sup>*Dummy*</sup>  | A research agent that can search the web and answer questions |
 | [RAG](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-rag) | ☆☆☆ <sup>*Dummy*</sup> | A simple Retrieval-augmented Generation process |
-| [Batch](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-batch) | ☆☆☆ <sup>*Dummy*</sup> | A batch processor that translates markdown content into multiple languages |
+| [Batch](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-batch) | ☆☆☆ <sup>*Dummy*</sup> | A batch processor that translates markdown into multiple languages |
 | [Streaming](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-llm-streaming) | ☆☆☆ <sup>*Dummy*</sup> | A real-time LLM streaming demo with user interrupt capability |
 | [Chat Guardrail](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-chat-guardrail) | ☆☆☆ <sup>*Dummy*</sup> | A travel advisor chatbot that only processes travel-related queries |
 | [Majority Vote](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-majority-vote) | ☆☆☆ <sup>*Dummy*</sup> | Improve reasoning accuracy by aggregating multiple solution attempts |
-| [Map-Reduce](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-map-reduce) | ☆☆☆ <sup>*Dummy*</sup>  | A resume qualification processor using map-reduce pattern for batch evaluation |
-| [Multi-Agent](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-multi-agent) | ★☆☆ <sup>*Beginner*</sup> | A Taboo word game for asynchronous communication between two agents |
+| [Map-Reduce](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-map-reduce) | ☆☆☆ <sup>*Dummy*</sup>  | Batch resume qualification using map-reduce pattern |
+| [Multi-Agent](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-multi-agent) | ★☆☆ <sup>*Beginner*</sup> | A Taboo word game for async communication between 2 agents |
 | [Supervisor](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-supervisor) | ★☆☆ <sup>*Beginner*</sup> | Research agent is getting unreliable... Let's build a supervision process|
 | [Parallel](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-parallel-batch) |  ★☆☆ <sup>*Beginner*</sup> | A parallel execution demo that shows 3x speedup |
-| [Parallel Flow](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-parallel-batch-flow) | ★☆☆ <sup>*Beginner*</sup> | A parallel image processing demo showing 8x speedup with multiple filters |
+| [Parallel Flow](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-parallel-batch-flow) | ★☆☆ <sup>*Beginner*</sup> | A parallel image processing showing 8x speedup |
 | [Thinking](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-thinking) |  ★☆☆ <sup>*Beginner*</sup> | Solve complex reasoning problems through Chain-of-Thought |
 | [Memory](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-chat-memory) |  ★☆☆ <sup>*Beginner*</sup> | A chat bot with short-term and long-term memory |
 | [Text2SQL](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-text2sql) |  ★☆☆ <sup>*Beginner*</sup>  | Convert natural language to SQL queries with an auto-debug loop |
 | [MCP](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-mcp) |  ★☆☆ <sup>*Beginner*</sup> |  Agent using Model Context Protocol for numerical operations |
-| [A2A](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-a2a) |  ★☆☆ <sup>*Beginner*</sup> | Agent wrapped with Agent-to-Agent protocol for inter-agent communication |
+| [A2A](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-a2a) |  ★☆☆ <sup>*Beginner*</sup> | Agent wrapped with A2A protocol for inter-agent communication |
 | [Streamlit HITL](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-streamlit-hitl) | ★☆☆ <sup>*Beginner*</sup> | Streamlit app for human-in-the-loop review |
 | [FastAPI HITL](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-fastapi-hitl)    | ★☆☆ <sup>*Beginner*</sup> | FastAPI app  for async human review loop with SSE |
 | [Voice Chat](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-voice-chat) | ★☆☆ <sup>*Beginner*</sup> | An interactive voice chat application with VAD, STT, LLM, and TTS. |
