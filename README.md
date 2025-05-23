@@ -84,7 +84,7 @@ From there, it's easy to implement popular design patterns like ([Multi-](https:
 | [Thinking](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-thinking) |  ★☆☆ <sup>*Beginner*</sup> | Solve complex reasoning problems through Chain-of-Thought |
 | [Memory](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-chat-memory) |  ★☆☆ <sup>*Beginner*</sup> | A chat bot with short-term and long-term memory |
 | [Text2SQL](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-text2sql) |  ★☆☆ <sup>*Beginner*</sup>  | Convert natural language to SQL queries with an auto-debug loop |
-| [Code Generator](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-code-generator) | ☆☆☆ <sup>*Dummy*</sup> | Generate test cases, implement solutions, and iteratively improve code |
+| [Code Generator](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-code-generator) | ★☆☆ <sup>*Beginner*</sup> | Generate test cases, implement solutions, and iteratively improve code |
 | [MCP](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-mcp) |  ★☆☆ <sup>*Beginner*</sup> |  Agent using Model Context Protocol for numerical operations |
 | [A2A](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-a2a) |  ★☆☆ <sup>*Beginner*</sup> | Agent wrapped with A2A protocol for inter-agent communication |
 | [Streamlit HITL](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-streamlit-hitl) | ★☆☆ <sup>*Beginner*</sup> | Streamlit app for human-in-the-loop review |
