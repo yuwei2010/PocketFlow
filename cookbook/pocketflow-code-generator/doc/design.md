@@ -65,9 +65,9 @@ flowchart TD
    - Used by all LLM-powered nodes for generating tests, code, and analysis
 
 2. **Execute Python Code** (`utils/code_executor.py`)
-   - *Input*: function_code (str), test_case (dict)
-   - *Output*: test_result (dict with passed, failed, error details)
-   - Used by RunTests batch node to safely execute generated code against individual test cases
+   - *Input*: function_code (str), input (dict/list/any)
+   - *Output*: output (any), error (str)
+   - Used by RunTests batch node to safely execute generated code against individual input
 
 ## Node Design
 
