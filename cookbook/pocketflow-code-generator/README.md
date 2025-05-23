@@ -2,6 +2,8 @@
 
 An intelligent AI system that takes LeetCode-style coding problems and automatically generates comprehensive test cases, implements solutions, and iteratively improves them until all tests pass.
 
+- Check out the [Substack Post Tutorial](https://pocketflow.substack.com/p/build-your-own-ai-code-generator) for more!
+
 ## Features
 
 - **Automatic Test Case Generation**: Creates diverse test cases including edge cases
