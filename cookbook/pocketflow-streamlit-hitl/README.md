@@ -1,34 +1,51 @@
-# PocketFlow Streamlit Human-in-the-Loop (HITL) Application
+# PocketFlow Streamlit Image Generation HITL
 
-Minimal Human-in-the-Loop (HITL) web application using PocketFlow and Streamlit. Submit text, review processed output, and approve/reject.
+Human-in-the-Loop (HITL) image generation application using PocketFlow and Streamlit. Enter text prompts, generate images with OpenAI, and approve/regenerate results.
 
 ## Features
 
--   **Streamlit UI:** Simple, interactive interface for submitting tasks and providing feedback, built entirely in Python.
--   **PocketFlow Workflow:** Manages distinct processing stages (initial processing, finalization) using synchronous PocketFlow `Flow`s.
--   **Session State Management:** Utilizes Streamlit's `st.session_state` to manage the current stage of the workflow and to act as the `shared` data store for PocketFlow.
--   **Iterative Feedback Loop:** Allows users to reject processed output and resubmit, facilitating refinement.
+-   **Image Generation:** Uses OpenAI's `gpt-image-1` model to generate images from text prompts
+-   **Human Review:** Interactive interface to approve or regenerate images
+-   **State Machine:** Clean state-based workflow (`initial_input` → `user_feedback` → `final`)
+-   **PocketFlow Integration:** Uses PocketFlow `Node` and `Flow` for image generation with built-in retries
+-   **Session State Management:** Streamlit session state acts as PocketFlow's shared store
+-   **In-Memory Images:** Images stored as base64 strings, no disk storage required
 
 ## How to Run
 
-1.  **Install Dependencies:**
+1.  **Set OpenAI API Key:**
+    ```bash
+    export OPENAI_API_KEY="your-openai-api-key"
+    ```
+
+2.  **Install Dependencies:**
     ```bash
     pip install -r requirements.txt
     ```
 
-2.  **Run the Streamlit Application:**
+3.  **Run the Streamlit Application:**
     ```bash
     streamlit run app.py
     ```
 
-3.  **Access the Web UI:**
+4.  **Access the Web UI:**
     Open the URL provided by Streamlit (usually `http://localhost:8501`).
+
+## Usage
+
+1. **Enter Prompt**: Describe the image you want to generate
+2. **Generate**: Click "Generate Image" to create the image
+3. **Review**: View the generated image and choose:
+   - **Approve**: Accept the image and move to final result
+   - **Regenerate**: Generate a new image with the same prompt
+4. **Final**: View approved image and optionally start over
 
 ## Files
 
--   [`app.py`](./app.py): Main Streamlit application logic and UI.
--   [`nodes.py`](./nodes.py): PocketFlow `Node` definitions.
--   [`flows.py`](./flows.py): PocketFlow `Flow` construction.
--   [`utils/process_task.py`](./utils/process_task.py): Simulated task processing utility.
--   [`requirements.txt`](./requirements.txt): Project dependencies.
--   [`README.md`](./README.md): This file.
+-   [`app.py`](./app.py): Main Streamlit application with state-based UI
+-   [`nodes.py`](./nodes.py): PocketFlow `GenerateImageNode` definition
+-   [`flow.py`](./flow.py): PocketFlow `Flow` for image generation
+-   [`utils/generate_image.py`](./utils/generate_image.py): OpenAI image generation utility
+-   [`requirements.txt`](./requirements.txt): Project dependencies
+-   [`docs/design.md`](./docs/design.md): System design documentation
+-   [`README.md`](./README.md): This file
