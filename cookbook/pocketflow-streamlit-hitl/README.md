@@ -2,6 +2,12 @@
 
 Human-in-the-Loop (HITL) image generation application using PocketFlow and Streamlit. Enter text prompts, generate images with OpenAI, and approve/regenerate results.
 
+<p align="center">
+  <img 
+    src="./assets/banner.png" width="800"
+  />
+</p>
+
 ## Features
 
 -   **Image Generation:** Uses OpenAI's `gpt-image-1` model to generate images from text prompts

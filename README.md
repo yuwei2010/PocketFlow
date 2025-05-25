@@ -87,7 +87,7 @@ From there, it's easy to implement popular design patterns like ([Multi-](https:
 | [Code Generator](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-code-generator) | ★☆☆ <sup>*Beginner*</sup> | Generate test cases, implement solutions, and iteratively improve code |
 | [MCP](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-mcp) |  ★☆☆ <sup>*Beginner*</sup> |  Agent using Model Context Protocol for numerical operations |
 | [A2A](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-a2a) |  ★☆☆ <sup>*Beginner*</sup> | Agent wrapped with A2A protocol for inter-agent communication |
-| [Streamlit HITL](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-streamlit-hitl) | ★☆☆ <sup>*Beginner*</sup> | Streamlit app for human-in-the-loop review |
+| [Streamlit HITL](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-streamlit-hitl) | ★☆☆ <sup>*Beginner*</sup> | Streamlit app for human-in-the-loop image generation |
 | [FastAPI HITL](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-fastapi-hitl)    | ★☆☆ <sup>*Beginner*</sup> | FastAPI app  for async human review loop with SSE |
 | [Voice Chat](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-voice-chat) | ★☆☆ <sup>*Beginner*</sup> | An interactive voice chat application with VAD, STT, LLM, and TTS. |
 
