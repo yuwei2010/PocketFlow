@@ -10,13 +10,13 @@
 **User Story**: As a user, I want to interact with an AI chatbot through a web interface where:
 1. I can send messages and receive real-time streaming responses
 2. The connection stays persistent (WebSocket)
-3. I can see the AI response being typed out in real-time
+3. I can see the AI response being typed out in real-time as the LLM generates it
 4. The interface is minimal and easy to use
 
 **Technical Requirements**:
 - FastAPI backend with WebSocket support
 - Real-time bidirectional communication
-- LLM streaming integration using PocketFlow
+- True LLM streaming integration using PocketFlow AsyncNode
 - Simple HTML/JavaScript frontend
 - Minimal dependencies
 
@@ -28,19 +28,19 @@
 
 ### Applicable Design Pattern:
 
-**Single Node Pattern**: One PocketFlow node handles the entire LLM streaming process
+**Single Async Node Pattern**: One PocketFlow AsyncNode handles the entire LLM streaming process with real-time WebSocket streaming
 
 ### Flow high-level Design:
 
-**PocketFlow Flow**: Just one node
-1. **Streaming Chat Node**: Processes message, calls LLM, streams response
+**PocketFlow AsyncFlow**: Just one async node
+1. **Streaming Chat Node**: Processes message, calls LLM with real streaming, sends chunks immediately to WebSocket
 
-**Integration**: FastAPI WebSocket endpoint calls the PocketFlow flow
+**Integration**: FastAPI WebSocket endpoint calls the PocketFlow AsyncFlow
 
 ```mermaid
 flowchart TD
     user((User Browser)) --> websocket(FastAPI WebSocket)
-    websocket --> flow[Streaming Chat Node]
+    websocket --> flow[Streaming Chat AsyncNode]
     flow --> websocket
     websocket --> user
     
@@ -56,9 +56,9 @@ flowchart TD
 > 2. Include only the necessary utility functions, based on nodes in the flow.
 
 1. **Stream LLM** (`utils/stream_llm.py`)
-   - *Input*: prompt (str)
-   - *Output*: streaming response chunks
-   - Used by streaming chat node to get LLM chunks
+   - *Input*: messages (list of chat history)
+   - *Output*: generator yielding real-time response chunks from OpenAI API
+   - Used by streaming chat node to get LLM chunks as they're generated
 
 ## Node Design
 
@@ -72,7 +72,7 @@ The shared store structure is organized as follows:
 shared = {
     "websocket": None,           # WebSocket connection object
     "user_message": "",          # Current user message
-    "conversation_history": []   # List of message history
+    "conversation_history": []   # List of message history with roles
 }
 ```
 
@@ -81,9 +81,9 @@ shared = {
 > Notes for AI: Carefully decide whether to use Batch/Async Node/Flow.
 
 1. **Streaming Chat Node**
-  - *Purpose*: Process user message, call LLM with streaming, and send chunks via WebSocket
-  - *Type*: Regular Node
+  - *Purpose*: Process user message, call LLM with real streaming, and send chunks immediately via WebSocket
+  - *Type*: AsyncNode (for real-time streaming)
   - *Steps*:
-    - *prep*: Read user message and conversation history, format prompt
-    - *exec*: Call streaming LLM utility
-    - *post*: Stream chunks via WebSocket and update conversation history
+    - *prep*: Read user message, build conversation history with new message
+    - *exec_async*: Call streaming LLM utility, stream each chunk immediately to WebSocket as received
+    - *post*: Update conversation history with complete assistant response

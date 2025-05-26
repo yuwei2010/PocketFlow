@@ -1,92 +1,40 @@
 import asyncio
 import json
-from pocketflow import Node
+from pocketflow import AsyncNode
 from utils.stream_llm import stream_llm
 
-class StreamingChatNode(Node):
-    """
-    Single node that processes user message and streams LLM response via WebSocket
-    """
+class StreamingChatNode(AsyncNode):
     def prep(self, shared):
         user_message = shared.get("user_message", "")
-        conversation_history = shared.get("conversation_history", [])
         websocket = shared.get("websocket")
         
-        # Build messages for OpenAI format
-        messages = []
+        conversation_history = shared.get("conversation_history", [])
+        conversation_history.append({"role": "user", "content": user_message})
         
-        # Add system message
-        messages.append({
-            "role": "system", 
-            "content": "You are a helpful AI assistant. Please respond naturally and helpfully to user queries."
-        })
-        
-        # Add conversation history (keep last 10 messages)
-        for msg in conversation_history[-10:]:
-            messages.append(msg)
-        
-        # Add current user message
-        messages.append({
-            "role": "user",
-            "content": user_message
-        })
-        
-        return messages, websocket, user_message
+        return conversation_history, websocket
     
-    def exec(self, prep_res):
-        messages, websocket, user_message = prep_res
+    async def exec_async(self, prep_res):
+        messages, websocket = prep_res
         
-        # Get streaming response from LLM
-        response_chunks = stream_llm(messages)
+        await websocket.send_text(json.dumps({"type": "start", "content": ""}))
         
-        return response_chunks, websocket, user_message
-    
-    async def stream_response(self, chunks, websocket):
-        """
-        Stream LLM response chunks to WebSocket
-        """
         full_response = ""
-        
-        try:
-            # Send start indicator
-            await websocket.send_text(json.dumps({"type": "start", "content": ""}))
-            
-            # Stream each chunk
-            for chunk_content in chunks:
-                full_response += chunk_content
-                
-                # Send chunk via WebSocket
-                await websocket.send_text(json.dumps({
-                    "type": "chunk",
-                    "content": chunk_content
-                }))
-                
-                # Add small delay to simulate real streaming
-                await asyncio.sleep(0.05)
-            
-            # Send end indicator
-            await websocket.send_text(json.dumps({"type": "end", "content": ""}))
-            
-        except Exception as e:
+        for chunk_content in stream_llm(messages):
+            full_response += chunk_content
             await websocket.send_text(json.dumps({
-                "type": "error",
-                "content": f"Streaming error: {str(e)}"
+                "type": "chunk", 
+                "content": chunk_content
             }))
-            print(f"Streaming error: {e}")
         
-        return full_response
+        await websocket.send_text(json.dumps({"type": "end", "content": ""}))
+        
+        return full_response, websocket
     
     def post(self, shared, prep_res, exec_res):
-        chunks, websocket, user_message = exec_res
+        full_response, websocket = exec_res
         
-        # Store the chunks and websocket for async processing
-        shared["response_chunks"] = chunks
-        shared["websocket"] = websocket
-        
-        # Add user message to conversation history
-        shared["conversation_history"].append({
-            "role": "user",
-            "content": user_message
-        })
+        conversation_history = shared.get("conversation_history", [])
+        conversation_history.append({"role": "assistant", "content": full_response})
+        shared["conversation_history"] = conversation_history
         
         return "stream" 

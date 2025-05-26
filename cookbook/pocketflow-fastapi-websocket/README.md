@@ -27,8 +27,6 @@ For real LLM responses, set your OpenAI API key:
 export OPENAI_API_KEY="your-api-key-here"
 ```
 
-**Note**: The app works without an API key using fake streaming responses for testing.
-
 ### 3. Run the Application
 
 ```bash
