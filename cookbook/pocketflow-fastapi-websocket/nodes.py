@@ -4,7 +4,7 @@ from pocketflow import AsyncNode
 from utils.stream_llm import stream_llm
 
 class StreamingChatNode(AsyncNode):
-    def prep(self, shared):
+    async def prep_async(self, shared):
         user_message = shared.get("user_message", "")
         websocket = shared.get("websocket")
         
@@ -19,7 +19,7 @@ class StreamingChatNode(AsyncNode):
         await websocket.send_text(json.dumps({"type": "start", "content": ""}))
         
         full_response = ""
-        for chunk_content in stream_llm(messages):
+        async for chunk_content in stream_llm(messages):
             full_response += chunk_content
             await websocket.send_text(json.dumps({
                 "type": "chunk", 
@@ -30,11 +30,9 @@ class StreamingChatNode(AsyncNode):
         
         return full_response, websocket
     
-    def post(self, shared, prep_res, exec_res):
+    async def post_async(self, shared, prep_res, exec_res):
         full_response, websocket = exec_res
         
         conversation_history = shared.get("conversation_history", [])
         conversation_history.append({"role": "assistant", "content": full_response})
-        shared["conversation_history"] = conversation_history
-        
-        return "stream" 
+        shared["conversation_history"] = conversation_history 
