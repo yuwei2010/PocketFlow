@@ -18,8 +18,8 @@ active_jobs = {}
 def run_article_workflow(job_id: str, topic: str):
     """Run the article workflow in background"""
     try:
-        # Create shared store with SSE queue
-        sse_queue = asyncio.Queue()
+        # Get the pre-created queue from active_jobs
+        sse_queue = active_jobs[job_id]
         shared = {
             "topic": topic,
             "sse_queue": sse_queue,
@@ -27,9 +27,6 @@ def run_article_workflow(job_id: str, topic: str):
             "draft": "",
             "final_article": ""
         }
-        
-        # Store the queue for SSE access
-        active_jobs[job_id] = sse_queue
         
         # Run the workflow
         flow = create_article_flow()
@@ -46,6 +43,10 @@ async def start_job(background_tasks: BackgroundTasks, topic: str = Form(...)):
     """Start a new article generation job"""
     job_id = str(uuid.uuid4())
     
+    # Create SSE queue and register job immediately
+    sse_queue = asyncio.Queue()
+    active_jobs[job_id] = sse_queue
+    
     # Start background task
     background_tasks.add_task(run_article_workflow, job_id, topic)
     
@@ -61,6 +62,9 @@ async def get_progress(job_id: str):
             return
             
         sse_queue = active_jobs[job_id]
+        
+        # Send initial connection confirmation
+        yield f"data: {json.dumps({'step': 'connected', 'progress': 0, 'data': {'message': 'Connected to job progress'}})}\n\n"
         
         try:
             while True:

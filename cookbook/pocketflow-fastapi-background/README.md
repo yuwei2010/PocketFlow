@@ -1,74 +1,81 @@
-# PocketFlow FastAPI Background Job
+# PocketFlow FastAPI Background Jobs with Real-time Progress
 
-A minimal example of running PocketFlow workflows as background jobs with real-time progress updates via Server-Sent Events (SSE).
+A web application demonstrating PocketFlow workflows running as FastAPI background jobs with real-time progress updates via Server-Sent Events (SSE).
+
+<p align="center">
+  <img 
+    src="./assets/banner.png" width="800"
+  />
+</p>
 
 ## Features
 
-- Start article generation jobs via REST API
-- Real-time granular progress updates via SSE (shows progress for each section)
-- Background processing with FastAPI
-- Simple three-step workflow: Outline → Content → Style
-- Web interface for easy job submission and monitoring
+- **Modern Web UI**: Clean interface with real-time progress visualization
+- **Background Processing**: Non-blocking article generation using FastAPI BackgroundTasks
+- **Server-Sent Events**: Real-time progress streaming without polling
+- **Granular Progress**: Section-by-section updates during content generation
+- **PocketFlow Integration**: Three-node workflow (Outline → Content → Style)
 
-## Getting Started
+## How to Run
 
-1. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+1. Install Dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 2. Set your OpenAI API key:
-```bash
-export OPENAI_API_KEY=your_api_key_here
+   ```bash
+   export OPENAI_API_KEY=your_api_key_here
+   ```
+
+3. Run the FastAPI Server:
+   ```bash
+   python main.py
+   ```
+
+4. Access the Web UI:
+   Open your browser and navigate to `http://localhost:8000`.
+
+5. Use the Application:
+   - Enter an article topic or click suggested topics
+   - Click "Generate Article" to start background processing
+   - Watch real-time progress updates with step indicators
+   - Copy the final article when complete
+
+## How It Works
+
+The application uses PocketFlow to define a three-step article generation workflow. FastAPI handles web requests and manages real-time SSE communication for progress updates.
+
+**PocketFlow Workflow:**
+
+```mermaid
+flowchart LR
+    A[Generate Outline] --> B[Write Content]
+    B --> C[Apply Style]
 ```
 
-3. Run the server:
-```bash
-python main.py
-```
+1. **`GenerateOutline`**: Creates structured outline with up to 3 sections
+2. **`WriteContent` (BatchNode)**: Writes content for each section individually, sending progress updates
+3. **`ApplyStyle`**: Polishes the article with conversational tone
 
-## Usage
+**FastAPI & SSE Integration:**
 
-### Web Interface (Recommended)
+- The `/start-job` endpoint creates a unique job, initializes an SSE queue, and schedules the workflow using `BackgroundTasks`
+- Nodes send progress updates to the job-specific `sse_queue` during execution
+- The `/progress/{job_id}` endpoint streams real-time updates to the client via Server-Sent Events
+- The web UI displays progress with animated bars, step indicators, and detailed status messages
 
-1. Open your browser and go to `http://localhost:8000`
-2. Enter an article topic (e.g., "AI Safety", "Climate Change")
-3. Click "Generate Article"
-4. You'll be redirected to a progress page showing real-time updates
-5. The final article will appear when generation is complete
-
-### API Usage
-
-#### Start a Job
-```bash
-curl -X POST "http://localhost:8000/start-job" -d "topic=AI Safety" -H "Content-Type: application/x-www-form-urlencoded"
-```
-
-Response:
-```json
-{"job_id": "123e4567-e89b-12d3-a456-426614174000", "topic": "AI Safety", "status": "started"}
-```
-
-#### Monitor Progress
-```bash
-curl "http://localhost:8000/progress/123e4567-e89b-12d3-a456-426614174000"
-```
-
-SSE Stream:
-```
-data: {"step": "outline", "progress": 33, "data": {"sections": ["Introduction", "Challenges", "Solutions"]}}
-data: {"step": "content", "progress": 44, "data": {"section": "Introduction", "completed_sections": 1, "total_sections": 3}}
-data: {"step": "content", "progress": 55, "data": {"section": "Challenges", "completed_sections": 2, "total_sections": 3}}
-data: {"step": "content", "progress": 66, "data": {"section": "Solutions", "completed_sections": 3, "total_sections": 3}}
-data: {"step": "content", "progress": 66, "data": {"draft_length": 1234, "status": "complete"}}
-data: {"step": "complete", "progress": 100, "data": {"final_article": "..."}}
-```
+**Progress Updates:**
+- 33%: Outline generation complete
+- 33-66%: Content writing (individual section updates)
+- 66-100%: Style application
+- 100%: Article ready
 
 ## Files
 
-- `main.py` - FastAPI app with background jobs and SSE
-- `flow.py` - PocketFlow workflow definition
-- `nodes.py` - Workflow nodes (Outline, Content, Style)
-- `utils/call_llm.py` - LLM utility function
-- `static/index.html` - Main page for starting jobs
-- `static/progress.html` - Progress monitoring page with real-time updates 
+- [`main.py`](./main.py): FastAPI application with background jobs and SSE endpoints
+- [`flow.py`](./flow.py): PocketFlow workflow definition connecting the three nodes
+- [`nodes.py`](./nodes.py): Workflow nodes (GenerateOutline, WriteContent BatchNode, ApplyStyle)
+- [`utils/call_llm.py`](./utils/call_llm.py): OpenAI LLM utility function
+- [`static/index.html`](./static/index.html): Modern job submission form with topic suggestions
+- [`static/progress.html`](./static/progress.html): Real-time progress monitoring with animations
