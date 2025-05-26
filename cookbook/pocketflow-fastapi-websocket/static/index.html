@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PocketFlow Chat</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background-color: #f5f5f5;
+        }
+        .chat-container { 
+            background: white; 
+            border-radius: 10px; 
+            padding: 20px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .messages { 
+            height: 400px; 
+            overflow-y: auto; 
+            border: 1px solid #ddd; 
+            padding: 10px; 
+            margin-bottom: 10px; 
+            background-color: #fafafa;
+            border-radius: 5px;
+        }
+        .message { 
+            margin-bottom: 10px; 
+            padding: 8px 12px;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+        .user-message { 
+            background-color: #007bff; 
+            color: white; 
+            margin-left: auto;
+            text-align: right;
+        }
+        .ai-message { 
+            background-color: #e9ecef; 
+            color: #333;
+        }
+        .input-container { 
+            display: flex; 
+            gap: 10px;
+        }
+        #messageInput { 
+            flex: 1; 
+            padding: 10px; 
+            border: 1px solid #ddd; 
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        #sendButton { 
+            padding: 10px 20px; 
+            background-color: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #sendButton:disabled { 
+            background-color: #ccc; 
+            cursor: not-allowed; 
+        }
+        .status { 
+            text-align: center; 
+            color: #666; 
+            font-style: italic; 
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <h1>🤖 PocketFlow Chat Interface</h1>
+        <div class="status" id="status">Connecting...</div>
+        <div class="messages" id="messages"></div>
+        <div class="input-container">
+            <input type="text" id="messageInput" placeholder="Type your message..." disabled>
+            <button id="sendButton" disabled>Send</button>
+        </div>
+    </div>
+
+    <script>
+        const ws = new WebSocket(`ws://localhost:8000/ws`);
+        const messagesDiv = document.getElementById('messages');
+        const messageInput = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendButton');
+        const statusDiv = document.getElementById('status');
+        
+        let isStreaming = false;
+        let currentAiMessage = null;
+
+        ws.onopen = function(event) {
+            statusDiv.textContent = '✅ Connected';
+            messageInput.disabled = false;
+            sendButton.disabled = false;
+            messageInput.focus();
+        };
+
+        ws.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+            
+            if (data.type === 'start') {
+                isStreaming = true;
+                currentAiMessage = document.createElement('div');
+                currentAiMessage.className = 'message ai-message';
+                currentAiMessage.textContent = '';
+                messagesDiv.appendChild(currentAiMessage);
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                
+                sendButton.disabled = true;
+                statusDiv.textContent = '🤖 AI is typing...';
+                
+            } else if (data.type === 'chunk') {
+                if (currentAiMessage) {
+                    currentAiMessage.textContent += data.content;
+                    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                }
+                
+            } else if (data.type === 'end') {
+                isStreaming = false;
+                currentAiMessage = null;
+                sendButton.disabled = false;
+                statusDiv.textContent = '✅ Connected';
+                messageInput.focus();
+                
+            } else if (data.type === 'error') {
+                const errorMessage = document.createElement('div');
+                errorMessage.className = 'message ai-message';
+                errorMessage.textContent = `Error: ${data.content}`;
+                errorMessage.style.color = 'red';
+                messagesDiv.appendChild(errorMessage);
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                
+                isStreaming = false;
+                sendButton.disabled = false;
+                statusDiv.textContent = '✅ Connected';
+            }
+        };
+
+        ws.onclose = function(event) {
+            statusDiv.textContent = '❌ Disconnected';
+            messageInput.disabled = true;
+            sendButton.disabled = true;
+        };
+
+        ws.onerror = function(error) {
+            statusDiv.textContent = '❌ Connection Error';
+            console.error('WebSocket error:', error);
+        };
+
+        function sendMessage() {
+            const message = messageInput.value.trim();
+            if (message && !isStreaming) {
+                const userMessage = document.createElement('div');
+                userMessage.className = 'message user-message';
+                userMessage.textContent = message;
+                messagesDiv.appendChild(userMessage);
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+                ws.send(JSON.stringify({
+                    type: 'message',
+                    content: message
+                }));
+
+                messageInput.value = '';
+                statusDiv.textContent = '📤 Sending...';
+            }
+        }
+
+        sendButton.addEventListener('click', sendMessage);
+        messageInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html> 
