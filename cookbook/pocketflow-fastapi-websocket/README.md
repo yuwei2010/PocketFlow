@@ -2,6 +2,12 @@
 
 Real-time chat interface with streaming LLM responses using PocketFlow, FastAPI, and WebSocket.
 
+<p align="center">
+  <img 
+    src="./assets/banner.png" width="800"
+  />
+</p>
+
 ## Features
 
 - **Real-time Streaming**: See AI responses typed out in real-time as the LLM generates them

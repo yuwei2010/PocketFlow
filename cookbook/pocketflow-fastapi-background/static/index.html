@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PocketFlow Article Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        input[type="text"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .loading {
+            text-align: center;
+            color: #666;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Article Generator</h1>
+        <form id="jobForm">
+            <div class="form-group">
+                <label for="topic">Article Topic:</label>
+                <input type="text" id="topic" name="topic" placeholder="e.g., AI Safety, Climate Change, Space Exploration" required>
+            </div>
+            <button type="submit" id="submitBtn">Generate Article</button>
+        </form>
+        <div id="loading" class="loading" style="display: none;">
+            Starting your article generation...
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('jobForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const topic = document.getElementById('topic').value.trim();
+            if (!topic) return;
+            
+            // Show loading state
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('loading').style.display = 'block';
+            
+            try {
+                const response = await fetch('/start-job', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `topic=${encodeURIComponent(topic)}`
+                });
+                
+                const result = await response.json();
+                
+                if (result.job_id) {
+                    // Redirect to progress page
+                    window.location.href = `/progress.html?job_id=${result.job_id}&topic=${encodeURIComponent(topic)}`;
+                } else {
+                    alert('Failed to start job');
+                    document.getElementById('submitBtn').disabled = false;
+                    document.getElementById('loading').style.display = 'none';
+                }
+            } catch (error) {
+                alert('Error starting job: ' + error.message);
+                document.getElementById('submitBtn').disabled = false;
+                document.getElementById('loading').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html> 

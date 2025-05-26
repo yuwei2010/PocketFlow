@@ -1,6 +1,6 @@
 import re
 from pocketflow import Node, BatchNode
-from utils import call_llm
+from utils.call_llm import call_llm
 import yaml
 
 class GenerateOutline(Node):
@@ -49,17 +49,14 @@ sections:
         
         return "default"
 
-class WriteSimpleContent(Node):
+class WriteSimpleContent(BatchNode):
     def prep(self, shared):
-        # Get the list of sections to process
-        return shared.get("sections", [])
+        # Get the list of sections to process and store for progress tracking
+        self.sections = shared.get("sections", [])
+        return self.sections
     
-    def exec(self, sections):
-        all_sections_content = []
-        section_contents = {}
-        
-        for section in sections:
-            prompt = f"""
+    def exec(self, section):
+        prompt = f"""
 Write a short paragraph (MAXIMUM 100 WORDS) about this section:
 
 {section}
@@ -70,14 +67,25 @@ Requirements:
 - Keep it very concise (no more than 100 words)
 - Include one brief example or analogy
 """
-            content = call_llm(prompt)
+        content = call_llm(prompt)
+        
+        # Show progress for this section
+        current_section_index = self.sections.index(section) if section in self.sections else 0
+        total_sections = len(self.sections)
+        print(f"✓ Completed section {current_section_index + 1}/{total_sections}: {section}")
+        
+        return section, content
+    
+    def post(self, shared, prep_res, exec_res_list):
+        # exec_res_list contains [(section, content), (section, content), ...]
+        section_contents = {}
+        all_sections_content = []
+        
+        for section, content in exec_res_list:
             section_contents[section] = content
             all_sections_content.append(f"## {section}\n\n{content}\n")
         
-        return sections, section_contents, "\n".join(all_sections_content)
-    
-    def post(self, shared, prep_res, exec_res):
-        sections, section_contents, draft = exec_res
+        draft = "\n".join(all_sections_content)
         
         # Store the section contents and draft
         shared["section_contents"] = section_contents

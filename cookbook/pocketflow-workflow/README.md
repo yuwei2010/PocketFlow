@@ -55,7 +55,7 @@ Here's what each node does:
 - [`main.py`](./main.py): Main entry point for running the article workflow
 - [`flow.py`](./flow.py): Defines the flow that connects the nodes
 - [`nodes.py`](./nodes.py): Contains the node classes for each step in the workflow
-- [`utils.py`](./utils.py): Utility functions including the LLM wrapper
+- [`utils/call_llm.py`](./utils/call_llm.py): LLM utility function
 - [`requirements.txt`](./requirements.txt): Lists the required dependencies
 
 ## Example Output
