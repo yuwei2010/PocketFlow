@@ -1,17 +1,24 @@
+from anthropic import Anthropic
 import os
-from openai import OpenAI
 
 def call_llm(prompt: str) -> str:
-    client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", "your-api-key"))
-    r = client.chat.completions.create(
-        model="gpt-4o", 
-        messages=[{"role": "user", "content": prompt}]
+    client = Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY", "your-anthropic-api-key")) # Default if key not found
+    response = client.messages.create(
+        model="claude-3-haiku-20240307", # Using a smaller model for jokes
+        max_tokens=150, # Jokes don't need to be very long
+        messages=[
+            {"role": "user", "content": prompt}
+        ]
     )
-    return r.choices[0].message.content
+    return response.content[0].text
 
 if __name__ == "__main__":
-    print("Testing real LLM call:")
-    joke_prompt = "Tell me a short joke about a programmer."
+    print("Testing Anthropic LLM call for jokes:")
+    joke_prompt = "Tell me a one-liner joke about a cat."
     print(f"Prompt: {joke_prompt}")
-    response = call_llm(joke_prompt)
-    print(f"Response: {response}")
+    try:
+        response = call_llm(joke_prompt)
+        print(f"Response: {response}")
+    except Exception as e:
+        print(f"Error calling LLM: {e}")
+        print("Please ensure your ANTHROPIC_API_KEY environment variable is set correctly.")
