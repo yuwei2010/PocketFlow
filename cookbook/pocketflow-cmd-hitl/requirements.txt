@@ -1,0 +1,7 @@
+# Add any project-specific dependencies here.
+# For example:
+# openai
+# anthropic
+
+pocketflow>=0.0.1
+openai>=1.0.0 
