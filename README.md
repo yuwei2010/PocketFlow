@@ -77,7 +77,7 @@ From there, it's easy to implement popular design patterns like ([Multi-](https:
 | [Chat Guardrail](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-chat-guardrail) | ☆☆☆ <sup>*Dummy*</sup> | A travel advisor chatbot that only processes travel-related queries |
 | [Majority Vote](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-majority-vote) | ☆☆☆ <sup>*Dummy*</sup> | Improve reasoning accuracy by aggregating multiple solution attempts |
 | [Map-Reduce](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-map-reduce) | ☆☆☆ <sup>*Dummy*</sup>  | Batch resume qualification using map-reduce pattern |
-| [Cmd HITL](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-cmd-hitl) | ☆☆☆ <sup>*Dummy*</sup>  | A command-line joke generator with human-in-the-loop feedback |
+| [CMD HITL](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-cmd-hitl) | ☆☆☆ <sup>*Dummy*</sup>  | A command-line joke generator with human-in-the-loop feedback |
 | [Multi-Agent](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-multi-agent) | ★☆☆ <sup>*Beginner*</sup> | A Taboo word game for async communication between 2 agents |
 | [Supervisor](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-supervisor) | ★☆☆ <sup>*Beginner*</sup> | Research agent is getting unreliable... Let's build a supervision process|
 | [Parallel](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-parallel-batch) |  ★☆☆ <sup>*Beginner*</sup> | A parallel execution demo that shows 3x speedup |
