@@ -11,7 +11,7 @@ A simple, interactive command-line application that generates jokes based on use
 
 ## Getting Started
 
-This project is part of the PocketFlow cookbook examples. It's assumed you have already cloned the [PocketFlow repository](https://github.com/the-pocket/PocketFlow) and are in the `cookbook/pocketflow-cmd-hitl` directory.
+This project is part of the PocketFlow cookbook examples. It's assumed you have already cloned the [PocketFlow repository](https://github.com/the-pocket/PocketFlow) and are in the `cookbook/pocketflow-cli-hitl` directory.
 
 1.  **Install required dependencies**:
     ```bash
