@@ -20,6 +20,7 @@
 | [Thinking](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-thinking) | ★☆☆ <br> *Beginner*   | Solve complex reasoning problems through Chain-of-Thought |
 | [Memory](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-chat-memory) | ★☆☆ <br> *Beginner* | A chat bot with short-term and long-term memory |
 | [MCP](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-mcp) | ★☆☆ <br> *Beginner* |  Agent using Model Context Protocol for numerical operations |
+| [Tracing](https://github.com/The-Pocket/PocketFlow/tree/main/cookbook/pocketflow-tracing) | ★☆☆ <br> *Beginner* |  Trace and visualize the execution of your flow |
 
 </div>
 
