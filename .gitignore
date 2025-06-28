@@ -74,3 +74,13 @@ htmlcov/
 
 test.ipynb
 .pytest_cache/
+cookbook/pocketflow-multi-agent/.python-version
+
+
+# local
+uv.lock
+.python-version
+pyproject.toml
+usage.md
+cookbook/pocketflow-minimal-example/viz/flow_visualization.html
+cookbook/pocketflow-minimal-example/viz/flow_visualization.json
