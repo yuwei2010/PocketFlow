@@ -1,9 +1,4 @@
 ---
-description: 
-globs: 
-alwaysApply: false
----
----
 description: Guidelines for using PocketFlow, Utility Function, Viz and Debug
 globs: 
 alwaysApply: false
